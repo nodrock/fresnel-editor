@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><Form builder="jigloo" ide="eclipse" laf="com.jgoodies.looks.plastic.Plastic3DLookAndFeel" style="Swing" version="4.6.0">
+<NonVisualComponents>
+		<Component class="UNKNOWN" name="Non-visual components" style="0">
+			<SubComponents>
+				<Component class="javax.swing.AbstractAction" name="paste">
+					<Properties>
+						<Property name="shortDescription" type="String" value="Paste the contents of the clipboard at the current insertion point"/>
+						<Property name="text" type="String" value="&amp;Paste"/>
+						<Property name="icon" type="Icon">
+							<Icon name="icons/paste.png"/>
+						</Property>
+					</Properties>
+				</Component>
+				<Component class="javax.swing.AbstractAction" name="delete">
+					<Properties>
+						<Property name="shortDescription" type="String" value="Delete current selection"/>
+						<Property name="text" type="String" value="&amp;Delete"/>
+						<Property name="icon" type="Icon">
+							<Icon name="icons/delete.png"/>
+						</Property>
+					</Properties>
+				</Component>
+				<Component class="javax.swing.AbstractAction" name="cut">
+					<Properties>
+						<Property name="shortDescription" type="String" value="Move the current selection to the clipboard"/>
+						<Property name="text" type="String" value="Cu&amp;t"/>
+						<Property name="icon" type="Icon">
+							<Icon name="icons/cut.png"/>
+						</Property>
+					</Properties>
+				</Component>
+				<Component class="javax.swing.AbstractAction" name="copy">
+					<Properties>
+						<Property name="shortDescription" type="String" value="Copy the current selection to the clipboard"/>
+						<Property name="text" type="String" value="&amp;Copy"/>
+						<Property name="icon" type="Icon">
+							<Icon name="icons/copy.png"/>
+						</Property>
+					</Properties>
+				</Component>
+				<Component class="java.lang.String" name="string_IL" style="0">
+					<Properties>
+					</Properties>
+				</Component>
+			</SubComponents>
+		</Component></NonVisualComponents>
+	<Component class="javax.swing.JPanel" name="this">
+		<Layout class="Box">
+			<Property name="axis" type="int" value="0"/>
+		</Layout>
+		<Events>
+		</Events>
+		<Properties>
+			<Property name="opaque" type="boolean" value="false"/>
+			<Property name="maximumSize" type="Dimension">
+				<Dimension value="[32767, 20]"/>
+			</Property>
+			<Property name="preferredSize" type="Dimension">
+				<Dimension value="[400, 20]"/>
+			</Property>
+			<Property name="layout"/>
+			<Property name="name" type="String" value="this"/>
+		</Properties>
+		<SubComponents>
+			<Component class="javax.swing.JCheckBox" name="contentEnabled">
+				<Events>
+					<EventHandler event="itemStateChanged" handler="contentEnabledItemStateChangedhandler method" listener="java.awt.event.ItemListener"/>
+				</Events>
+				<Properties>
+					<Property name="text" type="String" value="Content"/>
+					<Property name="opaque" type="boolean" value="false"/>
+					<Property name="name" type="String" value="contentEnabled"/>
+					<Property name="bounds" type="Rectangle">
+						<Rectangle value="[-1, 0, 61, 20]"/>
+					</Property>
+				</Properties>
+			</Component>
+			<Component class="javax.swing.Box$Filler" name="box$Filler_IL">
+				<Properties>
+				</Properties>
+			</Component>
+			<Component class="javax.swing.JTextField" name="contentTextField">
+				<Properties>
+					<Property name="text" type="String" value="class java.lang.String"/>
+					<Property name="enabled" type="boolean" value="false"/>
+					<Property name="preferredSize" type="Dimension">
+						<Dimension value="[329, 20]"/>
+					</Property>
+					<Property name="name" type="String" value="contentTextField"/>
+					<Property name="bounds" type="Rectangle">
+						<Rectangle value="[66, 0, 328, 23]"/>
+					</Property>
+				</Properties>
+			</Component>
+		</SubComponents>
+	</Component>
+</Form>

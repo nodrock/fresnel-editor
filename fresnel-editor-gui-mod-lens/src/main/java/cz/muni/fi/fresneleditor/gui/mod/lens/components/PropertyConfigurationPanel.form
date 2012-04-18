@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.6" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+        <TitledBorder title="Property configuration">
+          <Property name="titleX" resourceKey="Form.border.title"/>
+        </TitledBorder>
+      </Border>
+    </Property>
+    <Property name="name" type="java.lang.String" value="Form" noResource="true"/>
+  </Properties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="sublensesLbl" min="-2" max="-2" attributes="1"/>
+                          <Component id="sublensesScrollPane" min="-2" pref="347" max="-2" attributes="1"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="addSublenseBtn" max="32767" attributes="1"/>
+                          <Component id="removeSublenseBtn" alignment="0" pref="87" max="32767" attributes="1"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="useLabel" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="groupFormatsLbl" min="-2" max="-2" attributes="1"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="maxDepthLbl" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="maxDepthSpinner" min="-2" pref="43" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="configureGroupBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="sublensesLbl" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="addSublenseBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="removeSublenseBtn" min="-2" max="-2" attributes="0"/>
+                          <Component id="useLabel" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="sublensesScrollPane" min="-2" pref="81" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="groupFormatsLbl" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                  <Component id="configureGroupBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="maxDepthLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="maxDepthSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="17" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="sublensesLbl">
+      <Properties>
+        <Property name="font" type="java.awt.Font" resourceKey="addSublenseBtn.font"/>
+        <Property name="text" type="java.lang.String" resourceKey="sublensesLbl.text"/>
+        <Property name="name" type="java.lang.String" value="sublensesLbl" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="groupFormatsLbl">
+      <Properties>
+        <Property name="font" type="java.awt.Font" resourceKey="addSublenseBtn.font"/>
+        <Property name="text" type="java.lang.String" resourceKey="groupFormatsLbl.text"/>
+        <Property name="name" type="java.lang.String" value="groupFormatsLbl" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="addSublenseBtn">
+      <Properties>
+        <Property name="font" type="java.awt.Font" resourceKey="addSublenseBtn.font"/>
+        <Property name="text" type="java.lang.String" resourceKey="addSublenseBtn.text"/>
+        <Property name="name" type="java.lang.String" value="addSublenseBtn" noResource="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addSublenseBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="removeSublenseBtn">
+      <Properties>
+        <Property name="font" type="java.awt.Font" resourceKey="addSublenseBtn.font"/>
+        <Property name="text" type="java.lang.String" resourceKey="removeSublenseBtn.text"/>
+        <Property name="enabled" type="boolean" value="false"/>
+        <Property name="name" type="java.lang.String" value="removeSublenseBtn" noResource="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeSublenseBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="maxDepthLbl">
+      <Properties>
+        <Property name="font" type="java.awt.Font" resourceKey="addSublenseBtn.font"/>
+        <Property name="text" type="java.lang.String" resourceKey="maxDepthLbl.text"/>
+        <Property name="name" type="java.lang.String" value="maxDepthLbl" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="maxDepthSpinner">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="maxDepthSpinner" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="configureGroupBtn">
+      <Properties>
+        <Property name="font" type="java.awt.Font" resourceKey="addSublenseBtn.font"/>
+        <Property name="text" type="java.lang.String" resourceKey="configureGroupBtn.text"/>
+        <Property name="name" type="java.lang.String" value="configureGroupBtn" noResource="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="configureGroupBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="cz.muni.fi.fresneleditor.gui.mod.lens.components.FresnelUseLabel" name="useLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" resourceKey="useLabel.font"/>
+        <Property name="name" type="java.lang.String" value="useLabel" noResource="true"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="sublensesScrollPane">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="sublensesScrollPane" noResource="true"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="cz.muni.fi.fresneleditor.common.guisupport.components.UrisJList" name="sublensesList">
+          <Properties>
+            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+              <StringArray count="0"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="sublensesList" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="sublensesListValueChanged"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

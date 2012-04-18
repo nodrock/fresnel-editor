@@ -1,0 +1,51 @@
+/*
+ * Default Fresnel Editor CSS stylesheet for visualization of RDF data using Fresnel
+ * Display Vocabulary.
+ *
+ * Authors: Miroslav Warchil (warmir@mail.muni.cz)
+ *          Igor Zemsky (zemsky@mail.muni.cz)
+ *
+ * Version: April 2009
+ */
+
+.div-top {
+	
+    text-align:       center;
+    margin:           0em auto;
+    font-family:      Verdana, Tahoma, Arial, sans-serif;
+    font-size:        80%;
+    color:            black;
+    /* background-color: orange; */
+}
+
+.fresnel-results {
+	
+	padding:          5px;
+	border:           1px solid orange;
+}
+
+.default-resource-style, .f-resource {
+	
+	margin:           10px;
+	padding:          5px;
+	text-align:       left;
+	background-color: #CCCCCC;
+	/* border:           1px solid gray; */
+}
+
+.default-label-style, .f-label, .foaf-name-label {
+	
+    font-weight:      bold;
+}
+
+.default-value-style, .f-value, .foaf-name-value {
+	
+    font-weight:      italic;
+    margin-left:      20px;
+}
+
+.f-title {
+	
+	margin-top:       0px;
+	margin-bottom:    0px;
+}

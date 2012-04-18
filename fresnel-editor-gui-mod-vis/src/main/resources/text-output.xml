@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<results xmlns="http://www.w3.org/2004/09/fresnel-tree">
+    <resource uri="file:/D:/Work/EWorkspaceDP/fresnel-editor-model/foaf_wapxana.xml#me">
+        <title/>
+        <property uri="http://xmlns.com/foaf/0.1/name">
+            <label>
+                <title/>
+            </label>
+            <values>
+                <value>
+                    <title>Rashad Aliyev</title>
+                </value>
+            </values>
+        </property>
+        <property uri="http://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+            <label>
+                <title/>
+            </label>
+            <values>
+                <value>
+                    <title>http://xmlns.com/foaf/0.1/Person</title>
+                </value>
+            </values>
+        </property>
+        <property uri="http://xmlns.com/foaf/0.1/homepage">
+            <label class="basicLabel">
+                <title/>
+            </label>
+            <values>
+                <value class="basicUrl" output-type="http://www.w3.org/2004/09/fresnel#externalLink">
+                    <title>http://my.opera.com/wapxana/</title>
+                </value>
+            </values>
+        </property>
+        <property uri="http://xmlns.com/foaf/0.1/mbox_sha1sum">
+            <label>
+                <title/>
+            </label>
+            <values>
+                <value>
+                    <title>b4c3c25f02b9a78036677055a3cfe80286a7ad1d</title>
+                </value>
+            </values>
+        </property>
+        <property uri="http://xmlns.com/foaf/0.1/nick">
+            <label>
+                <title/>
+            </label>
+            <values>
+                <value>
+                    <title>wapxana</title>
+                </value>
+            </values>
+        </property>
+        <property uri="http://xmlns.com/foaf/0.1/msnChatID">
+            <label>
+                <title/>
+            </label>
+            <values>
+                <value>
+                    <title>microphp@hotmail.com</title>
+                </value>
+            </values>
+        </property>
+        <property uri="http://xmlns.com/foaf/0.1/gender">
+            <label>
+                <title/>
+            </label>
+            <values>
+                <value>
+                    <title>male</title>
+                </value>
+            </values>
+        </property>
+        <property uri="http://purl.org/vocab/bio/0.1/event">
+            <label>
+                <title/>
+            </label>
+            <values>
+                <value>
+                    <title>_:node140nf9nbgx1</title>
+                </value>
+            </values>
+        </property>
+        <property uri="http://xmlns.com/foaf/0.1/weblog">
+            <label>
+                <title/>
+            </label>
+            <values>
+                <value>
+                    <title>http://my.opera.com/wapxana/blog/</title>
+                </value>
+            </values>
+        </property>
+        <property uri="http://xmlns.com/foaf/0.1/knows">
+            <label>
+                <title/>
+            </label>
+            <values>
+                <value>
+                    <title>http://my.opera.com/chaals/xml/foaf#me</title>
+                </value>
+                <value>
+                    <title>http://my.opera.com/KristinaBarCamp/xml/foaf#me</title>
+                </value>
+            </values>
+        </property>
+    </resource>
+    <resource uri="http://my.opera.com/chaals/xml/foaf#me">
+        <title/>
+        <property uri="http://xmlns.com/foaf/0.1/name">
+            <label>
+                <title/>
+            </label>
+            <values>
+                <value>
+                    <title>Charles McCathieNevile</title>
+                </value>
+            </values>
+        </property>
+        <property uri="http://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+            <label>
+                <title/>
+            </label>
+            <values>
+                <value>
+                    <title>http://xmlns.com/foaf/0.1/Person</title>
+                </value>
+            </values>
+        </property>
+        <property uri="http://xmlns.com/foaf/0.1/nick">
+            <label>
+                <title/>
+            </label>
+            <values>
+                <value>
+                    <title>chaals</title>
+                </value>
+            </values>
+        </property>
+        <property uri="http://xmlns.com/foaf/0.1/homepage">
+            <label class="basicLabel">
+                <title/>
+            </label>
+            <values>
+                <value class="basicUrl" output-type="http://www.w3.org/2004/09/fresnel#externalLink">
+                    <title>http://my.opera.com/chaals/</title>
+                </value>
+            </values>
+        </property>
+        <property uri="http://www.w3.org/2000/01/rdf-schema#seeAlso">
+            <label>
+                <title/>
+            </label>
+            <values>
+                <value>
+                    <title>http://my.opera.com/chaals/xml/foaf</title>
+                </value>
+            </values>
+        </property>
+        <property uri="http://xmlns.com/foaf/0.1/mbox_sha1sum">
+            <label>
+                <title/>
+            </label>
+            <values>
+                <value>
+                    <title>7c373b50b2b3cb71cf73946aefdcd64f03c30772</title>
+                </value>
+            </values>
+        </property>
+    </resource>
+    <resource uri="http://my.opera.com/KristinaBarCamp/xml/foaf#me">
+        <title/>
+        <property uri="http://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+            <label>
+                <title/>
+            </label>
+            <values>
+                <value>
+                    <title>http://xmlns.com/foaf/0.1/Person</title>
+                </value>
+            </values>
+        </property>
+        <property uri="http://xmlns.com/foaf/0.1/nick">
+            <label>
+                <title/>
+            </label>
+            <values>
+                <value>
+                    <title>KristinaBarCamp</title>
+                </value>
+            </values>
+        </property>
+        <property uri="http://xmlns.com/foaf/0.1/homepage">
+            <label class="basicLabel">
+                <title/>
+            </label>
+            <values>
+                <value class="basicUrl" output-type="http://www.w3.org/2004/09/fresnel#externalLink">
+                    <title>http://my.opera.com/KristinaBarCamp/</title>
+                </value>
+            </values>
+        </property>
+        <property uri="http://www.w3.org/2000/01/rdf-schema#seeAlso">
+            <label>
+                <title/>
+            </label>
+            <values>
+                <value>
+                    <title>http://my.opera.com/KristinaBarCamp/xml/foaf</title>
+                </value>
+            </values>
+        </property>
+        <property uri="http://xmlns.com/foaf/0.1/mbox_sha1sum">
+            <label>
+                <title/>
+            </label>
+            <values>
+                <value>
+                    <title>04597c37d3e459d9f45117022f67fc45749ef7c9</title>
+                </value>
+            </values>
+        </property>
+    </resource>
+</results>

@@ -1,0 +1,210 @@
+/**
+ * Fresnel Editor
+ */
+package cz.muni.fi.fresneleditor.common.visualization;
+
+import java.io.File;
+import java.io.FileOutputStream;
+
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+
+import org.openrdf.model.URI;
+import org.openrdf.repository.Repository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.w3c.dom.Document;
+
+import cz.muni.fi.fresneleditor.common.ContextHolder;
+import cz.muni.fi.fresneleditor.common.FresnelApplication;
+import cz.muni.fi.fresneleditor.common.guisupport.MessageDialog;
+import cz.muni.fi.fresneleditor.model.FresnelRepositoryDao;
+import fr.inria.jfresnel.Format;
+import fr.inria.jfresnel.FresnelDocument;
+import fr.inria.jfresnel.Group;
+import fr.inria.jfresnel.Lens;
+import fr.inria.jfresnel.sesame.SesameRenderer;
+
+/**
+ * Basic implementation of RDF visualizer - it's based on XSLT transformation.
+ * 
+ * @author Miroslav Warchil (warmir@mail.muni.cz)
+ * @version 13.5.2009
+ */
+public abstract class AbstractVisualizer implements IRDFVisualizer {
+
+    protected static final Logger LOG = LoggerFactory.getLogger(AbstractVisualizer.class);
+    protected String defaultOutputFilename;
+    protected String XSLTemplate;
+
+    public AbstractVisualizer(String defaultOutputFilename, String XSLTemplate) {
+        this.defaultOutputFilename = defaultOutputFilename;
+        this.XSLTemplate = XSLTemplate;
+    }
+
+    public AbstractVisualizer(String XSLTemplate) {
+        this.XSLTemplate = XSLTemplate;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void visualize(Repository repository, URI groupUri, VisualizationParameter visParam,
+            String pathToOutputFile) {
+
+        // Initialization before visualization
+        initialize();
+        // Prepare fresnel document for rendering procedure
+        FresnelDocument fd = prepareFresnelDocument(groupUri);
+        // Render fresnel document and save it to result file
+        renderFresnelDocumentToOutputFile(fd, repository, visParam, pathToOutputFile);
+        // Show resulting html file in preview panel (using integrated LOBO browser)
+        showResultInPreviewPanel(pathToOutputFile);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void visualize(Repository repository, Group group, VisualizationParameter visParam) {
+        // Initialization before visualization
+        initialize();
+        // Prepare fresnel document for rendering procedure
+        FresnelDocument fd = prepareFresnelDocument(group);
+        // Render fresnel document and save it to result file
+        renderFresnelDocumentToOutputFile(fd, repository, visParam, null);
+        // Show resulting html file in preview panel (using integrated LOBO browser)
+        showResultInPreviewPanel(null);
+    }
+
+    protected void initialize() {
+        File outputFile = new File(defaultOutputFilename);
+        outputFile.delete();
+    }
+
+    protected FresnelDocument prepareFresnelDocument(Group group) {
+
+        FresnelDocument fd = new FresnelDocument();
+
+        // Encapsulate group into array
+        Group[] groupArray = new Group[1];
+        groupArray[0] = group;
+
+        if (group.getLenses() == null) {
+            fd.setLenses(new Lens[0]);
+        } else {
+            fd.setLenses(group.getLenses());
+        }
+
+        if (group.getFormats() == null) {
+            fd.setFormats(new Format[0]);
+        } else {
+            fd.setFormats(group.getFormats());
+        }
+
+        fd.setGroups(groupArray);
+
+        return fd;
+    }
+
+    protected FresnelDocument prepareFresnelDocument(URI groupUri) {
+
+        // get group which should be used for visualization
+        FresnelRepositoryDao fresnelDao = ContextHolder.getInstance().getFresnelRepositoryDao();
+        Group group = fresnelDao.getGroup(groupUri.toString());
+
+        // display error message if no group with given URI is found
+        if (group == null) {
+            LOG.error("Fresnel Group '{}' for visualization not found!", groupUri);
+            new MessageDialog(FresnelApplication.getApp().getBaseFrame(), "Visualization problem occured.",
+                    "Visualization of RDF could not be performed. Fresnel Group '" + groupUri
+                    + "' for visualization not found!").setVisible(true);
+            return null;
+        }
+
+        // Encapsulate group into array
+        Group[] groupArray = new Group[1];
+        groupArray[0] = group;
+
+        // Create Fresnel Document instance which will be passed to renderer
+        FresnelDocument fd = new FresnelDocument();
+        fd.setLenses(group.getLenses());
+        fd.setFormats(group.getFormats());
+        fd.setGroups(groupArray);
+
+        return fd;
+    }
+
+    /**
+     * Renders Fresnel Document to XML and applies XSL template on it. Result is then stored as a
+     * file.
+     *
+     * @param fd
+     *            Fresnel Document to be rendered
+     * @param repository
+     *            repository containing RDF to be rendered
+     */
+    // TODO: Filename could be parameter
+    protected void renderFresnelDocumentToOutputFile(FresnelDocument fd, Repository repository,
+            VisualizationParameter visParam, String pathToOutputFile) {
+
+        SesameRenderer renderer = new SesameRenderer();
+
+        // Note: Renderer must know also Fresnel repository
+        renderer.setFresnelRepository(ContextHolder.getInstance().getFresnelRepositoryDao().getRepository());
+        ContextHolder.getInstance().getFresnelRepositoryDao().printStatements(System.out, false);
+
+        File finalFile = null;
+        if (pathToOutputFile == null) {
+            finalFile = new File(defaultOutputFilename);
+        } else {
+            finalFile = new File(pathToOutputFile);
+        }
+
+        try {
+            Document document = renderer.render(fd, repository);
+
+            modifyInternalXML(document);
+
+            // Prepare the DOM document for writing
+            DOMSource source = new DOMSource(document);
+
+            TransformerFactory tFactory = TransformerFactory.newInstance();
+//            Transformer transformer = tFactory.newTransformer();  // pro vypsani interniho xml bez transformace
+            Transformer transformer = tFactory.newTransformer(new StreamSource(XSLTemplate));
+
+            // Set parameters to XSL template
+            transformer.setParameter("pageTitle", visParam.getPageTitle());
+            transformer.setParameter("cssStylesheetURL", visParam.getCssStylesheetURL());
+
+            // Perform XSL transformation and write result into file
+            transformer.transform(source, new StreamResult(new FileOutputStream(finalFile)));
+
+            LOG.info("Final document has been written to file: " + defaultOutputFilename);
+
+        } catch (Exception ex) {
+            LOG.error("Transformation error: {}", ex.getMessage());
+            // FIXME: Add proper stack trace logging.
+            ex.printStackTrace();
+            return;
+        }
+    }
+
+    /**
+     * This method can modify internal XML file if neccessary.
+     * @param doc source document
+     * @return modified DOM document
+     */
+    protected Document modifyInternalXML(Document doc){
+        return doc; // no changes
+    }
+
+    /**
+     * Displays result of visualization
+     * @param pathToOutputFile path to file that will be used as output file
+     */
+    protected abstract void showResultInPreviewPanel(String pathToOutputFile);
+}
