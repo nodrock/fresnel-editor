@@ -1,0 +1,38 @@
+@prefix fresnel:  <http://www.w3.org/2004/09/fresnel#> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix :         <http://this#> .
+
+# -----------------------------------------------
+# 1.Fresnel Lenses for FOAF Person
+# -----------------------------------------------
+
+
+:knowsLens rdf:type fresnel:Lens ;
+           fresnel:classLensDomain foaf:Person ;
+           fresnel:group :foafGroup ;
+           fresnel:showProperties ( foaf:name 
+                                    foaf:surname
+                                    foaf:mbox 
+                                    [ rdf:type fresnel:PropertyDescription ;
+                                      fresnel:property foaf:knows ;
+                                      fresnel:sublens :foafPersonDefaultLens;
+                                      fresnel:depth "5"^^xsd:nonNegativeInteger;
+                                      fresnel:use :foafGroup
+                                    ] ) .
+                                    
+:knowsLens1 rdf:type fresnel:Lens ;
+           fresnel:instanceLensDomain "foaf:Person[foaf:age > 20]"^^fresnel:fslSelector .
+           
+           
+:knowsLens2 rdf:type fresnel:Lens ;
+           fresnel:instanceLensDomain "SELECT ?x WHERE { foaf:Person foaf:age ?x }"^^fresnel:sparqlSelector .                                                      
+			                      
+# -----------------------------------------------
+# 2. Fresnel Formats
+# -----------------------------------------------
+
+:foafGroup rdf:type fresnel:Group ;
+           fresnel:stylesheetLink <http://www.example.org/example.css> . 

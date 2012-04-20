@@ -1,0 +1,847 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:bio="http://purl.org/vocab/bio/0.1/"
+        xmlns:owl="http://www.w3.org/2002/07/owl#"
+        xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+        xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <foaf:PersonalProfileDocument rdf:about="">
+    <dc:title>FoaF Document for Charles McCathieNevile</dc:title>
+    <dc:description>Friend-of-a-Friend description of Charles McCathieNevile</dc:description>
+    <foaf:topic rdf:resource="#me"/>
+    <foaf:maker rdf:resource="#me"/>
+  </foaf:PersonalProfileDocument>
+
+<foaf:Person rdf:ID="me">
+  <foaf:name >Charles McCathieNevile</foaf:name>  <foaf:homepage rdf:resource="http://my.opera.com/chaals/" />
+  <foaf:mbox_sha1sum>7c373b50b2b3cb71cf73946aefdcd64f03c30772</foaf:mbox_sha1sum>
+  <foaf:nick>chaals</foaf:nick>
+<foaf:gender >male</foaf:gender><foaf:nick >chaals</foaf:nick>  <rdfs:seeAlso rdf:resource="http://www.w3.org/People/Charles/foaf.rdf"/>
+  <foaf:img rdf:resource="http://my.opera.com/chaals/picture.pl" />
+  <foaf:depiction rdf:resource="http://my.opera.com/chaals/picture.pl" />
+  <foaf:weblog rdf:resource="http://my.opera.com/chaals/blog/" />
+  <foaf:knows rdf:resource="http://my.opera.com/stephan/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/lachralle/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/haavard/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/Stein/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/olli/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/jax/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/toman/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/dramatic/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/Jon/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/yngve/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/White%20Lynx/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/larskl/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/AVL/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/Moose/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/troels/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/nafmo/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/Ilya%20Shpan%27kov/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/citoyen/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/RobbieGee/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/Think/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/virtuelvis/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/tarquinwj/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/howcome/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/eiriks/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/saito/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/csant/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/michi/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/vetler/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/castaway/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/jorunnix/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/OperaSinger/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/anne/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/Thruth/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/away/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/nicomen/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/eskils/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/m2k/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/MacDev_ed/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/over/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/EivindFS/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/gorme/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/lynnr/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/SerbianFighter/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/danigoldman/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/Joen/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/sverre/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/zenya/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/mitchman2/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/feldgendler/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/inkel/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/yitzhaq/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/chris_uribe/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/Helmers/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/cheshrkat/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/koalie/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/Cyro/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/danbri/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/brianj/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/ManneS/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/opera_jp/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/Pecorra/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/spz/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/kjetilk/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/zoso/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/zarkoh/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/gautam_chandna/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/olegt/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/ChiaraInThePond/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/gnapse/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/annaraj/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/yennyotero/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/Sharebear/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/fearphage/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/hefa/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/runeh/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/p01/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/dstorey/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/piallysmies/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/huibk/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/malware/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/ResearchWizard/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/velmu/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/staceyc/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/minch/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/navjotpawera/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/ismailp/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/zcorpan/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/schepers/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/andersm/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/glish/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/mcx/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/SusanThePlant/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/Benjamin%20Joffe/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/bestdamntech/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/JibberJim/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/tomheath/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/balzac/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/Xaer/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/derekfeatherstone/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/evamen/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/AquariusAnita/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/MissPlaced/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/pvojnisek/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/timbl/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/keiki/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/msmiffy/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/pavel.studeny/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/e-jit/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/TheAtilla/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/lilimaspons/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/oedipus/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/hoyesjueves/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/merlo/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/lmaspons/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/liddyn/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/georgien/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/j_stand/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/Cesarsan/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/SergeWood/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/jod999/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/plg/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/robin-berjon/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/timjoh/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/khushi1811/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/brokenheartvn/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/Scenariogirl/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/rosiemacq/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/Lisien/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/Mimi5/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/carolineb/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/opera_shacho/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/DannyAyers/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/kumenova/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/JavaWoman/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/onlyputri/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/ZaraL/xml/foaf#me"/>
+  <foaf:knows rdf:resource="http://my.opera.com/wapxana/xml/foaf#me"/>
+</foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/stephan/xml/foaf#me">
+      <foaf:nick >stephan</foaf:nick>      <foaf:name >Stephan Nedregaard</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/stephan/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/stephan/xml/foaf" />
+      <foaf:mbox_sha1sum>e7ea5a158d6303f922674abf671361161b3d07c3</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/lachralle/xml/foaf#me">
+      <foaf:nick >lachralle</foaf:nick>      <foaf:name >Ralf Demuth</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/lachralle/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/lachralle/xml/foaf" />
+      <foaf:mbox_sha1sum>2a1eb8b76b8efce084c22d53456e0d2501640f62</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/haavard/xml/foaf#me">
+      <foaf:nick >haavard</foaf:nick>      <foaf:name >Haavard</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/haavard/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/haavard/xml/foaf" />
+      <foaf:mbox_sha1sum>b9576f1592fcac08110f5e6f0a6486c94b180534</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/Stein/xml/foaf#me">
+      <foaf:nick >Stein</foaf:nick>      <foaf:name >Stein Vråle</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/Stein/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/Stein/xml/foaf" />
+      <foaf:mbox_sha1sum>df6e70d9a91d509f7920a0f8f9eab199eb3578cb</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/olli/xml/foaf#me">
+      <foaf:nick >olli</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/olli/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/olli/xml/foaf" />
+      <foaf:mbox_sha1sum>959165817a08f630f42dd9baa6dfb418313edf58</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/jax/xml/foaf#me">
+      <foaf:nick >jax</foaf:nick>      <foaf:name >Jonny Axelsson</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/jax/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/jax/xml/foaf" />
+      <foaf:mbox_sha1sum>d90bcc9bbc5de6939a708f844e6d3e80d29049e2</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/toman/xml/foaf#me">
+      <foaf:nick >toman</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/toman/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/toman/xml/foaf" />
+      <foaf:mbox_sha1sum>41980e07f924e4e3855c07a97384df859db509bd</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/dramatic/xml/foaf#me">
+      <foaf:nick >dramatic</foaf:nick>      <foaf:name >Richard</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/dramatic/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/dramatic/xml/foaf" />
+      <foaf:mbox_sha1sum>aaf06561e1ab7957b3968cddf50dafc4ffd86777</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/Jon/xml/foaf#me">
+      <foaf:nick >Jon</foaf:nick>      <foaf:name >Jon S. von Tetzchner</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/Jon/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/Jon/xml/foaf" />
+      <foaf:mbox_sha1sum>b48bfa3ec9e4fb5dcae5ff6fd3df688e545745fa</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/yngve/xml/foaf#me">
+      <foaf:nick >yngve</foaf:nick>      <foaf:name >Yngve Nysæter Pettersen</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/yngve/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/yngve/xml/foaf" />
+      <foaf:mbox_sha1sum>83ccf15316738a8dc9668bb4c7e348f31d16a57d</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/White%20Lynx/xml/foaf#me">
+      <foaf:nick >White Lynx</foaf:nick>      <foaf:name >George Chavchanidze</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/White%20Lynx/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/White%20Lynx/xml/foaf" />
+      <foaf:mbox_sha1sum>07da2e02a3c011e3b303f4dde26b876efdaa70b8</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/larskl/xml/foaf#me">
+      <foaf:nick >larskl</foaf:nick>      <foaf:name >Lars Kleinschmidt</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/larskl/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/larskl/xml/foaf" />
+      <foaf:mbox_sha1sum>1084dcd84e0fda3e1581e529f6f65342636e3eaa</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/AVL/xml/foaf#me">
+      <foaf:nick >AVL</foaf:nick>      <foaf:name >Arjan van Leeuwen</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/AVL/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/AVL/xml/foaf" />
+      <foaf:mbox_sha1sum>af25e1b34d0c2cef519023b162e176f3a1240a2a</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/Moose/xml/foaf#me">
+      <foaf:nick >Moose</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/Moose/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/Moose/xml/foaf" />
+      <foaf:mbox_sha1sum>947057d05df9480fd951f96d9b55e7db2d6eb5ec</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/troels/xml/foaf#me">
+      <foaf:nick >troels</foaf:nick>      <foaf:name >Troels</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/troels/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/troels/xml/foaf" />
+      <foaf:mbox_sha1sum>84156975f9b4d786682728313430498515dcbe9a</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/nafmo/xml/foaf#me">
+      <foaf:nick >nafmo</foaf:nick>      <foaf:name >Peter Krefting</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/nafmo/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/nafmo/xml/foaf" />
+      <foaf:mbox_sha1sum>aeffb5dc4ce9199bfc17b79f58f9b7cbdbc67c0c</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/Ilya%20Shpan%27kov/xml/foaf#me">
+      <foaf:nick >Ilya Shpan&#39;kov</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/Ilya%20Shpan%27kov/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/Ilya%20Shpan%27kov/xml/foaf" />
+      <foaf:mbox_sha1sum>39f28e6816274198722342a0aed4a2833211381f</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/citoyen/xml/foaf#me">
+      <foaf:nick >citoyen</foaf:nick>      <foaf:name >Eira Monstad</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/citoyen/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/citoyen/xml/foaf" />
+      <foaf:mbox_sha1sum>3d710c09a3cd03281475aa76856db877386f597c</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/RobbieGee/xml/foaf#me">
+      <foaf:nick >RobbieGee</foaf:nick>      <foaf:name >Robert Græsdal</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/RobbieGee/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/RobbieGee/xml/foaf" />
+      <foaf:mbox_sha1sum>fb78a4d02f07187aa36c5a7d1f6e10979f664c9f</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/Think/xml/foaf#me">
+      <foaf:nick >Think</foaf:nick>      <foaf:name >Jan Standal</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/Think/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/Think/xml/foaf" />
+      <foaf:mbox_sha1sum>00aa04e9b94b94b516c19aa7b20dcf48adb8dc7c</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/virtuelvis/xml/foaf#me">
+      <foaf:nick >virtuelvis</foaf:nick>      <foaf:name >Arve Bersvendsen</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/virtuelvis/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/virtuelvis/xml/foaf" />
+      <foaf:mbox_sha1sum>78ed2525007ea10ed5b027ca42490197dbabea9b</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/tarquinwj/xml/foaf#me">
+      <foaf:nick >tarquinwj</foaf:nick>      <foaf:name >Mark &#39;Tarquin&#39; Wilton-Jones</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/tarquinwj/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/tarquinwj/xml/foaf" />
+      <foaf:mbox_sha1sum>e2d206e936f23305416b0ce115ecedcdfdebdca8</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/howcome/xml/foaf#me">
+      <foaf:nick >howcome</foaf:nick>      <foaf:name >Håkon Wium Lie</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/howcome/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/howcome/xml/foaf" />
+      <foaf:mbox_sha1sum>0c30ac9958e6878ab1c57926db1f04587e38f471</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/eiriks/xml/foaf#me">
+      <foaf:nick >eiriks</foaf:nick>      <foaf:name >Eirik Stavem</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/eiriks/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/eiriks/xml/foaf" />
+      <foaf:mbox_sha1sum>52cf5b90f4fcf7b55ac2ad92ddeaad327204f3fe</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/saito/xml/foaf#me">
+      <foaf:nick >saito</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/saito/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/saito/xml/foaf" />
+      <foaf:mbox_sha1sum>807521043e8c334d0a30e9b1421c00c92c59553f</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/csant/xml/foaf#me">
+      <foaf:nick >csant</foaf:nick>      <foaf:name >Claudio Santambrogio</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/csant/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/csant/xml/foaf" />
+      <foaf:mbox_sha1sum>8f681c5d54cf2bf01279c71b827f6a40915d718a</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/michi/xml/foaf#me">
+      <foaf:nick >michi</foaf:nick>      <foaf:name >Michelle Valdivia Lien</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/michi/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/michi/xml/foaf" />
+      <foaf:mbox_sha1sum>ee32aadcaa91e0b84af402e7c2dffa522e47fcfb</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/vetler/xml/foaf#me">
+      <foaf:nick >vetler</foaf:nick>      <foaf:name >Vetle Roeim</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/vetler/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/vetler/xml/foaf" />
+      <foaf:mbox_sha1sum>f295998aad4d2fca031b2666f87c5e1807a7dd6b</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/castaway/xml/foaf#me">
+      <foaf:nick >castaway</foaf:nick>      <foaf:name >Jess Robinson</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/castaway/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/castaway/xml/foaf" />
+      <foaf:mbox_sha1sum>c855138fbc5f058b42f0e23602477cfaa624aecf</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/jorunnix/xml/foaf#me">
+      <foaf:nick >jorunnix</foaf:nick>      <foaf:name >Jorunn Danielsen Newth</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/jorunnix/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/jorunnix/xml/foaf" />
+      <foaf:mbox_sha1sum>77de1e8ea1493dc6f0ca3ab7d578cd7cd68ba29c</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/OperaSinger/xml/foaf#me">
+      <foaf:nick >OperaSinger</foaf:nick>      <foaf:name >Dino Bravo</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/OperaSinger/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/OperaSinger/xml/foaf" />
+      <foaf:mbox_sha1sum>099c6471dbd37f2ce4ad1dafef0055ef6ad3809c</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/anne/xml/foaf#me">
+      <foaf:nick >anne</foaf:nick>      <foaf:name >Anne van Kesteren</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/anne/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/anne/xml/foaf" />
+      <foaf:mbox_sha1sum>02a82a0e5045b849a1d58a9b33cc7b14f26834f2</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/Thruth/xml/foaf#me">
+      <foaf:nick >Thruth</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/Thruth/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/Thruth/xml/foaf" />
+      <foaf:mbox_sha1sum>73ca2d30fc6b7db686a9946ec1e521a339829373</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/away/xml/foaf#me">
+      <foaf:nick >away</foaf:nick>      <foaf:name >zhewei Ruan</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/away/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/away/xml/foaf" />
+      <foaf:mbox_sha1sum>6c56ebb8e4218dee4677ce55854cbbdf116aae2a</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/nicomen/xml/foaf#me">
+      <foaf:nick >nicomen</foaf:nick>      <foaf:name >Nicolas Mendoza</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/nicomen/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/nicomen/xml/foaf" />
+      <foaf:mbox_sha1sum>150c6af7cf54b1e0540f3bd59dccad338d82651c</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/eskils/xml/foaf#me">
+      <foaf:nick >eskils</foaf:nick>      <foaf:name >Eskil Sivertsen</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/eskils/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/eskils/xml/foaf" />
+      <foaf:mbox_sha1sum>48e0e7b3c163104096145bc663c1f9aaa3fcc836</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/m2k/xml/foaf#me">
+      <foaf:nick >m2k</foaf:nick>      <foaf:name >Magne</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/m2k/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/m2k/xml/foaf" />
+      <foaf:mbox_sha1sum>89e2cb9caf99fde6d930753e5015b9267b44e314</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/MacDev_ed/xml/foaf#me">
+      <foaf:nick >MacDev_ed</foaf:nick>      <foaf:name >Erik Dahlström</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/MacDev_ed/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/MacDev_ed/xml/foaf" />
+      <foaf:mbox_sha1sum>22ebd4b590a93d304e41472948b331e501b0b90b</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/over/xml/foaf#me">
+      <foaf:nick >over</foaf:nick>      <foaf:name >Ove Ranheim</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/over/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/over/xml/foaf" />
+      <foaf:mbox_sha1sum>e363153259350c61903eb2f0c571b2179ff76f8c</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/EivindFS/xml/foaf#me">
+      <foaf:nick >EivindFS</foaf:nick>      <foaf:name >Eivind Figenschau Skjellum</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/EivindFS/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/EivindFS/xml/foaf" />
+      <foaf:mbox_sha1sum>d5d6fc4f84062af2c063c440d841d67e09667bd8</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/gorme/xml/foaf#me">
+      <foaf:nick >gorme</foaf:nick>      <foaf:name >Gorm</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/gorme/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/gorme/xml/foaf" />
+      <foaf:mbox_sha1sum>8ab88431efd0fbcec0442b2521bd9dc477d6dea1</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/lynnr/xml/foaf#me">
+      <foaf:nick >lynnr</foaf:nick>      <foaf:name >Lynn Rosentrater</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/lynnr/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/lynnr/xml/foaf" />
+      <foaf:mbox_sha1sum>031629b815d17beb56b7c914ba3a6d2c8fffe16b</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/SerbianFighter/xml/foaf#me">
+      <foaf:nick >SerbianFighter</foaf:nick>      <foaf:name >Ivan Minic</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/SerbianFighter/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/SerbianFighter/xml/foaf" />
+      <foaf:mbox_sha1sum>ec65076a7228f613e3f1b0cf27661395299ca14d</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/danigoldman/xml/foaf#me">
+      <foaf:nick >danigoldman</foaf:nick>      <foaf:name >Daniel Goldman</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/danigoldman/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/danigoldman/xml/foaf" />
+      <foaf:mbox_sha1sum>b5c023cd50debedb7299c82c20bbc205365aad3b</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/Joen/xml/foaf#me">
+      <foaf:nick >Joen</foaf:nick>      <foaf:name >Joen P. Olsen</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/Joen/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/Joen/xml/foaf" />
+      <foaf:mbox_sha1sum>6131bea85d0090f81849c17e2a3bdf6638276991</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/sverre/xml/foaf#me">
+      <foaf:nick >sverre</foaf:nick>      <foaf:name >Sverre Johansen</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/sverre/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/sverre/xml/foaf" />
+      <foaf:mbox_sha1sum>9579e5b67f9def15e4e5d909f1fcd3d914f0265e</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/zenya/xml/foaf#me">
+      <foaf:nick >zenya</foaf:nick>      <foaf:name >Fatimah</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/zenya/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/zenya/xml/foaf" />
+      <foaf:mbox_sha1sum>b15d7e177925df04a76abb0714877640ad8495c1</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/mitchman2/xml/foaf#me">
+      <foaf:nick >mitchman2</foaf:nick>      <foaf:name >Petter Nilsen</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/mitchman2/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/mitchman2/xml/foaf" />
+      <foaf:mbox_sha1sum>cc15a5058e065c0f345c8bb81988ea124e6f3b36</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/feldgendler/xml/foaf#me">
+      <foaf:nick >feldgendler</foaf:nick>      <foaf:name >Alexey Feldgendler</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/feldgendler/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/feldgendler/xml/foaf" />
+      <foaf:mbox_sha1sum>46925d0cbadec7f517ba9114d8a314fd05ab07c8</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/inkel/xml/foaf#me">
+      <foaf:nick >inkel</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/inkel/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/inkel/xml/foaf" />
+      <foaf:mbox_sha1sum>db161c28da4ac9c8b284ba9a146b09e3899554d5</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/yitzhaq/xml/foaf#me">
+      <foaf:nick >yitzhaq</foaf:nick>      <foaf:name >Christer Mjellem Strand</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/yitzhaq/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/yitzhaq/xml/foaf" />
+      <foaf:mbox_sha1sum>21f4b0ac3ee92dea5b5024a065100716fbcef9b4</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/chris_uribe/xml/foaf#me">
+      <foaf:nick >chris_uribe</foaf:nick>      <foaf:name >Christian Uribe</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/chris_uribe/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/chris_uribe/xml/foaf" />
+      <foaf:mbox_sha1sum>363264ff6f8c22b66d15aa16fc703ac58ea3b38e</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/Helmers/xml/foaf#me">
+      <foaf:nick >Helmers</foaf:nick>      <foaf:name >Jan Henrik Helmers</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/Helmers/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/Helmers/xml/foaf" />
+      <foaf:mbox_sha1sum>8a5393fdc59e81ec247c91eda54736c32c8c6a46</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/cheshrkat/xml/foaf#me">
+      <foaf:nick >cheshrkat</foaf:nick>      <foaf:name >Ben Buchanan</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/cheshrkat/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/cheshrkat/xml/foaf" />
+      <foaf:mbox_sha1sum>37b358586bfcb2309fb2d90888b9f6967659e60b</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/koalie/xml/foaf#me">
+      <foaf:nick >koalie</foaf:nick>      <foaf:name >coralie mercier</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/koalie/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/koalie/xml/foaf" />
+      <foaf:mbox_sha1sum>7af74391e3d23554e3b7c8344b70c9efa53d83a0</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/Cyro/xml/foaf#me">
+      <foaf:nick >Cyro</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/Cyro/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/Cyro/xml/foaf" />
+      <foaf:mbox_sha1sum>9d6135b7c2bd0c65852d1a5ed7e977fe2722f9f4</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/danbri/xml/foaf#me">
+      <foaf:nick >danbri</foaf:nick>      <foaf:name >Dan Brickley</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/danbri/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/danbri/xml/foaf" />
+      <foaf:mbox_sha1sum>70c053d15de49ff03a1bcc374e4119b40798a66e</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/brianj/xml/foaf#me">
+      <foaf:nick >brianj</foaf:nick>      <foaf:name >Brian J.</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/brianj/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/brianj/xml/foaf" />
+      <foaf:mbox_sha1sum>f2fd07d5967a3a6b0652c49cb15e430e41fed754</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/ManneS/xml/foaf#me">
+      <foaf:nick >ManneS</foaf:nick>      <foaf:name >Marianne Spilling</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/ManneS/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/ManneS/xml/foaf" />
+      <foaf:mbox_sha1sum>8e47e6512bcc35da4cbdfaaae958af2fa38c5f41</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/opera_jp/xml/foaf#me">
+      <foaf:nick >opera_jp</foaf:nick>      <foaf:name >peraperaOpera</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/opera_jp/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/opera_jp/xml/foaf" />
+      <foaf:mbox_sha1sum>c0dc953c6184e460509747f0f42867dafa1832eb</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/Pecorra/xml/foaf#me">
+      <foaf:nick >Pecorra</foaf:nick>      <foaf:name >Karima</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/Pecorra/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/Pecorra/xml/foaf" />
+      <foaf:mbox_sha1sum>e36346c520f1947879235f6d092d1e38e4b475d7</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/spz/xml/foaf#me">
+      <foaf:nick >spz</foaf:nick>      <foaf:name >Magnus Nevstad</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/spz/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/spz/xml/foaf" />
+      <foaf:mbox_sha1sum>dd2807fe4eadc28b0d416da98d88042d20391f38</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/kjetilk/xml/foaf#me">
+      <foaf:nick >kjetilk</foaf:nick>      <foaf:name >Kjetil Kjernsmo</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/kjetilk/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/kjetilk/xml/foaf" />
+      <foaf:mbox_sha1sum>7c8300206093993ffc2d772b13c81e3275b7145b</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/zoso/xml/foaf#me">
+      <foaf:nick >zoso</foaf:nick>      <foaf:name >Esteban Manchado Velázquez</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/zoso/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/zoso/xml/foaf" />
+      <foaf:mbox_sha1sum>0498bf21ed6cfeeb414f23f2a7b78c41d841f42a</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/zarkoh/xml/foaf#me">
+      <foaf:nick >zarkoh</foaf:nick>      <foaf:name >Жарко Христовски (Zarko Hristovski)</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/zarkoh/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/zarkoh/xml/foaf" />
+      <foaf:mbox_sha1sum>28358a349ab9caf1382ec51d1cbdfdf7dbd801bb</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/gautam_chandna/xml/foaf#me">
+      <foaf:nick >gautam_chandna</foaf:nick>      <foaf:name >Gautam Chandna</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/gautam_chandna/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/gautam_chandna/xml/foaf" />
+      <foaf:mbox_sha1sum>d233020c87b191bb9360f166239674fe83ebf500</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/olegt/xml/foaf#me">
+      <foaf:nick >olegt</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/olegt/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/olegt/xml/foaf" />
+      <foaf:mbox_sha1sum>1df70b8a35984a08954be8beefd8880b8c883cb4</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/ChiaraInThePond/xml/foaf#me">
+      <foaf:nick >ChiaraInThePond</foaf:nick>      <foaf:name >Chiara</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/ChiaraInThePond/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/ChiaraInThePond/xml/foaf" />
+      <foaf:mbox_sha1sum>81aa939c03cfb074009ffb5ebc05809bdb5b8d1f</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/gnapse/xml/foaf#me">
+      <foaf:nick >gnapse</foaf:nick>      <foaf:name >Ernesto</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/gnapse/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/gnapse/xml/foaf" />
+      <foaf:mbox_sha1sum>522896c34bc0675e02d8dfb8bd80a5b35c820e1a</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/annaraj/xml/foaf#me">
+      <foaf:nick >annaraj</foaf:nick>      <foaf:name >Anna</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/annaraj/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/annaraj/xml/foaf" />
+      <foaf:mbox_sha1sum>8bdd66e857eb377da72e8a745f6c0de30b0558ed</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/yennyotero/xml/foaf#me">
+      <foaf:nick >yennyotero</foaf:nick>      <foaf:name >Yenny Marissa Otero Castillo</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/yennyotero/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/yennyotero/xml/foaf" />
+      <foaf:mbox_sha1sum>345ee94b0082f4063f86b42018912196ec7b05a6</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/Sharebear/xml/foaf#me">
+      <foaf:nick >Sharebear</foaf:nick>      <foaf:name >Jonathan Share</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/Sharebear/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/Sharebear/xml/foaf" />
+      <foaf:mbox_sha1sum>48101b7be2a14ae21af20f623d212332a0f4fb15</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/fearphage/xml/foaf#me">
+      <foaf:nick >fearphage</foaf:nick>      <foaf:name >Phred</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/fearphage/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/fearphage/xml/foaf" />
+      <foaf:mbox_sha1sum>3df9e0d664c318c26903e0a8597fd5c357bc6757</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/hefa/xml/foaf#me">
+      <foaf:nick >hefa</foaf:nick>      <foaf:name >Henrik Falck</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/hefa/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/hefa/xml/foaf" />
+      <foaf:mbox_sha1sum>a88eb16a25a504de9626add20a722ad3a00eb006</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/runeh/xml/foaf#me">
+      <foaf:nick >runeh</foaf:nick>      <foaf:name >Rune F. Halvorsen</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/runeh/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/runeh/xml/foaf" />
+      <foaf:mbox_sha1sum>e879e2a1d68d1de4edfe91658179b5cbd20f82b9</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/p01/xml/foaf#me">
+      <foaf:nick >p01</foaf:nick>      <foaf:name >Mathieu &#39;p01&#39; HENRI</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/p01/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/p01/xml/foaf" />
+      <foaf:mbox_sha1sum>df5cace8645fcc6b4b0c2b8e68bcfe341f1453e2</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/dstorey/xml/foaf#me">
+      <foaf:nick >dstorey</foaf:nick>      <foaf:name >David Storey</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/dstorey/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/dstorey/xml/foaf" />
+      <foaf:mbox_sha1sum>bfd05facff960e431a897e9baec20aff6b53ebc0</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/piallysmies/xml/foaf#me">
+      <foaf:nick >piallysmies</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/piallysmies/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/piallysmies/xml/foaf" />
+      <foaf:mbox_sha1sum>3065632ed53d1e98ad5c6a8beb82aa0cd637e539</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/huibk/xml/foaf#me">
+      <foaf:nick >huibk</foaf:nick>      <foaf:name >Huib Kleinhout</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/huibk/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/huibk/xml/foaf" />
+      <foaf:mbox_sha1sum>93c452bd4c836d745eecdf6facb85b9811f31fb8</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/malware/xml/foaf#me">
+      <foaf:nick >malware</foaf:nick>      <foaf:name >Michael(tm) Smith</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/malware/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/malware/xml/foaf" />
+      <foaf:mbox_sha1sum>860d200455efc64dba845d2205ed3f8d5db37634</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/ResearchWizard/xml/foaf#me">
+      <foaf:nick >ResearchWizard</foaf:nick>      <foaf:name >Christian</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/ResearchWizard/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/ResearchWizard/xml/foaf" />
+      <foaf:mbox_sha1sum>4cb470bd44fd51dd631ae77ca69657cd03ecc477</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/velmu/xml/foaf#me">
+      <foaf:nick >velmu</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/velmu/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/velmu/xml/foaf" />
+      <foaf:mbox_sha1sum>f50a30258aaa5c9e5b1a80084e3d404c9e7a80ce</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/staceyc/xml/foaf#me">
+      <foaf:nick >staceyc</foaf:nick>      <foaf:name >Stacey</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/staceyc/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/staceyc/xml/foaf" />
+      <foaf:mbox_sha1sum>57e583115a3b51f0669b843e3c2c7c7c016f3814</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/minch/xml/foaf#me">
+      <foaf:nick >minch</foaf:nick>      <foaf:name >Adam Minchinton</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/minch/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/minch/xml/foaf" />
+      <foaf:mbox_sha1sum>6d459f248784b21f4d4bce5f1bd0fa234d9d5ec6</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/navjotpawera/xml/foaf#me">
+      <foaf:nick >navjotpawera</foaf:nick>      <foaf:name >Navjot Pawera</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/navjotpawera/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/navjotpawera/xml/foaf" />
+      <foaf:mbox_sha1sum>99b1f3581150a7c8fa8603b764877c9fbf453b98</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/ismailp/xml/foaf#me">
+      <foaf:nick >ismailp</foaf:nick>      <foaf:name >Ismail</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/ismailp/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/ismailp/xml/foaf" />
+      <foaf:mbox_sha1sum>f6baed3da28b452c3e7bd885090f39ec75f2d608</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/zcorpan/xml/foaf#me">
+      <foaf:nick >zcorpan</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/zcorpan/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/zcorpan/xml/foaf" />
+      <foaf:mbox_sha1sum>cb51470eb1de35cfc17c23e1c43905bfc357e98c</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/schepers/xml/foaf#me">
+      <foaf:nick >schepers</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/schepers/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/schepers/xml/foaf" />
+      <foaf:mbox_sha1sum>9237f69481a933a0f3cd4d162e69563ff0bfcb35</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/andersm/xml/foaf#me">
+      <foaf:nick >andersm</foaf:nick>      <foaf:name >Anders Markussen</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/andersm/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/andersm/xml/foaf" />
+      <foaf:mbox_sha1sum>ec14a626b2e4e4dac725766284a3d010d9c09dd3</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/glish/xml/foaf#me">
+      <foaf:nick >glish</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/glish/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/glish/xml/foaf" />
+      <foaf:mbox_sha1sum>3327251a40ca1d501adf693f269f7f60c435015b</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/mcx/xml/foaf#me">
+      <foaf:nick >mcx</foaf:nick>      <foaf:name >Michael Vacík</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/mcx/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/mcx/xml/foaf" />
+      <foaf:mbox_sha1sum>cf9c043820fcbc4f14e755386f00ddc431f0ff41</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/SusanThePlant/xml/foaf#me">
+      <foaf:nick >SusanThePlant</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/SusanThePlant/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/SusanThePlant/xml/foaf" />
+      <foaf:mbox_sha1sum>4098162a363c6fb983a32a06c3fde78142325a0d</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/Benjamin%20Joffe/xml/foaf#me">
+      <foaf:nick >Benjamin Joffe</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/Benjamin%20Joffe/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/Benjamin%20Joffe/xml/foaf" />
+      <foaf:mbox_sha1sum>ffc419ddfc4c233c6075ef68a458697124b863a0</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Group rdf:about="http://my.opera.com/bestdamntech/xml/foaf#me">
+      <foaf:nick >bestdamntech</foaf:nick>      <foaf:name >Best Damn Tech Show, Period.</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/bestdamntech/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/bestdamntech/xml/foaf" />
+    </foaf:Group>
+    <foaf:Person rdf:about="http://my.opera.com/JibberJim/xml/foaf#me">
+      <foaf:nick >JibberJim</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/JibberJim/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/JibberJim/xml/foaf" />
+      <foaf:mbox_sha1sum>6d4c0a925d1abd01fd22d124de4e0dbb789f7a96</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/tomheath/xml/foaf#me">
+      <foaf:nick >tomheath</foaf:nick>      <foaf:name >Tom Heath</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/tomheath/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/tomheath/xml/foaf" />
+      <foaf:mbox_sha1sum>a7732ff3415164237856025836a44409e9dcf203</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/balzac/xml/foaf#me">
+      <foaf:nick >balzac</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/balzac/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/balzac/xml/foaf" />
+      <foaf:mbox_sha1sum>1b7dc2f6884cf0413f5d818f360b1674b74d234e</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/Xaer/xml/foaf#me">
+      <foaf:nick >Xaer</foaf:nick>      <foaf:name >Morten Haraldsen</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/Xaer/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/Xaer/xml/foaf" />
+      <foaf:mbox_sha1sum>2b888a9645a2fcba7461a8fbca0b81efcf2d3f63</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/derekfeatherstone/xml/foaf#me">
+      <foaf:nick >derekfeatherstone</foaf:nick>      <foaf:name >Derek Featherstone</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/derekfeatherstone/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/derekfeatherstone/xml/foaf" />
+      <foaf:mbox_sha1sum>b0d4aff29801e003fbb02e6df19de2ec678f0f93</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/evamen/xml/foaf#me">
+      <foaf:nick >evamen</foaf:nick>      <foaf:name >Eva Méndez</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/evamen/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/evamen/xml/foaf" />
+      <foaf:mbox_sha1sum>36a725c480b682f6648c5be3f8abcc43975bff72</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/AquariusAnita/xml/foaf#me">
+      <foaf:nick >AquariusAnita</foaf:nick>      <foaf:name >Anita</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/AquariusAnita/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/AquariusAnita/xml/foaf" />
+      <foaf:mbox_sha1sum>67d65e7b4fd391be59fc0778efd3f054680e8937</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/MissPlaced/xml/foaf#me">
+      <foaf:nick >MissPlaced</foaf:nick>      <foaf:name >Vyoma Kapur</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/MissPlaced/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/MissPlaced/xml/foaf" />
+      <foaf:mbox_sha1sum>4659bfb8bd7a16ce5b71d478e5c5f43e2b96e7b0</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/pvojnisek/xml/foaf#me">
+      <foaf:nick >pvojnisek</foaf:nick>      <foaf:name >Peter Vojnisek</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/pvojnisek/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/pvojnisek/xml/foaf" />
+      <foaf:mbox_sha1sum>525c898dab4c9f46a8e11da1b2368c1baaa727f0</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/timbl/xml/foaf#me">
+      <foaf:nick >timbl</foaf:nick>      <foaf:name >Tim Berners-Lee</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/timbl/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/timbl/xml/foaf" />
+      <foaf:mbox_sha1sum>965c47c5a70db7407210cef6e4e6f5374a525c5c</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/keiki/xml/foaf#me">
+      <foaf:nick >keiki</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/keiki/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/keiki/xml/foaf" />
+      <foaf:mbox_sha1sum>de928ccba7e4a618d2acdc689b000ae4b4629875</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/msmiffy/xml/foaf#me">
+      <foaf:nick >msmiffy</foaf:nick>      <foaf:name >Matthew Smith</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/msmiffy/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/msmiffy/xml/foaf" />
+      <foaf:mbox_sha1sum>e2ba17a88b4de4c1f87813fab115b4f7be012855</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/pavel.studeny/xml/foaf#me">
+      <foaf:nick >pavel.studeny</foaf:nick>      <foaf:name >Pavel Studený</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/pavel.studeny/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/pavel.studeny/xml/foaf" />
+      <foaf:mbox_sha1sum>d5edb2cc9b24b8dc18e0dfba04e8cc8179701a90</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/e-jit/xml/foaf#me">
+      <foaf:nick >e-jit</foaf:nick>      <foaf:name >Edward Welbourne</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/e-jit/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/e-jit/xml/foaf" />
+      <foaf:mbox_sha1sum>93a216f793cd2b8a0b0a14a38c07e366c33345e6</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/TheAtilla/xml/foaf#me">
+      <foaf:nick >TheAtilla</foaf:nick>      <foaf:name >Anton Tsigularov</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/TheAtilla/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/TheAtilla/xml/foaf" />
+      <foaf:mbox_sha1sum>ea90c4fb59c1c50520c3c1193dd9357f4278a0e7</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/lilimaspons/xml/foaf#me">
+      <foaf:nick >lilimaspons</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/lilimaspons/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/lilimaspons/xml/foaf" />
+      <foaf:mbox_sha1sum>6bb01781cfaef66a2c88ea3208a7b933cba06312</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/oedipus/xml/foaf#me">
+      <foaf:nick >oedipus</foaf:nick>      <foaf:name >Gregory J. Rosmaita</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/oedipus/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/oedipus/xml/foaf" />
+      <foaf:mbox_sha1sum>ec3ec6f1c9f613a50126f119f691719e0bfdf665</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/hoyesjueves/xml/foaf#me">
+      <foaf:nick >hoyesjueves</foaf:nick>      <foaf:name >Facundo</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/hoyesjueves/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/hoyesjueves/xml/foaf" />
+      <foaf:mbox_sha1sum>e9e7f433d1b6dad952d119c9ae28ffdd8e12410c</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/merlo/xml/foaf#me">
+      <foaf:nick >merlo</foaf:nick>      <foaf:name >José Lito, sentado tan a gustito</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/merlo/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/merlo/xml/foaf" />
+      <foaf:mbox_sha1sum>86d6dc934e098f4466b68b8cf5bbd5b97586b926</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/lmaspons/xml/foaf#me">
+      <foaf:nick >lmaspons</foaf:nick>      <foaf:name >Liliana Maspons</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/lmaspons/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/lmaspons/xml/foaf" />
+      <foaf:mbox_sha1sum>80ddbebe7425798957da354cd57b7ba0aa0a3291</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/liddyn/xml/foaf#me">
+      <foaf:nick >liddyn</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/liddyn/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/liddyn/xml/foaf" />
+      <foaf:mbox_sha1sum>0ba78e6f6c8d4973cca318513e236b83cd3f19d3</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/georgien/xml/foaf#me">
+      <foaf:nick >georgien</foaf:nick>      <foaf:name >Georgie</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/georgien/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/georgien/xml/foaf" />
+      <foaf:mbox_sha1sum>7f5ff8239adfeef3cdbb3e552bf5cda00eafba75</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/j_stand/xml/foaf#me">
+      <foaf:nick >j_stand</foaf:nick>      <foaf:name >John</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/j_stand/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/j_stand/xml/foaf" />
+      <foaf:mbox_sha1sum>cd39ccc08619baa8ea75cc6a74b4269d02a8a6c5</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/Cesarsan/xml/foaf#me">
+      <foaf:nick >Cesarsan</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/Cesarsan/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/Cesarsan/xml/foaf" />
+      <foaf:mbox_sha1sum>eb6101f49555bded201b606e0381a125b810cecb</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/SergeWood/xml/foaf#me">
+      <foaf:nick >SergeWood</foaf:nick>      <foaf:name >Sergio Madera</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/SergeWood/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/SergeWood/xml/foaf" />
+      <foaf:mbox_sha1sum>c36bc248b3f29366e96449c9e7e81884e2502e07</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/jod999/xml/foaf#me">
+      <foaf:nick >jod999</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/jod999/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/jod999/xml/foaf" />
+      <foaf:mbox_sha1sum>70ee9378690fe801f01d6e0495594e2105610dcb</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/plg/xml/foaf#me">
+      <foaf:nick >plg</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/plg/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/plg/xml/foaf" />
+      <foaf:mbox_sha1sum>d24fa93e655f5742dd92a1fd6e828f10b9c5487c</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/robin-berjon/xml/foaf#me">
+      <foaf:nick >robin-berjon</foaf:nick>      <foaf:name >Robin Berjon</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/robin-berjon/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/robin-berjon/xml/foaf" />
+      <foaf:mbox_sha1sum>ec4ccc4d1b1e2972204570ca73aa907ca6ba189b</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/timjoh/xml/foaf#me">
+      <foaf:nick >timjoh</foaf:nick>      <foaf:name >Tim Johansson</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/timjoh/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/timjoh/xml/foaf" />
+      <foaf:mbox_sha1sum>492f08f3ed8b055a22940623b23b882171f02096</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/khushi1811/xml/foaf#me">
+      <foaf:nick >khushi1811</foaf:nick>      <foaf:name >khushi</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/khushi1811/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/khushi1811/xml/foaf" />
+      <foaf:mbox_sha1sum>8a4961c24e95c229e5d68a8d56aeb7ba63adc2a2</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/brokenheartvn/xml/foaf#me">
+      <foaf:nick >brokenheartvn</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/brokenheartvn/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/brokenheartvn/xml/foaf" />
+      <foaf:mbox_sha1sum>4853c4cce11cc769c2c502ebf41e8a3f1323162f</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/Scenariogirl/xml/foaf#me">
+      <foaf:nick >Scenariogirl</foaf:nick>      <foaf:name >Lisa</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/Scenariogirl/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/Scenariogirl/xml/foaf" />
+      <foaf:mbox_sha1sum>433f796186fed1106affbb97835d9ff9eb33ac7a</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/rosiemacq/xml/foaf#me">
+      <foaf:nick >rosiemacq</foaf:nick>      <foaf:name >rosie</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/rosiemacq/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/rosiemacq/xml/foaf" />
+      <foaf:mbox_sha1sum>c4fb82a37d14f48aa5f47408c9cfa1f6fc8876aa</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/Lisien/xml/foaf#me">
+      <foaf:nick >Lisien</foaf:nick>      <foaf:name >Lissy</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/Lisien/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/Lisien/xml/foaf" />
+      <foaf:mbox_sha1sum>59a847c212b2139d295422b81258064296827843</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/Mimi5/xml/foaf#me">
+      <foaf:nick >Mimi5</foaf:nick>      <foaf:name >Mimi</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/Mimi5/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/Mimi5/xml/foaf" />
+      <foaf:mbox_sha1sum>b75ef1657299168970af45ecadd1f261dfa61e7c</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/carolineb/xml/foaf#me">
+      <foaf:nick >carolineb</foaf:nick>      <foaf:name >Baron</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/carolineb/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/carolineb/xml/foaf" />
+      <foaf:mbox_sha1sum>3629c0c3a70dd2a35636666a1b9e09667f69b850</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/opera_shacho/xml/foaf#me">
+      <foaf:nick >opera_shacho</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/opera_shacho/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/opera_shacho/xml/foaf" />
+      <foaf:mbox_sha1sum>c7027ff41bd404c5dc58c90249fdeb20324a2192</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/DannyAyers/xml/foaf#me">
+      <foaf:nick >DannyAyers</foaf:nick>      <foaf:homepage rdf:resource="http://my.opera.com/DannyAyers/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/DannyAyers/xml/foaf" />
+      <foaf:mbox_sha1sum>669fe353dbef63d12ba11f69ace8acbec1ac8b17</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/kumenova/xml/foaf#me">
+      <foaf:nick >kumenova</foaf:nick>      <foaf:name >Uliana</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/kumenova/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/kumenova/xml/foaf" />
+      <foaf:mbox_sha1sum>eecec3a8993c8d6bf2a3e6a043b48c237de90af4</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/JavaWoman/xml/foaf#me">
+      <foaf:nick >JavaWoman</foaf:nick>      <foaf:name >Marjolein Katsma</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/JavaWoman/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/JavaWoman/xml/foaf" />
+      <foaf:mbox_sha1sum>32b75e2c39c790b114f13f3b3f4eb297958cf5a5</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/onlyputri/xml/foaf#me">
+      <foaf:nick >onlyputri</foaf:nick>      <foaf:name >putri</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/onlyputri/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/onlyputri/xml/foaf" />
+      <foaf:mbox_sha1sum>a3242d208a1e4985752547f2f53879717cee86d8</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/ZaraL/xml/foaf#me">
+      <foaf:nick >ZaraL</foaf:nick>      <foaf:name >Zara</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/ZaraL/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/ZaraL/xml/foaf" />
+      <foaf:mbox_sha1sum>3b78ba46b04e31591093a8ade94346c9e95f11a6</foaf:mbox_sha1sum>
+    </foaf:Person>
+    <foaf:Person rdf:about="http://my.opera.com/wapxana/xml/foaf#me">
+      <foaf:nick >wapxana</foaf:nick>      <foaf:name >Rashad Aliyev</foaf:name>      <foaf:homepage rdf:resource="http://my.opera.com/wapxana/" />
+      <rdfs:seeAlso rdf:resource="http://my.opera.com/wapxana/xml/foaf" />
+      <foaf:mbox_sha1sum>b4c3c25f02b9a78036677055a3cfe80286a7ad1d</foaf:mbox_sha1sum>
+    </foaf:Person>
+</rdf:RDF>
