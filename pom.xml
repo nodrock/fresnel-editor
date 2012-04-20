@@ -6,7 +6,6 @@
     <packaging>pom</packaging>
     <name>fresnel-editor</name>
     <modules>
-	<module>fresnel-editor-app</module>
         <module>fresnel-editor-common</module>
         <module>fresnel-editor-model</module>
         <module>fresnel-editor-gui-mod-lens</module>
