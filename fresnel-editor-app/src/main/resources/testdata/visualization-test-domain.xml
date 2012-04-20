@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+		xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+		xmlns:bio="http://purl.org/vocab/bio/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#"
+		xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
+		<foaf:PersonalProfileDocument rdf:about="">
+				<dc:title>FoaF Document for Rashad Aliyev</dc:title>
+				<dc:description>Friend-of-a-Friend description ofRashad Aliyev</dc:description>
+				<foaf:topic rdf:resource="#me" />
+				<foaf:maker rdf:resource="#me" />
+		</foaf:PersonalProfileDocument>
+		<foaf:Person rdf:ID="me">
+				<foaf:name>Rashad Aliyev</foaf:name>
+				<foaf:homepage rdf:resource="http://my.opera.com/wapxana/" />
+				<foaf:mbox_sha1sum>b4c3c25f02b9a78036677055a3cfe80286a7ad1d</foaf:mbox_sha1sum>
+				<foaf:nick>wapxana</foaf:nick>
+				<foaf:depiction>http://static.myopera.com/upic/pool2/Tn/D9g/b+gp9VPrNNa7QLmuJdukk8/1772067_l.jpg</foaf:depiction>
+				<foaf:msnChatID>microphp@hotmail.com</foaf:msnChatID>
+				<foaf:gender>male</foaf:gender>
+				<bio:event>
+						<bio:Birth>
+								<bio:date>1983-06-05</bio:date>
+						</bio:Birth>
+				</bio:event>
+				<foaf:weblog rdf:resource="http://my.opera.com/wapxana/blog/" />
+				<foaf:knows rdf:resource="http://my.opera.com/chaals/xml/foaf#me" />
+				<foaf:knows rdf:resource="http://my.opera.com/KristinaBarCamp/xml/foaf#me" />
+		</foaf:Person>
+		<foaf:Person rdf:about="http://my.opera.com/chaals/xml/foaf#me">
+				<foaf:nick>chaals</foaf:nick>
+				<foaf:name>Charles McCathieNevile</foaf:name>
+				<foaf:homepage rdf:resource="http://my.opera.com/chaals/" />
+				<rdfs:seeAlso rdf:resource="http://my.opera.com/chaals/xml/foaf" />
+				<foaf:mbox_sha1sum>7c373b50b2b3cb71cf73946aefdcd64f03c30772</foaf:mbox_sha1sum>
+		</foaf:Person>
+		<foaf:Person rdf:about="http://my.opera.com/KristinaBarCamp/xml/foaf#me">
+				<foaf:nick>KristinaBarCamp</foaf:nick>
+				<foaf:homepage rdf:resource="http://my.opera.com/KristinaBarCamp/" />
+				<rdfs:seeAlso rdf:resource="http://my.opera.com/KristinaBarCamp/xml/foaf" />
+				<foaf:mbox_sha1sum>04597c37d3e459d9f45117022f67fc45749ef7c9</foaf:mbox_sha1sum>
+		</foaf:Person>
+</rdf:RDF>

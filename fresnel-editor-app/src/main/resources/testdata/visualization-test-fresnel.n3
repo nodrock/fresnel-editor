@@ -1,0 +1,110 @@
+@prefix fresnel:  <http://www.w3.org/2004/09/fresnel#> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix :         <http://this#> .
+
+# -----------------------------------------------
+# 1.Fresnel Lenses
+# -----------------------------------------------
+
+:foafPersonDefaultLens rdf:type fresnel:Lens ;
+                       fresnel:purpose fresnel:defaultLens ;
+                       fresnel:classLensDomain foaf:Person ;
+                       fresnel:group :foafDefaultGroup ;
+                       fresnel:showProperties ( foaf:name 
+                                                foaf:surname 
+                                                foaf:depiction
+                                                foaf:homepage
+                                                foaf:nick
+                                                foaf:msnChatID
+#                                                fresnel:allProperties
+                                                 ) .
+                                                 
+:testingLens rdf:type fresnel:Lens ;
+             fresnel:group :foafOtherGroup.
+
+# -----------------------------------------------
+# 2. Fresnel Formats
+# -----------------------------------------------
+
+:nameFormat rdf:type fresnel:Format ;
+            rdfs:label "Name Format" ;
+            rdfs:comment "Format for visualization of FOAF name." ;
+            fresnel:propertyFormatDomain foaf:name ;
+            fresnel:group :foafDefaultGroup ;
+            fresnel:label "Name: " .
+            
+:surnameFormat rdf:type fresnel:Format ;
+               rdfs:label "Surname Format" ;
+               rdfs:comment "Format for visualization of FOAF surname." ;
+               fresnel:propertyFormatDomain foaf:surname ;
+               fresnel:group :foafDefaultGroup ;
+               fresnel:label "Surname: " .
+               
+:nickFormat rdf:type fresnel:Format ;
+            rdfs:label "Nick Format" ;
+            rdfs:comment "Format for visualization of FOAF nick." ;
+            fresnel:propertyFormatDomain foaf:nick ;
+            fresnel:group :foafDefaultGroup ;
+            fresnel:label "Nick: " .
+
+:urlFormat rdf:type fresnel:Format ;
+           rdfs:label "URL Format" ;
+           rdfs:comment "Format for visualization of FOAF URLs as hypertext links." ;
+           fresnel:propertyFormatDomain foaf:homepage ;
+           fresnel:group :foafDefaultGroup ;
+           fresnel:label "Homepage: " ;
+           fresnel:value fresnel:externalLink .
+#           fresnel:valueStyle "foaf-hyperlink"^^fresnel:styleClass .
+           
+# Removed because of <div> elements used in visualization box model
+#           fresnel:valueFormat [ fresnel:contentBefore " [" ;
+#                                 fresnel:contentAfter "]" ] .
+
+:mboxFormat rdf:type fresnel:Format ;
+            rdfs:label "E-mail address Format" ;
+            rdfs:comment "Format for visualization of FOAF e-mail address." ;
+            fresnel:propertyFormatDomain foaf:mbox ;
+            fresnel:group :foafDefaultGroup ;
+            fresnel:label "E-mail address: " ;
+            fresnel:value fresnel:externalLink .
+           
+:msnChatFormat rdf:type fresnel:Format ;
+               rdfs:label "MSN Chat ID Format" ;
+               rdfs:comment "Format for visualization of FOAF MSN Chat ID." ;
+               fresnel:propertyFormatDomain foaf:msnChatID ;
+               fresnel:group :foafDefaultGroup ;
+               fresnel:label "MSN Chat ID: " ;
+               fresnel:value fresnel:externalLink .
+               
+:depictionFormat rdf:type fresnel:Format ;
+                 rdfs:label "Depiction Format" ;
+                 rdfs:comment "Format for visualization of FOAF depiction." ;
+                 fresnel:propertyFormatDomain foaf:depiction ;
+                 fresnel:group :foafDefaultGroup ;
+                 fresnel:label "Depiction: " ;
+                 fresnel:value fresnel:image .
+                 
+:testingFormat rdf:type fresnel:Format ;
+               fresnel:group :foafOtherGroup.
+           
+
+# -----------------------------------------------
+# 3. Fresnel Groups
+# -----------------------------------------------
+
+:foafDefaultGroup rdf:type fresnel:Group ;
+                  rdfs:label "FOAF Default Group" ;
+                  rdfs:comment "Default Fresnel Group for testing functionality of visualization module." ;
+# Resource style are causing troubles with current version of renderer
+#                  fresnel:resourceStyle "default-resource-style"^^fresnel:styleClass ;
+                  fresnel:propertyStyle "default-property-style"^^fresnel:styleClass ;
+                  fresnel:labelStyle "default-label-style"^^fresnel:styleClass ;
+                  fresnel:valueStyle "default-value-style"^^fresnel:styleClass ;
+                  fresnel:stylesheetLink <visualization-test-default-style.css> .
+                  
+:foafOtherGroup rdf:type fresnel:Group ;
+                rdfs:label "Other testing Fresnel Group" ;
+                rdfs:comment "This Fresnel Group is just for testing multiple Fresnel Groups." .

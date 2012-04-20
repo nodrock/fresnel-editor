@@ -1,0 +1,74 @@
+/*
+ * Default Fresnel Editor CSS stylesheet for visualization of RDF data using Fresnel
+ * Display Vocabulary.
+ *
+ * Authors: Miroslav Warchil (warmir@mail.muni.cz)
+ *          Igor Zemsky (zemsky@mail.muni.cz)
+ *
+ * Version: April 2009
+ */
+
+/* Top-level container */
+.div-top {	
+    text-align:        center;
+    margin:            0em auto;
+    font-family:       Verdana, Tahoma, Arial, sans-serif;
+    font-size:         90%;
+    color:             black;
+    padding:           5px;
+    background-image:  URL('container-background-orange.gif');
+    background-repeat: repeat;
+    border:            2px dashed #C9C9C9;
+}
+
+/* Heading of the whole page */
+h1 {
+    font-family:    serif;
+    font-size:      140%;
+    letter-spacing: 2px;
+    margin-top:     10px;
+}
+
+.defaultResourceStyle, .f-resource {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+    padding: 5px ;
+	text-align:       left;
+	background-color: #C5CFF0; /*9FB2ED*/
+	border:           2px solid #9FB2ED;
+}
+
+/* Title (URI) of the resource */
+.f-title-resource {
+    text-align: right;
+    font-style: italic;
+}
+
+/* Default label style */
+.defaultTextLabel, .f-label {
+    font-weight: bold;
+}
+
+/* Common value style */ 
+.defaultTextValue, .defaultHyperlinkValue, .defaultImageValue, .f-value {
+    margin-left: 20px;
+    font-size:   120%;
+    font-style:  italic;
+}
+
+    /* Concrete value styles */
+    .defaultTextValue {
+        
+        
+    }
+    .defaultHyperlinkValue {
+        
+    }
+    .defaultImageValue {
+    
+    }
+
+.defaultFloatValue {
+  
+}

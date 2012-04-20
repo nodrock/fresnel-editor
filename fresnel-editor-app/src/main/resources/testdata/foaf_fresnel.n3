@@ -1,0 +1,83 @@
+@prefix fresnel:  <http://www.w3.org/2004/09/fresnel#> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix :         <http://this#> .
+
+# -----------------------------------------------
+# 1.Fresnel Lenses for FOAF Person
+# -----------------------------------------------
+
+:emptyLens rdf:type fresnel:Lens .
+
+:foafPersonDefaultLens rdf:type fresnel:Lens ;
+                       fresnel:purpose fresnel:defaultLens ;
+                       fresnel:classLensDomain foaf:Person ;
+                       fresnel:group :foafGroup ;
+                       fresnel:showProperties ( foaf:name 
+                                                foaf:surname 
+                                                foaf:depiction
+                                                fresnel:allProperties
+                                                 ) .
+
+:knowsLens rdf:type fresnel:Lens ;
+           fresnel:classLensDomain foaf:Person ;
+           fresnel:group :foafGroup ;
+           fresnel:showProperties ( foaf:name 
+                                    foaf:surname
+                                    foaf:mbox 
+                                    [ rdf:type fresnel:PropertyDescription ;
+                                      fresnel:property foaf:knows ;
+                                      fresnel:sublens :foafPersonDefaultLens;
+                                      fresnel:depth "5"^^xsd:nonNegativeInteger;
+                                      fresnel:use :foafGroup
+                                    ] ) .
+                                      
+:projectLens rdf:type fresnel:Lens ;
+						fresnel:instanceLensDomain foaf:Project .
+						
+:testLens1Item rdf:type fresnel:Lens;
+					fresnel:classLensDomain foaf:Person ;
+				  fresnel:showProperties foaf:name .
+						                                      
+:testLens1ItemList rdf:type fresnel:Lens;
+					fresnel:classLensDomain foaf:Person ;
+				  fresnel:showProperties ( foaf:name ) .
+						                                      
+:testLens2ItemsList rdf:type fresnel:Lens;
+					fresnel:classLensDomain foaf:Person ;
+				  fresnel:showProperties ( foaf:name
+				  													foaf:surnam ).
+						                                     
+			                      
+# -----------------------------------------------
+# 2. Fresnel Formats
+# -----------------------------------------------
+
+:foafGroup rdf:type fresnel:Group ;
+           fresnel:stylesheetLink <http://www.example.org/example.css> . 
+
+:depictFormat rdf:type fresnel:Format ;  
+              rdfs:label "Depict Format" ;
+              rdfs:label "Some very important label which cannot be omitted." ;
+              fresnel:propertyFormatDomain foaf:depiction ;
+              fresnel:instanceFormatDomain "foaf:Person[foaf:age > 20]"^^fresnel:fslSelector ;
+              fresnel:classFormatDomain "SELECT ?x WHERE { foaf:Person foaf:age ?x }"^^fresnel:sparqlSelector ;
+              fresnel:label "Some label for property." ;
+              fresnel:value fresnel:image ;
+              fresnel:propertyStyle "propertyBox"^^fresnel:styleClass ;
+              fresnel:labelStyle "labelBlueBrackground"^^fresnel:styleClass ;
+              fresnel:valueStyle "imageWithThickBorder"^^fresnel:styleClass ;
+              fresnel:resourceStyle "thickBlackTheme"^^fresnel:styleClass ;
+              fresnel:valueFormat [ fresnel:contentFirst "WWW: " ] ;
+              fresnel:group :foafGroup .
+	
+:urlFormat rdf:type fresnel:Format ;
+           rdfs:comment "Very useful comment for URL format definition." ;
+           fresnel:propertyFormatDomain foaf:homepage ;
+           fresnel:propertyFormatDomain foaf:mbox ;
+           fresnel:value fresnel:externalLink ;
+           fresnel:labelStyle "basicLabel"^^fresnel:styleClass ;
+           fresnel:valueStyle "basicUrl"^^fresnel:styleClass ;
+           fresnel:group :foafGroup .
