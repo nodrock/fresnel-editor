@@ -30,7 +30,7 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>cz.muni.fi.fresneleditor</groupId>
             <artifactId>fresnel-editor-common</artifactId>
             <version>${project.version}</version>
         </dependency>
