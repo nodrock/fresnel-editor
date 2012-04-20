@@ -1,0 +1,51 @@
+svg {
+  font-family:		Verdana, Tahoma, Arial, sans-serif;
+  font-size:		90%;
+}
+
+a {
+  text-decoration:	underline;
+  fill:			#0000ff;
+}
+
+.div-top {
+  stroke-width:		2;
+  stroke:		#c9c9c9;
+  stroke-dasharray:	8 5;
+}
+
+.bcLine{
+  fill:			#ffffff;
+  stroke:		#fee999;
+  stroke-width:		2;
+}
+
+.h1 {
+  font-family:		serif;
+  font-size:		140%;
+  letter-spacing:	1;
+  text-anchor:		middle;
+}
+
+.f-resource {
+  fill:			#c5cff0;
+  stroke:		#9fb2ed;
+  stroke-width:		2;
+}
+
+
+.f-title-resource {
+  text-anchor:		end;
+  font-style:		italic;
+}
+
+
+.defaultTextLabel {
+  font-weight: bold;
+}
+
+.defaultTextValue {
+  font-size: 120%;
+  font-style: italic;
+}
+
