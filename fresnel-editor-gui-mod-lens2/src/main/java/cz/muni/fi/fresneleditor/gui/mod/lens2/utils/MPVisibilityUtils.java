@@ -28,16 +28,10 @@ public class MPVisibilityUtils {
 		if (visibility instanceof SesameMPVisibility) {
 			SesameMPVisibility sesVis = (SesameMPVisibility) visibility;
 
-			MemStatementList statements = ((MemBNode) sesVis.getDescription())
-					.getSubjectStatementList();
-			for (int i = 0; i < statements.size(); i++) {
-				MemStatement statement = statements.get(i);
-				if (statement.getPredicate().equals(
-						new URIImpl(Constants.FRESNEL_NAMESPACE_URI
-								+ Constants._property))) {
-					return statement.getObject().stringValue();
-				}
-			}
+                        if(visibility.propertyDescriptionProperties != null){
+                            return visibility.propertyDescriptionProperties.property;
+                        }
+			
 			Assert.isTrue(false,
 					"there is no fresnel:property definition in this property visibility: "
 							+ visibility);

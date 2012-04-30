@@ -24,6 +24,7 @@ import fr.inria.jfresnel.PropertyVisibility;
 import fr.inria.jfresnel.SPARQLVisibility;
 import fr.inria.jfresnel.sesame.SesameBasicVisibility;
 import fr.inria.jfresnel.sesame.SesameMPVisibility;
+import java.util.Arrays;
 
 /**
  * Class for holding informations about fresnel:property subject. It can
@@ -165,8 +166,9 @@ public class PropertyVisibilityWrapper implements Cloneable {
 	 */
 	public List<URI> getSublensesURIs() {
 		if (sublensesURIs == null) {
-			return new ArrayList<URI>();
+                    return new ArrayList<URI>();
 		}
+                               
 		return sublensesURIs;
 	}
 
@@ -226,9 +228,14 @@ public class PropertyVisibilityWrapper implements Cloneable {
 	}
 
 	private void initConfiguration(SesameMPVisibility propertyVisibility) {
-		initMaxDepth(propertyVisibility);
-		initFresnelUse(propertyVisibility);
-		initSublenses(propertyVisibility);
+            if(propertyVisibility.propertyDescriptionProperties != null){
+                setMaxDepth(propertyVisibility.propertyDescriptionProperties.depth);	
+            }else{
+                setMaxDepth(-1);
+            }
+            
+            initFresnelUse(propertyVisibility);
+            initSublenses(propertyVisibility);
 	}
 
 	/**
@@ -260,46 +267,19 @@ public class PropertyVisibilityWrapper implements Cloneable {
 
 	private void initSublenses(SesameMPVisibility visibility) {
 		List<URI> sublenses = new ArrayList<URI>();
-		MemURI fresnelSublensURI = new MemURI(null, FRESNEL_NAMESPACE_URI,
-				Constants._sublens);
+//		MemURI fresnelSublensURI = new MemURI(null, FRESNEL_NAMESPACE_URI,
+//				Constants._sublens);
 
 		// fixme igor: this will not work when there are no data in the repo
 		// we should be able to obtain the information from passed visibility
 		// instance
+                if(visibility.propertyDescriptionProperties != null && visibility.propertyDescriptionProperties.sublens != null){
+                    for(String sublens : visibility.propertyDescriptionProperties.sublens)
+                    sublenses.add(new URIImpl(sublens));
+                }
 
-		sublenses.addAll(ContextHolder
-				.getInstance()
-				.getFresnelRepositoryDao()
-				.getObjects((MemBNode) visibility.getDescription(),
-						fresnelSublensURI));
+		
 		setSublensesURIs(sublenses);
-	}
-
-	/**
-	 * Initialises the maxDepth property based on given visibility. Sets it to
-	 * -1 if depth is not defined for this property visibility.
-	 * 
-	 * @return
-	 */
-	private void initMaxDepth(SesameMPVisibility visibility) {
-		MemURI fresnelDepthURI = new MemURI(null, FRESNEL_NAMESPACE_URI,
-				Constants._depth);
-
-		MemStatementList subjectStatementsList = ((MemBNode) visibility
-				.getDescription()).getSubjectStatementList();
-		for (int i = 0; i < subjectStatementsList.size(); i++) {
-			MemStatement statement = subjectStatementsList.get(i);
-			if (statement.getPredicate().equals(fresnelDepthURI)) {
-				IntegerMemLiteral depth = (IntegerMemLiteral) statement
-						.getObject();
-				// we suppose there is only one fresnel:depth defined so we
-				// return directly
-				setMaxDepth(depth.intValue());
-				return;
-			}
-		}
-
-		setMaxDepth(-1);
 	}
 
 	/**
@@ -317,42 +297,26 @@ public class PropertyVisibilityWrapper implements Cloneable {
 	 *         property
 	 */
 	private void initFresnelUse(SesameMPVisibility visibility) {
-		MemURI fresnelUseURI = new MemURI(null, FRESNEL_NAMESPACE_URI,
-				Constants._use);
+		
+            if(visibility.propertyDescriptionProperties != null &&
+                    visibility.propertyDescriptionProperties.use != null){
 
-		MemStatementList subjectStatementsList = ((MemBNode) visibility
-				.getDescription()).getSubjectStatementList();
-		for (int i = 0; i < subjectStatementsList.size(); i++) {
-			MemStatement statement = subjectStatementsList.get(i);
-			if (statement.getPredicate().equals(fresnelUseURI)) {
-				String objectUri = statement.getObject().stringValue();
+                    // fixme igor: is the particular format/group needed here? is
+                    // not the URI enough?
 
-				// fixme igor: is the particular format/group needed here? is
-				// not the URI enough?
+                    // try the format first
+                    Object fresnelUseObject = ContextHolder.getInstance()
+                                    .getFresnelRepositoryDao().getFormat(visibility.propertyDescriptionProperties.use);
+                    if (fresnelUseObject == null) {
+                            fresnelUseObject = ContextHolder.getInstance()
+                                            .getFresnelRepositoryDao().getGroup(visibility.propertyDescriptionProperties.use);
+                    }
 
-				// try the format first
-				Object fresnelUseObject = ContextHolder.getInstance()
-						.getFresnelRepositoryDao().getFormat(objectUri);
-				if (fresnelUseObject == null) {
-					fresnelUseObject = ContextHolder.getInstance()
-							.getFresnelRepositoryDao().getGroup(objectUri);
-				}
-				if (fresnelUseObject == null) {
-					// throw new
-					// RuntimeException("Cannot load fresnel:use for URI: " +
-					// objectUri);
-					fresnelUseObject = new URIImpl(objectUri);
-				}
+                    setFresnelUse(fresnelUseObject);
 
-				// we assume there is only one statement with fresnel:use
-				// predicate so
-				// we return a value directly without finishing the iteration
-				// over the
-				// rest of the statements
-				setFresnelUse(fresnelUseObject);
-			}
-		}
-		setFresnelUse(null);
+            }else{
+                setFresnelUse(null);
+            }
 	}
 
 	/**
