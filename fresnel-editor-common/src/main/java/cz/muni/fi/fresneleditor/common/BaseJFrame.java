@@ -42,6 +42,7 @@ import cz.muni.fi.fresneleditor.common.reposconf.FresnelEditorConfigurationDialo
 import cz.muni.fi.fresneleditor.common.utils.GuiUtils;
 import cz.muni.fi.fresneleditor.model.BaseRepositoryDao.RepositoryDomain;
 import cz.muni.fi.fresneleditor.model.BaseRepositoryDao.RepositoryType;
+import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultButtonModel;
 import javax.swing.JCheckBoxMenuItem;
@@ -108,10 +109,8 @@ public class BaseJFrame extends javax.swing.JFrame implements
             group = new ButtonGroup();
             dataRepositoryMenu.removeAll();
            
-            Map<String, RepositoryConfiguration> repositoryConfigurations = ContextHolder.getInstance().getApplicationConfiguration().getRepositoryConfigurations();
-            for(String repo : repositoryConfigurations.keySet()){
-                RepositoryConfiguration repository = repositoryConfigurations.get(repo);
-                
+            List<String> repositories = ContextHolder.getInstance().getDataRepositoryNames();           
+            for(String repo : repositories){                          
                 JMenuItem item = new JRadioButtonMenuItem();
                 item.setText(repo);
                 item.setActionCommand(repo);

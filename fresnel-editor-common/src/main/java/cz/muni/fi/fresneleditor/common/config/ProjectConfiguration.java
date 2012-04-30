@@ -116,21 +116,6 @@ public class ProjectConfiguration implements Serializable {
 	}
 
 	/**
-	 * @return the dataRepositoryName
-	 */
-	public String getDataRepositoryName() {
-		return dataRepositoryName;
-	}
-
-	/**
-	 * @param dataRepositoryName
-	 *            the dataRepositoryName to set
-	 */
-	public void setDataRepositoryName(String dataRepositoryName) {
-		this.dataRepositoryName = dataRepositoryName;
-	}
-
-	/**
 	 * @return the cssStylesheetFileName
 	 */
 	public String getCssStylesheetFileName() {

@@ -455,15 +455,6 @@ public class ContextHolder {
 	}
 
 	/**
-	 * @param dataRepositoryName
-	 *            name of the data repository (DAO will be constructed for this
-	 *            repository)
-	 */
-	public void setDomainDao(String dataRepositoryName) {
-		projectConfiguration.setDataRepositoryName(dataRepositoryName);
-	}
-
-	/**
 	 * Returns the fresnel repository of the currently opened project.
 	 * 
 	 * @return the frensnelRepositoryDao of the currently opened project
@@ -555,10 +546,7 @@ public class ContextHolder {
 	 *         Can return null
 	 */
 	public String getDataRepositoryName() {
-		if (projectConfiguration != null) {
-			return projectConfiguration.getDataRepositoryName();
-		}
-		return null;
+		return selectedDataRepositoryName;
 	}
 
 	/**
