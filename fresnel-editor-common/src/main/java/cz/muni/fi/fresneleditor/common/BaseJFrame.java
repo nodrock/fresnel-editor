@@ -4,6 +4,7 @@
 
 package cz.muni.fi.fresneleditor.common;
 
+import cz.muni.fi.fresneleditor.common.config.RepositoryConfiguration;
 import java.awt.Component;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -39,6 +40,12 @@ import cz.muni.fi.fresneleditor.common.guisupport.MessageDialog;
 import cz.muni.fi.fresneleditor.common.guisupport.dialogs.SampleProjectsDialog;
 import cz.muni.fi.fresneleditor.common.reposconf.FresnelEditorConfigurationDialog;
 import cz.muni.fi.fresneleditor.common.utils.GuiUtils;
+import cz.muni.fi.fresneleditor.model.BaseRepositoryDao.RepositoryDomain;
+import cz.muni.fi.fresneleditor.model.BaseRepositoryDao.RepositoryType;
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultButtonModel;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JRadioButtonMenuItem;
 
 /**
  * Base JFrame for Fresnel Editor application.
@@ -91,7 +98,37 @@ public class BaseJFrame extends javax.swing.JFrame implements
 
 		updateStatusBar();
 		updateFileMenu();
+                
+                initDataRepositoryMenu();
 	}
+        
+        ButtonGroup group = null;
+        
+        private void initDataRepositoryMenu(){
+            group = new ButtonGroup();
+            dataRepositoryMenu.removeAll();
+           
+            Map<String, RepositoryConfiguration> repositoryConfigurations = ContextHolder.getInstance().getApplicationConfiguration().getRepositoryConfigurations();
+            for(String repo : repositoryConfigurations.keySet()){
+                RepositoryConfiguration repository = repositoryConfigurations.get(repo);
+                
+                JMenuItem item = new JRadioButtonMenuItem();
+                item.setText(repo);
+                item.setActionCommand(repo);
+                item.addActionListener(new java.awt.event.ActionListener() {
+                    @Override
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        //group.getSelection().getActionCommand()
+                        ContextHolder.getInstance().setSelectedDataRepositoryName(evt.getActionCommand());
+                    }
+                });
+                group.add(item);
+                group.setSelected(item.getModel(), true);
+                dataRepositoryMenu.add(item);
+            }
+            
+            ContextHolder.getInstance().setSelectedDataRepositoryName(group.getSelection().getActionCommand());
+        }
 
 	/**
 	 * This method is called from within the constructor to initialize the form.
@@ -101,284 +138,233 @@ public class BaseJFrame extends javax.swing.JFrame implements
 	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed"
 	// <editor-fold defaultstate="collapsed"
-	// desc="Generated Code">//GEN-BEGIN:initComponents
-	private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-		statusPanel = new javax.swing.JPanel();
-		statusLabel = new javax.swing.JLabel();
-		statusPanelSeparator = new javax.swing.JSeparator();
-		dataRepositoryLabel = new javax.swing.JLabel();
-		fresnelRepositoryLabel = new javax.swing.JLabel();
-		mainSplitPane = new javax.swing.JSplitPane();
-		menuScrollPane = new javax.swing.JScrollPane();
-		projectTree = new cz.muni.fi.fresneleditor.common.guisupport.projecttree.ProjectTree();
-		rightSplitPane = new javax.swing.JSplitPane();
-		mainTabbedPane = new javax.swing.JTabbedPane();
-		previewSplitPane = new javax.swing.JSplitPane();
-		previewToolPanel = new javax.swing.JPanel();
-		hideButton = new javax.swing.JButton();
-		previewPanel = new javax.swing.JPanel();
-		mainMenuBar = new javax.swing.JMenuBar();
-		fileMenu = new javax.swing.JMenu();
-		newProjectMItem = new javax.swing.JMenuItem();
-		openProjectMItem = new javax.swing.JMenuItem();
-		saveProjectMItem = new javax.swing.JMenuItem();
-		saveAsProjectMitem = new javax.swing.JMenuItem();
-		closeCurrentProjectMItem = new javax.swing.JMenuItem();
-		fileMenuExitSeparator = new javax.swing.JSeparator();
-		exitMItem = new javax.swing.JMenuItem();
-		editMenu = new javax.swing.JMenu();
-		configurationMItem = new javax.swing.JMenuItem();
-		
-		 transformationMenu = new javax.swing.JMenu();
-	        xhtmlItem = new javax.swing.JRadioButtonMenuItem();
-	        rdfaItem = new javax.swing.JRadioButtonMenuItem();
-	    microFormatItem = new javax.swing.JRadioButtonMenuItem();
-	    html5Item = new javax.swing.JRadioButtonMenuItem();
-	    svgItem = new javax.swing.JRadioButtonMenuItem();
-		helpMenu = new javax.swing.JMenu();
-		sampleProjectsMItem = new javax.swing.JMenuItem();
-		aboutSeparator = new javax.swing.JSeparator();
-		aboutMItem = new javax.swing.JMenuItem();
+        statusPanel = new javax.swing.JPanel();
+        statusLabel = new javax.swing.JLabel();
+        statusPanelSeparator = new javax.swing.JSeparator();
+        dataRepositoryLabel = new javax.swing.JLabel();
+        fresnelRepositoryLabel = new javax.swing.JLabel();
+        mainSplitPane = new javax.swing.JSplitPane();
+        menuScrollPane = new javax.swing.JScrollPane();
+        projectTree = new cz.muni.fi.fresneleditor.common.guisupport.projecttree.ProjectTree();
+        rightSplitPane = new javax.swing.JSplitPane();
+        mainTabbedPane = new javax.swing.JTabbedPane();
+        previewSplitPane = new javax.swing.JSplitPane();
+        previewToolPanel = new javax.swing.JPanel();
+        hideButton = new javax.swing.JButton();
+        previewPanel = new javax.swing.JPanel();
+        mainMenuBar = new javax.swing.JMenuBar();
+        fileMenu = new javax.swing.JMenu();
+        newProjectMItem = new javax.swing.JMenuItem();
+        openProjectMItem = new javax.swing.JMenuItem();
+        saveProjectMItem = new javax.swing.JMenuItem();
+        saveAsProjectMitem = new javax.swing.JMenuItem();
+        closeCurrentProjectMItem = new javax.swing.JMenuItem();
+        fileMenuExitSeparator = new javax.swing.JSeparator();
+        exitMItem = new javax.swing.JMenuItem();
+        editMenu = new javax.swing.JMenu();
+        configurationMItem = new javax.swing.JMenuItem();
+        transformationMenu = new javax.swing.JMenu();
+        xhtmlItem = new javax.swing.JRadioButtonMenuItem();
+        rdfaItem = new javax.swing.JRadioButtonMenuItem();
+        microFormatItem = new javax.swing.JRadioButtonMenuItem();
+        html5Item = new javax.swing.JRadioButtonMenuItem();
+        svgItem = new javax.swing.JRadioButtonMenuItem();
+        dataRepositoryMenu = new javax.swing.JMenu();
+        helpMenu = new javax.swing.JMenu();
+        sampleProjectsMItem = new javax.swing.JMenuItem();
+        aboutSeparator = new javax.swing.JSeparator();
+        aboutMItem = new javax.swing.JMenuItem();
 
-		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		setTitle("Fresnel Editor v"
-				+ System.getProperty(FresnelEditorConstants.PROP_APP_VERSION)
-				+ " ("
-				+ System.getProperty(FresnelEditorConstants.PROP_APP_RELEASE_DATE)
-				+ ")");
-		setName("Form"); // NOI18N
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Fresnel Editor v" + System.getProperty(FresnelEditorConstants.PROP_APP_VERSION) + " (" + System.getProperty(FresnelEditorConstants.PROP_APP_RELEASE_DATE)+ ")");
+        setName("Form"); // NOI18N
 
-		statusPanel.setMaximumSize(new java.awt.Dimension(32000, 33));
-		statusPanel.setName("statusPanel"); // NOI18N
+        statusPanel.setMaximumSize(new java.awt.Dimension(32000, 33));
+        statusPanel.setName("statusPanel"); // NOI18N
 
-		org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application
-				.getInstance(
-						cz.muni.fi.fresneleditor.common.FresnelApplication.class)
-				.getContext().getResourceMap(BaseJFrame.class);
-		statusLabel.setText(resourceMap.getString("statusLabel.text")); // NOI18N
-		statusLabel.setName("statusLabel"); // NOI18N
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(BaseJFrame.class);
+        statusLabel.setText(resourceMap.getString("statusLabel.text")); // NOI18N
+        statusLabel.setName("statusLabel"); // NOI18N
 
-		statusPanelSeparator.setName("statusPanelSeparator"); // NOI18N
+        statusPanelSeparator.setName("statusPanelSeparator"); // NOI18N
 
-		dataRepositoryLabel.setText(resourceMap
-				.getString("dataRepositoryLabel.text")); // NOI18N
-		dataRepositoryLabel.setName("dataRepositoryLabel"); // NOI18N
+        dataRepositoryLabel.setText(resourceMap.getString("dataRepositoryLabel.text")); // NOI18N
+        dataRepositoryLabel.setName("dataRepositoryLabel"); // NOI18N
 
-		fresnelRepositoryLabel.setText(resourceMap
-				.getString("fresnelRepositoryLabel.text")); // NOI18N
-		fresnelRepositoryLabel.setName("fresnelRepositoryLabel"); // NOI18N
+        fresnelRepositoryLabel.setText(resourceMap.getString("fresnelRepositoryLabel.text")); // NOI18N
+        fresnelRepositoryLabel.setName("fresnelRepositoryLabel"); // NOI18N
 
-		javax.swing.GroupLayout statusPanelLayout = new javax.swing.GroupLayout(
-				statusPanel);
-		statusPanel.setLayout(statusPanelLayout);
-		statusPanelLayout
-				.setHorizontalGroup(statusPanelLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
-						.addComponent(statusPanelSeparator,
-								javax.swing.GroupLayout.Alignment.TRAILING,
-								javax.swing.GroupLayout.DEFAULT_SIZE, 833,
-								Short.MAX_VALUE)
-						.addGroup(
-								statusPanelLayout
-										.createSequentialGroup()
-										.addContainerGap()
-										.addComponent(statusLabel)
-										.addPreferredGap(
-												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-												356, Short.MAX_VALUE)
-										.addComponent(dataRepositoryLabel)
-										.addGap(18, 18, 18)
-										.addComponent(fresnelRepositoryLabel)
-										.addContainerGap()));
-		statusPanelLayout
-				.setVerticalGroup(statusPanelLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(
-								statusPanelLayout
-										.createSequentialGroup()
-										.addComponent(
-												statusPanelSeparator,
-												javax.swing.GroupLayout.PREFERRED_SIZE,
-												javax.swing.GroupLayout.DEFAULT_SIZE,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(
-												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-										.addGroup(
-												statusPanelLayout
-														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.BASELINE)
-														.addComponent(
-																statusLabel)
-														.addComponent(
-																fresnelRepositoryLabel)
-														.addComponent(
-																dataRepositoryLabel))
-										.addContainerGap(
-												javax.swing.GroupLayout.DEFAULT_SIZE,
-												Short.MAX_VALUE)));
+        javax.swing.GroupLayout statusPanelLayout = new javax.swing.GroupLayout(statusPanel);
+        statusPanel.setLayout(statusPanelLayout);
+        statusPanelLayout.setHorizontalGroup(
+            statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 994, Short.MAX_VALUE)
+            .addGroup(statusPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(statusLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 356, Short.MAX_VALUE)
+                .addComponent(dataRepositoryLabel)
+                .addGap(18, 18, 18)
+                .addComponent(fresnelRepositoryLabel)
+                .addContainerGap())
+        );
+        statusPanelLayout.setVerticalGroup(
+            statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(statusPanelLayout.createSequentialGroup()
+                .addComponent(statusPanelSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(statusLabel)
+                    .addComponent(fresnelRepositoryLabel)
+                    .addComponent(dataRepositoryLabel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-		mainSplitPane.setName("mainSplitPane"); // NOI18N
+        mainSplitPane.setName("mainSplitPane"); // NOI18N
 
-		menuScrollPane.setName("menuScrollPane"); // NOI18N
+        menuScrollPane.setName("menuScrollPane"); // NOI18N
 
-		projectTree.setName("projectTree"); // NOI18N
-		menuScrollPane.setViewportView(projectTree);
+        projectTree.setName("projectTree"); // NOI18N
+        menuScrollPane.setViewportView(projectTree);
 
-		mainSplitPane.setLeftComponent(menuScrollPane);
+        mainSplitPane.setLeftComponent(menuScrollPane);
 
-		rightSplitPane.setDividerLocation(mainSplitPane.getHeight());
-		rightSplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-		rightSplitPane.setName("rightSplitPane"); // NOI18N
+        rightSplitPane.setDividerLocation(mainSplitPane.getHeight());
+        rightSplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        rightSplitPane.setName("rightSplitPane"); // NOI18N
 
-		mainTabbedPane.setName("mainTabbedPane"); // NOI18N
-		rightSplitPane.setTopComponent(mainTabbedPane);
+        mainTabbedPane.setName("mainTabbedPane"); // NOI18N
+        rightSplitPane.setTopComponent(mainTabbedPane);
 
-		previewSplitPane.setBorder(null);
-		previewSplitPane.setDividerLocation(24);
-		previewSplitPane.setDividerSize(1);
-		previewSplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-		previewSplitPane.setDoubleBuffered(true);
-		previewSplitPane.setName("previewSplitPane"); // NOI18N
+        previewSplitPane.setBorder(null);
+        previewSplitPane.setDividerLocation(24);
+        previewSplitPane.setDividerSize(1);
+        previewSplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        previewSplitPane.setDoubleBuffered(true);
+        previewSplitPane.setName("previewSplitPane"); // NOI18N
 
-		previewToolPanel.setMinimumSize(new java.awt.Dimension(100, 24));
-		previewToolPanel.setName("previewToolPanel"); // NOI18N
+        previewToolPanel.setMinimumSize(new java.awt.Dimension(100, 24));
+        previewToolPanel.setName("previewToolPanel"); // NOI18N
 
-		hideButton.setText(resourceMap.getString("hideButton.text")); // NOI18N
-		hideButton.setDoubleBuffered(true);
-		hideButton.setName("hideButton"); // NOI18N
-		hideButton.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				hideButtonActionPerformed(evt);
-			}
-		});
+        hideButton.setText(resourceMap.getString("hideButton.text")); // NOI18N
+        hideButton.setDoubleBuffered(true);
+        hideButton.setName("hideButton"); // NOI18N
+        hideButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hideButtonActionPerformed(evt);
+            }
+        });
 
-		javax.swing.GroupLayout previewToolPanelLayout = new javax.swing.GroupLayout(
-				previewToolPanel);
-		previewToolPanel.setLayout(previewToolPanelLayout);
-		previewToolPanelLayout.setHorizontalGroup(previewToolPanelLayout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(
-						javax.swing.GroupLayout.Alignment.TRAILING,
-						previewToolPanelLayout.createSequentialGroup()
-								.addContainerGap(707, Short.MAX_VALUE)
-								.addComponent(hideButton)));
-		previewToolPanelLayout.setVerticalGroup(previewToolPanelLayout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(
-						previewToolPanelLayout
-								.createSequentialGroup()
-								.addComponent(hideButton)
-								.addContainerGap(
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										Short.MAX_VALUE)));
+        javax.swing.GroupLayout previewToolPanelLayout = new javax.swing.GroupLayout(previewToolPanel);
+        previewToolPanel.setLayout(previewToolPanelLayout);
+        previewToolPanelLayout.setHorizontalGroup(
+            previewToolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, previewToolPanelLayout.createSequentialGroup()
+                .addContainerGap(839, Short.MAX_VALUE)
+                .addComponent(hideButton))
+        );
+        previewToolPanelLayout.setVerticalGroup(
+            previewToolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(previewToolPanelLayout.createSequentialGroup()
+                .addComponent(hideButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-		previewSplitPane.setTopComponent(previewToolPanel);
+        previewSplitPane.setTopComponent(previewToolPanel);
 
-		previewPanel.setName("previewPanel"); // NOI18N
+        previewPanel.setName("previewPanel"); // NOI18N
 
-		javax.swing.GroupLayout previewPanelLayout = new javax.swing.GroupLayout(
-				previewPanel);
-		previewPanel.setLayout(previewPanelLayout);
-		previewPanelLayout.setHorizontalGroup(previewPanelLayout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGap(0, 760, Short.MAX_VALUE));
-		previewPanelLayout.setVerticalGroup(previewPanelLayout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGap(0, 331, Short.MAX_VALUE));
+        javax.swing.GroupLayout previewPanelLayout = new javax.swing.GroupLayout(previewPanel);
+        previewPanel.setLayout(previewPanelLayout);
+        previewPanelLayout.setHorizontalGroup(
+            previewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 914, Short.MAX_VALUE)
+        );
+        previewPanelLayout.setVerticalGroup(
+            previewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 307, Short.MAX_VALUE)
+        );
 
-		previewSplitPane.setRightComponent(previewPanel);
+        previewSplitPane.setRightComponent(previewPanel);
 
-		rightSplitPane.setRightComponent(previewSplitPane);
+        rightSplitPane.setRightComponent(previewSplitPane);
 
-		mainSplitPane.setRightComponent(rightSplitPane);
+        mainSplitPane.setRightComponent(rightSplitPane);
 
-		mainMenuBar.setName("mainMenuBar"); // NOI18N
+        mainMenuBar.setName("mainMenuBar"); // NOI18N
 
-		fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
-		fileMenu.setName("fileMenu"); // NOI18N
+        fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
+        fileMenu.setName("fileMenu"); // NOI18N
 
-		newProjectMItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(
-				java.awt.event.KeyEvent.VK_N,
-				java.awt.event.InputEvent.CTRL_MASK));
-		newProjectMItem.setText(resourceMap.getString("newProjectMItem.text")); // NOI18N
-		newProjectMItem.setName("newProjectMItem"); // NOI18N
-		newProjectMItem.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				newProjectMItemActionPerformed(evt);
-			}
-		});
-		fileMenu.add(newProjectMItem);
+        newProjectMItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        newProjectMItem.setText(resourceMap.getString("newProjectMItem.text")); // NOI18N
+        newProjectMItem.setName("newProjectMItem"); // NOI18N
+        newProjectMItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newProjectMItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(newProjectMItem);
 
-		openProjectMItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(
-				java.awt.event.KeyEvent.VK_O,
-				java.awt.event.InputEvent.CTRL_MASK));
-		openProjectMItem
-				.setText(resourceMap.getString("openProjectMItem.text")); // NOI18N
-		openProjectMItem.setName("openProjectMItem"); // NOI18N
-		openProjectMItem.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				openProjectMItemActionPerformed(evt);
-			}
-		});
-		fileMenu.add(openProjectMItem);
+        openProjectMItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+        openProjectMItem.setText(resourceMap.getString("openProjectMItem.text")); // NOI18N
+        openProjectMItem.setName("openProjectMItem"); // NOI18N
+        openProjectMItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openProjectMItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(openProjectMItem);
 
-		saveProjectMItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(
-				java.awt.event.KeyEvent.VK_S,
-				java.awt.event.InputEvent.CTRL_MASK));
-		saveProjectMItem
-				.setText(resourceMap.getString("saveProjectMItem.text")); // NOI18N
-		saveProjectMItem.setName("saveProjectMItem"); // NOI18N
-		fileMenu.add(saveProjectMItem);
+        saveProjectMItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        saveProjectMItem.setText(resourceMap.getString("saveProjectMItem.text")); // NOI18N
+        saveProjectMItem.setName("saveProjectMItem"); // NOI18N
+        fileMenu.add(saveProjectMItem);
 
-		saveAsProjectMitem.setText(resourceMap
-				.getString("saveAsProjectMitem.text")); // NOI18N
-		saveAsProjectMitem.setName("saveAsProjectMitem"); // NOI18N
-		fileMenu.add(saveAsProjectMitem);
+        saveAsProjectMitem.setText(resourceMap.getString("saveAsProjectMitem.text")); // NOI18N
+        saveAsProjectMitem.setName("saveAsProjectMitem"); // NOI18N
+        fileMenu.add(saveAsProjectMitem);
 
-		closeCurrentProjectMItem.setText(resourceMap
-				.getString("closeCurrentProjectMItem.text")); // NOI18N
-		closeCurrentProjectMItem.setName("closeCurrentProjectMItem"); // NOI18N
-		closeCurrentProjectMItem
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						closeCurrentProjectMItemActionPerformed(evt);
-					}
-				});
-		fileMenu.add(closeCurrentProjectMItem);
+        closeCurrentProjectMItem.setText(resourceMap.getString("closeCurrentProjectMItem.text")); // NOI18N
+        closeCurrentProjectMItem.setName("closeCurrentProjectMItem"); // NOI18N
+        closeCurrentProjectMItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeCurrentProjectMItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(closeCurrentProjectMItem);
 
-		fileMenuExitSeparator.setName("fileMenuExitSeparator"); // NOI18N
-		fileMenu.add(fileMenuExitSeparator);
+        fileMenuExitSeparator.setName("fileMenuExitSeparator"); // NOI18N
+        fileMenu.add(fileMenuExitSeparator);
 
-		exitMItem.setText(resourceMap.getString("exitMItem.text")); // NOI18N
-		exitMItem.setName("exitMItem"); // NOI18N
-		exitMItem.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				exitMItemActionPerformed(evt);
-			}
-		});
-		fileMenu.add(exitMItem);
+        exitMItem.setText(resourceMap.getString("exitMItem.text")); // NOI18N
+        exitMItem.setName("exitMItem"); // NOI18N
+        exitMItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitMItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(exitMItem);
 
-		mainMenuBar.add(fileMenu);
+        mainMenuBar.add(fileMenu);
 
-		editMenu.setText(resourceMap.getString("editMenu.text")); // NOI18N
-		editMenu.setName("editMenu"); // NOI18N
+        editMenu.setText(resourceMap.getString("editMenu.text")); // NOI18N
+        editMenu.setName("editMenu"); // NOI18N
 
-		configurationMItem.setText(resourceMap
-				.getString("configurationMItem.text")); // NOI18N
-		configurationMItem.setName("configurationMItem"); // NOI18N
-		configurationMItem
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						configurationMItemActionPerformed(evt);
-					}
-				});
-		editMenu.add(configurationMItem);
+        configurationMItem.setText(resourceMap.getString("configurationMItem.text")); // NOI18N
+        configurationMItem.setName("configurationMItem"); // NOI18N
+        configurationMItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                configurationMItemActionPerformed(evt);
+            }
+        });
+        editMenu.add(configurationMItem);
 
-		mainMenuBar.add(editMenu);
-		
+        mainMenuBar.add(editMenu);
+
         transformationMenu.setText(resourceMap.getString("transformationMenu.text")); // NOI18N
         transformationMenu.setName("transformationMenu"); // NOI18N
         transformationMenu.setText(resourceMap.getString("transformationMenu.text"));
@@ -435,66 +421,57 @@ public class BaseJFrame extends javax.swing.JFrame implements
 
         mainMenuBar.add(transformationMenu);
 
-		helpMenu.setText(resourceMap.getString("helpMenu.text")); // NOI18N
-		helpMenu.setName("helpMenu"); // NOI18N
+        dataRepositoryMenu.setText(resourceMap.getString("dataRepositoryMenu.text")); // NOI18N
+        dataRepositoryMenu.setName("dataRepositoryMenu"); // NOI18N
+        mainMenuBar.add(dataRepositoryMenu);
 
-		sampleProjectsMItem.setText(resourceMap
-				.getString("sampleProjectsMItem.text")); // NOI18N
-		sampleProjectsMItem.setName("sampleProjectsMItem"); // NOI18N
-		sampleProjectsMItem
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						sampleProjectsMItemActionPerformed(evt);
-					}
-				});
-		helpMenu.add(sampleProjectsMItem);
+        helpMenu.setText(resourceMap.getString("helpMenu.text")); // NOI18N
+        helpMenu.setName("helpMenu"); // NOI18N
 
-		aboutSeparator.setName("aboutSeparator"); // NOI18N
-		helpMenu.add(aboutSeparator);
+        sampleProjectsMItem.setText(resourceMap.getString("sampleProjectsMItem.text")); // NOI18N
+        sampleProjectsMItem.setName("sampleProjectsMItem"); // NOI18N
+        sampleProjectsMItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sampleProjectsMItemActionPerformed(evt);
+            }
+        });
+        helpMenu.add(sampleProjectsMItem);
 
-		aboutMItem.setText(resourceMap.getString("aboutMItem.text")); // NOI18N
-		aboutMItem.setName("aboutMItem"); // NOI18N
-		aboutMItem.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				aboutMItemActionPerformed(evt);
-			}
-		});
-		helpMenu.add(aboutMItem);
+        aboutSeparator.setName("aboutSeparator"); // NOI18N
+        helpMenu.add(aboutSeparator);
 
-		mainMenuBar.add(helpMenu);
+        aboutMItem.setText(resourceMap.getString("aboutMItem.text")); // NOI18N
+        aboutMItem.setName("aboutMItem"); // NOI18N
+        aboutMItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutMItemActionPerformed(evt);
+            }
+        });
+        helpMenu.add(aboutMItem);
 
-		setJMenuBar(mainMenuBar);
+        mainMenuBar.add(helpMenu);
 
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
-				getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(
-						layout.createSequentialGroup()
-								.addComponent(statusPanel,
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										Short.MAX_VALUE).addContainerGap())
-				.addComponent(mainSplitPane,
-						javax.swing.GroupLayout.DEFAULT_SIZE, 843,
-						Short.MAX_VALUE));
-		layout.setVerticalGroup(layout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(
-						layout.createSequentialGroup()
-								.addComponent(mainSplitPane,
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										370, Short.MAX_VALUE)
-								.addPreferredGap(
-										javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-								.addComponent(statusPanel,
-										javax.swing.GroupLayout.PREFERRED_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										javax.swing.GroupLayout.PREFERRED_SIZE)));
+        setJMenuBar(mainMenuBar);
 
-		pack();
-	}// </editor-fold>//GEN-END:initComponents
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(statusPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(mainSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1014, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(mainSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(statusPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
 
 	private void aboutMItemActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_aboutMItemActionPerformed
 		aboutMItemClicked();
@@ -604,45 +581,44 @@ public class BaseJFrame extends javax.swing.JFrame implements
 		return configDialog;
 	}
 
-	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private javax.swing.JMenuItem aboutMItem;
-	private javax.swing.JSeparator aboutSeparator;
-	private javax.swing.JMenuItem closeCurrentProjectMItem;
-	private javax.swing.JMenuItem configurationMItem;
-	private javax.swing.JLabel dataRepositoryLabel;
-	private javax.swing.JMenu editMenu;
-	private javax.swing.JMenuItem exitMItem;
-	private javax.swing.JMenu fileMenu;
-	private javax.swing.JSeparator fileMenuExitSeparator;
-	private javax.swing.JLabel fresnelRepositoryLabel;
-	private javax.swing.JMenu helpMenu;
-	private javax.swing.JButton hideButton;
-	private javax.swing.JRadioButtonMenuItem html5Item;
-	private javax.swing.JMenuBar mainMenuBar;
-	private javax.swing.JSplitPane mainSplitPane;
-	private javax.swing.JTabbedPane mainTabbedPane;
-	private javax.swing.JScrollPane menuScrollPane;
-	private javax.swing.JRadioButtonMenuItem microFormatItem;
-	private javax.swing.JMenuItem newProjectMItem;
-	private javax.swing.JMenuItem openProjectMItem;
-	private javax.swing.JPanel previewPanel;
-	private javax.swing.JSplitPane previewSplitPane;
-	private javax.swing.JPanel previewToolPanel;
-	private cz.muni.fi.fresneleditor.common.guisupport.projecttree.ProjectTree projectTree;
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem aboutMItem;
+    private javax.swing.JSeparator aboutSeparator;
+    private javax.swing.JMenuItem closeCurrentProjectMItem;
+    private javax.swing.JMenuItem configurationMItem;
+    private javax.swing.JLabel dataRepositoryLabel;
+    private javax.swing.JMenu dataRepositoryMenu;
+    private javax.swing.JMenu editMenu;
+    private javax.swing.JMenuItem exitMItem;
+    private javax.swing.JMenu fileMenu;
+    private javax.swing.JSeparator fileMenuExitSeparator;
+    private javax.swing.JLabel fresnelRepositoryLabel;
+    private javax.swing.JMenu helpMenu;
+    private javax.swing.JButton hideButton;
+    private javax.swing.JRadioButtonMenuItem html5Item;
+    private javax.swing.JMenuBar mainMenuBar;
+    private javax.swing.JSplitPane mainSplitPane;
+    private javax.swing.JTabbedPane mainTabbedPane;
+    private javax.swing.JScrollPane menuScrollPane;
+    private javax.swing.JRadioButtonMenuItem microFormatItem;
+    private javax.swing.JMenuItem newProjectMItem;
+    private javax.swing.JMenuItem openProjectMItem;
+    private javax.swing.JPanel previewPanel;
+    private javax.swing.JSplitPane previewSplitPane;
+    private javax.swing.JPanel previewToolPanel;
+    private cz.muni.fi.fresneleditor.common.guisupport.projecttree.ProjectTree projectTree;
     private javax.swing.JRadioButtonMenuItem rdfaItem;
-
-	private javax.swing.JSplitPane rightSplitPane;
-	private javax.swing.JMenuItem sampleProjectsMItem;
-	private javax.swing.JMenuItem saveAsProjectMitem;
-	private javax.swing.JMenuItem saveProjectMItem;
-	private javax.swing.JLabel statusLabel;
-	private javax.swing.JPanel statusPanel;
-	private javax.swing.JSeparator statusPanelSeparator;
-	private javax.swing.JRadioButtonMenuItem svgItem;
+    private javax.swing.JSplitPane rightSplitPane;
+    private javax.swing.JMenuItem sampleProjectsMItem;
+    private javax.swing.JMenuItem saveAsProjectMitem;
+    private javax.swing.JMenuItem saveProjectMItem;
+    private javax.swing.JLabel statusLabel;
+    private javax.swing.JPanel statusPanel;
+    private javax.swing.JSeparator statusPanelSeparator;
+    private javax.swing.JRadioButtonMenuItem svgItem;
     private javax.swing.JMenu transformationMenu;
     private javax.swing.JRadioButtonMenuItem xhtmlItem;
-
-	// End of variables declaration//GEN-END:variables
+    // End of variables declaration//GEN-END:variables
 	private JPopupMenu popup;
 
 	/**

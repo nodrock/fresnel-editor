@@ -83,6 +83,18 @@ public class ContextHolder {
 	 */
 	private FresnelRepositoryDao fresnelDao;
 
+        private String selectedDataRepositoryName;
+
+        public String getSelectedDataRepositoryName() {
+            return selectedDataRepositoryName;
+        }
+
+        public void setSelectedDataRepositoryName(String selectedDataRepositoryName) {
+            this.selectedDataRepositoryName = selectedDataRepositoryName;
+        }
+        
+        
+        
     /**
 	 * Selected transformation.<br>
          * default: XHTML
@@ -434,15 +446,10 @@ public class ContextHolder {
 	 * @return the dataRepositoryDao of the currently opened project
 	 */
 	public DataRepositoryDao getDataRepositoryDao() {
-		if (!isProjectOpen()) {
-			return null;
-		}
-		String currentDataRepoName = projectConfiguration
-				.getDataRepositoryName();
 		if (domainDao == null
-				|| !domainDao.getName().equals(currentDataRepoName)) {
+				|| !domainDao.getName().equals(selectedDataRepositoryName)) {
 			// Set corresponding DAO
-			domainDao = (DataRepositoryDao) createRepositoryDao(currentDataRepoName);
+			domainDao = (DataRepositoryDao) createRepositoryDao(selectedDataRepositoryName);
 		}
 		return domainDao;
 	}

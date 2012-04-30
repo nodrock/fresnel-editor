@@ -183,10 +183,7 @@ public class RDFVisualizer implements IRDFVisualizer {
         }
 		
 		SesameRenderer renderer = new SesameRenderer();
-
-		// Note: Renderer must know also Fresnel repository
-		renderer.setFresnelRepository(ContextHolder.getInstance()
-				.getFresnelRepositoryDao().getRepository());
+                
 		ContextHolder.getInstance().getFresnelRepositoryDao()
 				.printStatements(System.out, false);
 
