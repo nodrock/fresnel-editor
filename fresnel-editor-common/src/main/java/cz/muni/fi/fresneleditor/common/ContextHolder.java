@@ -205,7 +205,7 @@ public class ContextHolder {
 
 		return dao;
 	}
-
+        
 	private Map<String, BaseRepositoryDao> repositories = new HashMap<String, BaseRepositoryDao>();
 
 	public BaseRepositoryDao getRepositoryDao(String repositoryName) {
@@ -463,11 +463,9 @@ public class ContextHolder {
 		if (!isProjectOpen()) {
 			return null;
 		}
-		String currentFresnelRepo = projectConfiguration
-				.getFresnelRepositoryName();
-		if (fresnelDao == null
-				|| !fresnelDao.getName().equals(currentFresnelRepo)) {
-			fresnelDao = (FresnelRepositoryDao) createRepositoryDao(currentFresnelRepo);
+		if (fresnelDao == null) {
+			fresnelDao = new FresnelRepositoryDao("inMemmoryProjectRepo");
+                                //(FresnelRepositoryDao) createRepositoryDao(currentFresnelRepo);
 		}
 		return fresnelDao;
 	}
