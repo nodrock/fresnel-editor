@@ -23,6 +23,7 @@ import fr.inria.jfresnel.Lens;
 import fr.inria.jfresnel.PropertyVisibility;
 import fr.inria.jfresnel.fsl.FSLPath;
 import fr.inria.jfresnel.sparql.SPARQLQuery;
+import java.util.Collection;
 
 /**
  * Class that represents Fresnel Lens object.
@@ -100,7 +101,7 @@ public class LensModel implements IModel {
 		initDomain(lens);
 		initProperties(lens);
 		this.purpose = lens.getPurpose();
-		this.groups = Arrays.asList(lens.getAssociatedGroups());
+		this.groups = (List)lens.getAssociatedFormats(); 
 		if (StringUtils.hasText(lens.getComment())) {
 			// fixme igor: jFresnel does not parse the language information for
 			// comment
@@ -240,19 +241,19 @@ public class LensModel implements IModel {
 	}
 
 	private void initDomain(Lens lens) {
-		String[] classDomains = lens.getBasicClassDomains();
-		String[] instanceDomains = lens.getBasicInstanceDomains();
-		SPARQLQuery[] sparqlDomains = lens.getSPARQLInstanceDomains();
-		FSLPath[] fslDomains = lens.getFSLInstanceDomains();
+		Collection<String> classDomains = lens.getBasicClassDomains();
+		Collection<String> instanceDomains = lens.getBasicInstanceDomains();
+		Collection<SPARQLQuery> sparqlDomains = lens.getSPARQLInstanceDomains();
+		Collection<FSLPath> fslDomains = lens.getFSLInstanceDomains();
 
-		Set<Object[]> domains = new HashSet<Object[]>();
-		if (classDomains != null && classDomains.length > 0)
+		Set<Collection<? extends Object>> domains = new HashSet<Collection<? extends Object>>();
+		if (!classDomains.isEmpty())
 			domains.add(classDomains);
-		if (instanceDomains != null && instanceDomains.length > 0)
+		if (!instanceDomains.isEmpty())
 			domains.add(instanceDomains);
-		if (sparqlDomains != null && sparqlDomains.length > 0)
+		if (!sparqlDomains.isEmpty())
 			domains.add(sparqlDomains);
-		if (fslDomains != null && fslDomains.length > 0)
+		if (!fslDomains.isEmpty())
 			domains.add(fslDomains);
 
 		if (domains.size() > 1) {
@@ -262,13 +263,13 @@ public class LensModel implements IModel {
 							+ domains.size());
 		}
 		if (domains.size() == 1) {
-			Object[] domArray = domains.iterator().next();
-			if (domArray.length == 1) {
+			Collection<? extends Object> domArray = domains.iterator().next();
+			if (domArray.size() == 1) {
 				// only now is the definition valid
 				LensDomain domainType;
 				domainType = domArray.equals(classDomains) ? LensDomain.CLASS
 						: LensDomain.INSTANCE;
-				selector = new LensSelector(domainType, domArray[0]);
+				selector = new LensSelector(domainType, domArray.iterator().next());
 				return;
 			}
 		}
@@ -299,10 +300,10 @@ public class LensModel implements IModel {
 	 * @returns list of wrapped PropertyVisibility
 	 */
 	private List<PropertyVisibilityWrapper> loadVisibility(
-			PropertyVisibility[] propertyVisibilities) {
+			List<PropertyVisibility> propertyVisibilities) {
 		List<PropertyVisibilityWrapper> wrappers = new ArrayList<PropertyVisibilityWrapper>();
-		for (int i = 0; i < propertyVisibilities.length; i++) {
-			PropertyVisibility visibility = propertyVisibilities[i];
+		for (int i = 0; i < propertyVisibilities.size(); i++) {
+			PropertyVisibility visibility = propertyVisibilities.get(i);
 			PropertyVisibilityWrapper provVisGW = new PropertyVisibilityWrapper(
 					visibility);
 			if (provVisGW.isAllProperties()) {

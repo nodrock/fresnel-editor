@@ -27,6 +27,8 @@ import fr.inria.jfresnel.Group;
 import fr.inria.jfresnel.Lens;
 import fr.inria.jfresnel.sesame.SesameGroup;
 import fr.inria.jfresnel.sesame.SesameLens;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * This class encapsulates algorithms for rendering of Lens and Format preview.
@@ -50,8 +52,8 @@ public class FormatPreviewRenderer {
 		}
 
 		// Add format into array
-		Format[] formatArray = new Format[1];
-		formatArray[0] = format;
+		Collection<Format> formatArray = new ArrayList<Format>();
+		formatArray.add(format);
 
 		String baseResourceClass = null;
 		baseResourceClass = findBaseResourceClass(format);
