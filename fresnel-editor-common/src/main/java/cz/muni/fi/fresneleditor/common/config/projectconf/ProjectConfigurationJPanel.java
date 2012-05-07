@@ -93,7 +93,7 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
 		if (createNew) {
 			this.originalConfiguration = null;
 		} else {
-			this.originalConfiguration = new ProjectConfiguration(configuration);
+			this.originalConfiguration = configuration;
 		}
 		initComponents();
 
@@ -105,32 +105,15 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
 					.setForeground(FresnelEditorConstants.COLOR_DISABLED);
 		}
 
-		updateRepositoriesCombos();
-
 		// set default values
 		if (configuration != null) {
 			projectFileText.setText(projectConfigurationFileURL);
 			projectNameText.setText(configuration.getName());
 			projectDescriptionTextArea.setText(configuration.getDescription());
-			fresnelRepoCombo.setSelectedItem(configuration
-					.getFresnelRepositoryName());
 		}
 
 		AppEventsManager.getInstance().addFresnelAppEventListener(
 				IRepositoriesChangedListener.class, this);
-	}
-
-	/**
-	 * Loads actual available repositories into the corresponding combo-box
-	 * controls.
-	 */
-	private void updateRepositoriesCombos() {
-		// load the repositories combo boxes
-		List<String> fresnelReposNames = ContextHolder.getInstance()
-				.getFresnelRepositoryNames();
-		ExtendedDefaultComboBM<String> fModel = new ExtendedDefaultComboBM<String>(
-				fresnelReposNames);
-		fresnelRepoCombo.setModel(fModel);
 	}
 
 	/**
@@ -141,9 +124,6 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        projectRepositoriesPanel = new javax.swing.JPanel();
-        fresnelRepoCombo = new javax.swing.JComboBox();
-        fresnelRepoLbl = new javax.swing.JLabel();
         basicProjectInfoPanel = new javax.swing.JPanel();
         projectDescriptionScrollPane = new javax.swing.JScrollPane();
         projectDescriptionTextArea = new javax.swing.JTextArea();
@@ -157,34 +137,6 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
         setName("Form"); // NOI18N
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(ProjectConfigurationJPanel.class);
-        projectRepositoriesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("projectRepositoriesPanel.border.title"))); // NOI18N
-        projectRepositoriesPanel.setName("projectRepositoriesPanel"); // NOI18N
-
-        fresnelRepoCombo.setName("fresnelRepoCombo"); // NOI18N
-
-        fresnelRepoLbl.setText(resourceMap.getString("fresnelRepoLbl.text")); // NOI18N
-        fresnelRepoLbl.setName("fresnelRepoLbl"); // NOI18N
-
-        javax.swing.GroupLayout projectRepositoriesPanelLayout = new javax.swing.GroupLayout(projectRepositoriesPanel);
-        projectRepositoriesPanel.setLayout(projectRepositoriesPanelLayout);
-        projectRepositoriesPanelLayout.setHorizontalGroup(
-            projectRepositoriesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, projectRepositoriesPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(fresnelRepoLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fresnelRepoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(139, Short.MAX_VALUE))
-        );
-        projectRepositoriesPanelLayout.setVerticalGroup(
-            projectRepositoriesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(projectRepositoriesPanelLayout.createSequentialGroup()
-                .addGroup(projectRepositoriesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fresnelRepoLbl)
-                    .addComponent(fresnelRepoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
-
         basicProjectInfoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("basicProjectInfoPanel.border.title"))); // NOI18N
         basicProjectInfoPanel.setName("basicProjectInfoPanel"); // NOI18N
 
@@ -266,14 +218,10 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(basicProjectInfoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(projectRepositoriesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(basicProjectInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(projectRepositoriesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(basicProjectInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -303,8 +251,6 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel basicProjectInfoPanel;
     private javax.swing.JButton browseProjectFileBtn;
-    private javax.swing.JComboBox fresnelRepoCombo;
-    private javax.swing.JLabel fresnelRepoLbl;
     private javax.swing.JLabel projectDescriptionLbl;
     private javax.swing.JScrollPane projectDescriptionScrollPane;
     private javax.swing.JTextArea projectDescriptionTextArea;
@@ -312,7 +258,6 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
     private javax.swing.JTextField projectFileText;
     private javax.swing.JLabel projectNameLbl;
     private javax.swing.JTextField projectNameText;
-    private javax.swing.JPanel projectRepositoriesPanel;
     // End of variables declaration//GEN-END:variables
 
 	/**
@@ -345,8 +290,6 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
 
 		configuration.setName(projectNameText.getText());
 		configuration.setDescription(projectDescriptionTextArea.getText());
-		configuration.setFresnelRepositoryName((String) fresnelRepoCombo
-				.getSelectedItem());
 		this.setProjectConfigurationFileURL(projectFileText.getText());
 		ContextHolder.getInstance().setProjectConfiguration(configuration);
 		
@@ -372,9 +315,6 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
 		if (!StringUtils.hasText(projectFileText.getText())) {
 			return false;
 		}
-		if (fresnelRepoCombo.getSelectedIndex() == -1) {
-			return false;
-		}
 		return true;
 	}
 
@@ -392,11 +332,7 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
 
 	@Override
 	public void repositoriesChanged(RepositoriesChangedEvent evt) {
-		Object fresnelRepo = fresnelRepoCombo.getSelectedItem();
-
-		updateRepositoriesCombos();
-
-		fresnelRepoCombo.setSelectedItem(fresnelRepo);
+            // TODO: remove this
 	}
 
 	/**

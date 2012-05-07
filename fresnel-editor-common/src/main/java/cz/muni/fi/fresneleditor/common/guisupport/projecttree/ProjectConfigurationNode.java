@@ -29,7 +29,7 @@ public class ProjectConfigurationNode extends ATabNode<ProjectConfiguration> {
 	@Override
 	protected ITabComponent<ProjectConfiguration> createComponent() {
 		return new EditProjectConfigurationJPanel(ContextHolder.getInstance()
-				.getProjectConfigurationCopy(), ContextHolder.getInstance()
+				.getProjectConfiguration(), ContextHolder.getInstance()
 				.getApplicationConfiguration().getLastOpenProjectUrl());
 	}
 

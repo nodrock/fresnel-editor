@@ -19,18 +19,10 @@ import org.springframework.util.StringUtils;
  *         (zemsky@mail.muni.cz)
  * @version 14.3.2009
  */
-@XmlRootElement
-public class ProjectConfiguration implements Serializable {
-
-	private static final long serialVersionUID = 1L;
-
-	// TODO: Cleanup not used code in this class.
-
-	/**
-	 * URL of project configuration file (default: 'project.xml').
-	 */
-	// private String projectConfigurationFileURL;
-
+public class ProjectConfiguration {
+        private String projectFileUrl;
+        
+        private String uri;
 	/** The project name */
 	private String name;
 
@@ -38,10 +30,6 @@ public class ProjectConfiguration implements Serializable {
 
 	/** True if it is a sample project, false otherwise. **/
 	private boolean sample;
-
-	private String fresnelRepositoryName;
-
-	private String dataRepositoryName;
 
 	// TODO: Add URL suffix
 	private String cssStylesheetFileName;
@@ -51,17 +39,22 @@ public class ProjectConfiguration implements Serializable {
 	public ProjectConfiguration() {
 	}
 
-	public ProjectConfiguration(ProjectConfiguration configuration) {
-		setName(configuration.name);
-		// setProjectConfigurationFileURL(configuration.projectConfigurationFileURL);
-		this.description = configuration.description;
-		this.fresnelRepositoryName = configuration.fresnelRepositoryName;
-		this.dataRepositoryName = configuration.dataRepositoryName;
-		this.cssStylesheetFileName = configuration.cssStylesheetFileName;
-		this.cssSnippets = new HashMap<String, CssSnippetConfiguration>(
-				configuration.cssSnippets);
-	}
+        public String getProjectFileUrl() {
+            return projectFileUrl;
+        }
 
+        public void setProjectFileUrl(String projectFileUrl) {
+            this.projectFileUrl = projectFileUrl;
+        }
+
+        public String getUri() {
+            return uri;
+        }
+
+        public void setUri(String uri) {
+            this.uri = uri;
+        }
+             
 	/**
 	 * @return the name
 	 */
@@ -98,21 +91,6 @@ public class ProjectConfiguration implements Serializable {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	/**
-	 * @return the fresnelRepositoryName
-	 */
-	public String getFresnelRepositoryName() {
-		return fresnelRepositoryName;
-	}
-
-	/**
-	 * @param fresnelRepositoryName
-	 *            the fresnelRepositoryName to set
-	 */
-	public void setFresnelRepositoryName(String fresnelRepositoryName) {
-		this.fresnelRepositoryName = fresnelRepositoryName;
 	}
 
 	/**
@@ -218,16 +196,8 @@ public class ProjectConfiguration implements Serializable {
 				* result
 				+ ((cssStylesheetFileName == null) ? 0 : cssStylesheetFileName
 						.hashCode());
-		result = prime
-				* result
-				+ ((dataRepositoryName == null) ? 0 : dataRepositoryName
-						.hashCode());
 		result = prime * result
 				+ ((description == null) ? 0 : description.hashCode());
-		result = prime
-				* result
-				+ ((fresnelRepositoryName == null) ? 0 : fresnelRepositoryName
-						.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		// result = prime
 		// * result
@@ -255,21 +225,11 @@ public class ProjectConfiguration implements Serializable {
 				return false;
 		} else if (!cssStylesheetFileName.equals(other.cssStylesheetFileName))
 			return false;
-		if (dataRepositoryName == null) {
-			if (other.dataRepositoryName != null)
-				return false;
-		} else if (!dataRepositoryName.equals(other.dataRepositoryName))
-			return false;
 		if (description == null) {
 			if (other.description != null)
 				return false;
 		} else if (!description.equals(other.description))
-			return false;
-		if (fresnelRepositoryName == null) {
-			if (other.fresnelRepositoryName != null)
-				return false;
-		} else if (!fresnelRepositoryName.equals(other.fresnelRepositoryName))
-			return false;
+			return false; 
 		if (name == null) {
 			if (other.name != null)
 				return false;

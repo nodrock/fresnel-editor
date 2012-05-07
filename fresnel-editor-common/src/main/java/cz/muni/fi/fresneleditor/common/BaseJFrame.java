@@ -321,10 +321,20 @@ public class BaseJFrame extends javax.swing.JFrame implements
         saveProjectMItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         saveProjectMItem.setText(resourceMap.getString("saveProjectMItem.text")); // NOI18N
         saveProjectMItem.setName("saveProjectMItem"); // NOI18N
+        saveProjectMItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveProjectMItemActionPerformed(evt);
+            }
+        });
         fileMenu.add(saveProjectMItem);
 
         saveAsProjectMitem.setText(resourceMap.getString("saveAsProjectMitem.text")); // NOI18N
         saveAsProjectMitem.setName("saveAsProjectMitem"); // NOI18N
+        saveAsProjectMitem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveAsProjectMitemActionPerformed(evt);
+            }
+        });
         fileMenu.add(saveAsProjectMitem);
 
         closeCurrentProjectMItem.setText(resourceMap.getString("closeCurrentProjectMItem.text")); // NOI18N
@@ -503,7 +513,7 @@ public class BaseJFrame extends javax.swing.JFrame implements
 		JFileChooser chooser = new JFileChooser();
 
 		FileFilter filter = new FileNameExtensionFilter(
-				"Fresnel Editor projects (*.xml)", "xml");
+				"Fresnel Editor projects (*.n3)", "n3");
 		chooser.setFileFilter(filter);
 
 		int returnVal = chooser.showOpenDialog(GuiUtils.getTopComponent());
@@ -572,6 +582,31 @@ public class BaseJFrame extends javax.swing.JFrame implements
         this.svgItem.setSelected(true);
         ContextHolder.getInstance().setTransformation(FresnelEditorConstants.Transformations.SVG);
     }//GEN-LAST:event_svgTransform
+
+    private void saveProjectMItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveProjectMItemActionPerformed
+        ContextHolder.getInstance().saveProject(null);
+    }//GEN-LAST:event_saveProjectMItemActionPerformed
+
+    private void saveAsProjectMitemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsProjectMitemActionPerformed
+        JFileChooser chooser = new JFileChooser();
+
+        FileFilter filter = new FileNameExtensionFilter(
+                "Fresnel Editor projects (*.n3)", "n3");
+        chooser.setFileFilter(filter);
+
+        int returnVal = chooser.showSaveDialog(GuiUtils.getTopComponent());
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            try {
+                String filename = chooser.getSelectedFile().getCanonicalPath();
+                ContextHolder.getInstance().saveProject(filename);
+                ContextHolder.getInstance().openProject(filename, false);
+                AppEventsManager.getInstance().fireOpenProjectChanged(this);
+            } catch (Exception ex) {
+                // FIXME message dialog
+                LOG.error("Cannot open project", ex);
+            }
+        }
+    }//GEN-LAST:event_saveAsProjectMitemActionPerformed
 	
 	private FresnelEditorConfigurationDialog getConfigurationDialog() {
 		if (configDialog == null) {

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import java.util.logging.Level;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
@@ -13,6 +14,7 @@ import org.openrdf.query.QueryLanguage;
 import org.openrdf.repository.Repository;
 import org.openrdf.repository.RepositoryConnection;
 import org.openrdf.repository.RepositoryException;
+import org.openrdf.repository.RepositoryResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
@@ -23,6 +25,7 @@ import fr.inria.jfresnel.FresnelDocument;
 import fr.inria.jfresnel.Group;
 import fr.inria.jfresnel.Lens;
 import fr.inria.jfresnel.sesame.FresnelSesameParser;
+import org.openrdf.model.ValueFactory;
 
 /**
  * 
@@ -384,4 +387,68 @@ public class FresnelRepositoryDao extends BaseRepositoryDao {
 		return resourceUris;
 	}
 
+        public ProjectInfo getProjectInfo(){
+            ProjectInfo projectInfo = new ProjectInfo();
+            RepositoryConnection connection = null;
+            try {
+                connection = repository.getConnection();
+                ValueFactory vf = connection.getValueFactory();
+                RepositoryResult<Statement> statements = connection.getStatements(null, 
+                        vf.createURI(Constants.RDF_NAMESPACE_URI, Constants._type), 
+                        vf.createURI(DOAPConstants._Project), false, NULL_CONTEXTS);
+                if(statements.hasNext()){
+                    Statement st = statements.next();
+                    projectInfo.setUri(st.getSubject().stringValue());
+                    RepositoryResult<Statement> rr = connection.getStatements(st.getSubject(), 
+                            vf.createURI(DOAPConstants.DOAP_NAMESPACE_URI, DOAPConstants._name), 
+                            null, false, NULL_CONTEXTS);
+                    if(rr.hasNext()){
+                        projectInfo.setName(rr.next().getObject().stringValue());
+                    }else{
+                        return null;
+                    }
+                    rr = connection.getStatements(st.getSubject(), 
+                            vf.createURI(DOAPConstants.DOAP_NAMESPACE_URI, DOAPConstants._description), 
+                            null, false, NULL_CONTEXTS);
+                    if(rr.hasNext()){
+                        projectInfo.setDescription(rr.next().getObject().stringValue());
+                    }
+                }else{
+                    return null;
+                }
+            } catch (RepositoryException ex) {
+                LOG.error("Error loading project info!", ex);
+            } finally {
+                closeConnection(connection);
+            }
+            return projectInfo;
+        }
+        
+        public boolean writeProjectInfo(ProjectInfo projectInfo){
+            RepositoryConnection connection = null;
+            try {
+                connection = repository.getConnection();
+                ValueFactory vf = connection.getValueFactory();
+                connection.setAutoCommit(false);
+                
+                connection.add(vf.createStatement(vf.createURI(projectInfo.getUri()), 
+                        vf.createURI(Constants.RDF_NAMESPACE_URI, Constants._type), 
+                        vf.createURI(DOAPConstants._Project)), NULL_CONTEXTS);
+                connection.add(vf.createStatement(vf.createURI(projectInfo.getUri()), 
+                        vf.createURI(DOAPConstants.DOAP_NAMESPACE_URI, DOAPConstants._name), 
+                        vf.createLiteral(projectInfo.getName())), NULL_CONTEXTS);
+                if(projectInfo.getDescription() != null){
+                    connection.add(vf.createStatement(vf.createURI(projectInfo.getUri()), 
+                        vf.createURI(DOAPConstants.DOAP_NAMESPACE_URI, DOAPConstants._description), 
+                        vf.createLiteral(projectInfo.getDescription())), NULL_CONTEXTS);
+                }
+                connection.commit();
+                connection.setAutoCommit(true);
+            } catch (RepositoryException ex) {
+                LOG.error("Error saving project info!", ex);
+            } finally {
+                closeConnection(connection);
+            }    
+            return true;
+        }
 }
