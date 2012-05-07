@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <applicationConfiguration>
-    <lastOpenProjectUrl>src/main/resources/samples/foaf/project.xml</lastOpenProjectUrl>
+    <lastOpenProjectUrl>src/main/resources/samples/foaf\project.xml</lastOpenProjectUrl>
     <namespaceConfigurations>
         <namespaceURI>http://www.w3.org/fresnel/info</namespaceURI>
         <prefix>fresnel</prefix>
