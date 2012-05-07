@@ -101,7 +101,7 @@ public class LensModel implements IModel {
 		initDomain(lens);
 		initProperties(lens);
 		this.purpose = lens.getPurpose();
-		this.groups = (List)lens.getAssociatedFormats(); 
+		this.groups = (List<Group>)lens.getAssociatedGroups(); 
 		if (StringUtils.hasText(lens.getComment())) {
 			// fixme igor: jFresnel does not parse the language information for
 			// comment
