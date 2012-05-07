@@ -158,22 +158,26 @@
         <dependency>
             <groupId>fr.inria.jfresnel.sparql.sesame</groupId>
             <artifactId>jfresnel-sparql-sesame</artifactId>
-            <version>0.3.3-SNAPSHOT</version>
+                 <version>0.3.3-SNAPSHOT</version> 
+       <!--   <version>0.3.2</version>-->
         </dependency>
         <dependency>
             <groupId>fr.inria.jfresnel.sparql</groupId>
             <artifactId>jfresnel-sparql-core</artifactId>
-            <version>0.3.3-SNAPSHOT</version>
+                      <version>0.3.3-SNAPSHOT</version> 
+       <!--   <version>0.3.2</version>-->
         </dependency>
         <dependency>
             <groupId>fr.inria.jfresnel.sesame</groupId>
             <artifactId>jfresnel-sesame</artifactId>
-            <version>0.3.3-SNAPSHOT</version>
+                     <version>0.3.3-SNAPSHOT</version> 
+       <!--   <version>0.3.2</version>-->
         </dependency>
         <dependency>
             <groupId>fr.inria.jfresnel</groupId>
             <artifactId>jfresnel-core</artifactId>
-            <version>0.3.3-SNAPSHOT</version>
+               <version>0.3.3-SNAPSHOT</version> 
+       <!--   <version>0.3.2</version>-->
         </dependency>
         <dependency>
             <groupId>com.jidesoft</groupId>
