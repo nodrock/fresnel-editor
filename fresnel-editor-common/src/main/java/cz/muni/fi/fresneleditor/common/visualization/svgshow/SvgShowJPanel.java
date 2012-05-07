@@ -5,6 +5,7 @@
  */
 package cz.muni.fi.fresneleditor.common.visualization.svgshow;
 
+import cz.muni.fi.fresneleditor.common.visualization.preprocessor.Utils;
 import java.awt.Dimension;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
@@ -15,6 +16,7 @@ import java.io.InputStream;
 import org.apache.batik.dom.svg.SAXSVGDocumentFactory;
 import org.apache.batik.swing.JSVGCanvas;
 import org.apache.batik.util.XMLResourceDescriptor;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -25,6 +27,7 @@ import org.w3c.dom.Element;
  */
 public class SvgShowJPanel extends javax.swing.JPanel {
 
+    private static final Logger LOG = LoggerFactory.getLogger(SvgShowJPanel.class);
     private JSVGCanvas canvas;
     private File file;
 
@@ -65,8 +68,19 @@ public class SvgShowJPanel extends javax.swing.JPanel {
             
             Document doc = f.createDocument(parserClassName, svgInputStream);
 
+        System.out.println("_______________________________VISUALIZE_________________________________");
+        System.out.println("________________________________________________________________________");
+        System.out.println("________________________________________________________________________");
+        System.out.println("________________________________________________________________________");
+        System.out.println(Utils.getInstance().parseDocumentToString(doc));
+        System.out.println("________________________________________________________________________");
+        System.out.println("________________________________________________________________________");
+        System.out.println("________________________________________________________________________");
+        System.out.println("________________________________________________________________________");
+            
             // sets the panel size to size of the displaying svg image
 
+ //           Element svgElement = (Element) doc.getElementsByTagName("svg:svg").item(0);
             Element svgElement = (Element) doc.getElementsByTagName("svg:svg").item(0);
                  
             Integer w = Math.round(Float.parseFloat(svgElement.getAttribute("width")));

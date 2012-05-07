@@ -1,51 +1,71 @@
-svg {
-  font-family:		Verdana, Tahoma, Arial, sans-serif;
-  font-size:		90%;
+/*
+ * Default CSS sheet for styling SVG output
+ *
+ * @author Milos Kalab
+ * @version 5. 5. 2012
+ */
+
+
+.f-results{
+
 }
 
-a {
-  text-decoration:	underline;
-  fill:			#0000ff;
+.f-resource{
+
 }
 
-.div-top {
-  stroke-width:		2;
-  stroke:		#c9c9c9;
-  stroke-dasharray:	8 5;
+.f-resource rect{
+    stroke-width:2px;
+    stroke:red;
+    fill:#ccc;
 }
 
-.bcLine{
-  fill:			#ffffff;
-  stroke:		#fee999;
-  stroke-width:		2;
+.f-resource text{
+    font-family:LucidaGrande;
+    font-size:11;
 }
 
-.h1 {
-  font-family:		serif;
-  font-size:		140%;
-  letter-spacing:	1;
-  text-anchor:		middle;
+.f-property{
+
 }
 
-.f-resource {
-  fill:			#c5cff0;
-  stroke:		#9fb2ed;
-  stroke-width:		2;
+.f-property .f-label line{
+    stroke:#000;
+    stroke-width:2;
+    stroke-dasharray:9, 5
 }
 
-
-.f-title-resource {
-  text-anchor:		end;
-  font-style:		italic;
+.f-property .f-label text{
+    font-family:LucidaGrande;
+    font-size:11;
 }
 
+.f-values{
 
-.defaultTextLabel {
-  font-weight: bold;
 }
 
-.defaultTextValue {
-  font-size: 120%;
-  font-style: italic;
+.f-values .f-label line{
+    stroke:#000;
+    stroke-width:2;
+    stroke-dasharray:9, 5
 }
 
+.f-value {
+
+}
+
+.f-value rect{
+    stroke-width:2px;
+    stroke:blue;
+    fill:#eee;
+}
+
+.f-value text{
+    font-family:LucidaGrande;
+    font-size:11;
+}
+
+foreignObject body div{
+    font-size:11px;
+    padding:6px 6px 6px 6px
+}

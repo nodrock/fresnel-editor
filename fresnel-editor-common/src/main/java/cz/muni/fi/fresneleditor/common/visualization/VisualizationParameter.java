@@ -18,7 +18,8 @@ public class VisualizationParameter {
 	public static final String DEFAULT_PAGE_TITLE = "RDF data visualization";
 
 	private String pageTitle = "RDF data visualization";
-	private String cssStylesheetURL = FresnelEditorConstants.DEFAULT_CSS_STYLESHEET_URL;
+	//private String cssStylesheetURL = FresnelEditorConstants.DEFAULT_CSS_STYLESHEET_URL;
+	private String cssStylesheetURL = FresnelEditorConstants.DEFAULT_SVG_CSS_STYLESHEET_URL;
 
 	/**
 	 * Default constructor.

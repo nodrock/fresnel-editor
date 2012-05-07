@@ -21,6 +21,7 @@ import org.w3c.dom.Document;
 import cz.muni.fi.fresneleditor.common.ContextHolder;
 import cz.muni.fi.fresneleditor.common.FresnelApplication;
 import cz.muni.fi.fresneleditor.common.guisupport.MessageDialog;
+import cz.muni.fi.fresneleditor.common.visualization.preprocessor.Utils;
 import cz.muni.fi.fresneleditor.model.FresnelRepositoryDao;
 import fr.inria.jfresnel.Format;
 import fr.inria.jfresnel.FresnelDocument;
@@ -167,7 +168,7 @@ public abstract class AbstractVisualizer implements IRDFVisualizer {
         try {
             Document document = renderer.render(fd, repository);
 
-            modifyInternalXML(document);
+            document = modifyInternalXML(document);
 
             // Prepare the DOM document for writing
             DOMSource source = new DOMSource(document);
@@ -179,8 +180,19 @@ public abstract class AbstractVisualizer implements IRDFVisualizer {
             // Set parameters to XSL template
             transformer.setParameter("pageTitle", visParam.getPageTitle());
             transformer.setParameter("cssStylesheetURL", visParam.getCssStylesheetURL());
-
             // Perform XSL transformation and write result into file
+            
+            System.out.println("_______________________________CIZI KOD_________________________________");
+        System.out.println("________________________________________________________________________");
+        System.out.println("________________________________________________________________________");
+        System.out.println("________________________________________________________________________");
+        System.out.println(Utils.getInstance().parseDocumentToString(document));
+        System.out.println("________________________________________________________________________");
+        System.out.println("________________________________________________________________________");
+        System.out.println("________________________________________________________________________");
+        System.out.println("________________________________________________________________________");
+        
+            
             transformer.transform(source, new StreamResult(new FileOutputStream(finalFile)));
 
             LOG.info("Final document has been written to file: " + defaultOutputFilename);
