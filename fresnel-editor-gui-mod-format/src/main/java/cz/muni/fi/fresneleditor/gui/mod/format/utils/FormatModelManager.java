@@ -24,12 +24,12 @@ import cz.muni.fi.fresneleditor.common.data.StyleType;
 import cz.muni.fi.fresneleditor.common.utils.AModelManager;
 import cz.muni.fi.fresneleditor.gui.mod.format.data.DomainSelectorGuiWrapper;
 import cz.muni.fi.fresneleditor.gui.mod.format.data.FormatModel;
-import cz.muni.fi.fresneleditor.gui.mod.format.data.enums.LabelType;
 import cz.muni.fi.fresneleditor.model.IModel;
 import fr.inria.jfresnel.Constants;
 import fr.inria.jfresnel.ContentFormat;
 import fr.inria.jfresnel.Format;
 import fr.inria.jfresnel.Group;
+import fr.inria.jfresnel.formats.FormatValueLabelPolicy;
 import fr.inria.jfresnel.fsl.FSLPath;
 import fr.inria.jfresnel.sesame.SesameFormat;
 import fr.inria.jfresnel.sparql.SPARQLQuery;
@@ -109,40 +109,14 @@ public class FormatModelManager extends AModelManager<Format> {
 				getFormatInstanceDomains(format));
 
 		// LABEL LOADING
-		// 3.2 Labelling Properties -
-		// http://www.w3.org/2005/04/fresnel-info/manual/
-		Literal rdfsLabel = getResourceLabel(formatUri);
-		List<Value> fresnelLabel = getResourceValueProperties(formatUri,
-				Constants.FRESNEL_NAMESPACE_URI + Constants._label);
-		// there is no fresnel:label property, the default behavior is to use
-		// the property's rdfs:label
-		if (fresnelLabel.size() == 0) {
-			formatModel.setLabelType(LabelType.DEFAULT);
-			// if(rdfsLabel.getLabel().equals("")){
-			// formatModel.setLiteralLabelValue();
-			// }else{
-			formatModel.setLabel(rdfsLabel);
-			// }
-		} else {
-			if (format.getValueLabel() == Constants._show) {
-				formatModel.setLabelType(LabelType.DEFAULT);
-				formatModel.setLabel(rdfsLabel);
-			} else if (format.getValueLabel() == null) {
-				formatModel.setLabelType(LabelType.NONE);
-				formatModel.setLabel(null);
-			} else {
-				formatModel.setLabelType(LabelType.LITERAL);
-				formatModel.setLiteralLabelValue(format.getValueLabel());
-			}
+		if (format.getValueLabelPolicy() == FormatValueLabelPolicy.NOT_SPECIFIED) {
+			formatModel.setLabelType(FormatValueLabelPolicy.NOT_SPECIFIED);
+		}else if (format.getValueLabelPolicy() == FormatValueLabelPolicy.NONE) {
+			formatModel.setLabelType(FormatValueLabelPolicy.NONE);
+		}else{
+			formatModel.setLabelType(FormatValueLabelPolicy.SHOW);
+			formatModel.setLiteralLabelValue(format.getValueLabel());
 		}
-
-		// if (format.getValueLabel() == null) {
-		// formatModel.setLabelType(LabelType.DEFAULT);
-		// } else {
-		// formatModel.setLabelType(LabelType.LITERAL);
-		// formatModel.setLiteralLabelValue(format.getValueLabel());
-		// }
-		// FIXME: How to map LabelType.NONE?
 
 		// VALUE TYPES LOADING
 		formatModel.setValueType(format.getValueType());
@@ -271,10 +245,10 @@ public class FormatModelManager extends AModelManager<Format> {
 		format.setValueType(formatModel.getValueType());
 		
 		// Value label
-		if (formatModel.getLabelType().equals(LabelType.LITERAL)) {
+		if (formatModel.getLabelType().equals(FormatValueLabelPolicy.SHOW) && formatModel.getLiteralLabelValue() != null) {
 			format.setValueLabel(new LiteralImpl(formatModel
 					.getLiteralLabelValue()));
-		}
+                }
 
 		// Styles
 		for (StyleGuiWrapper style : formatModel.getStyles()) {

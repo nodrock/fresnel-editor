@@ -23,12 +23,12 @@ import cz.muni.fi.fresneleditor.common.data.StyleType;
 import cz.muni.fi.fresneleditor.common.utils.AModelManager;
 import cz.muni.fi.fresneleditor.gui.mod.format2.data.DomainSelectorGuiWrapper;
 import cz.muni.fi.fresneleditor.gui.mod.format2.data.FormatModel;
-import cz.muni.fi.fresneleditor.gui.mod.format2.data.enums.LabelType;
 import cz.muni.fi.fresneleditor.model.IModel;
 import fr.inria.jfresnel.Constants;
 import fr.inria.jfresnel.ContentFormat;
 import fr.inria.jfresnel.Format;
 import fr.inria.jfresnel.Group;
+import fr.inria.jfresnel.formats.FormatValueLabelPolicy;
 import fr.inria.jfresnel.fsl.FSLPath;
 import fr.inria.jfresnel.sesame.SesameFormat;
 import fr.inria.jfresnel.sparql.SPARQLQuery;
@@ -109,15 +109,14 @@ public class FormatModelManager extends AModelManager<Format> {
 				getFormatInstanceDomains(format));
 
 		// LABEL LOADING
-		if (format.getValueLabelPolicy() == Format.LABEL_POLICY_NOT_SPECIFIED) {
-			formatModel.setLabelType(LabelType.NOT_SPECIFIED);
-		}else if (format.getValueLabelPolicy() == Format.LABEL_POLICY_NONE) {
-			formatModel.setLabelType(LabelType.NONE);
+		if (format.getValueLabelPolicy() == FormatValueLabelPolicy.NOT_SPECIFIED) {
+			formatModel.setLabelType(FormatValueLabelPolicy.NOT_SPECIFIED);
+		}else if (format.getValueLabelPolicy() == FormatValueLabelPolicy.NONE) {
+			formatModel.setLabelType(FormatValueLabelPolicy.NONE);
 		}else{
-			formatModel.setLabelType(LabelType.SHOW);
+			formatModel.setLabelType(FormatValueLabelPolicy.SHOW);
 			formatModel.setLiteralLabelValue(format.getValueLabel());
 		}
-		// FIXME: How to map LabelType.NONE?
 
 		// VALUE TYPES LOADING
                 formatModel.setValueType(format.getValueType());
@@ -252,7 +251,7 @@ public class FormatModelManager extends AModelManager<Format> {
 		format.setPurposeType(formatModel.getPurposeType());
 		
 		// Value label
-		if (formatModel.getLabelType().equals(LabelType.SHOW) && formatModel.getLiteralLabelValue() != null) {
+		if (formatModel.getLabelType().equals(FormatValueLabelPolicy.SHOW) && formatModel.getLiteralLabelValue() != null) {
 			format.setValueLabel(new LiteralImpl(formatModel
 					.getLiteralLabelValue()));
 		}

@@ -22,10 +22,10 @@ import org.springframework.util.StringUtils;
 
 import cz.muni.fi.fresneleditor.common.data.AdditionalContentGuiWrapper;
 import cz.muni.fi.fresneleditor.common.data.StyleGuiWrapper;
-import cz.muni.fi.fresneleditor.gui.mod.format.data.enums.LabelType;
 import cz.muni.fi.fresneleditor.model.IModel;
 import fr.inria.jfresnel.Constants;
 import fr.inria.jfresnel.Format;
+import fr.inria.jfresnel.formats.FormatValueLabelPolicy;
 import fr.inria.jfresnel.formats.FormatValueType;
 
 /**
@@ -63,7 +63,7 @@ public class FormatModel implements IModel {
 
 	private List<AdditionalContentGuiWrapper> additionalContents = new ArrayList<AdditionalContentGuiWrapper>();
 
-	private LabelType labelType;
+	private FormatValueLabelPolicy labelType;
 
 	private String literalLabelValue;
 
@@ -110,7 +110,7 @@ public class FormatModel implements IModel {
 		resultStatements.add(statement);
 
 		// rdfs:label
-		if (comment != null) {
+		if (label != null) {
 			predicate = new URIImpl(PROPERTY_RDFS_LABEL);
 			object = label;
 			statement = new StatementImpl(formatSubject, predicate, object);
@@ -177,16 +177,16 @@ public class FormatModel implements IModel {
 		}
 
 		// FORMAT LABEL
-		if (labelType == LabelType.DEFAULT) {
+		if (labelType == FormatValueLabelPolicy.NOT_SPECIFIED) {
 			// Nothing
 			// TODO: Maybe fresnel:default
-		} else if (labelType == LabelType.NONE) {
+		} else if (labelType == FormatValueLabelPolicy.NONE) {
 			predicate = new URIImpl(Constants.FRESNEL_NAMESPACE_URI
 					+ Constants._label); // TODO: Create own constant
 			object = new URIImpl(Constants._none);
 			resultStatements.add(new StatementImpl(formatSubject, predicate,
 					object));
-		} else if (labelType == LabelType.LITERAL) {
+		} else if (labelType == FormatValueLabelPolicy.SHOW) {
 			predicate = new URIImpl(Constants.FRESNEL_NAMESPACE_URI
 					+ Constants._label);
 			object = new LiteralImpl(literalLabelValue, new URIImpl(
@@ -445,7 +445,7 @@ public class FormatModel implements IModel {
 	 * 
 	 * @return
 	 */
-	public LabelType getLabelType() {
+	public FormatValueLabelPolicy getLabelType() {
 		return labelType;
 	}
 
@@ -453,7 +453,7 @@ public class FormatModel implements IModel {
 	 * 
 	 * @param labelType
 	 */
-	public void setLabelType(LabelType labelType) {
+	public void setLabelType(FormatValueLabelPolicy labelType) {
 		this.labelType = labelType;
 	}
 

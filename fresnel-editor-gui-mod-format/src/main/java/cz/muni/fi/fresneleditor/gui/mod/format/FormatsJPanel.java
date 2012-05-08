@@ -43,13 +43,13 @@ import cz.muni.fi.fresneleditor.gui.mod.format.components.CheckBoxRenderer;
 import cz.muni.fi.fresneleditor.gui.mod.format.components.FormatDomainTableModel;
 import cz.muni.fi.fresneleditor.gui.mod.format.data.DomainSelectorGuiWrapper;
 import cz.muni.fi.fresneleditor.gui.mod.format.data.FormatModel;
-import cz.muni.fi.fresneleditor.gui.mod.format.data.enums.LabelType;
 import cz.muni.fi.fresneleditor.gui.mod.format.dialogs.DomainSelectorDialog;
 import cz.muni.fi.fresneleditor.gui.mod.format.dialogs.FormatPreviewDialog;
 import cz.muni.fi.fresneleditor.gui.mod.format.treemodel.FormatItemNode;
 import cz.muni.fi.fresneleditor.gui.mod.format.utils.FormatModelManager;
 import cz.muni.fi.fresneleditor.model.FresnelRepositoryDao;
 import fr.inria.jfresnel.Format;
+import fr.inria.jfresnel.formats.FormatValueLabelPolicy;
 import fr.inria.jfresnel.formats.FormatValueType;
 import fr.inria.jfresnel.sesame.SesameFormat;
 
@@ -190,11 +190,11 @@ public class FormatsJPanel extends javax.swing.JPanel implements
 				}
 				additionalContentTableModel.addAll(acModelList);
 				// Set label settings
-				if (formatModel.getLabelType() == LabelType.NONE) {
+				if (formatModel.getLabelType() == FormatValueLabelPolicy.NONE) {
 					noneLabelRadio.setSelected(true);
-				} else if (formatModel.getLabelType() == LabelType.DEFAULT) {
+				} else if (formatModel.getLabelType() == FormatValueLabelPolicy.NOT_SPECIFIED) {
 					defaultLabelRadio.setSelected(true);
-				} else if (formatModel.getLabelType() == LabelType.LITERAL) {
+				} else if (formatModel.getLabelType() == FormatValueLabelPolicy.SHOW) {
 					literalLabelRadio.setSelected(true);
 					literalText.setText(formatModel.getLiteralLabelValue());
 				}
@@ -234,15 +234,15 @@ public class FormatsJPanel extends javax.swing.JPanel implements
 		format.setAdditionalContents(additionalContentTableModel.getAll());
 		// Save label settings
 		if (defaultLabelRadio.isSelected()) {
-			format.setLabelType(LabelType.DEFAULT);
+			format.setLabelType(FormatValueLabelPolicy.NOT_SPECIFIED);
 		} else if (noneLabelRadio.isSelected()) {
-			format.setLabelType(LabelType.NONE);
+			format.setLabelType(FormatValueLabelPolicy.NONE);
 		} else if (literalLabelRadio.isSelected()) {
 			format.setLiteralLabelValue(literalText.getText());
-			format.setLabelType(LabelType.LITERAL);
+			format.setLabelType(FormatValueLabelPolicy.SHOW);
 		} else {
 			LOG.warn("No label type radio button selected - using default!");
-			format.setLabelType(LabelType.DEFAULT);
+			format.setLabelType(FormatValueLabelPolicy.NOT_SPECIFIED);
 		}
 		// Save values settings
 		if (defaultValueRadio.isSelected()) {
