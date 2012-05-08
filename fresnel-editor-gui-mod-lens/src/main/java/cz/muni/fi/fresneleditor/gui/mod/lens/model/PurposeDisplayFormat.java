@@ -4,7 +4,7 @@
  */
 package cz.muni.fi.fresneleditor.gui.mod.lens.model;
 
-import lenses.LensPurposeType;
+import fr.inria.jfresnel.lenses.LensPurposeType;
 
 /**
  *

@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
-import lenses.LensPurposeType;
+import fr.inria.jfresnel.lenses.LensPurposeType;
 
 /**
  * 

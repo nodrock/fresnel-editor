@@ -48,7 +48,7 @@ import fr.inria.jfresnel.Lens;
 import fr.inria.jfresnel.sesame.SesameLens;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
-import lenses.LensPurposeType;
+import fr.inria.jfresnel.lenses.LensPurposeType;
 
 /**
  * Main JPanel providing Fresnel Lens functionality to the user interface

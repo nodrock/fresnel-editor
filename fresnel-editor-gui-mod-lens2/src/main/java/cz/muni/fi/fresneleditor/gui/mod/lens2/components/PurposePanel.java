@@ -12,7 +12,7 @@
 package cz.muni.fi.fresneleditor.gui.mod.lens2.components;
 
 import fr.inria.jfresnel.Lens;
-import lenses.LensPurposeType;
+import fr.inria.jfresnel.lenses.LensPurposeType;
 
 /**
  * 

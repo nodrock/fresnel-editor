@@ -24,7 +24,7 @@ import fr.inria.jfresnel.PropertyVisibility;
 import fr.inria.jfresnel.fsl.FSLPath;
 import fr.inria.jfresnel.sparql.SPARQLQuery;
 import java.util.Collection;
-import lenses.LensPurposeType;
+import fr.inria.jfresnel.lenses.LensPurposeType;
 
 /**
  * Class that represents Fresnel Lens object.
