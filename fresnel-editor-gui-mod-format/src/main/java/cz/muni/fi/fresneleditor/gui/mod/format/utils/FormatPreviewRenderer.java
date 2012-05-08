@@ -114,7 +114,7 @@ public class FormatPreviewRenderer {
 
 		String baseResourceClass = null;
 
-		if (format.getBasicPropertyDomains().length != 0) {
+		if (!format.getBasicPropertyDomains().isEmpty()) {
 			// Find the domain where at least one resource exist in data
 			// repository
 			for (String domain : format.getBasicPropertyDomains()) {
