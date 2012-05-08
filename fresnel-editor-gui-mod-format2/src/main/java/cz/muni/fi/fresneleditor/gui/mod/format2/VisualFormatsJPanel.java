@@ -69,7 +69,6 @@ import cz.muni.fi.fresneleditor.gui.mod.format2.data.DomainSelectorGuiWrapper;
 import cz.muni.fi.fresneleditor.gui.mod.format2.data.FormatModel;
 import cz.muni.fi.fresneleditor.gui.mod.format2.data.ValueDisplayFormat;
 import cz.muni.fi.fresneleditor.gui.mod.format2.data.enums.LabelType;
-import cz.muni.fi.fresneleditor.gui.mod.format2.data.enums.PurposeType;
 import cz.muni.fi.fresneleditor.gui.mod.format2.dialogs.DomainSelectorDialog;
 import cz.muni.fi.fresneleditor.gui.mod.format2.dialogs.FormatPreviewDialog;
 import cz.muni.fi.fresneleditor.gui.mod.format2.treemodel.FormatItemNode;
@@ -78,6 +77,7 @@ import cz.muni.fi.fresneleditor.gui.mod.format2.utils.TextFileLoader;
 import cz.muni.fi.fresneleditor.model.FresnelRepositoryDao;
 import cz.muni.fi.fresneleditor.model.SparqlUtils;
 import fr.inria.jfresnel.Format;
+import fr.inria.jfresnel.formats.FormatPurposeType;
 import fr.inria.jfresnel.formats.FormatValueType;
 import fr.inria.jfresnel.sesame.SesameFormat;
 import javax.swing.GroupLayout.Alignment;
@@ -389,13 +389,13 @@ public class VisualFormatsJPanel extends javax.swing.JPanel implements
 				}
 
 				// Set purpose settings
-				if (formatModel.getPurposeType() == PurposeType.DEFAULT) {
+				if (formatModel.getPurposeType() == FormatPurposeType.NOT_SPECIFIED) {
 					radioPurposeDefault.setSelected(true);
-				} else if (formatModel.getPurposeType() == PurposeType.SCREEN) {
+				} else if (formatModel.getPurposeType() == FormatPurposeType.SCREEN) {
 					radioPurposeScreen.setSelected(true);
-				} else if (formatModel.getPurposeType() == PurposeType.PROJECTION) {
+				} else if (formatModel.getPurposeType() == FormatPurposeType.PROJECTION) {
 					radioPurposeProjection.setSelected(true);
-				} else if (formatModel.getPurposeType() == PurposeType.PRINT) {
+				} else if (formatModel.getPurposeType() == FormatPurposeType.PRINT) {
 					radioPurposePrint.setSelected(true);
 				}
 
@@ -494,16 +494,16 @@ public class VisualFormatsJPanel extends javax.swing.JPanel implements
 
 		// Save purpose settings
 		if (radioPurposeDefault.isSelected()) {
-			format.setPurposeType(PurposeType.DEFAULT);
+			format.setPurposeType(FormatPurposeType.NOT_SPECIFIED);
 		} else if (radioPurposeScreen.isSelected()) {
-			format.setPurposeType(PurposeType.SCREEN);
+			format.setPurposeType(FormatPurposeType.SCREEN);
 		} else if (radioPurposeProjection.isSelected()) {
-			format.setPurposeType(PurposeType.PROJECTION);
+			format.setPurposeType(FormatPurposeType.PROJECTION);
 		} else if (radioPurposePrint.isSelected()) {
-			format.setPurposeType(PurposeType.PRINT);
+			format.setPurposeType(FormatPurposeType.PRINT);
 		} else {
 			LOG.warn("No purpose type radio button selected - using default!");
-			format.setPurposeType(PurposeType.DEFAULT);
+			format.setPurposeType(FormatPurposeType.NOT_SPECIFIED);
 		}
 
 		// Save values settings

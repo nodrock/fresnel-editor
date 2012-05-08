@@ -24,7 +24,6 @@ import cz.muni.fi.fresneleditor.common.utils.AModelManager;
 import cz.muni.fi.fresneleditor.gui.mod.format2.data.DomainSelectorGuiWrapper;
 import cz.muni.fi.fresneleditor.gui.mod.format2.data.FormatModel;
 import cz.muni.fi.fresneleditor.gui.mod.format2.data.enums.LabelType;
-import cz.muni.fi.fresneleditor.gui.mod.format2.data.enums.PurposeType;
 import cz.muni.fi.fresneleditor.model.IModel;
 import fr.inria.jfresnel.Constants;
 import fr.inria.jfresnel.ContentFormat;
@@ -123,21 +122,8 @@ public class FormatModelManager extends AModelManager<Format> {
 		// VALUE TYPES LOADING
                 formatModel.setValueType(format.getValueType());
 		
-		// 
-		switch (format.getPurposeType()) {
-		case Format.PURPOSE_TYPE_NOT_SPECIFIED:
-			formatModel.setPurposeType(PurposeType.DEFAULT);
-			break;
-		case Format.PURPOSE_TYPE_PRINT:
-			formatModel.setPurposeType(PurposeType.PRINT);
-			break;
-		case Format.PURPOSE_TYPE_PROJECTION:
-			formatModel.setPurposeType(PurposeType.PROJECTION);
-			break;
-		case Format.PURPOSE_TYPE_SCREEN:
-			formatModel.setPurposeType(PurposeType.SCREEN);
-			break;
-		}
+		// PURPOSE TYPES LOADING
+                formatModel.setPurposeType(format.getPurposeType());
 		
 		// STYLES LOADING
 		if (format.getLabelStyle() != null) {
@@ -261,6 +247,9 @@ public class FormatModelManager extends AModelManager<Format> {
 
 		// Value type	
 		format.setValueType(formatModel.getValueType());
+                
+                // Purpose type	
+		format.setPurposeType(formatModel.getPurposeType());
 		
 		// Value label
 		if (formatModel.getLabelType().equals(LabelType.SHOW) && formatModel.getLiteralLabelValue() != null) {

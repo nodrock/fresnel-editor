@@ -22,10 +22,10 @@ import org.springframework.util.StringUtils;
 import cz.muni.fi.fresneleditor.common.data.AdditionalContentGuiWrapper;
 import cz.muni.fi.fresneleditor.common.data.StyleGuiWrapper;
 import cz.muni.fi.fresneleditor.gui.mod.format2.data.enums.LabelType;
-import cz.muni.fi.fresneleditor.gui.mod.format2.data.enums.PurposeType;
 import cz.muni.fi.fresneleditor.model.IModel;
 import fr.inria.jfresnel.Constants;
 import fr.inria.jfresnel.Format;
+import fr.inria.jfresnel.formats.FormatPurposeType;
 import fr.inria.jfresnel.formats.FormatValueType;
 
 /**
@@ -69,7 +69,7 @@ public class FormatModel implements IModel {
 
 	private FormatValueType valueType;
 
-	private PurposeType purposeType = PurposeType.DEFAULT;
+	private FormatPurposeType purposeType = FormatPurposeType.NOT_SPECIFIED;
 
 	private List<URI> associatedGroupURIs = new ArrayList<URI>();
 
@@ -219,14 +219,14 @@ public class FormatModel implements IModel {
 		}
 
 		// FORMAT PURPOSE
-		if (purposeType == PurposeType.DEFAULT) {
+		if (purposeType == FormatPurposeType.NOT_SPECIFIED) {
 			// Do nothing
 		} else {
 			predicate = new URIImpl(Constants.FRESNEL_NAMESPACE_URI
 					+ Constants._purpose); // TODO: we use here constant that
 											// should be used in lens only???
 
-			object = purposeType.getURI();
+			object = new URIImpl(purposeType.getUri());
 			if (object == null) {
 				LOG.error("Invalid format purpose type - %s!", purposeType);
 				throw new IndexOutOfBoundsException(
@@ -581,11 +581,11 @@ public class FormatModel implements IModel {
 		return sb.toString();
 	}
 
-	public void setPurposeType(PurposeType purposeType) {
+	public void setPurposeType(FormatPurposeType purposeType) {
 		this.purposeType = purposeType;
 	}
 
-	public PurposeType getPurposeType() {
+	public FormatPurposeType getPurposeType() {
 		return purposeType;
 	}
 }
