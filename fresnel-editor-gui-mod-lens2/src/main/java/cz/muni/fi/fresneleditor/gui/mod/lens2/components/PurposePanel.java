@@ -12,6 +12,7 @@
 package cz.muni.fi.fresneleditor.gui.mod.lens2.components;
 
 import fr.inria.jfresnel.Lens;
+import lenses.LensPurposeType;
 
 /**
  * 
@@ -97,27 +98,27 @@ public class PurposePanel extends javax.swing.JPanel {
 
 	// End of variables declaration//GEN-END:variables
 
-	public void setPurpose(short purpose) {
+	public void setPurpose(LensPurposeType purpose) {
 		switch (purpose) {
 
-		case Lens.PURPOSE_DEFAULT:
+		case DEFAULT:
 			buttonGroup.setSelected(defaultButton.getModel(), true);
 			break;
-		case Lens.PURPOSE_LABEL:
+		case LABEL:
 			buttonGroup.setSelected(labelbutton.getModel(), true);
 			break;
-		case Lens.PURPOSE_UNDEFINED:
+		case NOT_SPECIFIED:
 		default:
 			buttonGroup.setSelected(undefinedButton.getModel(), true);
 		}
 	}
 
-	public short getPurpose() {
+	public LensPurposeType getPurpose() {
 		if (buttonGroup.isSelected(labelbutton.getModel()))
-			return Lens.PURPOSE_LABEL;
+			return LensPurposeType.LABEL;
 		else if (buttonGroup.isSelected(defaultButton.getModel()))
-			return Lens.PURPOSE_DEFAULT;
-		return Lens.PURPOSE_UNDEFINED;
+			return LensPurposeType.DEFAULT;
+		return LensPurposeType.NOT_SPECIFIED;
 	}
 
 }

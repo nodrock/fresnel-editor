@@ -29,6 +29,7 @@ import fr.inria.jfresnel.PropertyVisibility;
 import fr.inria.jfresnel.fsl.FSLPath;
 import fr.inria.jfresnel.sparql.SPARQLQuery;
 import java.util.Collection;
+import lenses.LensPurposeType;
 
 /**
  * Class that represents Fresnel Lens object.
@@ -55,7 +56,7 @@ public class LensModel implements IModel {
 	private Literal comment;
 
 	private LensSelector selector;
-	private short purpose = Lens.PURPOSE_UNDEFINED;
+	private LensPurposeType purpose = LensPurposeType.NOT_SPECIFIED;
 
 	private List<PropertyVisibilityWrapper> showProperties = new ArrayList<PropertyVisibilityWrapper>();
 	private List<PropertyVisibilityWrapper> hideProperties = new ArrayList<PropertyVisibilityWrapper>();
@@ -150,11 +151,11 @@ public class LensModel implements IModel {
 		return fresnelLens;
 	}
 
-	public void setPurpose(short purpose) {
+	public void setPurpose(LensPurposeType purpose) {
 		this.purpose = purpose;
 	}
 
-	public short getPurpose() {
+	public LensPurposeType getPurpose() {
 		return purpose;
 	}
 
@@ -376,7 +377,7 @@ public class LensModel implements IModel {
 				+ ((hideProperties == null) ? 0 : hideProperties.hashCode());
 		result = prime * result + ((label == null) ? 0 : label.hashCode());
 		result = prime * result + ((lensUri == null) ? 0 : lensUri.hashCode());
-		result = prime * result + purpose;
+		result = prime * result + purpose.hashCode();
 		result = prime * result
 				+ ((selector == null) ? 0 : selector.hashCode());
 		result = prime * result

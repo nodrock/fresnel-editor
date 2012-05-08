@@ -41,10 +41,14 @@ import cz.muni.fi.fresneleditor.gui.mod.lens.components.EditShowPropertyJDialog;
 import cz.muni.fi.fresneleditor.gui.mod.lens.components.LensPreviewDialog;
 import cz.muni.fi.fresneleditor.gui.mod.lens.components.SelectLensPropertyJPanel;
 import cz.muni.fi.fresneleditor.gui.mod.lens.model.LensSelector;
+import cz.muni.fi.fresneleditor.gui.mod.lens.model.PurposeDisplayFormat;
 import cz.muni.fi.fresneleditor.gui.mod.lens.utils.LensModelManager;
 import fr.inria.jfresnel.Group;
 import fr.inria.jfresnel.Lens;
 import fr.inria.jfresnel.sesame.SesameLens;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+import lenses.LensPurposeType;
 
 /**
  * Main JPanel providing Fresnel Lens functionality to the user interface
@@ -74,6 +78,7 @@ public class LensJPanel extends javax.swing.JPanel implements
 	public LensJPanel(URI lensUri, LensItemNode lensItemNode) {
 
 		initComponents();
+                initLensPurposeCombo();
 		this.lensItemNode = lensItemNode;
 		this.lensUri = lensUri;
 		createNew = lensUri == null;
@@ -88,6 +93,16 @@ public class LensJPanel extends javax.swing.JPanel implements
 
 		loadModel(initialLensModel);
 	}
+        
+        private void initLensPurposeCombo(){
+            PurposeDisplayFormat[] purposes = {
+                            new PurposeDisplayFormat(LensPurposeType.NOT_SPECIFIED,
+                                            "Default (not specified)"),
+                            new PurposeDisplayFormat(LensPurposeType.DEFAULT),
+                            new PurposeDisplayFormat(LensPurposeType.LABEL) };
+            ComboBoxModel purposeDisplayFormatModel = new DefaultComboBoxModel(purposes);
+            lensPurposeCombo.setModel(purposeDisplayFormatModel);
+        }
 
 	/**
 	 * This method is called from within the constructor to initialize the form.
@@ -109,7 +124,7 @@ public class LensJPanel extends javax.swing.JPanel implements
 		commentJScrollPane = new javax.swing.JScrollPane();
 		commentTextArea = new javax.swing.JTextArea();
 		purposeJPanel = new javax.swing.JPanel();
-		lensPurposeCombo = new cz.muni.fi.fresneleditor.gui.mod.lens.components.PurposeJComboBox();
+		lensPurposeCombo = new javax.swing.JComboBox();
 		groupsJPanel = new javax.swing.JPanel();
 		groupsJScrollPane = new javax.swing.JScrollPane();
 		associatedGroupsList = new cz.muni.fi.fresneleditor.common.guisupport.components.UrisJList();
@@ -904,7 +919,7 @@ public class LensJPanel extends javax.swing.JPanel implements
 												.addComponent(reloadBtn)
 												.addComponent(previewBtn))
 								.addContainerGap()));
-	}// </editor-fold>//GEN-END:initComponents
+	}// </editor-fold>                        
 
 	private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_saveBtnActionPerformed
 		doSave();
@@ -1011,7 +1026,7 @@ public class LensJPanel extends javax.swing.JPanel implements
 	private cz.muni.fi.fresneleditor.gui.mod.lens.components.PropertyVisibilityJList hidePropertiesList;
 	private javax.swing.JLabel lensNameLbl;
 	private javax.swing.JTextField lensNameTextField;
-	private cz.muni.fi.fresneleditor.gui.mod.lens.components.PurposeJComboBox lensPurposeCombo;
+	private javax.swing.JComboBox lensPurposeCombo;
 	private javax.swing.JButton previewBtn;
 	private javax.swing.JPanel purposeJPanel;
 	private javax.swing.JButton reloadBtn;
@@ -1044,7 +1059,7 @@ public class LensJPanel extends javax.swing.JPanel implements
 		model.setSelector(lensSelector);
 
 		// lens purpose
-		model.setPurpose((Short) lensPurposeCombo.getSelectedItem());
+		model.setPurpose(((PurposeDisplayFormat)lensPurposeCombo.getSelectedItem()).getPurposeType());
 
 		// lens comment
 		String comment = commentTextArea.getText();
@@ -1112,7 +1127,7 @@ public class LensJPanel extends javax.swing.JPanel implements
 					.setElements(new ArrayList<PropertyVisibilityWrapper>());
 			showPropertiesList
 					.setElements(new ArrayList<PropertyVisibilityWrapper>());
-			lensPurposeCombo.setSelectedItem(Lens.PURPOSE_UNDEFINED);
+			lensPurposeCombo.setSelectedItem(new PurposeDisplayFormat(LensPurposeType.NOT_SPECIFIED));
 			lensNameTextField.setText(null);
 		} else {
 			List<URI> groupUris = new ArrayList<URI>();
@@ -1124,7 +1139,7 @@ public class LensJPanel extends javax.swing.JPanel implements
 					.getHideProperties()));
 			showPropertiesList.setElements(getCopyOfList(actualLensModel
 					.getShowProperties()));
-			lensPurposeCombo.setSelectedItem(actualLensModel.getPurpose());
+			lensPurposeCombo.setSelectedItem(new PurposeDisplayFormat(actualLensModel.getPurpose()));
 			lensNameTextField.setText(actualLensModel.getModelUri());
 		}
 

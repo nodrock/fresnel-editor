@@ -93,21 +93,7 @@ public class LensesUtils {
 
 		// purpose
 		{
-			String purp = null;
-			switch (model.getPurpose()) {
-			case Lens.PURPOSE_DEFAULT:
-				purp = Constants._defaultLens;
-				break;
-			case Lens.PURPOSE_LABEL:
-				purp = Constants._labelLens;
-				break;
-			case Lens.PURPOSE_UNDEFINED: // do nothing
-				break;
-			default:
-				throw new ArrayIndexOutOfBoundsException(
-						"Unsupported type of lens purpose: "
-								+ model.getPurpose());
-			}
+			String purp = model.getPurpose().getUri();
 			if (purp != null) {
 				Value object = new URIImpl(purp);
 				URI predicate = new URIImpl(Constants.FRESNEL_NAMESPACE_URI

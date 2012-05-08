@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
-import fr.inria.jfresnel.Lens;
+import lenses.LensPurposeType;
 
 /**
  * 
@@ -23,9 +23,9 @@ import fr.inria.jfresnel.Lens;
 public class PurposeJComboBox extends JComboBox {
 
 	public PurposeJComboBox() {
-		addItem(Lens.PURPOSE_UNDEFINED);
-		addItem(Lens.PURPOSE_DEFAULT);
-		addItem(Lens.PURPOSE_LABEL);
+		addItem(LensPurposeType.NOT_SPECIFIED);
+		addItem(LensPurposeType.DEFAULT);
+		addItem(LensPurposeType.LABEL);
 
 		setRenderer(LCR);
 	}
@@ -39,20 +39,20 @@ public class PurposeJComboBox extends JComboBox {
 					value, index, isSelected, cellHasFocus);
 
 			String purposeLabel;
-			short shortValue = (Short) value;
-			switch (shortValue) {
-			case Lens.PURPOSE_DEFAULT:
+			LensPurposeType type = (LensPurposeType) value;
+			switch (type) {
+			case DEFAULT:
 				purposeLabel = "Default";
 				break;
-			case Lens.PURPOSE_LABEL:
+			case LABEL:
 				purposeLabel = "Label";
 				break;
-			case Lens.PURPOSE_UNDEFINED:
+			case NOT_SPECIFIED:
 				purposeLabel = "Undefined";
 				break;
 			default:
 				throw new ArrayIndexOutOfBoundsException(
-						"Unknown lens purpose: " + shortValue);
+						"Unknown lens purpose: " + type.toString());
 			}
 
 			((JLabel) component).setText(purposeLabel);
