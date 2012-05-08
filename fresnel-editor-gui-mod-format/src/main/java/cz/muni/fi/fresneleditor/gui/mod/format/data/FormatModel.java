@@ -23,11 +23,10 @@ import org.springframework.util.StringUtils;
 import cz.muni.fi.fresneleditor.common.data.AdditionalContentGuiWrapper;
 import cz.muni.fi.fresneleditor.common.data.StyleGuiWrapper;
 import cz.muni.fi.fresneleditor.gui.mod.format.data.enums.LabelType;
-import cz.muni.fi.fresneleditor.gui.mod.format.data.enums.SpecifiedValueType;
-import cz.muni.fi.fresneleditor.gui.mod.format.data.enums.ValueType;
 import cz.muni.fi.fresneleditor.model.IModel;
 import fr.inria.jfresnel.Constants;
 import fr.inria.jfresnel.Format;
+import fr.inria.jfresnel.formats.FormatValueType;
 
 /**
  * Class which wraps all necessary data about Fresnel Format for GUI to be able
@@ -68,9 +67,7 @@ public class FormatModel implements IModel {
 
 	private String literalLabelValue;
 
-	private ValueType valueType;
-
-	private SpecifiedValueType specifiedValueType;
+	private FormatValueType valueType;
 
 	private List<URI> associatedGroupURIs = new ArrayList<URI>();
 
@@ -202,36 +199,19 @@ public class FormatModel implements IModel {
 		}
 
 		// FORMAT VALUE
-		if (valueType == ValueType.DEFAULT) {
+		if (valueType == FormatValueType.NOT_SPECIFIED) {
 			// Nothing
 			// TODO: Maybe fresnel:default
-		} else if (valueType == ValueType.SPECIFIED) {
+		} else {
 			predicate = new URIImpl(Constants.FRESNEL_NAMESPACE_URI
 					+ Constants._value); // TODO: Create own constant
-			switch (specifiedValueType) {
-			case EXTERNAL_LINK:
-				object = new URIImpl(Constants._externalLink);
-				break;
-			case IMAGE:
-				object = new URIImpl(Constants._image);
-				break;
-			case NONE:
-				object = new URIImpl(Constants._none);
-				break;
-			case URI:
-				object = new URIImpl(Constants._uri);
-				break;
-			default:
-				LOG.error("Invalid specified format value type - %s!",
-						specifiedValueType);
-				throw new IndexOutOfBoundsException(
-						"Invalid specified format value type!");
+			object = new URIImpl(valueType.getUri());
+                        if (object == null) {
+                            LOG.error("Invalid format value type - %s!", valueType);
+                            throw new IndexOutOfBoundsException("Invalid format value type!");
 			}
 			resultStatements.add(new StatementImpl(formatSubject, predicate,
 					object));
-		} else {
-			LOG.error("Invalid format value type - %s!", valueType);
-			throw new IndexOutOfBoundsException("Invalid format value type!");
 		}
 
 		// FORMAT STYLES
@@ -497,23 +477,7 @@ public class FormatModel implements IModel {
 	 * 
 	 * @return
 	 */
-	public SpecifiedValueType getSpecifiedValueType() {
-		return specifiedValueType;
-	}
-
-	/**
-	 * 
-	 * @param specifiedValueType
-	 */
-	public void setSpecifiedValueType(SpecifiedValueType specifiedValueType) {
-		this.specifiedValueType = specifiedValueType;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public ValueType getValueType() {
+	public FormatValueType getValueType() {
 		return valueType;
 	}
 
@@ -521,7 +485,7 @@ public class FormatModel implements IModel {
 	 * 
 	 * @param valueType
 	 */
-	public void setValueType(ValueType valueType) {
+	public void setValueType(FormatValueType valueType) {
 		this.valueType = valueType;
 	}
 

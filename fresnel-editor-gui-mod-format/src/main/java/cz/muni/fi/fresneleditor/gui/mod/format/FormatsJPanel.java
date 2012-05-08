@@ -44,14 +44,13 @@ import cz.muni.fi.fresneleditor.gui.mod.format.components.FormatDomainTableModel
 import cz.muni.fi.fresneleditor.gui.mod.format.data.DomainSelectorGuiWrapper;
 import cz.muni.fi.fresneleditor.gui.mod.format.data.FormatModel;
 import cz.muni.fi.fresneleditor.gui.mod.format.data.enums.LabelType;
-import cz.muni.fi.fresneleditor.gui.mod.format.data.enums.SpecifiedValueType;
-import cz.muni.fi.fresneleditor.gui.mod.format.data.enums.ValueType;
 import cz.muni.fi.fresneleditor.gui.mod.format.dialogs.DomainSelectorDialog;
 import cz.muni.fi.fresneleditor.gui.mod.format.dialogs.FormatPreviewDialog;
 import cz.muni.fi.fresneleditor.gui.mod.format.treemodel.FormatItemNode;
 import cz.muni.fi.fresneleditor.gui.mod.format.utils.FormatModelManager;
 import cz.muni.fi.fresneleditor.model.FresnelRepositoryDao;
 import fr.inria.jfresnel.Format;
+import fr.inria.jfresnel.formats.FormatValueType;
 import fr.inria.jfresnel.sesame.SesameFormat;
 
 /**
@@ -200,15 +199,11 @@ public class FormatsJPanel extends javax.swing.JPanel implements
 					literalText.setText(formatModel.getLiteralLabelValue());
 				}
 				// Set value settings
-				if (formatModel.getValueType() == ValueType.DEFAULT) {
+				if (formatModel.getValueType() == FormatValueType.NOT_SPECIFIED) {
 					defaultValueRadio.setSelected(true);
-				} else if (formatModel.getValueType() == ValueType.SPECIFIED) {
-					specifiedValueRadio.setSelected(true);
-					specifiedValueCmbBox.setSelectedItem(formatModel
-							.getSpecifiedValueType());
 				} else {
-					LOG.warn("No value type in format model - using default!");
-					defaultValueRadio.setSelected(true);
+					specifiedValueRadio.setSelected(true);
+					specifiedValueCmbBox.setSelectedItem(formatModel.getValueType());
 				}
 			}
 		});
@@ -251,14 +246,13 @@ public class FormatsJPanel extends javax.swing.JPanel implements
 		}
 		// Save values settings
 		if (defaultValueRadio.isSelected()) {
-			format.setValueType(ValueType.DEFAULT);
+			format.setValueType(FormatValueType.NOT_SPECIFIED);
 		} else if (specifiedValueRadio.isSelected()) {
-			format.setSpecifiedValueType((SpecifiedValueType) specifiedValueCmbBox
+			format.setValueType((FormatValueType) specifiedValueCmbBox
 					.getSelectedItem());
-			format.setValueType(ValueType.SPECIFIED);
 		} else {
 			LOG.warn("No label type radio button selected - using default!");
-			format.setLabelType(LabelType.DEFAULT);
+			format.setValueType(FormatValueType.NOT_SPECIFIED);
 		}
 		return format;
 	}
@@ -389,8 +383,8 @@ public class FormatsJPanel extends javax.swing.JPanel implements
 		specifiedValueRadio.setName("specifiedValueRadio"); // NOI18N
 
 		specifiedValueCmbBox
-				.setModel(new ExtendedDefaultComboBM<SpecifiedValueType>(
-						SpecifiedValueType.values()));
+				.setModel(new ExtendedDefaultComboBM<FormatValueType>(
+						FormatValueType.values()));
 		specifiedValueCmbBox.setName("specifiedValueCmbBox"); // NOI18N
 		specifiedValueCmbBox
 				.addActionListener(new java.awt.event.ActionListener() {
@@ -933,7 +927,7 @@ public class FormatsJPanel extends javax.swing.JPanel implements
 												.addComponent(closeBtn)
 												.addComponent(previewBtn))
 								.addContainerGap()));
-	}// </editor-fold>//GEN-END:initComponents
+	}// </editor-fold>                        
 
 	private void editSelectorBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_editSelectorBtnActionPerformed
 		handleEditSelectorAction();

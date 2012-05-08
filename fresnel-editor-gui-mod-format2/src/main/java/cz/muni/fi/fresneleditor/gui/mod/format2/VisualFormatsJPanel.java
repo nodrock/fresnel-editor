@@ -38,17 +38,9 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.jdesktop.application.Application;
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
-import org.openrdf.model.ValueFactory;
-import org.openrdf.model.impl.LiteralImpl;
-import org.openrdf.model.impl.URIImpl;
 import org.openrdf.query.QueryLanguage;
-import org.openrdf.repository.RepositoryConnection;
-import org.openrdf.repository.RepositoryException;
-import org.openrdf.repository.RepositoryResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -78,7 +70,6 @@ import cz.muni.fi.fresneleditor.gui.mod.format2.data.FormatModel;
 import cz.muni.fi.fresneleditor.gui.mod.format2.data.ValueDisplayFormat;
 import cz.muni.fi.fresneleditor.gui.mod.format2.data.enums.LabelType;
 import cz.muni.fi.fresneleditor.gui.mod.format2.data.enums.PurposeType;
-import cz.muni.fi.fresneleditor.gui.mod.format2.data.enums.ValueType;
 import cz.muni.fi.fresneleditor.gui.mod.format2.dialogs.DomainSelectorDialog;
 import cz.muni.fi.fresneleditor.gui.mod.format2.dialogs.FormatPreviewDialog;
 import cz.muni.fi.fresneleditor.gui.mod.format2.treemodel.FormatItemNode;
@@ -86,8 +77,8 @@ import cz.muni.fi.fresneleditor.gui.mod.format2.utils.FormatModelManager;
 import cz.muni.fi.fresneleditor.gui.mod.format2.utils.TextFileLoader;
 import cz.muni.fi.fresneleditor.model.FresnelRepositoryDao;
 import cz.muni.fi.fresneleditor.model.SparqlUtils;
-import fr.inria.jfresnel.Constants;
 import fr.inria.jfresnel.Format;
+import fr.inria.jfresnel.formats.FormatValueType;
 import fr.inria.jfresnel.sesame.SesameFormat;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -1439,24 +1430,23 @@ public class VisualFormatsJPanel extends javax.swing.JPanel implements
 	private JComboBox getValueDisplayFormat() {
 		if (valueDisplayFormat == null) {
 			ValueDisplayFormat[] formats = {
-					new ValueDisplayFormat(ValueType.DEFAULT,
+					new ValueDisplayFormat(FormatValueType.NOT_SPECIFIED,
 							"Default (not specified)"),
-					new ValueDisplayFormat(ValueType.EXTERNAL_LINK,
-							"fresnel:externalLink"),
-					new ValueDisplayFormat(ValueType.IMAGE, "fresnel:image"),
-					new ValueDisplayFormat(ValueType.URI, "fresnel:uri"),
-					new ValueDisplayFormat(ValueType.NONE, "fresnel:none"),
-					new ValueDisplayFormat(ValueType.VIDEO,
+					new ValueDisplayFormat(FormatValueType.EXTERNAL_LINK),
+					new ValueDisplayFormat(FormatValueType.IMAGE),
+					new ValueDisplayFormat(FormatValueType.URI),
+					new ValueDisplayFormat(FormatValueType.NONE),
+					new ValueDisplayFormat(FormatValueType.VIDEO,
 							"fresnel:video (extended)"),
-					new ValueDisplayFormat(ValueType.AUDIO,
+					new ValueDisplayFormat(FormatValueType.AUDIO,
 							"fresnel:audio (extended)"),
-					new ValueDisplayFormat(ValueType.ANIMATION,
+					new ValueDisplayFormat(FormatValueType.ANIMATION,
 							"fresnel:animation (extended)"),
-					new ValueDisplayFormat(ValueType.HTML,
+					new ValueDisplayFormat(FormatValueType.HTML,
 							"fresnel:html (extended)"),
-					new ValueDisplayFormat(ValueType.TEXT,
+					new ValueDisplayFormat(FormatValueType.TEXT,
 							"fresnel:text (extended)"),
-					new ValueDisplayFormat(ValueType.TEXTSTREAM,
+					new ValueDisplayFormat(FormatValueType.TEXTSTREAM,
 							"fresnel:textstream (extended)") };
 			ComboBoxModel valueDisplayFormatModel = new DefaultComboBoxModel(
 					formats);

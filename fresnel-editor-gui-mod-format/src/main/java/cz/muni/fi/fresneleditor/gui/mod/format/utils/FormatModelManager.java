@@ -25,8 +25,6 @@ import cz.muni.fi.fresneleditor.common.utils.AModelManager;
 import cz.muni.fi.fresneleditor.gui.mod.format.data.DomainSelectorGuiWrapper;
 import cz.muni.fi.fresneleditor.gui.mod.format.data.FormatModel;
 import cz.muni.fi.fresneleditor.gui.mod.format.data.enums.LabelType;
-import cz.muni.fi.fresneleditor.gui.mod.format.data.enums.SpecifiedValueType;
-import cz.muni.fi.fresneleditor.gui.mod.format.data.enums.ValueType;
 import cz.muni.fi.fresneleditor.model.IModel;
 import fr.inria.jfresnel.Constants;
 import fr.inria.jfresnel.ContentFormat;
@@ -147,30 +145,7 @@ public class FormatModelManager extends AModelManager<Format> {
 		// FIXME: How to map LabelType.NONE?
 
 		// VALUE TYPES LOADING
-		switch (format.getValueType()) {
-		case Format.VALUE_TYPE_NONE:
-			formatModel.setValueType(ValueType.SPECIFIED);
-			formatModel.setSpecifiedValueType(SpecifiedValueType.NONE);
-			break;
-		case Format.VALUE_TYPE_NOT_SPECIFIED:
-			formatModel.setValueType(ValueType.DEFAULT);
-			break;
-		case Format.VALUE_TYPE_IMAGE:
-			formatModel.setValueType(ValueType.SPECIFIED);
-			formatModel.setSpecifiedValueType(SpecifiedValueType.IMAGE);
-			break;
-		case Format.VALUE_TYPE_EXTERNAL_LINK:
-			formatModel.setValueType(ValueType.SPECIFIED);
-			formatModel.setSpecifiedValueType(SpecifiedValueType.EXTERNAL_LINK);
-			break;
-		case Format.VALUE_TYPE_URI:
-			formatModel.setValueType(ValueType.SPECIFIED);
-			formatModel.setSpecifiedValueType(SpecifiedValueType.URI);
-			break;
-		default:
-			formatModel.setValueType(ValueType.DEFAULT);
-			break;
-		}
+		formatModel.setValueType(format.getValueType());
 
 		// STYLES LOADING
 		if (format.getLabelStyle() != null) {
@@ -293,12 +268,8 @@ public class FormatModelManager extends AModelManager<Format> {
 		}
 
 		// Value type
-		if (formatModel.getValueType().equals(ValueType.SPECIFIED)) {
-			format.setValueType(convertValueType2JFresnel(
-					formatModel.getValueType(),
-					formatModel.getSpecifiedValueType()));
-		}
-
+		format.setValueType(formatModel.getValueType());
+		
 		// Value label
 		if (formatModel.getLabelType().equals(LabelType.LITERAL)) {
 			format.setValueLabel(new LiteralImpl(formatModel
@@ -356,31 +327,6 @@ public class FormatModelManager extends AModelManager<Format> {
 		}
 
 		return format;
-	}
-
-	private String convertValueType2JFresnel(ValueType valueType,
-			SpecifiedValueType specifiedValueType) {
-
-		switch (valueType) {
-		case DEFAULT:
-			return "VALUE_NOT_SPECIFIED";
-		case SPECIFIED:
-			switch (specifiedValueType) {
-			case NONE:
-				return Constants._none;
-			case IMAGE:
-				return Constants._image;
-			case URI:
-				return Constants._uri;
-			case EXTERNAL_LINK:
-				return Constants._externalLink;
-			default:
-				throw new IllegalArgumentException("specifiedValueType: "
-						+ specifiedValueType);
-			}
-		default:
-			throw new IllegalArgumentException("valueType:" + valueType);
-		}
 	}
 
 	private ContentFormat convertAdditionalContent2JFresnel(

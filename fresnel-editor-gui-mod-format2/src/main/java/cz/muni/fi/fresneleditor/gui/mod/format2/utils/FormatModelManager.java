@@ -25,7 +25,6 @@ import cz.muni.fi.fresneleditor.gui.mod.format2.data.DomainSelectorGuiWrapper;
 import cz.muni.fi.fresneleditor.gui.mod.format2.data.FormatModel;
 import cz.muni.fi.fresneleditor.gui.mod.format2.data.enums.LabelType;
 import cz.muni.fi.fresneleditor.gui.mod.format2.data.enums.PurposeType;
-import cz.muni.fi.fresneleditor.gui.mod.format2.data.enums.ValueType;
 import cz.muni.fi.fresneleditor.model.IModel;
 import fr.inria.jfresnel.Constants;
 import fr.inria.jfresnel.ContentFormat;
@@ -122,45 +121,7 @@ public class FormatModelManager extends AModelManager<Format> {
 		// FIXME: How to map LabelType.NONE?
 
 		// VALUE TYPES LOADING
-		switch (format.getValueType()) {
-		case Format.VALUE_TYPE_NOT_SPECIFIED:
-			formatModel.setValueType(ValueType.DEFAULT);
-			break;
-		case Format.VALUE_TYPE_NONE:
-			formatModel.setValueType(ValueType.NONE);
-			break;
-		case Format.VALUE_TYPE_IMAGE:
-			formatModel.setValueType(ValueType.IMAGE);
-			break;
-		case Format.VALUE_TYPE_EXTERNAL_LINK:
-			formatModel.setValueType(ValueType.EXTERNAL_LINK);
-			break;
-		case Format.VALUE_TYPE_URI:
-			formatModel.setValueType(ValueType.URI);
-			break;
-		/* Format value types (extended vocabulary) */
-		case Format.VALUE_TYPE_VIDEO:
-			formatModel.setValueType(ValueType.VIDEO);
-			break;
-		case Format.VALUE_TYPE_AUDIO:
-			formatModel.setValueType(ValueType.AUDIO);
-			break;
-		case Format.VALUE_TYPE_ANIMATION:
-			formatModel.setValueType(ValueType.ANIMATION);
-			break;
-		case Format.VALUE_TYPE_HTML:
-			formatModel.setValueType(ValueType.HTML);
-			break;
-		case Format.VALUE_TYPE_TEXT:
-			formatModel.setValueType(ValueType.TEXT);
-			break;
-		case Format.VALUE_TYPE_TEXTSTREAM:
-			formatModel.setValueType(ValueType.TEXTSTREAM);
-			break;
-		default:
-			formatModel.setValueType(ValueType.DEFAULT);
-			break;
-		}
+                formatModel.setValueType(format.getValueType());
 		
 		// 
 		switch (format.getPurposeType()) {
@@ -298,11 +259,9 @@ public class FormatModelManager extends AModelManager<Format> {
 			// 0.3.2
 		}
 
-		// Value type
-		if (formatModel.getValueType() != ValueType.DEFAULT) {
-			format.setValueType(formatModel.getValueType().getURI().toString());
-		}
-
+		// Value type	
+		format.setValueType(formatModel.getValueType());
+		
 		// Value label
 		if (formatModel.getLabelType().equals(LabelType.SHOW) && formatModel.getLiteralLabelValue() != null) {
 			format.setValueLabel(new LiteralImpl(formatModel

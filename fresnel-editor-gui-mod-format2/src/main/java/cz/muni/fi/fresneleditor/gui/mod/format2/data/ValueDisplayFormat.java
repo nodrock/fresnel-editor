@@ -1,13 +1,13 @@
 package cz.muni.fi.fresneleditor.gui.mod.format2.data;
 
-import cz.muni.fi.fresneleditor.gui.mod.format2.data.enums.ValueType;
+import fr.inria.jfresnel.formats.FormatValueType;
 
 public class ValueDisplayFormat {
 
-	private ValueType valueType;
+	private FormatValueType valueType;
 	private String label;
 
-	public ValueDisplayFormat(ValueType valueType, String label) {
+	public ValueDisplayFormat(FormatValueType valueType, String label) {
 		this.valueType = valueType;
 		if (label == null) {
 			this.label = valueType.toString();
@@ -15,8 +15,13 @@ public class ValueDisplayFormat {
 			this.label = label;
 		}
 	}
+        
+        public ValueDisplayFormat(FormatValueType valueType) {
+		this.valueType = valueType;
+		this.label = valueType.toString();
+	}
 
-	public ValueType getValueType() {
+	public FormatValueType getValueType() {
 		return valueType;
 	}
 

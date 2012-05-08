@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openrdf.model.BNode;
-import org.openrdf.model.Literal;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
@@ -24,10 +23,10 @@ import cz.muni.fi.fresneleditor.common.data.AdditionalContentGuiWrapper;
 import cz.muni.fi.fresneleditor.common.data.StyleGuiWrapper;
 import cz.muni.fi.fresneleditor.gui.mod.format2.data.enums.LabelType;
 import cz.muni.fi.fresneleditor.gui.mod.format2.data.enums.PurposeType;
-import cz.muni.fi.fresneleditor.gui.mod.format2.data.enums.ValueType;
 import cz.muni.fi.fresneleditor.model.IModel;
 import fr.inria.jfresnel.Constants;
 import fr.inria.jfresnel.Format;
+import fr.inria.jfresnel.formats.FormatValueType;
 
 /**
  * Class which wraps all necessary data about Fresnel Format for GUI to be able
@@ -68,7 +67,7 @@ public class FormatModel implements IModel {
 
 	private String literalLabelValue;
 
-	private ValueType valueType;
+	private FormatValueType valueType;
 
 	private PurposeType purposeType = PurposeType.DEFAULT;
 
@@ -202,14 +201,14 @@ public class FormatModel implements IModel {
 		}
 
 		// FORMAT VALUE
-		if (valueType == ValueType.DEFAULT) {
+		if (valueType == FormatValueType.NOT_SPECIFIED) {
 			// Nothing
 			// TODO: Maybe fresnel:default
 		} else {
 			predicate = new URIImpl(Constants.FRESNEL_NAMESPACE_URI
 					+ Constants._value); // TODO: Create own constant
 
-			object = valueType.getURI();
+			object = new URIImpl(valueType.getUri());
 			if (object == null) {
 				LOG.error("Invalid format value type - %s!", valueType);
 				throw new IndexOutOfBoundsException(
@@ -500,7 +499,7 @@ public class FormatModel implements IModel {
 	 * 
 	 * @return
 	 */
-	public ValueType getValueType() {
+	public FormatValueType getValueType() {
 		return valueType;
 	}
 
@@ -508,7 +507,7 @@ public class FormatModel implements IModel {
 	 * 
 	 * @param valueType
 	 */
-	public void setValueType(ValueType valueType) {
+	public void setValueType(FormatValueType valueType) {
 		this.valueType = valueType;
 	}
 
