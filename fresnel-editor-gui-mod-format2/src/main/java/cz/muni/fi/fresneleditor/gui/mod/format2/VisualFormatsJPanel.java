@@ -402,7 +402,7 @@ public class VisualFormatsJPanel extends javax.swing.JPanel implements
 				// Set value settings
 				if(formatModel.getValueType() != null){
 					valueDisplayFormat.setSelectedItem(new ValueDisplayFormat(
-							formatModel.getValueType(), null));
+							formatModel.getValueType()));
 				}
 			}
 		});
