@@ -70,7 +70,7 @@ public class FresnelRepositoryDao extends BaseRepositoryDao {
 		FresnelSesameParser parser = new FresnelSesameParser(null, null);
 		FresnelDocument fresnelDocument = parser.parse(repository,
 				getBaseUriForThisRepository());
-		return Arrays.asList(fresnelDocument.getLenses());
+		return fresnelDocument.getLenses();
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class FresnelRepositoryDao extends BaseRepositoryDao {
 		FresnelSesameParser parser = new FresnelSesameParser(null, null);
 		FresnelDocument fresnelDocument = parser.parse(repository,
 				getBaseUriForThisRepository());
-		return Arrays.asList(fresnelDocument.getFormats());
+		return fresnelDocument.getFormats();
 	}
 
 	public List<URI> getFormatsURIs() {
@@ -172,7 +172,7 @@ public class FresnelRepositoryDao extends BaseRepositoryDao {
 		FresnelSesameParser parser = new FresnelSesameParser(null, null);
 		FresnelDocument fresnelDocument = parser.parse(repository,
 				getBaseUriForThisRepository());
-		return Arrays.asList(fresnelDocument.getGroups());
+		return fresnelDocument.getGroups();
 	}
 
 	public List<URI> getGroupsURIs() {

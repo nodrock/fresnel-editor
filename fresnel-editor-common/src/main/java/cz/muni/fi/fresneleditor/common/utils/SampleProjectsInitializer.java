@@ -26,7 +26,7 @@ import cz.muni.fi.fresneleditor.model.FresnelRepositoryDao;
  */
 public class SampleProjectsInitializer {
 
-	private static final String NAME_FILE_PROJECT_CONF = "project.xml";
+	private static final String NAME_FILE_PROJECT_CONF = "fresnel.n3";
 	private static final String NAME_FILE_DATA = "data.n3";
 	private static final String NAME_FILE_FRESNEL = "fresnel.n3";
 

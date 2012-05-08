@@ -27,6 +27,8 @@ import fr.inria.jfresnel.FresnelDocument;
 import fr.inria.jfresnel.Group;
 import fr.inria.jfresnel.Lens;
 import fr.inria.jfresnel.sesame.SesameRenderer;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Basic implementation of RDF visualizer - it's based on XSLT transformation.
@@ -89,23 +91,22 @@ public abstract class AbstractVisualizer implements IRDFVisualizer {
 
         FresnelDocument fd = new FresnelDocument();
 
-        // Encapsulate group into array
-        Group[] groupArray = new Group[1];
-        groupArray[0] = group;
+        List<Group> groups = new ArrayList<Group>();
+        groups.add(group);
 
         if (group.getLenses() == null) {
-            fd.setLenses(new Lens[0]);
+            fd.setLenses(new ArrayList<Lens>());
         } else {
-            fd.setLenses(group.getLenses());
+            fd.setLenses(new ArrayList<Lens>(group.getLenses()));
         }
 
         if (group.getFormats() == null) {
-            fd.setFormats(new Format[0]);
+            fd.setFormats(new ArrayList<Format>());
         } else {
-            fd.setFormats(group.getFormats());
+            fd.setFormats(new ArrayList<Format>(group.getFormats()));
         }
 
-        fd.setGroups(groupArray);
+        fd.setGroups(groups);
 
         return fd;
     }
@@ -125,15 +126,14 @@ public abstract class AbstractVisualizer implements IRDFVisualizer {
             return null;
         }
 
-        // Encapsulate group into array
-        Group[] groupArray = new Group[1];
-        groupArray[0] = group;
+        List<Group> groups = new ArrayList<Group>();
+        groups.add(group);
 
         // Create Fresnel Document instance which will be passed to renderer
         FresnelDocument fd = new FresnelDocument();
-        fd.setLenses(group.getLenses());
-        fd.setFormats(group.getFormats());
-        fd.setGroups(groupArray);
+        fd.setLenses(new ArrayList<Lens>(group.getLenses()));
+        fd.setFormats(new ArrayList<Format>(group.getFormats()));
+        fd.setGroups(groups);
 
         return fd;
     }

@@ -18,6 +18,8 @@ import fr.inria.jfresnel.Format;
 import fr.inria.jfresnel.FresnelDocument;
 import fr.inria.jfresnel.Lens;
 import fr.inria.jfresnel.sesame.SesameRenderer;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RepositoryTest {
 
@@ -60,8 +62,8 @@ public class RepositoryTest {
 		SesameRenderer renderer = new SesameRenderer();
 
 		FresnelDocument fdTest = new FresnelDocument();
-		Lens[] lenses = new Lens[1];
-		lenses[0] = fresnelRepository.getLenses().get(0);
+		List<Lens> lenses = new ArrayList<Lens>();
+		lenses.add(fresnelRepository.getLenses().get(0));
 		fdTest.setLenses(lenses);
 
 		Document document = renderer.render(fdTest,
