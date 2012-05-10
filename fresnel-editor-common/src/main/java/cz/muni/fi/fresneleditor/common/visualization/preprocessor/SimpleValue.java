@@ -25,10 +25,15 @@ public class SimpleValue extends AbstractValue {
     }
 
     public void setValueContent(String valueContent) {
-        int rowsNeeded = Utils.getInstance().countRows(valueContent, SVGPreprocessor.xslSet.getRectWidth());
+        int rectWidth = SVGPreprocessor.xslSet.getRectWidth();
+        int rectMargin = SVGPreprocessor.xslSet.getTextResXInd()-SVGPreprocessor.xslSet.getRectResXInd();
+        if (rectWidth > rectMargin) {
+            rectWidth -= rectMargin; //margins in the rectangle
+        }
+        int rowsNeeded = Utils.getInstance().countRows(valueContent, rectWidth);
         if (rowsNeeded > 1) {
             this.longTextRowNumber = rowsNeeded;
-            this.valueContent = Utils.getInstance().shortenText(valueContent, SVGPreprocessor.xslSet.getRectWidth());
+            this.valueContent = Utils.getInstance().shortenText(valueContent, rectWidth);
             this.originalValueContent = valueContent;
         } else {
             this.valueContent = valueContent;

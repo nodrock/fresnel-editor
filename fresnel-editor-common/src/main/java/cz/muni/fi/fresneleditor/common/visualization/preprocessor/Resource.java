@@ -26,19 +26,24 @@ public class Resource {
 
     public Resource(String resourceUri, String resourceLabel) {
         int rowsNeeded;
+        int rectWidth = SVGPreprocessor.xslSet.getRectWidth();
+        int rectMargin = SVGPreprocessor.xslSet.getTextResXInd()-SVGPreprocessor.xslSet.getRectResXInd();
+        if (rectWidth > rectMargin) {
+            rectWidth -= rectMargin; //margins in the rectangle
+        }
         if (!"".equals(resourceLabel)) {
-            rowsNeeded = Utils.getInstance().countRows(resourceLabel, SVGPreprocessor.xslSet.getRectWidth());
+            rowsNeeded = Utils.getInstance().countRows(resourceLabel, rectWidth);
         } else {
-            rowsNeeded = Utils.getInstance().countRows(resourceUri, SVGPreprocessor.xslSet.getRectWidth());
+            rowsNeeded = Utils.getInstance().countRows(resourceUri, rectWidth);
         }
         if (rowsNeeded > 1) {
             this.longTextRowNumber = rowsNeeded;
             if (!"".equals(resourceLabel)) {
                 this.originalResourceLabel = resourceLabel;
-                this.resourceLabel = Utils.getInstance().shortenText(resourceLabel, SVGPreprocessor.xslSet.getRectWidth());
+                this.resourceLabel = Utils.getInstance().shortenText(resourceLabel, rectWidth);
             } else {
                 this.originalResourceLabel = resourceUri;
-                this.resourceUri = Utils.getInstance().shortenText(resourceUri, SVGPreprocessor.xslSet.getRectWidth());
+                this.resourceUri = Utils.getInstance().shortenText(resourceUri, rectWidth);
             }
         } else {
             this.resourceUri = resourceUri;

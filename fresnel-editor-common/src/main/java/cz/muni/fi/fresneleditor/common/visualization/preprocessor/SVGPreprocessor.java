@@ -5,6 +5,7 @@
  */
 package cz.muni.fi.fresneleditor.common.visualization.preprocessor;
 
+import cz.muni.fi.fresneleditor.common.visualization.VisualizationParameter;
 import java.io.File;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,16 +17,21 @@ import org.w3c.dom.Document;
  * @version 5. 5. 2012
  */
 public class SVGPreprocessor {
-   
+
     private static final Logger LOG = LoggerFactory.getLogger(SVGPreprocessor.class);
     public static XSLStylesheetSettings xslSet;
 
     public SVGPreprocessor() {
         LOG.info("Initializing SVG preprocessor");
+        xslSet = new XSLStylesheetSettings();
     }
 
-    public Document processXMLForSVG(Document doc){
-        xslSet = new XSLStylesheetSettings();
+    public SVGPreprocessor(VisualizationParameter visParam) {
+        LOG.info("Initializing SVG preprocessor");
+        xslSet = new XSLStylesheetSettings(visParam);
+    }
+
+    public Document processXMLForSVG(Document doc) {
         xslSet.changeXSLSettings();
         TempXMLParser parser = TempXMLParser.getInstance();
         parser.setStringToParse(doc);

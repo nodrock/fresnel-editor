@@ -168,7 +168,11 @@ public abstract class AbstractVisualizer implements IRDFVisualizer {
         try {
             Document document = renderer.render(fd, repository);
 
-            document = modifyInternalXML(document);
+            if (visParam.getFontSize() >0 || visParam.getPicHeight() >0 || visParam.getRectWidth() >0 || visParam.getPropLine1Lenght() >0 || visParam.getPropLine2Lenght() >0) {
+                document = modifyInternalXML(document, visParam);
+            } else {
+                document = modifyInternalXML(document);
+            }
 
             // Prepare the DOM document for writing
             DOMSource source = new DOMSource(document);
@@ -181,18 +185,18 @@ public abstract class AbstractVisualizer implements IRDFVisualizer {
             transformer.setParameter("pageTitle", visParam.getPageTitle());
             transformer.setParameter("cssStylesheetURL", visParam.getCssStylesheetURL());
             // Perform XSL transformation and write result into file
-            
+
             System.out.println("_______________________________CIZI KOD_________________________________");
-        System.out.println("________________________________________________________________________");
-        System.out.println("________________________________________________________________________");
-        System.out.println("________________________________________________________________________");
-        System.out.println(Utils.getInstance().parseDocumentToString(document));
-        System.out.println("________________________________________________________________________");
-        System.out.println("________________________________________________________________________");
-        System.out.println("________________________________________________________________________");
-        System.out.println("________________________________________________________________________");
-        
-            
+            System.out.println("________________________________________________________________________");
+            System.out.println("________________________________________________________________________");
+            System.out.println("________________________________________________________________________");
+            System.out.println(Utils.getInstance().parseDocumentToString(document));
+            System.out.println("________________________________________________________________________");
+            System.out.println("________________________________________________________________________");
+            System.out.println("________________________________________________________________________");
+            System.out.println("________________________________________________________________________");
+
+
             transformer.transform(source, new StreamResult(new FileOutputStream(finalFile)));
 
             LOG.info("Final document has been written to file: " + defaultOutputFilename);
@@ -210,7 +214,11 @@ public abstract class AbstractVisualizer implements IRDFVisualizer {
      * @param doc source document
      * @return modified DOM document
      */
-    protected Document modifyInternalXML(Document doc){
+    protected Document modifyInternalXML(Document doc) {
+        return doc; // no changes
+    }
+
+    protected Document modifyInternalXML(Document doc, VisualizationParameter visParam) {
         return doc; // no changes
     }
 

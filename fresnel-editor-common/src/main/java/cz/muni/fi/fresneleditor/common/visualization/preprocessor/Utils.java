@@ -199,9 +199,9 @@ public class Utils {
         int fontSize = SVGPreprocessor.xslSet.getFontSize();
         float textLength = this.computeTextLenght(text, fontSize);
         if (textLength > length) {
-            numberOfRows = (int)Math.ceil(textLength / (double)length);
+            numberOfRows = (int) Math.ceil(textLength / (double) length);
         }
-        System.out.println("TEXT: "+text + "___"+length+ "___"+textLength+ "___"+numberOfRows+ "___"+ "___");
+        System.out.println("TEXT: " + text + "___" + length + "___" + textLength + "___" + numberOfRows + "___" + "___");
         return numberOfRows;
     }
 
@@ -210,9 +210,13 @@ public class Utils {
         int fontSize = SVGPreprocessor.xslSet.getFontSize();
         float textLength = this.computeTextLenght(text, fontSize);
         if (textLength > length) {
-            double ratio = textLength / (double)length;
-            shortenedText = text.substring(0, (int)Math.ceil(text.length() / ratio));
-            shortenedText = shortenedText.substring(0, shortenedText.length() - 3) + "...";
+            double ratio = textLength / (double) length;
+            shortenedText = text.substring(0, (int) Math.ceil(text.length() / ratio));
+            if (shortenedText.length() > 5) {
+                shortenedText = shortenedText.substring(0, shortenedText.length() - 5) + "...";
+            } else {
+                shortenedText += "...";
+            }
         }
         System.out.println(shortenedText);
         return shortenedText;

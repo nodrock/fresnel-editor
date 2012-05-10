@@ -6,6 +6,7 @@
 package cz.muni.fi.fresneleditor.common.visualization.preprocessor;
 
 import cz.muni.fi.fresneleditor.common.FresnelEditorConstants;
+import cz.muni.fi.fresneleditor.common.visualization.VisualizationParameter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -29,11 +30,11 @@ public class XSLStylesheetSettings {
 
     private static final Logger LOG = LoggerFactory.getLogger(XSLStylesheetSettings.class);
     public static final Namespace XSLNAMESPACE = Namespace.getNamespace("xsl", "http://www.w3.org/1999/XSL/Transform");
-    
     private int rectWidth = 200;
     private int picHeight = 200;
     private int fontSize = 12;
     private int rectResXInd = 20;
+    private int textResXInd = 35;
     private int propLine1Lenght = 100;
     private int propLine2Lenght = 100;
 
@@ -41,44 +42,27 @@ public class XSLStylesheetSettings {
     }
 
     public XSLStylesheetSettings(int rectWidth, int picHeight, int fontSize, int rectResXInd, int propLine1Lenght, int propLine2Lenght) {
-        if (rectWidth != 0 || picHeight != 0 || fontSize != 0 || rectResXInd != 0 || propLine1Lenght != 0 || propLine2Lenght != 0) {
+        if (rectWidth != 0 || picHeight != 0 || fontSize != 0 || propLine1Lenght != 0 || propLine2Lenght != 0) {
             this.rectWidth = rectWidth;
             this.picHeight = picHeight;
             this.fontSize = fontSize;
-            this.rectResXInd = rectResXInd;
+            if (rectResXInd != 0) {
+                this.rectResXInd = rectResXInd;
+            }
             this.propLine1Lenght = propLine1Lenght;
             this.propLine2Lenght = propLine2Lenght;
         }
     }
 
-//    public void getCSSStylesheetPath() {
-//        SAXBuilder builder = new SAXBuilder();
-//        File file = new File(SVGPreprocessorConstants.DEFAULT_XSL_SVG_TEMPLATE_URL);
-//
-//        try {
-//            Document document = (Document) builder.build(file);
-//            Element rootNode = document.getRootElement();
-//
-//            Element svgNode = rootNode.getChild("template", SVGPreprocessorConstants.XSLNAMESPACE).getChild("svg", SVGPreprocessorConstants.SVGNAMESPACE);
-//            String styleText = svgNode.getChild("style", SVGPreprocessorConstants.SVGNAMESPACE).getText();
-//            String[] textArray = styleText.split(" ");
-//            ///////////////////////// ADD THE STRINGS TO CSSSTYLESHEETSETTINGS
-//            String typeText = textArray[0].trim();
-//            System.out.println(typeText);
-//            System.out.println(textArray[1]);
-//            String filePath = textArray[1].substring(4, textArray[1].length());
-//            filePath = filePath.substring(0, filePath.length()-2);
-//            System.out.println("yoooooooooou_"+filePath);
-//            ///////////////////////// ADD THE STRINGS TO CSSSTYLESHEETSETTINGS
-//
-//
-//        } catch (IOException ex) {
-//            LOGGER.log(Level.SEVERE, "DocumentBuilder cannot be created", ex);
-//        } catch (JDOMException ex) {
-//            LOGGER.log(Level.SEVERE, "DocumentBuilder cannot be created", ex);
-//        }
-//    }
-
+    public XSLStylesheetSettings(VisualizationParameter visParam) {
+        System.out.println("TESTOVANI GUI PARAMETRU __ "+visParam.getRectWidth()+" __ "+visParam.getRectWidth()+" __ "+visParam.getFontSize()+" __ "+visParam.getPropLine1Lenght()+" __ "+visParam.getPropLine2Lenght());
+        this.rectWidth = visParam.getRectWidth();
+        this.picHeight = visParam.getPicHeight();
+        this.fontSize = visParam.getFontSize();
+        this.propLine1Lenght = visParam.getPropLine1Lenght();
+        this.propLine2Lenght = visParam.getPropLine2Lenght();
+    }
+    
     public void changeXSLSettings() {
 
         SAXBuilder builder = new SAXBuilder();
@@ -105,6 +89,9 @@ public class XSLStylesheetSettings {
                 }
                 if (param.getAttribute("name").getValue().equals("rect_res_x_ind")) {
                     param.setText(Integer.toString(rectResXInd));
+                }
+                if (param.getAttribute("name").getValue().equals("rect_res_text_x_ind")) {
+                    param.setText(Integer.toString(textResXInd));
                 }
                 if (param.getAttribute("name").getValue().equals("prop_line_ind_1")) {
                     param.setText(Integer.toString(propLine1Lenght));
@@ -170,5 +157,13 @@ public class XSLStylesheetSettings {
 
     public void setRectWidth(int rectWidth) {
         this.rectWidth = rectWidth;
+    }
+
+    public int getTextResXInd() {
+        return textResXInd;
+    }
+
+    public void setTextResXInd(int textResXInd) {
+        this.textResXInd = textResXInd;
     }
 }
