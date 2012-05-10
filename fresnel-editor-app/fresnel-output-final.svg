@@ -1,102 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg:svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "~http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg:svg xmlns:svg="http://www.w3.org/2000/svg" height="1409.6" width="680">
+<svg:svg xmlns:svg="http://www.w3.org/2000/svg" height="1660.25" width="880">
 <svg:style type="text/css">@import url(file:\\\C:\dev\f-e-ver1\fresnel-editor\fresnel-editor-app\src\main\resources\css\visualization-svg-default-style.css);</svg:style>
 <svg:g class="f-results">
 <svg:g class="f-resource">
-<svg:rect ry="10" rx="10" height="32.400000000000006" width="200" y="20" x="20"/>
-<svg:text y="39" x="35">http://www.fi.muni.cz/fresnel-edito...</svg:text>
+<svg:rect ry="10" rx="10" height="19.25" width="200" y="20" x="20"/>
+<svg:text font-size="11" y="38" x="35">http://www.fi.muni.cz/fresnel-e...</svg:text>
 <svg:g class="f-property">
 <svg:g class="f-label">
 <svg:line y2="35" x2="320" y1="35" x1="220"/>
-<svg:text y="30" x="323">Name: </svg:text>
+<svg:text font-size="11" y="30" x="323">Name: </svg:text>
 </svg:g>
 <svg:g class="f-values">
 <svg:g class="f-label">
-<svg:line y2="35" x2="420" y1="35" x1="320"/>
+<svg:line y2="35" x2="620" y1="35" x1="320"/>
 </svg:g>
 <svg:g class="f-value">
-<svg:rect height="32.400000000000006" width="200" y="20" x="420"/>
-<svg:text width="200" y="39" x="435">Miroslav Warchil</svg:text>
+<svg:rect height="19.25" width="200" y="20" x="620"/>
+<svg:text font-size="11" width="200" y="38" x="635">Miroslav Warchil</svg:text>
 </svg:g>
 </svg:g>
 </svg:g>
 <svg:g class="f-property">
 <svg:g class="f-label">
-<svg:line y2="70" x2="320" y1="35" x1="220"/>
-<svg:text y="65" x="323">Nick: </svg:text>
+<svg:line y2="69.25" x2="320" y1="35" x1="220"/>
+<svg:text font-size="11" y="64.25" x="323">Nick: </svg:text>
 </svg:g>
 <svg:g class="f-values">
 <svg:g class="f-label">
-<svg:line y2="70" x2="420" y1="70" x1="320"/>
+<svg:line y2="69.25" x2="620" y1="69.25" x1="320"/>
 </svg:g>
 <svg:g class="f-value">
-<svg:rect height="32.400000000000006" width="200" y="55" x="420"/>
-<svg:text width="200" y="74" x="435">archie</svg:text>
+<svg:rect height="19.25" width="200" y="54.25" x="620"/>
+<svg:text font-size="11" width="200" y="72.25" x="635">archie</svg:text>
 </svg:g>
 </svg:g>
 </svg:g>
 <svg:g class="f-property">
 <svg:g class="f-label">
-<svg:line y2="105" x2="320" y1="35" x1="220"/>
-<svg:text y="100" x="323">E-mail: </svg:text>
+<svg:line y2="103.5" x2="320" y1="35" x1="220"/>
+<svg:text font-size="11" y="98.5" x="323">E-mail: </svg:text>
 </svg:g>
 <svg:g class="f-values">
 <svg:g class="f-label">
-<svg:line y2="105" x2="420" y1="105" x1="320"/>
+<svg:line y2="103.5" x2="620" y1="103.5" x1="320"/>
 </svg:g>
 <svg:g class="f-value">
-<svg:a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="m.warchil@gmail.com">
-<svg:rect height="32.400000000000006" width="200" y="90" x="420"/>
-<svg:text width="200" y="109" x="435">m.warchil@gmail.com</svg:text>
+<svg:a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="">
+<svg:rect height="19.25" width="200" y="88.5" x="620"/>
+<svg:text font-size="11" width="200" y="106.5" x="635">m.warchil@gmail.com</svg:text>
 </svg:a>
 </svg:g>
 </svg:g>
 </svg:g>
 <svg:g class="f-property">
 <svg:g class="f-label">
-<svg:line y2="140" x2="320" y1="35" x1="220"/>
-<svg:text y="135" x="323">Homepage: </svg:text>
+<svg:line y2="137.75" x2="320" y1="35" x1="220"/>
+<svg:text font-size="11" y="132.75" x="323">Homepage: </svg:text>
 </svg:g>
 <svg:g class="f-values">
 <svg:g class="f-label">
-<svg:line y2="140" x2="420" y1="140" x1="320"/>
+<svg:line y2="137.75" x2="620" y1="137.75" x1="320"/>
 </svg:g>
 <svg:g class="f-value">
-<svg:a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://cz.linkedin.com/in/miroslavwarchil">
-<svg:rect height="32.400000000000006" width="200" y="125" x="420"/>
-<svg:text width="200" y="144" x="435">http://cz.linkedin.com/in/miroslavwarchil</svg:text>
+<svg:a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="">
+<svg:rect height="19.25" width="200" y="122.75" x="620"/>
+<svg:text font-size="11" width="200" y="140.75" x="635">http://cz.linkedin.com/in/miroslavwarchil</svg:text>
 </svg:a>
 </svg:g>
 </svg:g>
 </svg:g>
 <svg:g class="f-property">
 <svg:g class="f-label">
-<svg:line y2="175" x2="320" y1="35" x1="220"/>
-<svg:text y="170" x="323">Photo: </svg:text>
+<svg:line y2="172" x2="320" y1="35" x1="220"/>
+<svg:text font-size="11" y="167" x="323">Photo: </svg:text>
 </svg:g>
 <svg:g class="f-values">
 <svg:g class="f-label">
-<svg:line y2="175" x2="420" y1="175" x1="320"/>
+<svg:line y2="172" x2="620" y1="172" x1="320"/>
 </svg:g>
 <svg:g class="f-value">
-<svg:rect height="200" width="200" y="160" x="420"/>
-<svg:image xmlns:xlink="http://www.w3.org/1999/xlink" y="161" x="422" height="198" width="198" xlink:href="http://www.fi.muni.cz/~xwarchil/warchil-photo.jpg"/>
+<svg:rect height="200" width="200" y="157" x="620"/>
+<svg:image xmlns:xlink="http://www.w3.org/1999/xlink" y="158" x="622" height="198" width="198" xlink:href="http://www.fi.muni.cz/~xwarchil/warchil-photo.jpg"/>
 </svg:g>
 </svg:g>
 </svg:g>
 <svg:g class="f-property">
 <svg:g class="f-label">
-<svg:line y2="377.6" x2="320" y1="35" x1="220"/>
-<svg:text full-value="This person worked on following publications or documents: " y="372.6" x="323">This person work...</svg:text>
+<svg:line y2="387" x2="320" y1="35" x1="220"/>
+<svg:text font-size="11" y="382" x="323">This person worked on following publications or documents: </svg:text>
 </svg:g>
 <svg:g class="f-values">
 <svg:g class="f-label">
-<svg:line y2="377.6" x2="420" y1="377.6" x1="320"/>
+<svg:line y2="387" x2="620" y1="387" x1="320"/>
 </svg:g>
 <svg:g class="f-value">
-<svg:rect height="65px" width="200" y="362.6" x="420"/>
-<svg:foreignObject height="200" width="200" y="362.6" x="420">
+<svg:rect height="65px" width="200" y="372" x="620"/>
+<svg:foreignObject height="200" width="200" y="372" x="620">
 <xhtml:body xmlns:xhtml="http://www.w3.org/1999/xhtml">
 <xhtml:div style="font-size:11px; padding:0px 6px 0px 6px">http://www.fi.muni.cz/fresnel-editor#SceneGraphExport</xhtml:div>
 </xhtml:body>
@@ -106,16 +106,16 @@
 </svg:g>
 <svg:g class="f-property">
 <svg:g class="f-label">
-<svg:line y2="445.20000000000005" x2="320" y1="35" x1="220"/>
-<svg:text full-value="This person knows following people: " y="440.20000000000005" x="323">This person know...</svg:text>
+<svg:line y2="467" x2="320" y1="35" x1="220"/>
+<svg:text font-size="11" y="462" x="323">This person knows following people: </svg:text>
 </svg:g>
 <svg:g class="f-values">
 <svg:g class="f-label">
-<svg:line y2="445.20000000000005" x2="420" y1="445.20000000000005" x1="320"/>
+<svg:line y2="467" x2="620" y1="467" x1="320"/>
 </svg:g>
 <svg:g class="f-value">
-<svg:rect height="65px" width="200" y="430.20000000000005" x="420"/>
-<svg:foreignObject height="200" width="200" y="430.20000000000005" x="420">
+<svg:rect height="65px" width="200" y="452" x="620"/>
+<svg:foreignObject height="200" width="200" y="452" x="620">
 <xhtml:body xmlns:xhtml="http://www.w3.org/1999/xhtml">
 <xhtml:div style="font-size:11px; padding:0px 6px 0px 6px">http://www.fi.muni.cz/fresnel-editor#JosefZapletal</xhtml:div>
 </xhtml:body>
@@ -125,99 +125,99 @@
 </svg:g>
 </svg:g>
 <svg:g class="f-resource">
-<svg:rect ry="10" rx="10" height="32.400000000000006" width="200" y="517.8" x="20"/>
-<svg:text y="536.8" x="35">http://www.fi.muni.cz/fresnel-editor...</svg:text>
+<svg:rect ry="10" rx="10" height="19.25" width="200" y="552" x="20"/>
+<svg:text font-size="11" y="570" x="35">http://www.fi.muni.cz/fresnel-e...</svg:text>
 <svg:g class="f-property">
 <svg:g class="f-label">
-<svg:line y2="532.8" x2="320" y1="532.8" x1="220"/>
-<svg:text y="527.8" x="323">Name: </svg:text>
+<svg:line y2="567" x2="320" y1="567" x1="220"/>
+<svg:text font-size="11" y="562" x="323">Name: </svg:text>
 </svg:g>
 <svg:g class="f-values">
 <svg:g class="f-label">
-<svg:line y2="532.8" x2="420" y1="532.8" x1="320"/>
+<svg:line y2="567" x2="620" y1="567" x1="320"/>
 </svg:g>
 <svg:g class="f-value">
-<svg:rect height="32.400000000000006" width="200" y="517.8" x="420"/>
-<svg:text width="200" y="536.8" x="435">Josef Zapletal</svg:text>
-</svg:g>
-</svg:g>
-</svg:g>
-<svg:g class="f-property">
-<svg:g class="f-label">
-<svg:line y2="567.8" x2="320" y1="532.8" x1="220"/>
-<svg:text y="562.8" x="323">Nick: </svg:text>
-</svg:g>
-<svg:g class="f-values">
-<svg:g class="f-label">
-<svg:line y2="567.8" x2="420" y1="567.8" x1="320"/>
-</svg:g>
-<svg:g class="f-value">
-<svg:rect height="32.400000000000006" width="200" y="552.8" x="420"/>
-<svg:text width="200" y="571.8" x="435">zzapl</svg:text>
+<svg:rect height="19.25" width="200" y="552" x="620"/>
+<svg:text font-size="11" width="200" y="570" x="635">Josef Zapletal</svg:text>
 </svg:g>
 </svg:g>
 </svg:g>
 <svg:g class="f-property">
 <svg:g class="f-label">
-<svg:line y2="602.8" x2="320" y1="532.8" x1="220"/>
-<svg:text y="597.8" x="323">E-mail: </svg:text>
+<svg:line y2="601.25" x2="320" y1="567" x1="220"/>
+<svg:text font-size="11" y="596.25" x="323">Nick: </svg:text>
 </svg:g>
 <svg:g class="f-values">
 <svg:g class="f-label">
-<svg:line y2="602.8" x2="420" y1="602.8" x1="320"/>
+<svg:line y2="601.25" x2="620" y1="601.25" x1="320"/>
 </svg:g>
 <svg:g class="f-value">
-<svg:a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="zz4pl64@hotmail.com">
-<svg:rect height="32.400000000000006" width="200" y="587.8" x="420"/>
-<svg:text width="200" y="606.8" x="435">zz4pl64@hotmail.com</svg:text>
+<svg:rect height="19.25" width="200" y="586.25" x="620"/>
+<svg:text font-size="11" width="200" y="604.25" x="635">zzapl</svg:text>
+</svg:g>
+</svg:g>
+</svg:g>
+<svg:g class="f-property">
+<svg:g class="f-label">
+<svg:line y2="635.5" x2="320" y1="567" x1="220"/>
+<svg:text font-size="11" y="630.5" x="323">E-mail: </svg:text>
+</svg:g>
+<svg:g class="f-values">
+<svg:g class="f-label">
+<svg:line y2="635.5" x2="620" y1="635.5" x1="320"/>
+</svg:g>
+<svg:g class="f-value">
+<svg:a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="">
+<svg:rect height="19.25" width="200" y="620.5" x="620"/>
+<svg:text font-size="11" width="200" y="638.5" x="635">zz4pl64@hotmail.com</svg:text>
 </svg:a>
 </svg:g>
 </svg:g>
 </svg:g>
 <svg:g class="f-property">
 <svg:g class="f-label">
-<svg:line y2="637.8" x2="320" y1="532.8" x1="220"/>
-<svg:text y="632.8" x="323">Homepage: </svg:text>
+<svg:line y2="669.75" x2="320" y1="567" x1="220"/>
+<svg:text font-size="11" y="664.75" x="323">Homepage: </svg:text>
 </svg:g>
 <svg:g class="f-values">
 <svg:g class="f-label">
-<svg:line y2="637.8" x2="420" y1="637.8" x1="320"/>
+<svg:line y2="669.75" x2="620" y1="669.75" x1="320"/>
 </svg:g>
 <svg:g class="f-value">
-<svg:a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="www.zapletal.com">
-<svg:rect height="32.400000000000006" width="200" y="622.8" x="420"/>
-<svg:text width="200" y="641.8" x="435">www.zapletal.com</svg:text>
+<svg:a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="">
+<svg:rect height="19.25" width="200" y="654.75" x="620"/>
+<svg:text font-size="11" width="200" y="672.75" x="635">www.zapletal.com</svg:text>
 </svg:a>
 </svg:g>
 </svg:g>
 </svg:g>
 <svg:g class="f-property">
 <svg:g class="f-label">
-<svg:line y2="672.8" x2="320" y1="532.8" x1="220"/>
-<svg:text y="667.8" x="323">Photo: </svg:text>
+<svg:line y2="704" x2="320" y1="567" x1="220"/>
+<svg:text font-size="11" y="699" x="323">Photo: </svg:text>
 </svg:g>
 <svg:g class="f-values">
 <svg:g class="f-label">
-<svg:line y2="672.8" x2="420" y1="672.8" x1="320"/>
+<svg:line y2="704" x2="620" y1="704" x1="320"/>
 </svg:g>
 <svg:g class="f-value">
-<svg:rect height="200" width="200" y="657.8" x="420"/>
-<svg:image xmlns:xlink="http://www.w3.org/1999/xlink" y="658.8" x="422" height="198" width="198" xlink:href="http://www.iconspedia.com/uploads/1396576891.png"/>
+<svg:rect height="200" width="200" y="689" x="620"/>
+<svg:image xmlns:xlink="http://www.w3.org/1999/xlink" y="690" x="622" height="198" width="198" xlink:href="http://www.iconspedia.com/uploads/1396576891.png"/>
 </svg:g>
 </svg:g>
 </svg:g>
 <svg:g class="f-property">
 <svg:g class="f-label">
-<svg:line y2="875.4000000000001" x2="320" y1="532.8" x1="220"/>
-<svg:text full-value="This person worked on following publications or documents: " y="870.4000000000001" x="323">This person work...</svg:text>
+<svg:line y2="919" x2="320" y1="567" x1="220"/>
+<svg:text font-size="11" y="914" x="323">This person worked on following publications or documents: </svg:text>
 </svg:g>
 <svg:g class="f-values">
 <svg:g class="f-label">
-<svg:line y2="875.4000000000001" x2="420" y1="875.4000000000001" x1="320"/>
+<svg:line y2="919" x2="620" y1="919" x1="320"/>
 </svg:g>
 <svg:g class="f-value">
-<svg:rect height="65px" width="200" y="860.4000000000001" x="420"/>
-<svg:foreignObject height="200" width="200" y="860.4000000000001" x="420">
+<svg:rect height="65px" width="200" y="904" x="620"/>
+<svg:foreignObject height="200" width="200" y="904" x="620">
 <xhtml:body xmlns:xhtml="http://www.w3.org/1999/xhtml">
 <xhtml:div style="font-size:11px; padding:0px 6px 0px 6px">http://www.fi.muni.cz/fresnel-editor#HorniNemciWeb</xhtml:div>
 </xhtml:body>
@@ -227,16 +227,16 @@
 </svg:g>
 <svg:g class="f-property">
 <svg:g class="f-label">
-<svg:line y2="943" x2="320" y1="532.8" x1="220"/>
-<svg:text full-value="This person knows following people: " y="938" x="323">This person know...</svg:text>
+<svg:line y2="999" x2="320" y1="567" x1="220"/>
+<svg:text font-size="11" y="994" x="323">This person knows following people: </svg:text>
 </svg:g>
 <svg:g class="f-values">
 <svg:g class="f-label">
-<svg:line y2="943" x2="420" y1="943" x1="320"/>
+<svg:line y2="999" x2="620" y1="999" x1="320"/>
 </svg:g>
 <svg:g class="f-value">
-<svg:rect height="65px" width="200" y="928" x="420"/>
-<svg:foreignObject height="200" width="200" y="928" x="420">
+<svg:rect height="65px" width="200" y="984" x="620"/>
+<svg:foreignObject height="200" width="200" y="984" x="620">
 <xhtml:body xmlns:xhtml="http://www.w3.org/1999/xhtml">
 <xhtml:div style="font-size:11px; padding:0px 6px 0px 6px">http://www.fi.muni.cz/fresnel-editor#IanKerrigan</xhtml:div>
 </xhtml:body>
@@ -246,82 +246,82 @@
 </svg:g>
 </svg:g>
 <svg:g class="f-resource">
-<svg:rect ry="10" rx="10" height="32.400000000000006" width="200" y="1015.6" x="20"/>
-<svg:text y="1034.6" x="35">http://www.fi.muni.cz/fresnel-editor...</svg:text>
+<svg:rect ry="10" rx="10" height="19.25" width="200" y="1084" x="20"/>
+<svg:text font-size="11" y="1102" x="35">http://www.fi.muni.cz/fresnel-e...</svg:text>
 <svg:g class="f-property">
 <svg:g class="f-label">
-<svg:line y2="1030.6" x2="320" y1="1030.6" x1="220"/>
-<svg:text y="1025.6" x="323">Name: </svg:text>
+<svg:line y2="1099" x2="320" y1="1099" x1="220"/>
+<svg:text font-size="11" y="1094" x="323">Name: </svg:text>
 </svg:g>
 <svg:g class="f-values">
 <svg:g class="f-label">
-<svg:line y2="1030.6" x2="420" y1="1030.6" x1="320"/>
+<svg:line y2="1099" x2="620" y1="1099" x1="320"/>
 </svg:g>
 <svg:g class="f-value">
-<svg:rect height="32.400000000000006" width="200" y="1015.6" x="420"/>
-<svg:text width="200" y="1034.6" x="435">Ian Kerrigan</svg:text>
-</svg:g>
-</svg:g>
-</svg:g>
-<svg:g class="f-property">
-<svg:g class="f-label">
-<svg:line y2="1065.6" x2="320" y1="1030.6" x1="220"/>
-<svg:text y="1060.6" x="323">Nick: </svg:text>
-</svg:g>
-<svg:g class="f-values">
-<svg:g class="f-label">
-<svg:line y2="1065.6" x2="420" y1="1065.6" x1="320"/>
-</svg:g>
-<svg:g class="f-value">
-<svg:rect height="32.400000000000006" width="200" y="1050.6" x="420"/>
-<svg:text width="200" y="1069.6" x="435">kerry</svg:text>
+<svg:rect height="19.25" width="200" y="1084" x="620"/>
+<svg:text font-size="11" width="200" y="1102" x="635">Ian Kerrigan</svg:text>
 </svg:g>
 </svg:g>
 </svg:g>
 <svg:g class="f-property">
 <svg:g class="f-label">
-<svg:line y2="1100.6" x2="320" y1="1030.6" x1="220"/>
-<svg:text y="1095.6" x="323">E-mail: </svg:text>
+<svg:line y2="1133.25" x2="320" y1="1099" x1="220"/>
+<svg:text font-size="11" y="1128.25" x="323">Nick: </svg:text>
 </svg:g>
 <svg:g class="f-values">
 <svg:g class="f-label">
-<svg:line y2="1100.6" x2="420" y1="1100.6" x1="320"/>
+<svg:line y2="1133.25" x2="620" y1="1133.25" x1="320"/>
 </svg:g>
 <svg:g class="f-value">
-<svg:a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="kerry@fictive-mail.com">
-<svg:rect height="32.400000000000006" width="200" y="1085.6" x="420"/>
-<svg:text width="200" y="1104.6" x="435">kerry@fictive-mail.com</svg:text>
+<svg:rect height="19.25" width="200" y="1118.25" x="620"/>
+<svg:text font-size="11" width="200" y="1136.25" x="635">kerry</svg:text>
+</svg:g>
+</svg:g>
+</svg:g>
+<svg:g class="f-property">
+<svg:g class="f-label">
+<svg:line y2="1167.5" x2="320" y1="1099" x1="220"/>
+<svg:text font-size="11" y="1162.5" x="323">E-mail: </svg:text>
+</svg:g>
+<svg:g class="f-values">
+<svg:g class="f-label">
+<svg:line y2="1167.5" x2="620" y1="1167.5" x1="320"/>
+</svg:g>
+<svg:g class="f-value">
+<svg:a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="">
+<svg:rect height="19.25" width="200" y="1152.5" x="620"/>
+<svg:text font-size="11" width="200" y="1170.5" x="635">kerry@fictive-mail.com</svg:text>
 </svg:a>
 </svg:g>
 </svg:g>
 </svg:g>
 <svg:g class="f-property">
 <svg:g class="f-label">
-<svg:line y2="1135.6" x2="320" y1="1030.6" x1="220"/>
-<svg:text y="1130.6" x="323">Photo: </svg:text>
+<svg:line y2="1201.75" x2="320" y1="1099" x1="220"/>
+<svg:text font-size="11" y="1196.75" x="323">Photo: </svg:text>
 </svg:g>
 <svg:g class="f-values">
 <svg:g class="f-label">
-<svg:line y2="1135.6" x2="420" y1="1135.6" x1="320"/>
+<svg:line y2="1201.75" x2="620" y1="1201.75" x1="320"/>
 </svg:g>
 <svg:g class="f-value">
-<svg:rect height="200" width="200" y="1120.6" x="420"/>
-<svg:image xmlns:xlink="http://www.w3.org/1999/xlink" y="1121.6" x="422" height="198" width="198" xlink:href="http://www.iconspedia.com/uploads/645579990.png"/>
+<svg:rect height="200" width="200" y="1186.75" x="620"/>
+<svg:image xmlns:xlink="http://www.w3.org/1999/xlink" y="1187.75" x="622" height="198" width="198" xlink:href="http://www.iconspedia.com/uploads/645579990.png"/>
 </svg:g>
 </svg:g>
 </svg:g>
 <svg:g class="f-property">
 <svg:g class="f-label">
-<svg:line y2="1338.1999999999998" x2="320" y1="1030.6" x1="220"/>
-<svg:text full-value="Personal geek code: " y="1333.1999999999998" x="323">Personal geek co...</svg:text>
+<svg:line y2="1416.75" x2="320" y1="1099" x1="220"/>
+<svg:text font-size="11" y="1411.75" x="323">Personal geek code: </svg:text>
 </svg:g>
 <svg:g class="f-values">
 <svg:g class="f-label">
-<svg:line y2="1338.1999999999998" x2="420" y1="1338.1999999999998" x1="320"/>
+<svg:line y2="1416.75" x2="620" y1="1416.75" x1="320"/>
 </svg:g>
 <svg:g class="f-value">
-<svg:rect height="65px" width="200" y="1323.1999999999998" x="420"/>
-<svg:foreignObject height="200" width="200" y="1323.1999999999998" x="420">
+<svg:rect height="65px" width="200" y="1401.75" x="620"/>
+<svg:foreignObject height="200" width="200" y="1401.75" x="620">
 <xhtml:body xmlns:xhtml="http://www.w3.org/1999/xhtml">
 <xhtml:div style="font-size:11px; padding:0px 6px 0px 6px">GED/J d-- s:++&gt;:  a-- C++(++++) ULU++ P+ L++</xhtml:div>
 </xhtml:body>
