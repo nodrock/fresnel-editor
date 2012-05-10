@@ -16,7 +16,8 @@ public class SVGVisualisationJPanel extends VisualizationJPanel{
         super(new SVGVisualizer(),bundle.getString("SVG Visualization"));
         File f = new File(FresnelEditorConstants.DEFAULT_SVG_CSS_STYLESHEET_URL);
         super.setDefaultCssStylesheet(f.getAbsolutePath());
+        super.setVisibilitySVGVizSetting(true);
     }
 
-
+    
 }

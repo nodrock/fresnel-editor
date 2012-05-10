@@ -18,6 +18,7 @@ public class XHTMLVisualisationJPanel extends VisualizationJPanel{
         super(new XHTMLVisualizer(), bundle.getString("HTML Visualization"));
         File f = new File(FresnelEditorConstants.DEFAULT_CSS_STYLESHEET_URL);
         super.setDefaultCssStylesheet(f.getAbsolutePath());
+        super.setVisibilitySVGVizSetting(false);
     }
 
 
