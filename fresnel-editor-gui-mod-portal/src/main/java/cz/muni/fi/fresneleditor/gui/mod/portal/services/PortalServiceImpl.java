@@ -6,12 +6,10 @@ package cz.muni.fi.fresneleditor.gui.mod.portal.services;
 
 import cz.muni.fi.fresneleditor.gui.mod.portal.model.Service;
 import cz.muni.fi.fresneleditor.gui.mod.portal.model.Transformation;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -19,7 +17,6 @@ import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.InputStreamBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.BasicResponseHandler;
@@ -58,34 +55,6 @@ public class PortalServiceImpl implements PortalService {
                 services.add(service);
                 System.out.println(service.toString());
             }
-            
-            //HttpPost httppost = new HttpPost("http://localhost:8080/fresnelportal/rest/upload");
-            //HttpPost httppost = new HttpPost("http://localhost:8080/fresnelportal/render.htm");
-            
-            //FileBody bin = new FileBody(new File("test.n3"));
-//            StringBody selectedGroup = new StringBody("http://www.fi.muni.cz/fresnel-editor#airportVizGroup");
-//            StringBody selectedService = new StringBody("1");
-//            StringBody selectedTransformation = new StringBody("0");
-//
-//            MultipartEntity reqEntity = new MultipartEntity();
-            //reqEntity.addPart("file", bin);
-//            reqEntity.addPart("selectedGroup", selectedGroup);
-//            reqEntity.addPart("selectedService", selectedService);
-//            reqEntity.addPart("selectedTransformation", selectedTransformation);
-//            reqEntity.addPart("projectId", new StringBody("11"));
-            
-
-//            httppost.setEntity(reqEntity);
-//            httppost.setHeader("Accept","text/html");
-
-//            System.out.println("executing request " + httppost.getRequestLine());
-            //HttpResponse response = httpclient.execute(httppost);
-            
-//            ResponseHandler<String> responseHandler = new BasicResponseHandler();
-//            String responseBody = httpclient.execute(httppost, responseHandler);
-//            System.out.println("----------------------------------------");
-//            System.out.println(responseBody);
-//            System.out.println("----------------------------------------");
         } catch (JSONException ex){          
             return services;
         } catch (IOException ex){
@@ -163,8 +132,6 @@ public class PortalServiceImpl implements PortalService {
             reqEntity.addPart("projectId", new StringBody(projectId.toString()));
             
             httpPost.setEntity(reqEntity);
-            //            ResponseHandler<String> responseHandler = new BasicResponseHandler();
-            //            String responseBody = httpClient.execute(httpPost, responseHandler);
             HttpResponse response = httpClient.execute(httpPost);
             response.getEntity().writeTo(result);
          
