@@ -6,8 +6,8 @@ package cz.muni.fi.fresneleditor.gui.mod.lens.components;
 
 import cz.muni.fi.fresneleditor.common.guisupport.dialogs.PreviewDialog;
 import cz.muni.fi.fresneleditor.gui.mod.lens.utils.LensPreviewRenderer;
-import fr.inria.jfresnel.sesame.SesameFormat;
-import fr.inria.jfresnel.sesame.SesameLens;
+import fr.inria.jfresnel.Format;
+import fr.inria.jfresnel.Lens;
 
 /**
  * 
@@ -17,7 +17,7 @@ import fr.inria.jfresnel.sesame.SesameLens;
 public class LensPreviewDialog extends PreviewDialog {
 
 	public LensPreviewDialog(java.awt.Frame parent, boolean modal, int type,
-			SesameLens lens, SesameFormat format) {
+			Lens lens, Format format) {
 
 		super(parent, modal, type, lens, format);
 	}

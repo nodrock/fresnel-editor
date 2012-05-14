@@ -492,7 +492,7 @@ public class LensJPanel2 extends javax.swing.JPanel implements
 												.addComponent(saveBtn)
 												.addComponent(deleteBtn))
 								.addGap(120, 120, 120)));
-	}// </editor-fold>//GEN-END:initComponents
+	}// </editor-fold>                        
 
 	private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_saveBtnActionPerformed
 		doSave();
@@ -518,7 +518,7 @@ public class LensJPanel2 extends javax.swing.JPanel implements
 	private void previewBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_previewBtnActionPerformed
 		// Export currently edited format to be displayed
 		LensModelManager modelManager = new LensModelManager();
-		SesameLens lens = modelManager.convertModel2JFresnel(saveModel());
+		Lens lens = modelManager.convertModel2JFresnel(saveModel());
 
 		// Show preview dialog for setting preview parameters
 		PreviewDialog previewDialog = new LensPreviewDialog(

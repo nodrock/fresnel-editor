@@ -1,141 +1,150 @@
-@prefix foaf       : <http://xmlns.com/foaf/0.1/> .
-@prefix owl        : <http://www.w3.org/2002/07/owl#> .
-@prefix rdf        : <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs       : <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix fresnel    :  <http://www.w3.org/2004/09/fresnel#> . 
-@prefix foafsample : <http://www.fi.muni.cz/fresnel-editor#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix foafsample: <http://www.fi.muni.cz/fresnel-editor#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix fresnel: <http://www.w3.org/2004/09/fresnel#> .
 
-# -----------------
-# 1. Fresnel Lenses
-# -----------------
+foafsample:basicPersonLens a fresnel:Lens ;
+	rdfs:comment "Fresnel Lens selecting basic person properties (name, mbox, depiction)."@en ;
+	fresnel:classLensDomain foaf:Person ;
+	fresnel:purpose fresnel:defaultLens .
 
-foafsample:basicPersonLens    a    fresnel:Lens ;
-    rdfs:comment            "Fresnel Lens selecting basic person properties (name, mbox, depiction)."@en ;
-    fresnel:classLensDomain foaf:Person ;
-    fresnel:purpose         fresnel:default ;
-    fresnel:showProperties  (    foaf:name
-                                 foaf:mbox
-                                 foaf:depiction ) ;
-    fresnel:group           foafsample:basicPersonVizGroup .
-                  
-foafsample:fullPersonLens    a    fresnel:Lens ;
-    rdfs:comment            "Fresnel Lens selecting all person properties (hides rdf:type)."@en ;
-    fresnel:classLensDomain foaf:Person ;
-    fresnel:showProperties  (    foaf:name
-                                 foaf:nick
-                                 foaf:mbox
-                                 foaf:homepage
-                                 foaf:depiction
-                                 # "foaf:knows/*/foaf:name"^^fresnel:fslSelector
-                                 #[   rdf:type          fresnel:PropertyDescription ;
-                                 #    fresnel:property  foaf:knows ;
-                                 #    fresnel:sublens   :foafPersonBasicLens ]
-                                 fresnel:allProperties ) ;
-    fresnel:hideProperties  rdf:type ;
-    fresnel:group           foafsample:fullPersonVizGroup .
-                  
-foafsample:fullDocumentLens    a    fresnel:Lens ;
-    rdfs:comment            "Fresnel Lens selecting all document properties (hides rdf:type)."@en ;
-    fresnel:classLensDomain foaf:Document ;
-    fresnel:showProperties  (    foaf:name
-                                 foaf:homepage
-                                 fresnel:allProperties ) ;
-    fresnel:hideProperties  rdf:type ;
-    fresnel:group           foafsample:fullDocumentVizGroup .
-                                              
-# ------------------
-# 2. Fresnel Formats
-# ------------------
+_:node16smgfnmax13 rdf:first foaf:name ;
+	rdf:rest _:node16smgfnmax14 .
 
-foafsample:nameFormat   a                            fresnel:Format ;
-     rdfs:comment                 "Fresnel Format styling name property."@en ;
-     fresnel:propertyFormatDomain foaf:name ;
-     fresnel:label                "Name: "@en ;
-     fresnel:labelStyle           "defaultTextLabel"^^fresnel:styleClass ;
-     fresnel:valueStyle           "defaultTextValue"^^fresnel:styleClass ;
-     fresnel:propertyStyle        "defaultProperty"^^fresnel:styleClass ;
-     fresnel:group                foafsample:basicPersonVizGroup ;
-     fresnel:group                foafsample:fullPersonVizGroup ;
-     fresnel:group                foafsample:fullDocumentVizGroup .
-              
-foafsample:nickFormat    a    fresnel:Format ;
-     rdfs:comment                 "Fresnel Format styling nick property."@en ;
-     fresnel:propertyFormatDomain foaf:nick ;
-     fresnel:label                "Nick: "@en ;
-     fresnel:labelStyle           "defaultTextLabel"^^fresnel:styleClass ;
-     fresnel:valueStyle           "defaultTextValue"^^fresnel:styleClass ;
-     fresnel:propertyStyle        "defaultProperty"^^fresnel:styleClass ;
-     fresnel:group                foafsample:fullPersonVizGroup .
-              
-foafsample:mboxFormat    a    fresnel:Format ;
-     rdfs:comment                 "Fresnel Format styling mbox property."@en ;
-     fresnel:propertyFormatDomain foaf:mbox ;
-     fresnel:label                "E-mail: "@en ;
-     fresnel:value                fresnel:externalLink ;
-     fresnel:labelStyle           "defaultTextLabel"^^fresnel:styleClass ;
-     fresnel:valueStyle           "defaultHyperlinkValue"^^fresnel:styleClass ;
-     fresnel:propertyStyle        "defaultProperty"^^fresnel:styleClass ;
-     fresnel:group                foafsample:basicPersonVizGroup ;
-     fresnel:group                foafsample:fullPersonVizGroup .
-              
-foafsample:homepageFormat    a    fresnel:Format ;
-     rdfs:comment                 "Fresnel Format styling homepage property."@en ;
-     fresnel:propertyFormatDomain foaf:homepage ;
-     fresnel:label                "Homepage: "@en ;
-     fresnel:value                fresnel:externalLink ;
-     fresnel:labelStyle           "defaultTextLabel"^^fresnel:styleClass ;
-     fresnel:valueStyle           "defaultHyperlinkValue"^^fresnel:styleClass ;
-     fresnel:propertyStyle        "defaultProperty"^^fresnel:styleClass ;
-     fresnel:group                foafsample:fullPersonVizGroup ;
-     fresnel:group                foafsample:fullDocumentVizGroup .
-                  
-foafsample:depictionFormat    a    fresnel:Format ;
-     rdfs:comment                 "Fresnel Format styling depiction property."@en ;
-     fresnel:propertyFormatDomain foaf:depiction ;
-     fresnel:label                "Photo: "@en ;
-     fresnel:value                fresnel:image ;
-     fresnel:labelStyle           "defaultTextLabel"^^fresnel:styleClass ;
-     fresnel:valueStyle           "defaultImageValue"^^fresnel:styleClass ;
-     fresnel:propertyStyle        "defaultProperty"^^fresnel:styleClass ;
-     fresnel:group                foafsample:basicPersonVizGroup ;
-     fresnel:group                foafsample:fullPersonVizGroup .
-                  
-foafsample:knowsFormat    a    fresnel:Format ;
-     rdfs:comment                 "Fresnel Format styling knows property."@en ;
-     fresnel:propertyFormatDomain foaf:knows ;
-     fresnel:label                "This person knows following people: "@en ;
-     fresnel:labelStyle           "defaultTextLabel"^^fresnel:styleClass ;
-     fresnel:valueStyle           "defaultTextValue"^^fresnel:styleClass ;
-     fresnel:propertyStyle        "defaultProperty"^^fresnel:styleClass ;
-     fresnel:group                foafsample:fullPersonVizGroup .
-               
-foafsample:publicationsFormat    a    fresnel:Format ;
-     rdfs:comment                 "Fresnel Format styling publications property."@en ;
-     fresnel:propertyFormatDomain foaf:publications ;
-     fresnel:label                "This person worked on following publications or documents: "@en ;
-     fresnel:labelStyle           "defaultTextLabel"^^fresnel:styleClass ;
-     fresnel:valueStyle           "defaultTextValue"^^fresnel:styleClass ;
-     fresnel:propertyStyle        "defaultProperty"^^fresnel:styleClass ;
-     fresnel:group                foafsample:fullPersonVizGroup .
-                      
-foafsample:geekCodeFormat    a    fresnel:Format ;
-     rdfs:comment                 "Fresnel Format styling geek code property."@en ;
-     fresnel:propertyFormatDomain foaf:geekcode ;
-     fresnel:label                "Personal geek code: "@en ;
-     fresnel:labelStyle           "defaultTextLabel"^^fresnel:styleClass ;
-     fresnel:valueStyle           "defaultTextValue"^^fresnel:styleClass ;
-     fresnel:propertyStyle        "defaultProperty"^^fresnel:styleClass ;
-     fresnel:group                foafsample:fullPersonVizGroup .
-                  
-# ------------------
-# 3. Fresnel Groups
-# ------------------
+_:node16smgfnmax14 rdf:first foaf:mbox ;
+	rdf:rest _:node16smgfnmax15 .
 
-foafsample:basicPersonVizGroup    a    fresnel:Group ;
-    rdfs:comment    "Group containing lenses and formats for very basic visualization of person instances."@en .
-                      
-foafsample:fullPersonVizGroup  a    fresnel:Group ;
-    rdfs:comment    "Group containing lenses and formats for visualization of all properties of person instances."@en .
+_:node16smgfnmax15 rdf:first foaf:depiction ;
+	rdf:rest rdf:nil .
 
-foafsample:fullDocumentVizGroup  a    fresnel:Group ;
-    rdfs:comment    "Group containing lenses and formats for visualization of all properties of document instances."@en .
+foafsample:basicPersonLens fresnel:showProperties _:node16smgfnmax13 ;
+	fresnel:group foafsample:basicPersonVizGroup .
+
+foafsample:fullPersonLens a fresnel:Lens ;
+	rdfs:comment "Fresnel Lens selecting all person properties (hides rdf:type)."@en ;
+	fresnel:classLensDomain foaf:Person .
+
+_:node16smgfnmax16 rdf:first foaf:name ;
+	rdf:rest _:node16smgfnmax17 .
+
+_:node16smgfnmax17 rdf:first foaf:nick ;
+	rdf:rest _:node16smgfnmax18 .
+
+_:node16smgfnmax18 rdf:first foaf:mbox ;
+	rdf:rest _:node16smgfnmax19 .
+
+_:node16smgfnmax19 rdf:first foaf:homepage ;
+	rdf:rest _:node16smgfnmax20 .
+
+_:node16smgfnmax20 rdf:first foaf:depiction ;
+	rdf:rest _:node16smgfnmax21 .
+
+_:node16smgfnmax21 rdf:first fresnel:allProperties ;
+	rdf:rest rdf:nil .
+
+foafsample:fullPersonLens fresnel:showProperties _:node16smgfnmax16 ;
+	fresnel:hideProperties rdf:type ;
+	fresnel:group foafsample:fullPersonVizGroup .
+
+foafsample:fullDocumentLens a fresnel:Lens ;
+	rdfs:comment "Fresnel Lens selecting all document properties (hides rdf:type)."@en ;
+	fresnel:classLensDomain foaf:Document .
+
+_:node16smgfnmax22 rdf:first foaf:name ;
+	rdf:rest _:node16smgfnmax23 .
+
+_:node16smgfnmax23 rdf:first foaf:homepage ;
+	rdf:rest _:node16smgfnmax24 .
+
+_:node16smgfnmax24 rdf:first fresnel:allProperties ;
+	rdf:rest rdf:nil .
+
+foafsample:fullDocumentLens fresnel:showProperties _:node16smgfnmax22 ;
+	fresnel:hideProperties rdf:type ;
+	fresnel:group foafsample:fullDocumentVizGroup .
+
+foafsample:nameFormat a fresnel:Format ;
+	rdfs:comment "Fresnel Format styling name property."@en ;
+	fresnel:propertyFormatDomain foaf:name ;
+	fresnel:label "Name: "@en ;
+	fresnel:labelStyle "defaultTextLabel"^^fresnel:styleClass ;
+	fresnel:valueStyle "defaultTextValue"^^fresnel:styleClass ;
+	fresnel:propertyStyle "defaultProperty"^^fresnel:styleClass ;
+	fresnel:group foafsample:basicPersonVizGroup , foafsample:fullPersonVizGroup , foafsample:fullDocumentVizGroup .
+
+foafsample:nickFormat a fresnel:Format ;
+	rdfs:comment "Fresnel Format styling nick property."@en ;
+	fresnel:propertyFormatDomain foaf:nick ;
+	fresnel:label "Nick: "@en ;
+	fresnel:labelStyle "defaultTextLabel"^^fresnel:styleClass ;
+	fresnel:valueStyle "defaultTextValue"^^fresnel:styleClass ;
+	fresnel:propertyStyle "defaultProperty"^^fresnel:styleClass ;
+	fresnel:group foafsample:fullPersonVizGroup .
+
+foafsample:mboxFormat a fresnel:Format ;
+	rdfs:comment "Fresnel Format styling mbox property."@en ;
+	fresnel:propertyFormatDomain foaf:mbox ;
+	fresnel:label "E-mail: "@en ;
+	fresnel:value fresnel:externalLink ;
+	fresnel:labelStyle "defaultTextLabel"^^fresnel:styleClass ;
+	fresnel:valueStyle "defaultHyperlinkValue"^^fresnel:styleClass ;
+	fresnel:propertyStyle "defaultProperty"^^fresnel:styleClass ;
+	fresnel:group foafsample:basicPersonVizGroup , foafsample:fullPersonVizGroup .
+
+foafsample:homepageFormat a fresnel:Format ;
+	rdfs:comment "Fresnel Format styling homepage property."@en ;
+	fresnel:propertyFormatDomain foaf:homepage ;
+	fresnel:label "Homepage: "@en ;
+	fresnel:value fresnel:externalLink ;
+	fresnel:labelStyle "defaultTextLabel"^^fresnel:styleClass ;
+	fresnel:valueStyle "defaultHyperlinkValue"^^fresnel:styleClass ;
+	fresnel:propertyStyle "defaultProperty"^^fresnel:styleClass ;
+	fresnel:group foafsample:fullPersonVizGroup , foafsample:fullDocumentVizGroup .
+
+foafsample:depictionFormat a fresnel:Format ;
+	rdfs:comment "Fresnel Format styling depiction property."@en ;
+	fresnel:propertyFormatDomain foaf:depiction ;
+	fresnel:label "Photo: "@en ;
+	fresnel:value fresnel:image ;
+	fresnel:labelStyle "defaultTextLabel"^^fresnel:styleClass ;
+	fresnel:valueStyle "defaultImageValue"^^fresnel:styleClass ;
+	fresnel:propertyStyle "defaultProperty"^^fresnel:styleClass ;
+	fresnel:group foafsample:basicPersonVizGroup , foafsample:fullPersonVizGroup .
+
+foafsample:knowsFormat a fresnel:Format ;
+	rdfs:comment "Fresnel Format styling knows property."@en ;
+	fresnel:propertyFormatDomain foaf:knows ;
+	fresnel:label "This person knows following people: "@en ;
+	fresnel:labelStyle "defaultTextLabel"^^fresnel:styleClass ;
+	fresnel:valueStyle "defaultTextValue"^^fresnel:styleClass ;
+	fresnel:propertyStyle "defaultProperty"^^fresnel:styleClass ;
+	fresnel:group foafsample:fullPersonVizGroup .
+
+foafsample:publicationsFormat a fresnel:Format ;
+	rdfs:comment "Fresnel Format styling publications property."@en ;
+	fresnel:propertyFormatDomain foaf:publications ;
+	fresnel:label "This person worked on following publications or documents: "@en ;
+	fresnel:labelStyle "defaultTextLabel"^^fresnel:styleClass ;
+	fresnel:valueStyle "defaultTextValue"^^fresnel:styleClass ;
+	fresnel:propertyStyle "defaultProperty"^^fresnel:styleClass ;
+	fresnel:group foafsample:fullPersonVizGroup .
+
+foafsample:geekCodeFormat a fresnel:Format ;
+	rdfs:comment "Fresnel Format styling geek code property."@en ;
+	fresnel:propertyFormatDomain foaf:geekcode ;
+	fresnel:label "Personal geek code: "@en ;
+	fresnel:labelStyle "defaultTextLabel"^^fresnel:styleClass ;
+	fresnel:valueStyle "defaultTextValue"^^fresnel:styleClass ;
+	fresnel:propertyStyle "defaultProperty"^^fresnel:styleClass ;
+	fresnel:group foafsample:fullPersonVizGroup .
+
+foafsample:basicPersonVizGroup a fresnel:Group ;
+	rdfs:comment "Group containing lenses and formats for very basic visualization of person instances."@en .
+
+foafsample:fullPersonVizGroup a fresnel:Group ;
+	rdfs:comment "Group containing lenses and formats for visualization of all properties of person instances."@en .
+
+foafsample:fullDocumentVizGroup a fresnel:Group ;
+	rdfs:comment "Group containing lenses and formats for visualization of all properties of document instances."@en .

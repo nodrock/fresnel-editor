@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <applicationConfiguration>
-    <lastOpenProjectUrl>src/main/resources/samples/foaf/project.xml</lastOpenProjectUrl>
+    <lastOpenProjectUrl>/Users/nodrock/NetBeansProjects/RemoteSessameTest2/fresnel.n3</lastOpenProjectUrl>
     <namespaceConfigurations>
         <namespaceURI>http://www.w3.org/fresnel/info</namespaceURI>
         <prefix>fresnel</prefix>
@@ -23,6 +23,15 @@
             <value>
                 <domain>FRESNEL</domain>
                 <name>fe-sp-fresnel-in-memory</name>
+                <type>LOCAL</type>
+            </value>
+        </entry>
+        <entry>
+            <key>data</key>
+            <value>
+                <domain>DATA</domain>
+                <location>/Users/nodrock/School/master_thesis/fresnel-editor/fresnel-editor-app/defaultParrentRepositoriesDir/data</location>
+                <name>data</name>
                 <type>LOCAL</type>
             </value>
         </entry>

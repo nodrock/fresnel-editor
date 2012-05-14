@@ -1475,7 +1475,7 @@ public class VisualFormatsJPanel extends javax.swing.JPanel implements
 	private void btnPreviewActionPerformed(ActionEvent evt) {
 		// Export currently edited format to be displayed
 		FormatModelManager modelManager = new FormatModelManager();
-		SesameFormat format = modelManager
+		Format format = modelManager
 				.convertModel2JFresnel(saveFormatModel());
 
 		// Show preview dialog for setting preview parameters

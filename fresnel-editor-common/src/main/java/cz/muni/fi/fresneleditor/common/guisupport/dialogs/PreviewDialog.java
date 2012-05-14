@@ -19,8 +19,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import cz.muni.fi.fresneleditor.common.utils.GuiUtils;
+import fr.inria.jfresnel.Format;
+import fr.inria.jfresnel.Lens;
 import fr.inria.jfresnel.sesame.SesameFormat;
-import fr.inria.jfresnel.sesame.SesameLens;
 
 /**
  * 
@@ -45,14 +46,14 @@ public class PreviewDialog extends javax.swing.JDialog {
 	public static final String DEFAULT_LENS_NAME = "fresneleditor:defaultVizLens";
 
 	protected int type = PREVIEW_INVALID;
-	protected SesameLens lens;
-	protected SesameFormat format;
+	protected Lens lens;
+	protected Format format;
 
 	/**
 	 * Creates new form PreviewDialog.
 	 */
 	public PreviewDialog(java.awt.Frame parent, boolean modal, int type,
-			SesameLens lens, SesameFormat format) {
+			Lens lens, Format format) {
 
 		super(parent, modal);
 		initComponents();
@@ -305,7 +306,7 @@ public class PreviewDialog extends javax.swing.JDialog {
 										Short.MAX_VALUE)));
 
 		pack();
-	}// </editor-fold>//GEN-END:initComponents
+	}// </editor-fold>                        
 
 	private void browseLocalCssBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_browseLocalCssBtnActionPerformed
 

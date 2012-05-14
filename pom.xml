@@ -15,7 +15,8 @@
         <module>fresnel-editor-gui-mod-format2</module>
         <module>fresnel-editor-gui-mod-vis</module>
         <module>fresnel-editor-gui-mod-group</module>
-    </modules>
+    <module>fresnel-editor-gui-mod-portal</module>
+  </modules>
     <repositories>
         <repository>
             <!-- repository for openrdf.sesame libraries -->

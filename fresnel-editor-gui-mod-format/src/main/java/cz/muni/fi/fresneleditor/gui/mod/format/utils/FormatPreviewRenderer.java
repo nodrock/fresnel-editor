@@ -59,7 +59,7 @@ public class FormatPreviewRenderer {
 		baseResourceClass = findBaseResourceClass(format);
 
 		// Create default group
-		Group defaultGroup = new SesameGroup(
+		Group defaultGroup = new Group(
 				"http://www.fi.muni.cz/fresnel-editor#defaultVizGroup", "");
 		defaultGroup.addFormat(format);
 
@@ -70,7 +70,7 @@ public class FormatPreviewRenderer {
 		if ((lensUri == null) || "".equals(lensUri.toString())
 				|| PreviewDialog.DEFAULT_LENS_NAME.equals(lensUri.toString())) {
 			// Default lens
-			renderLens = new SesameLens(
+			renderLens = new Lens(
 					"http://www.fi.muni.cz/fresnel-editor#defaultVizLens", "");
 			if (baseResourceClass != null) {
 				renderLens.addClassDomain(baseResourceClass);

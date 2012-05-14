@@ -213,10 +213,10 @@ public class FormatModelManager extends AModelManager<Format> {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public SesameFormat convertModel2JFresnel(IModel model) {
+	public Format convertModel2JFresnel(IModel model) {
 
 		FormatModel formatModel = (FormatModel) model;
-		SesameFormat format = new SesameFormat(formatModel.getModelUri(), "");
+		Format format = new Format(formatModel.getModelUri(), "");
 
 		for (DomainSelectorGuiWrapper selector : formatModel
 				.getDomainSelectors()) {
@@ -252,7 +252,8 @@ public class FormatModelManager extends AModelManager<Format> {
 		
 		// Value label
 		if (formatModel.getLabelType().equals(FormatValueLabelPolicy.SHOW) && formatModel.getLiteralLabelValue() != null) {
-			format.setValueLabel(new LiteralImpl(formatModel
+                    SesameFormat sf = new SesameFormat(format);
+			sf.setValueLabel(new LiteralImpl(formatModel
 					.getLiteralLabelValue()));
 		}
 

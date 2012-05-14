@@ -39,7 +39,7 @@ public class LensPreviewRenderer {
 		lensArray[0] = lens;
 
 		// Create default group
-		Group defaultGroup = new SesameGroup(
+		Group defaultGroup = new Group(
 				"http://www.fi.muni.cz/fresnel-editor#defaultVizGroup", "");
 		defaultGroup.addLens(lens);
 

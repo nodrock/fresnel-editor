@@ -241,8 +241,8 @@ public class FresnelRepositoryDao extends BaseRepositoryDao {
 				// System.out.println(s);
 				// }
 				// System.out.println("------------------------------------");
-
-				connection.remove(originalModel.asStatements());
+                                
+                                connection.remove(new URIImpl(originalModel.getModelUri()), null, null, NULL_CONTEXTS);
 
 				// System.out.println("AFTER DELETE:");
 				// printStatements(connection.getStatements(null, null, null,

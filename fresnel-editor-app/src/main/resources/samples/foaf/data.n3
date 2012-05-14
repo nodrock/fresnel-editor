@@ -11,7 +11,7 @@ foafsample:MiroslavWarchil    a    foaf:Person ;
     foaf:mbox         "m.warchil@gmail.com"@en ;
     foaf:homepage     "http://cz.linkedin.com/in/miroslavwarchil"@en;
     foaf:publications foafsample:SceneGraphExport ;
-    foaf:knows        foafsample:JosefZapletal .
+    foaf:knows        foafsample:JosefZapletal, foafsample:IanKerrigan .
                  
 foafsample:JosefZapletal    a    foaf:Person ;
     foaf:name         "Josef Zapletal"@cz ;
