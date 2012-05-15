@@ -22,10 +22,9 @@ import com.google.common.collect.Lists;
 
 import cz.muni.fi.fresneleditor.common.data.SelectorType;
 import cz.muni.fi.fresneleditor.gui.mod.lens2.model.LensSelector.LensDomain;
+import fr.inria.jfresnel.visibility.BasicVisibility;
 import fr.inria.jfresnel.Constants;
 import fr.inria.jfresnel.Group;
-import fr.inria.jfresnel.Lens;
-import fr.inria.jfresnel.sesame.SesameBasicVisibility;
 
 /**
  * 
@@ -43,7 +42,7 @@ public class LensesUtils {
 		@Override
 		public PropertyVisibilityWrapper apply(final Value val) {
 			// fixme igor: sesame dependency
-			return new PropertyVisibilityWrapper(new SesameBasicVisibility(
+			return new PropertyVisibilityWrapper(new BasicVisibility(
 					val.stringValue()));
 		}
 	};

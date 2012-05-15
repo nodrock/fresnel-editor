@@ -25,7 +25,7 @@ import cz.muni.fi.fresneleditor.gui.mod.lens2.model.LensSelector.LensDomain;
 import cz.muni.fi.fresneleditor.model.IModel;
 import fr.inria.jfresnel.Group;
 import fr.inria.jfresnel.Lens;
-import fr.inria.jfresnel.PropertyVisibility;
+import fr.inria.jfresnel.visibility.PropertyVisibility;
 import fr.inria.jfresnel.fsl.FSLPath;
 import fr.inria.jfresnel.sparql.SPARQLQuery;
 import java.util.Collection;

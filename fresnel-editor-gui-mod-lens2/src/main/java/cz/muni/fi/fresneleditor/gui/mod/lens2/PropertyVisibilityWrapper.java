@@ -2,29 +2,21 @@ package cz.muni.fi.fresneleditor.gui.mod.lens2;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 import org.openrdf.model.URI;
 import org.openrdf.model.impl.URIImpl;
-import org.openrdf.sail.memory.model.IntegerMemLiteral;
-import org.openrdf.sail.memory.model.MemBNode;
-import org.openrdf.sail.memory.model.MemStatement;
-import org.openrdf.sail.memory.model.MemStatementList;
-import org.openrdf.sail.memory.model.MemURI;
 
 import cz.muni.fi.fresneleditor.common.ContextHolder;
 import cz.muni.fi.fresneleditor.gui.mod.lens2.utils.MPVisibilityUtils;
-import fr.inria.jfresnel.BasicVisibility;
+import fr.inria.jfresnel.visibility.AllPropertiesVisibility;
+import fr.inria.jfresnel.visibility.BasicVisibility;
 import fr.inria.jfresnel.Constants;
-import fr.inria.jfresnel.FSLVisibility;
+import fr.inria.jfresnel.visibility.FSLVisibility;
 import fr.inria.jfresnel.Format;
 import fr.inria.jfresnel.Group;
-import fr.inria.jfresnel.MPVisibility;
-import fr.inria.jfresnel.PropertyVisibility;
-import fr.inria.jfresnel.SPARQLVisibility;
-import fr.inria.jfresnel.sesame.SesameBasicVisibility;
-import fr.inria.jfresnel.sesame.SesameMPVisibility;
-import java.util.Arrays;
+import fr.inria.jfresnel.visibility.MPVisibility;
+import fr.inria.jfresnel.visibility.PropertyVisibility;
+import fr.inria.jfresnel.visibility.SPARQLVisibility;
 
 /**
  * Class for holding informations about fresnel:property subject. It can
@@ -41,14 +33,7 @@ public class PropertyVisibilityWrapper implements Cloneable {
 	public static final int MAX_DEPTH_NOT_DEFINED = 0;
 
 	public static PropertyVisibilityWrapper ALL_PROPERTIES = new PropertyVisibilityWrapper(
-			new SesameBasicVisibility(ALL_PROPERTIES_URI) {
-				@Override
-				public Vector selectProperties(Object resource) {
-					// fixme igor: should it return something? may be all
-					// properties?
-					return null;
-				}
-			});
+			new AllPropertiesVisibility());
 
 	/**
 	 * URI of property on which this property description applies
@@ -91,7 +76,7 @@ public class PropertyVisibilityWrapper implements Cloneable {
 		this.fresnelVisibility = propertyVisibility;
 		initFresnelPropertyValueURI();
 		if (propertyVisibility instanceof MPVisibility) {
-			initConfiguration((SesameMPVisibility) propertyVisibility);
+			initConfiguration((MPVisibility)propertyVisibility);
 		}
 	}
 
@@ -141,9 +126,7 @@ public class PropertyVisibilityWrapper implements Cloneable {
 	 * @return true if this is the wrapper for fresnel:allProperties property
 	 */
 	public boolean isAllProperties() {
-		return fresnelVisibility instanceof BasicVisibility
-				&& ALL_PROPERTIES_URI
-						.equals(((BasicVisibility) fresnelVisibility).constraint);
+		return fresnelVisibility instanceof AllPropertiesVisibility;
 	}
 
 	public void setFresnelPropertyValueURI(String fresnelPropertyValueURI) {
@@ -218,7 +201,7 @@ public class PropertyVisibilityWrapper implements Cloneable {
 			return getFresnelPropertyValueURI();
 		}
 
-		if (fresnelVisibility instanceof SesameMPVisibility) {
+		if (fresnelVisibility instanceof MPVisibility) {
 			return MP_PREFIX
 					+ MPVisibilityUtils
 							.getFresnelPropertyValueURI((MPVisibility) fresnelVisibility);
@@ -227,9 +210,9 @@ public class PropertyVisibilityWrapper implements Cloneable {
 		}
 	}
 
-	private void initConfiguration(SesameMPVisibility propertyVisibility) {
-            if(propertyVisibility.propertyDescriptionProperties != null){
-                setMaxDepth(propertyVisibility.propertyDescriptionProperties.depth);	
+	private void initConfiguration(MPVisibility propertyVisibility) {
+            if(propertyVisibility.getPropertyDescriptionProperties() != null){
+                setMaxDepth(propertyVisibility.getPropertyDescriptionProperties().depth);	
             }else{
                 setMaxDepth(-1);
             }
@@ -247,16 +230,16 @@ public class PropertyVisibilityWrapper implements Cloneable {
 		if (fresnelVisibility == null) {
 			this.setFresnelPropertyValueURI(null);
 		} else if (fresnelVisibility instanceof BasicVisibility) {
-			this.setFresnelPropertyValueURI(((BasicVisibility) fresnelVisibility).constraint);
+			this.setFresnelPropertyValueURI(((BasicVisibility) fresnelVisibility).getConstraint());
 		} else if (fresnelVisibility instanceof FSLVisibility) {
-			this.setFresnelPropertyValueURI(((FSLVisibility) fresnelVisibility).constraint
-					.toString());
-		} else if (fresnelVisibility instanceof SesameMPVisibility) {
+			this.setFresnelPropertyValueURI(((FSLVisibility) fresnelVisibility).getConstraint());
+		} else if (fresnelVisibility instanceof MPVisibility) {
 			this.setFresnelPropertyValueURI(MPVisibilityUtils
-					.getFresnelPropertyValueURI((SesameMPVisibility) fresnelVisibility));
+					.getFresnelPropertyValueURI((MPVisibility) fresnelVisibility));
 		} else if (fresnelVisibility instanceof SPARQLVisibility) {
-			this.setFresnelPropertyValueURI(((SPARQLVisibility) fresnelVisibility).constraint
-					.toString());
+			this.setFresnelPropertyValueURI(((SPARQLVisibility) fresnelVisibility).getConstraint());
+                } else if (fresnelVisibility instanceof AllPropertiesVisibility) {
+			this.setFresnelPropertyValueURI("fresnel:allProperties");
 		} else {
 			// fixme igor review the exception hierarchy
 			throw new IllegalArgumentException("visibility is of type "
@@ -265,7 +248,7 @@ public class PropertyVisibilityWrapper implements Cloneable {
 		}
 	}
 
-	private void initSublenses(SesameMPVisibility visibility) {
+	private void initSublenses(MPVisibility visibility) {
 		List<URI> sublenses = new ArrayList<URI>();
 //		MemURI fresnelSublensURI = new MemURI(null, FRESNEL_NAMESPACE_URI,
 //				Constants._sublens);
@@ -273,8 +256,8 @@ public class PropertyVisibilityWrapper implements Cloneable {
 		// fixme igor: this will not work when there are no data in the repo
 		// we should be able to obtain the information from passed visibility
 		// instance
-                if(visibility.propertyDescriptionProperties != null && visibility.propertyDescriptionProperties.sublens != null){
-                    for(String sublens : visibility.propertyDescriptionProperties.sublens)
+                if(visibility.getPropertyDescriptionProperties() != null && visibility.getPropertyDescriptionProperties().sublens != null){
+                    for(String sublens : visibility.getPropertyDescriptionProperties().sublens)
                     sublenses.add(new URIImpl(sublens));
                 }
 
@@ -296,20 +279,20 @@ public class PropertyVisibilityWrapper implements Cloneable {
 	 *         null in case there is no group nor format defined for this
 	 *         property
 	 */
-	private void initFresnelUse(SesameMPVisibility visibility) {
+	private void initFresnelUse(MPVisibility visibility) {
 		
-            if(visibility.propertyDescriptionProperties != null &&
-                    visibility.propertyDescriptionProperties.use != null){
+            if(visibility.getPropertyDescriptionProperties() != null &&
+                    visibility.getPropertyDescriptionProperties().use != null){
 
                     // fixme igor: is the particular format/group needed here? is
                     // not the URI enough?
 
                     // try the format first
                     Object fresnelUseObject = ContextHolder.getInstance()
-                                    .getFresnelRepositoryDao().getFormat(visibility.propertyDescriptionProperties.use);
+                                    .getFresnelRepositoryDao().getFormat(visibility.getPropertyDescriptionProperties().use);
                     if (fresnelUseObject == null) {
                             fresnelUseObject = ContextHolder.getInstance()
-                                            .getFresnelRepositoryDao().getGroup(visibility.propertyDescriptionProperties.use);
+                                            .getFresnelRepositoryDao().getGroup(visibility.getPropertyDescriptionProperties().use);
                     }
 
                     setFresnelUse(fresnelUseObject);

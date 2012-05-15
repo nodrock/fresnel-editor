@@ -1,7 +1,7 @@
 package cz.muni.fi.fresneleditor.gui.mod.lens;
 
 import fr.inria.jfresnel.Lens;
-import fr.inria.jfresnel.PropertyVisibility;
+import fr.inria.jfresnel.visibility.PropertyVisibility;
 
 /**
  * 
