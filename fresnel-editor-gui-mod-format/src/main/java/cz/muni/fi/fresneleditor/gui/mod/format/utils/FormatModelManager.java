@@ -54,6 +54,7 @@ public class FormatModelManager extends AModelManager<Format> {
 	/**
 	 * {@inheritDoc}
 	 */
+        @Override
 	public FormatModel buildModel(Format format) {
 
 		FormatModel formatModel = new FormatModel();

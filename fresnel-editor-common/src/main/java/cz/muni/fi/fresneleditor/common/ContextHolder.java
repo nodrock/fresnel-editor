@@ -80,6 +80,8 @@ public class ContextHolder {
 	 */
 	private ProjectConfiguration projectConfiguration;
 
+        private FresnelDocumentDao fresnelDocument;
+        
 	/**
 	 * Path to currently opened project - null if no project is opened.
 	 */
@@ -265,15 +267,29 @@ public class ContextHolder {
 		// 1. Save application configuration
 		ConfigurationUtils.saveConfiguration(applicationConfigurationFileURL,
 				applicationConfiguration);
-
-		// 2. If project is open then save also project configuration
-		if (isProjectOpen()) {
-//			ConfigurationUtils.saveConfiguration(
-//					applicationConfiguration.getLastOpenProjectUrl(),
-//					projectConfiguration);
-		}
 	}
 
+        public void createProject(String projectFileUrl, ProjectConfiguration projectConfiguration){
+            // TODO ask if save
+            closeProject();
+  
+            if(fresnelDao == null){
+                fresnelDao = new FresnelRepositoryDao("inMemmoryProjectRepo");
+            }
+            try {
+                fresnelDao.clearAllData();
+            } catch (RepositoryException ex) {
+                java.util.logging.Logger.getLogger(ContextHolder.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ProjectInfoParser.writeProjectInfo(fresnelDao.getRepository(),new ProjectInfo(projectConfiguration.getUri(), projectConfiguration.getName(), projectConfiguration.getDescription()));
+            saveProject(projectFileUrl);
+            try {
+                openProject(projectFileUrl, false);
+            } catch (OpenProjectException ex) {
+                java.util.logging.Logger.getLogger(ContextHolder.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
 	/**
 	 * Method for opening new project. Does nothing if the project we want to
 	 * open is already opened.
@@ -362,10 +378,10 @@ public class ContextHolder {
                     throw new CannotOpenProjectException("Cannot open project file: '"
 					+ projectFileUrl + "'.");
                 }
-                ProjectInfo projectInfo = fresnelDao.getProjectInfo();
+                ProjectInfo projectInfo = ProjectInfoParser.getProjectInfo(fresnelDao.getRepository());
                 if(projectInfo != null){
                     configurationToOpen.setUri(projectInfo.getUri());
-                    configurationToOpen.setName(projectInfo.getName());
+                    configurationToOpen.setName(projectInfo.getTitle());
                     configurationToOpen.setDescription(projectInfo.getDescription());    
                 }
                 
@@ -376,26 +392,7 @@ public class ContextHolder {
 	 * Method for closing projects.
 	 */
 	public void closeProject() {
-
 		if (isProjectOpen()) {
-
-			// Automatically save project configuration
-//			try {
-//				ConfigurationUtils.saveConfiguration(
-//						applicationConfiguration.getLastOpenProjectUrl(),
-//						projectConfiguration);
-//			} catch (SaveConfigurationException e) {
-//				new MessageDialog(
-//						GuiUtils.getTopComponent(),
-//						"Cannot save configuration",
-//						"Error while saving configuration for project '"
-//								+ projectConfiguration.getName()
-//								+ "':"
-//								+ e.getMessage()
-//								+ "\n\nThe project configuration was not updated.")
-//						.setVisible(true);
-//			}
-
 			projectConfiguration = null;
 			applicationConfiguration.setLastOpenProjectUrl(null);
 		} else {
@@ -464,8 +461,14 @@ public class ContextHolder {
 											"Number_of_exported_statements:_")
 							+ repositoryDao.size()).setVisible(true);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			LOG.error("Cannot save new project (name: {})!",
+                                        projectConfiguration.getName());
+                        new MessageDialog(GuiUtils.getTopComponent(), "Project save error",
+                                        "Cannot save new project " + projectConfiguration.getName())
+                                        .setVisible(true);
+				
 			e.printStackTrace();
+                        return;
 		} finally {
 			if (fileOutputStream != null) {
 				try {

@@ -24,7 +24,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="basicProjectInfoPanel" min="-2" max="-2" attributes="0"/>
+          <Component id="basicProjectInfoPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -44,24 +44,31 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="projectNameLbl" min="-2" max="-2" attributes="0"/>
-                      <Component id="projectFileLbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="projectDescriptionLbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="projectNameText" pref="324" max="32767" attributes="1"/>
-                              <Component id="projectFileText" alignment="0" pref="324" max="32767" attributes="0"/>
+                              <Component id="projectNameLbl" min="-2" max="-2" attributes="0"/>
+                              <Component id="projectFileLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="projectDescriptionLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="browseProjectFileBtn" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="projectFileText" max="32767" attributes="1"/>
+                                      <Component id="projectNameText" alignment="1" max="32767" attributes="1"/>
+                                      <Component id="note" alignment="1" max="32767" attributes="1"/>
+                                      <Component id="projectUriText" alignment="1" max="32767" attributes="1"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="browseProjectFileBtn" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="projectDescriptionScrollPane" max="32767" attributes="1"/>
+                          </Group>
                       </Group>
-                      <Component id="projectDescriptionScrollPane" alignment="0" pref="435" max="32767" attributes="1"/>
+                      <Component id="projectUrlLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -69,8 +76,15 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="note" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="projectUrlLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="projectUriText" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="projectNameLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="projectNameText" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -82,11 +96,11 @@
                       <Component id="browseProjectFileBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="projectDescriptionLbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="projectDescriptionScrollPane" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="projectDescriptionLbl" min="-2" max="-2" attributes="0"/>
+                      <Component id="projectDescriptionScrollPane" min="-2" pref="86" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -152,6 +166,24 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="browseProjectFileBtnActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="projectUrlLbl">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="projectUrlLbl.text"/>
+            <Property name="name" type="java.lang.String" value="projectUrlLbl" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="projectUriText">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="projectUriText.text"/>
+            <Property name="name" type="java.lang.String" value="projectUriText" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="note">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="note.text"/>
+            <Property name="name" type="java.lang.String" value="note" noResource="true"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

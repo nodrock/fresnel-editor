@@ -134,7 +134,7 @@ public class CreateNewProjectDialog extends javax.swing.JDialog {
 								.addContainerGap(13, Short.MAX_VALUE)));
 
 		pack();
-	}// </editor-fold>//GEN-END:initComponents
+	}// </editor-fold>                        
 
 	private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cancelButtonActionPerformed
 		setVisible(false);
@@ -158,41 +158,12 @@ public class CreateNewProjectDialog extends javax.swing.JDialog {
 			// attribute
 			// 1. Hide this dialog
 			setVisible(false);
-			// 2. Try to save project configuration into target .xml file
+		
 			ProjectConfiguration projectConf = projectConfigurationJPanel
 					.getConfiguration();
-			try {
-				ConfigurationUtils.saveConfiguration(projectConfigurationJPanel
-						.getProjectConfigurationFileURL(), projectConf);
-			} catch (SaveConfigurationException ex) {
-				LOG.error("Cannot save new project (name: {})!",
-						projectConf.getName());
-				new MessageDialog(this, "Project save error",
-						"Cannot save new project " + projectConf.getName())
-						.setVisible(true);
-				return;
-			}
-			// 3. Try to open newly created project
-			if (ContextHolder.getInstance().isProjectOpen()) {
-				ContextHolder.getInstance().closeProject();
-			}
-			try {
-				ContextHolder
-						.getInstance()
-						.openProject(
-								projectConfigurationJPanel
-										.getProjectConfigurationFileURL(),
-								false);
-			} catch (OpenProjectException ex) {
-				LOG.error("Cannot open newly created project (name: {})!",
-						projectConf.getName());
-				new MessageDialog(this, "Project open error",
-						"Cannot open newly created project "
-								+ projectConf.getName()).setVisible(true);
-				return;
-			}
-			// Trigger refreshing of GUI related to opening of new project
-			AppEventsManager.getInstance().fireOpenProjectChanged(this);
+                        
+                        ContextHolder.getInstance().createProject(projectConfigurationJPanel
+                                .getProjectConfigurationFileURL(), projectConf);
 		}
 	}
 

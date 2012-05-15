@@ -97,6 +97,7 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
 		}
 		initComponents();
 
+                projectUriText.setEnabled(createNew);
 		projectNameText.setEnabled(createNew);
 		projectFileText.setEnabled(createNew);
 		if (!createNew) {
@@ -107,6 +108,7 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
 
 		// set default values
 		if (configuration != null) {
+                        projectUriText.setText(configuration.getUri());
 			projectFileText.setText(projectConfigurationFileURL);
 			projectNameText.setText(configuration.getName());
 			projectDescriptionTextArea.setText(configuration.getDescription());
@@ -133,6 +135,9 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
         projectFileText = new javax.swing.JTextField();
         projectFileLbl = new javax.swing.JLabel();
         browseProjectFileBtn = new javax.swing.JButton();
+        projectUrlLbl = new javax.swing.JLabel();
+        projectUriText = new javax.swing.JTextField();
+        note = new javax.swing.JLabel();
 
         setName("Form"); // NOI18N
 
@@ -173,31 +178,51 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
             }
         });
 
+        projectUrlLbl.setText(resourceMap.getString("projectUrlLbl.text")); // NOI18N
+        projectUrlLbl.setName("projectUrlLbl"); // NOI18N
+
+        projectUriText.setText(resourceMap.getString("projectUriText.text")); // NOI18N
+        projectUriText.setName("projectUriText"); // NOI18N
+
+        note.setText(resourceMap.getString("note.text")); // NOI18N
+        note.setName("note"); // NOI18N
+
         javax.swing.GroupLayout basicProjectInfoPanelLayout = new javax.swing.GroupLayout(basicProjectInfoPanel);
         basicProjectInfoPanel.setLayout(basicProjectInfoPanelLayout);
         basicProjectInfoPanelLayout.setHorizontalGroup(
             basicProjectInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(basicProjectInfoPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, basicProjectInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(basicProjectInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(projectNameLbl)
-                    .addComponent(projectFileLbl)
-                    .addComponent(projectDescriptionLbl))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(basicProjectInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(basicProjectInfoPanelLayout.createSequentialGroup()
                         .addGroup(basicProjectInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(projectNameText, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
-                            .addComponent(projectFileText, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(browseProjectFileBtn))
-                    .addComponent(projectDescriptionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE))
+                            .addComponent(projectNameLbl)
+                            .addComponent(projectFileLbl)
+                            .addComponent(projectDescriptionLbl))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(basicProjectInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(basicProjectInfoPanelLayout.createSequentialGroup()
+                                .addGroup(basicProjectInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(projectFileText)
+                                    .addComponent(projectNameText)
+                                    .addComponent(note, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(projectUriText))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(browseProjectFileBtn))
+                            .addComponent(projectDescriptionScrollPane)))
+                    .addComponent(projectUrlLbl))
                 .addContainerGap())
         );
         basicProjectInfoPanelLayout.setVerticalGroup(
             basicProjectInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(basicProjectInfoPanelLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, basicProjectInfoPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(note)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(basicProjectInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(projectUrlLbl)
+                    .addComponent(projectUriText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
                 .addGroup(basicProjectInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(projectNameLbl)
                     .addComponent(projectNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -207,10 +232,10 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
                     .addComponent(projectFileText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(browseProjectFileBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(basicProjectInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(projectDescriptionLbl, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(projectDescriptionScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(basicProjectInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(projectDescriptionLbl)
+                    .addComponent(projectDescriptionScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -221,7 +246,7 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(basicProjectInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(basicProjectInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -230,11 +255,11 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
 
 		JFileChooser chooser = new JFileChooser();
 
-		FileFilter filter = new FileNameExtensionFilter(
-				"Fresnel Editor projects (*.xml)", "xml");
-		chooser.setFileFilter(filter);
+                FileFilter filter = new FileNameExtensionFilter(
+                        "Fresnel Editor projects (*.n3)", "n3");
+                chooser.setFileFilter(filter);
 
-		int returnVal = chooser.showOpenDialog(GuiUtils.getTopComponent());
+		int returnVal = chooser.showSaveDialog(GuiUtils.getTopComponent());
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			try {
 				String filePath = chooser.getSelectedFile().getCanonicalPath();
@@ -251,6 +276,7 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel basicProjectInfoPanel;
     private javax.swing.JButton browseProjectFileBtn;
+    private javax.swing.JLabel note;
     private javax.swing.JLabel projectDescriptionLbl;
     private javax.swing.JScrollPane projectDescriptionScrollPane;
     private javax.swing.JTextArea projectDescriptionTextArea;
@@ -258,6 +284,8 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
     private javax.swing.JTextField projectFileText;
     private javax.swing.JLabel projectNameLbl;
     private javax.swing.JTextField projectNameText;
+    private javax.swing.JTextField projectUriText;
+    private javax.swing.JLabel projectUrlLbl;
     // End of variables declaration//GEN-END:variables
 
 	/**
@@ -288,6 +316,7 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
 			configuration = new ProjectConfiguration();
 		}
 
+                configuration.setUri("http://localproject/" + projectUriText.getText());
 		configuration.setName(projectNameText.getText());
 		configuration.setDescription(projectDescriptionTextArea.getText());
 		this.setProjectConfigurationFileURL(projectFileText.getText());
@@ -309,6 +338,12 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
 	 * @return
 	 */
 	private boolean validateConfiguration() {
+                if(!StringUtils.hasText(projectUriText.getText())){
+                    return false;                   
+                }
+                if(projectUriText.getText().indexOf("/") > 0 || projectUriText.getText().indexOf(" ") > 0){
+                    return false;
+                }
 		if (!StringUtils.hasText(projectNameText.getText())) {
 			return false;
 		}
@@ -323,10 +358,10 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
 	}
 
 	private String checkFilePath(String filePath) {
-		if (filePath.endsWith(".xml")) {
+		if (filePath.endsWith(".n3")) {
 			return filePath;
 		} else {
-			return filePath.concat(".xml");
+			return filePath.concat(".n3");
 		}
 	}
 
