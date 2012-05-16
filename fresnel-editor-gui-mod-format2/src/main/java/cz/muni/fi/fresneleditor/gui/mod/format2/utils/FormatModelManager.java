@@ -45,14 +45,10 @@ public class FormatModelManager extends AModelManager<Format> {
 	private static final Logger LOG = LoggerFactory
 			.getLogger(FormatModelManager.class);
 
-	private static final String PROPERTY_FORMAT_CLASS_DOMAIN = Constants.FRESNEL_NAMESPACE_URI
-			+ Constants._classFormatDomain;
-	private static final String PROPERTY_FORMAT_INSTANCE_DOMAIN = Constants.FRESNEL_NAMESPACE_URI
-			+ Constants._instanceFormatDomain;
-
 	/**
 	 * {@inheritDoc}
 	 */
+        @Override
 	public FormatModel buildModel(Format format) {
 
 		FormatModel formatModel = new FormatModel();
@@ -102,11 +98,44 @@ public class FormatModelManager extends AModelManager<Format> {
 		}
 
 		// CLASS DOMAINS LOADING
-		formatModel.getDomainSelectors().addAll(getFormatClassDomains(format));
+                if (format.getBasicClassDomains() != null) {
+			for (String domain : format.getBasicClassDomains()) {
+
+				DomainSelectorGuiWrapper domainSelector = new DomainSelectorGuiWrapper(
+						DomainType.CLASS, SelectorType.SIMPLE, domain);
+				formatModel.getDomainSelectors().add(domainSelector);
+			}
+		}
 
 		// INSTANCE DOMAINS LOADING
-		formatModel.getDomainSelectors().addAll(
-				getFormatInstanceDomains(format));
+                if (format.getBasicInstanceDomains() != null) {
+			for (String domain : format.getBasicInstanceDomains()) {
+
+				DomainSelectorGuiWrapper domainSelector = new DomainSelectorGuiWrapper(
+						DomainType.INSTANCE, SelectorType.SIMPLE, domain);
+				formatModel.getDomainSelectors().add(domainSelector);
+			}
+		}
+
+		if (format.getFSLInstanceDomains() != null) {
+			for (FSLPath fslPath : format.getFSLInstanceDomains()) {
+
+				DomainSelectorGuiWrapper domainSelector = new DomainSelectorGuiWrapper(
+						DomainType.INSTANCE, SelectorType.FSL,
+						fslPath.toString());
+				formatModel.getDomainSelectors().add(domainSelector);
+			}
+		}
+
+		if (format.getSPARQLInstanceDomains() != null) {
+			for (SPARQLQuery sparqlQuery : format.getSPARQLInstanceDomains()) {
+
+				DomainSelectorGuiWrapper domainSelector = new DomainSelectorGuiWrapper(
+						DomainType.INSTANCE, SelectorType.SPARQL,
+						sparqlQuery.toString());
+				formatModel.getDomainSelectors().add(domainSelector);
+			}
+		}
 
 		// LABEL LOADING
 		if (format.getValueLabelPolicy() == FormatValueLabelPolicy.NOT_SPECIFIED) {
@@ -150,10 +179,12 @@ public class FormatModelManager extends AModelManager<Format> {
 			formatModel.getStyles().add(propertyStyle);
 		}
 
-		// Resource style loading (needs special handling - not covered by
-		// JFresnel)
-		StyleGuiWrapper resourceStyle = getResourceStyle(formatUri);
-		if (resourceStyle != null) {
+                if (format.getResourceStyle() != null) {
+			StyleGuiWrapper resourceStyle = new StyleGuiWrapper(
+					StyleType.RESOURCE);
+			resourceStyle.setValue(format.getResourceStyle());
+			// FIXME
+			resourceStyle.setValueType(CssValueType.CLASS);
 			formatModel.getStyles().add(resourceStyle);
 		}
 
@@ -238,10 +269,32 @@ public class FormatModelManager extends AModelManager<Format> {
 									+ selector.getSelectorType() + "!");
 				}
 			}
-			// TODO Convert instance format domains - not supported by JFresnel
-			// 0.3.2
-			// TODO Convert class format domains - not supported by JFresnel
-			// 0.3.2
+                        if (selector.getDomainType().equals(DomainType.INSTANCE)) {
+				if (selector.getSelectorType().equals(SelectorType.SIMPLE)) {
+					format.addInstanceDomain(selector.getSelectorString(),
+							Constants._BASIC_SELECTOR);
+				} else if (selector.getSelectorType().equals(
+						SelectorType.SPARQL)) {
+					format.addInstanceDomain(selector.getSelectorString(),
+							Constants._SPARQL_SELECTOR);
+				} else if (selector.getSelectorType().equals(SelectorType.FSL)) {
+					format.addInstanceDomain(selector.getSelectorString(),
+							Constants._FSL_SELECTOR);
+				} else {
+					throw new IllegalArgumentException(
+							"Invalid selector type value: "
+									+ selector.getSelectorType() + "!");
+		}
+			}
+                        if (selector.getDomainType().equals(DomainType.CLASS)) {
+				if (selector.getSelectorType().equals(SelectorType.SIMPLE)) {
+					format.addClassDomain(selector.getSelectorString());
+				} else {
+					throw new IllegalArgumentException(
+							"Invalid selector type value: "
+									+ selector.getSelectorType() + "!");
+				}
+			}
 		}
 
 		// Value type	
@@ -321,94 +374,5 @@ public class FormatModelManager extends AModelManager<Format> {
 		contentFormat.setContentNoValue(addContent.getContentNoValue());
 
 		return contentFormat;
-	}
-
-	/**
-	 * 
-	 * @param format
-	 * @return
-	 */
-	private List<DomainSelectorGuiWrapper> getFormatClassDomains(Format format) {
-
-		return getFormatDomains(format, DomainType.CLASS,
-				PROPERTY_FORMAT_CLASS_DOMAIN);
-	}
-
-	/**
-	 * 
-	 * @param format
-	 * @return
-	 */
-	private List<DomainSelectorGuiWrapper> getFormatInstanceDomains(
-			Format format) {
-
-		return getFormatDomains(format, DomainType.INSTANCE,
-				PROPERTY_FORMAT_INSTANCE_DOMAIN);
-	}
-
-	/**
-	 * 
-	 * @param format
-	 * @param type
-	 * @param propertyUri
-	 * @return
-	 */
-	private List<DomainSelectorGuiWrapper> getFormatDomains(Format format,
-			DomainType type, String propertyUri) {
-
-		List<DomainSelectorGuiWrapper> domainSelectors = new ArrayList<DomainSelectorGuiWrapper>();
-
-		List<Literal> domainLiterals = getResourceStringProperties(new URIImpl(
-				format.getURI()), propertyUri);
-		List<String> domainStrings = new ArrayList<String>();
-
-		for (Literal literal : domainLiterals) {
-			if (!"".equals(literal.getLabel())) {
-				domainStrings.add(literal.toString());
-			}
-		}
-
-		for (String domainString : domainStrings) {
-
-			if (domainString != null && !("".equals(domainString))) {
-
-				DomainSelectorGuiWrapper domainSelector = getFormatDomainSelector(
-						type, domainString);
-
-				if (domainSelector != null) {
-					domainSelectors.add(domainSelector);
-				}
-			}
-		}
-
-		return domainSelectors;
-	}
-
-	// FIXME: This method is not ok - it parses directly string representation
-	// of RDF literal. It would be much
-	// better to get Literal instance directly from SPARQL query -> needs
-	// extension of BaseRepositoryDao.
-	private DomainSelectorGuiWrapper getFormatDomainSelector(
-			DomainType domainType, String domainString) {
-
-		DomainSelectorGuiWrapper domainSelector = new DomainSelectorGuiWrapper(
-				domainType);
-
-		String[] elements = parseLiteralWithDatatype(domainString);
-
-		domainSelector.setSelectorString(elements[0]);
-
-		if (Constants._fslSelector.equals(elements[1])) {
-			domainSelector.setSelectorType(SelectorType.FSL);
-		} else if (Constants._sparqlSelector.equals(elements[1])) {
-			domainSelector.setSelectorType(SelectorType.SPARQL);
-		} else {
-			LOG.warn(
-					"Format domain selector {} not processed - invalid literal datatype {}.",
-					domainString, elements[1]);
-			return null;
-		}
-
-		return domainSelector;
 	}
 }

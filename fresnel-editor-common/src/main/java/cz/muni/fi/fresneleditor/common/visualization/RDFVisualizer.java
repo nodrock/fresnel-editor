@@ -24,7 +24,6 @@ import cz.muni.fi.fresneleditor.common.FresnelApplication;
 import cz.muni.fi.fresneleditor.common.FresnelEditorConstants;
 import cz.muni.fi.fresneleditor.common.guisupport.MessageDialog;
 import cz.muni.fi.fresneleditor.common.utils.URIUtils;
-import cz.muni.fi.fresneleditor.model.FresnelRepositoryDao;
 import fr.inria.jfresnel.Format;
 import fr.inria.jfresnel.FresnelDocument;
 import fr.inria.jfresnel.Group;
@@ -125,9 +124,9 @@ public class RDFVisualizer implements IRDFVisualizer {
 	private FresnelDocument prepareFresnelDocument(URI groupUri) {
 
 		// get group which should be used for visualization
-		FresnelRepositoryDao fresnelDao = ContextHolder.getInstance()
-				.getFresnelRepositoryDao();
-		Group group = fresnelDao.getGroup(groupUri.toString());
+//		FresnelRepositoryDao fresnelDao = ContextHolder.getInstance()
+//				.getFresnelRepositoryDao();
+		Group group = ContextHolder.getInstance().getFresnelDocumentDao().getGroup(groupUri.toString());
 
 		// display error message if no group with given URI is found
 		if (group == null) {
@@ -184,8 +183,8 @@ public class RDFVisualizer implements IRDFVisualizer {
 		
 		SesameRenderer renderer = new SesameRenderer();
                 
-		ContextHolder.getInstance().getFresnelRepositoryDao()
-				.printStatements(System.out, false);
+//		ContextHolder.getInstance().getFresnelRepositoryDao()
+//				.printStatements(System.out, false);
 
 		File finalXhtmlFile = null;
 		if (pathToOutputFile == null) {

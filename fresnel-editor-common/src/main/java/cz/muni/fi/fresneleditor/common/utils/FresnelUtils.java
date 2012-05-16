@@ -1,6 +1,7 @@
 package cz.muni.fi.fresneleditor.common.utils;
 
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import org.openrdf.model.Namespace;
@@ -17,6 +18,7 @@ import fr.inria.jfresnel.Group;
 import fr.inria.jfresnel.Lens;
 import fr.inria.jfresnel.fsl.FSLPath;
 import fr.inria.jfresnel.sparql.SPARQLQuery;
+import java.util.ArrayList;
 
 /**
  * 
@@ -122,14 +124,12 @@ public class FresnelUtils {
 	}
 
 	public static String replacePrefix(String value) {
-
-		List<Namespace> namespaces = ContextHolder.getInstance()
-				.getFresnelRepositoryDao().getNamespaces();
+            Map<String, String> prefixes = ContextHolder.getInstance().getFresnelDocumentDao().getFresnelDocument().getPrefixes();
+            
 		String selectorNamespace = FresnelUtils.getNamespace(value);
-		for (Namespace namespace : namespaces) {
-			if (namespace.getPrefix().equals(selectorNamespace)) {
-				value = namespace.getName() + FresnelUtils.getLocalName(value);
-			}
+                String uri = prefixes.get(selectorNamespace);
+		if(uri != null){		
+                    value = uri + FresnelUtils.getLocalName(value);	
 		}
 
 		return value;
@@ -333,8 +333,8 @@ public class FresnelUtils {
 		if (uri1.equals(uri2))
 			return true;
 
-		List<Namespace> namespaces = ContextHolder.getInstance()
-				.getFresnelRepositoryDao().getNamespaces();
+		List<Namespace> namespaces = new ArrayList<Namespace>(); //= ContextHolder.getInstance()
+//				.getFresnelRepositoryDao().getNamespaces();
 		namespaces.addAll(ContextHolder.getInstance().getDataRepositoryDao()
 				.getNamespaces());
 

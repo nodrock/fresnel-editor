@@ -1,11 +1,13 @@
 package cz.muni.fi.fresneleditor.gui.mod.format2;
 
+import fr.inria.jfresnel.Group;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -73,13 +75,11 @@ import cz.muni.fi.fresneleditor.gui.mod.format2.dialogs.FormatPreviewDialog;
 import cz.muni.fi.fresneleditor.gui.mod.format2.treemodel.FormatItemNode;
 import cz.muni.fi.fresneleditor.gui.mod.format2.utils.FormatModelManager;
 import cz.muni.fi.fresneleditor.gui.mod.format2.utils.TextFileLoader;
-import cz.muni.fi.fresneleditor.model.FresnelRepositoryDao;
 import cz.muni.fi.fresneleditor.model.SparqlUtils;
 import fr.inria.jfresnel.Format;
 import fr.inria.jfresnel.formats.FormatPurposeType;
 import fr.inria.jfresnel.formats.FormatValueLabelPolicy;
 import fr.inria.jfresnel.formats.FormatValueType;
-import fr.inria.jfresnel.sesame.SesameFormat;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
@@ -94,7 +94,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
  * ANY CORPORATE OR COMMERCIAL PURPOSE.
  */
 public class VisualFormatsJPanel extends javax.swing.JPanel implements
-		ITabComponent<URI>, IEditable {
+		ITabComponent<Format>, IEditable {
 	/**
 	 * 
 	 */
@@ -106,7 +106,6 @@ public class VisualFormatsJPanel extends javax.swing.JPanel implements
 	private static int NO_ROW_SELECTED = -1;
 
 	private FormatModel initialFormatModel = null;
-	private URI formatUri = null;
 	private String formatDescription = "";
 
 	private boolean createNewFormat = false;
@@ -195,8 +194,8 @@ public class VisualFormatsJPanel extends javax.swing.JPanel implements
 	}
 
 	@Override
-	public URI getItem() {
-		return formatUri;
+	public Format getItem() {
+		return format;
 	}
 
 	@Override
@@ -222,9 +221,7 @@ public class VisualFormatsJPanel extends javax.swing.JPanel implements
 				new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						FresnelRepositoryDao fresnelDao = ContextHolder
-								.getInstance().getFresnelRepositoryDao();
-						fresnelDao.deleteFresnelResource(initialFormatModel);
+						ContextHolder.getInstance().getFresnelDocumentDao().deleteFormat(format.getURI());
 						AppEventsManager.getInstance()
 								.fireRepositoryDataChanged(
 										this,
@@ -239,13 +236,13 @@ public class VisualFormatsJPanel extends javax.swing.JPanel implements
 		if (validateForm()) {
 			// Insert new statements
 			FormatModel formatModel = saveFormatModel();
-			FresnelRepositoryDao fresnelDao = ContextHolder.getInstance()
-					.getFresnelRepositoryDao();
+                        
+                        FormatModelManager modelManager = new FormatModelManager();
+                        
 			if (createNewFormat) {
-				fresnelDao.updateFresnelResource(null, formatModel);
+				ContextHolder.getInstance().getFresnelDocumentDao().getFormats().add(modelManager.convertModel2JFresnel(formatModel));
 			} else {
-				fresnelDao.updateFresnelResource(initialFormatModel,
-						formatModel);
+				ContextHolder.getInstance().getFresnelDocumentDao().updateFormat(format.getURI(), modelManager.convertModel2JFresnel(formatModel));
 			}
 
 			// If changes were successfully commited then switch to new initial
@@ -262,24 +259,20 @@ public class VisualFormatsJPanel extends javax.swing.JPanel implements
 	 * Auto-generated main method to display this JPanel inside a new JFrame.
 	 */
 
-	public VisualFormatsJPanel(URI formatUri, FormatItemNode formatItemNode) {
+        private Format format;
+        
+	public VisualFormatsJPanel(Format format, FormatItemNode formatItemNode) {
 		super();
 
-		this.formatUri = formatUri;
+		this.format = format;
 		this.formatItemNode = formatItemNode;
-		this.createNewFormat = (formatUri == null);
+		this.createNewFormat = (format == null);
 
 		FormatModelManager modelManager = new FormatModelManager();
 
 		if (createNewFormat) {
 			initialFormatModel = modelManager.buildNewModel();
-			formatUri = null;
 		} else {
-			FresnelRepositoryDao fresnelDao = ContextHolder.getInstance()
-					.getFresnelRepositoryDao();
-			Format format = fresnelDao.getFormat(formatUri.toString());
-			this.formatUri = formatUri;
-
 			initialFormatModel = modelManager.buildModel(format);
 		}
 
@@ -1415,8 +1408,9 @@ public class VisualFormatsJPanel extends javax.swing.JPanel implements
 	private boolean validateForm() {
 		String formatName = formatNameText.getText();
 
-		String validateMessage = FresnelUtils.validateResourceUri(formatName,
-				ContextHolder.getInstance().getFresnelRepositoryDao());
+		String validateMessage = null;
+//                        FresnelUtils.validateResourceUri(formatName,
+//				ContextHolder.getInstance().getFresnelRepositoryDao());
 		if (validateMessage != null) {
 			new MessageDialog(GuiUtils.getOwnerFrame(this),
 					"Invalid Fresnel Format URI", "The Format URI '"
@@ -1658,45 +1652,41 @@ public class VisualFormatsJPanel extends javax.swing.JPanel implements
 	}
 
 	private void listAssociatedGroupsValueChanged(ListSelectionEvent evt) {
-		String groupURI = listAssociatedGroups.getSelectedValue().toString();
+            //TODO: nodrock make this better
+                Collection<Group> associatedGroups = format.getAssociatedGroups();
+                if(!associatedGroups.isEmpty()){
+                    Group g = associatedGroups.iterator().next();
 
-		FresnelRepositoryDao fresnelDao = ContextHolder.getInstance()
-				.getFresnelRepositoryDao();
-		String prefixes = SparqlUtils.getSparqlQueryPrefixes(fresnelDao
-				.getRepository());
-		List<Value> result = fresnelDao.execTupleQuery(prefixes
-				+ "SELECT ?styleSheet WHERE { <" + groupURI
-				+ "> a fresnel:Group . " + "<" + groupURI
-				+ "> fresnel:stylesheetLink ?styleSheet .}",
-				QueryLanguage.SPARQL, "styleSheet");
-		String stylesheetURL;
-		if (result.size() == 0) {
-			stylesheetURL = FresnelEditorConstants.DEFAULT_CSS_STYLESHEET_URL;
-		} else {
-			stylesheetURL = result.get(0).toString();
-		}
+                    String stylesheetURL = null;
+                    if (g.getStylesheetLinks().isEmpty()) {
+                            stylesheetURL = FresnelEditorConstants.DEFAULT_CSS_STYLESHEET_URL;
+                    } else {
+                            stylesheetURL = g.getStylesheetLinks().iterator().next();
+                    }
 
-		String stylesheetText = "";
-		TextFileLoader fileLoader;
-		try {
-			fileLoader = new TextFileLoader(stylesheetURL);
-			stylesheetText = fileLoader.deserializeString();
-			txtCSSFilename.setText(fileLoader.getName());
-		} catch (IOException e) {
-			try {
-				fileLoader = new TextFileLoader(
-						FresnelEditorConstants.DEFAULT_CSS_STYLESHEET_URL);
-				stylesheetText = fileLoader.deserializeString();
-				txtCSSFilename.setText(fileLoader.getName());
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				txtCSSFilename.setText("Error while loading stylesheet!");
-				e1.printStackTrace();
-			}
+                    String stylesheetText = "";
+                    TextFileLoader fileLoader;
+                    try {
+                            fileLoader = new TextFileLoader(stylesheetURL);
+                            stylesheetText = fileLoader.deserializeString();
+                            txtCSSFilename.setText(fileLoader.getName());
+                    } catch (IOException e) {
+                            try {
+                                    fileLoader = new TextFileLoader(
+                                                    FresnelEditorConstants.DEFAULT_CSS_STYLESHEET_URL);
+                                    stylesheetText = fileLoader.deserializeString();
+                                    txtCSSFilename.setText(fileLoader.getName());
+                            } catch (IOException e1) {
+                                    // TODO Auto-generated catch block
+                                    txtCSSFilename.setText("Error while loading stylesheet!");
+                                    e1.printStackTrace();
+                            }
 
-		}
+                    }
 
-		txtStyleSheetOverview.setText(stylesheetText);
+                    txtStyleSheetOverview.setText(stylesheetText);
+                    
+                }	
 	}
 
 	private JLabel getLblCSSFilename() {

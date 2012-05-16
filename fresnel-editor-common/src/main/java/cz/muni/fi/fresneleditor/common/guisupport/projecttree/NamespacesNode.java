@@ -9,6 +9,9 @@ import com.google.common.collect.Lists;
 import cz.muni.fi.fresneleditor.common.ContextHolder;
 import cz.muni.fi.fresneleditor.common.ITabComponent;
 import cz.muni.fi.fresneleditor.common.reposconf.NamespacesConfigurationJPanel;
+import cz.muni.fi.fresneleditor.model.BaseRepositoryDao;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Igor Zemsky (zemsky@mail.muni.cz)
@@ -30,9 +33,9 @@ public class NamespacesNode extends ATabNode<Object> {
 
 	@Override
 	protected ITabComponent<Object> createComponent() {
-		return new NamespacesConfigurationJPanel(Lists.newArrayList(
-				ContextHolder.getInstance().getFresnelRepositoryDao(),
-				ContextHolder.getInstance().getDataRepositoryDao()));
+            List<BaseRepositoryDao> brd = new ArrayList<BaseRepositoryDao>();
+            brd.add(ContextHolder.getInstance().getDataRepositoryDao());
+            return new NamespacesConfigurationJPanel(brd);
 	}
 
 	@Override

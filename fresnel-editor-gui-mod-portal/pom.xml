@@ -72,5 +72,11 @@
             <artifactId>httpclient</artifactId>
             <version>4.1.1</version>
         </dependency>
+        <dependency>
+            <groupId>fr.inria.jfresnel.jena</groupId>
+            <artifactId>jfresnel-jena</artifactId>
+            <version>0.3.3-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 </project>

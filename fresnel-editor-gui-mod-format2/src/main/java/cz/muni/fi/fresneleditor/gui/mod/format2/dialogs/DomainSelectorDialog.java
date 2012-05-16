@@ -389,7 +389,7 @@ public class DomainSelectorDialog extends javax.swing.JDialog {
 								.addContainerGap()));
 
 		pack();
-	}// </editor-fold>//GEN-END:initComponents
+	}// </editor-fold>                        
 
 	private void classDomainRadioStateChanged(javax.swing.event.ChangeEvent evt) {// GEN-FIRST:event_classDomainRadioStateChanged
 		if (classDomainRadio.isSelected()) {
@@ -507,9 +507,11 @@ public class DomainSelectorDialog extends javax.swing.JDialog {
 		String selectorString = selectorStringText.getText().trim();
 
 		if (simpleSelectorRadio.isSelected()) {
-			String validateMessage = FresnelUtils.validateResourceUri(
-					selectorString, ContextHolder.getInstance()
-							.getFresnelRepositoryDao());
+                    //TODO: nodrock fix this
+			String validateMessage = null;
+//                                FresnelUtils.validateResourceUri(
+//					selectorString, ContextHolder.getInstance()
+//							.getFresnelRepositoryDao());
 			if (validateMessage != null) {
 				new MessageDialog(GuiUtils.getOwnerFrame(this),
 						"Invalid selector string", "Selector string '"

@@ -1,7 +1,11 @@
 package cz.muni.fi.fresneleditor.common;
 
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.RDFReader;
+import com.hp.hpl.jena.rdf.model.RDFWriter;
 import cz.muni.fi.fresneleditor.common.FresnelEditorConstants.Transformations;
-import cz.muni.fi.fresneleditor.model.ProjectInfo;
+import fr.inria.jfresnel.FresnelDocument;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -13,7 +17,6 @@ import java.util.Map.Entry;
 import java.util.logging.Level;
 import org.openrdf.model.Namespace;
 import org.openrdf.model.impl.NamespaceImpl;
-import org.openrdf.repository.RepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
@@ -21,28 +24,20 @@ import org.springframework.util.Assert;
 import cz.muni.fi.fresneleditor.common.config.ApplicationConfiguration;
 import cz.muni.fi.fresneleditor.common.config.ProjectConfiguration;
 import cz.muni.fi.fresneleditor.common.config.RepositoryConfiguration;
-import cz.muni.fi.fresneleditor.common.guisupport.MessageDialog;
-import cz.muni.fi.fresneleditor.common.utils.CannotOpenProjectException;
 import cz.muni.fi.fresneleditor.common.utils.ConfigurationUtils;
-import cz.muni.fi.fresneleditor.common.utils.GuiUtils;
 import cz.muni.fi.fresneleditor.common.utils.LoadConfigurationException;
 import cz.muni.fi.fresneleditor.common.utils.SaveConfigurationException;
 import cz.muni.fi.fresneleditor.model.BaseRepositoryDao;
 import cz.muni.fi.fresneleditor.model.DataImportException;
 import cz.muni.fi.fresneleditor.model.DataRepositoryDao;
-import cz.muni.fi.fresneleditor.model.FresnelRepositoryDao;
 import cz.muni.fi.fresneleditor.model.BaseRepositoryDao.RepositoryDomain;
 import fr.inria.jfresnel.Constants;
+import fr.inria.jfresnel.jena.FresnelJenaParser;
+import fr.inria.jfresnel.jena.FresnelJenaWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFHandler;
-import org.openrdf.rio.n3.N3Writer;
-import org.openrdf.rio.ntriples.NTriplesWriter;
-import org.openrdf.rio.rdfxml.RDFXMLWriter;
-import org.openrdf.rio.turtle.TurtleWriter;
 
 /**
  * Singleton. Main access point to currently open repository DAOs and also
@@ -80,7 +75,7 @@ public class ContextHolder {
 	 */
 	private ProjectConfiguration projectConfiguration;
 
-        private FresnelDocumentDao fresnelDocument;
+        private FresnelDocumentDao fresnelDocumentDao;
         
 	/**
 	 * Path to currently opened project - null if no project is opened.
@@ -92,11 +87,7 @@ public class ContextHolder {
 	 */
 	private DataRepositoryDao domainDao;
 
-	/**
-	 * Fresnel dao.<br>
-	 * When no project is open this property is null.
-	 */
-	private FresnelRepositoryDao fresnelDao;
+	
 
         private String selectedDataRepositoryName;
 
@@ -108,7 +99,9 @@ public class ContextHolder {
             this.selectedDataRepositoryName = selectedDataRepositoryName;
         }
         
-        
+        public FresnelDocumentDao getFresnelDocumentDao(){
+            return fresnelDocumentDao;
+        }
         
     /**
 	 * Selected transformation.<br>
@@ -207,9 +200,7 @@ public class ContextHolder {
 		case DATA:
 			dao = new DataRepositoryDao(repositoryConfiguration);
 			break;
-		case FRESNEL:
-			dao = new FresnelRepositoryDao(repositoryConfiguration);
-			break;
+		
 		default:
 			LOG.error("Invalid repository domain: "
 					+ repositoryConfiguration.getDomain());
@@ -226,8 +217,7 @@ public class ContextHolder {
 	public BaseRepositoryDao getRepositoryDao(String repositoryName) {
 		if (getDataRepositoryName() != null && getDataRepositoryName().equals(repositoryName)) {
 			return getDataRepositoryDao();
-		} else if (getFresnelRepositoryName() != null && getFresnelRepositoryName().equals(repositoryName)) {
-			return getFresnelRepositoryDao();
+	
 		} else {
 			BaseRepositoryDao repository = repositories.get(repositoryName);
 			if (repository == null) {
@@ -273,21 +263,15 @@ public class ContextHolder {
             // TODO ask if save
             closeProject();
   
-            if(fresnelDao == null){
-                fresnelDao = new FresnelRepositoryDao("inMemmoryProjectRepo");
-            }
-            try {
-                fresnelDao.clearAllData();
-            } catch (RepositoryException ex) {
-                java.util.logging.Logger.getLogger(ContextHolder.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            ProjectInfoParser.writeProjectInfo(fresnelDao.getRepository(),new ProjectInfo(projectConfiguration.getUri(), projectConfiguration.getName(), projectConfiguration.getDescription()));
+            setProjectConfiguration(projectConfiguration);
+            
             saveProject(projectFileUrl);
             try {
                 openProject(projectFileUrl, false);
             } catch (OpenProjectException ex) {
                 java.util.logging.Logger.getLogger(ContextHolder.class.getName()).log(Level.SEVERE, null, ex);
             }
+           
         }
         
 	/**
@@ -308,20 +292,40 @@ public class ContextHolder {
 			return;
 		}
 
-		ProjectConfiguration configurationToOpen;
-		try {
-			configurationToOpen = getProjectConfiguration(projectFileUrl);
-		} catch (LoadConfigurationException e) {
-			throw new OpenProjectException(e);
-		}
+                ProjectConfiguration configuration = new ProjectConfiguration();
+                configuration.setProjectFileUrl(projectFileUrl);
+                
+                Model model = ModelFactory.createDefaultModel();
+                RDFReader reader = model.getReader("N3");
+                try {
+                    reader.read(model, new FileInputStream(projectFileUrl), "N3");
+                    FresnelJenaParser fjp = new FresnelJenaParser(null, null);
+                    FresnelDocument fd = fjp.parse(model, "");                                     
+                    
+                    // adds fresnelportal namespace and add all namespaces to outputmodel
+                    fd.getPrefixes().put("localproject", "http://localproject/");
+                    //fd.getPrefixes().put("localproject" + dsi.getName(), ns);
 
-		if (isStart) {
-			// Don't re-open sample projects again because they are using temp
-			// repositories
-			if (configurationToOpen.isSample()) {
-				return;
-			}
-		}
+                    // some basic namespaces in case they are not there already
+                    fd.getPrefixes().put("rdf", Constants.RDF_NAMESPACE_URI);
+                    fd.getPrefixes().put("rdfs", Constants.RDFS_NAMESPACE_URI);
+                    fd.getPrefixes().put("fresnel", Constants.FRESNEL_NAMESPACE_URI);
+                    fd.getPrefixes().put("xsd", Constants.XSD_NAMESPACE_URI);   
+                    fd.getPrefixes().put("dcmitype", NSConstants.DCMITYPE_NAMESPACE_URI);  
+                    fd.getPrefixes().put("dcterms", NSConstants.DCTERMS_NAMESPACE_URI);  
+                            
+                    fresnelDocumentDao = new FresnelDocumentDao(fd);
+                    
+                    DatasetInfo dsi = DatasetUtils.parseDatasetInfo(model);
+                    if(dsi != null){
+                        configuration.setUri(dsi.getName());
+                        configuration.setName(dsi.getTitle());
+                        configuration.setDescription(dsi.getDescription()); 
+                    }
+                    
+                } catch (FileNotFoundException ex) {
+                    java.util.logging.Logger.getLogger(ContextHolder.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
 		// If some project is open then close it
 		if (isProjectOpen()) {
@@ -329,19 +333,8 @@ public class ContextHolder {
 		}
 
 		// Load project configuration
-		this.projectConfiguration = configurationToOpen;
+		this.projectConfiguration = configuration;
 		
-		if (getDataRepositoryDao() == null) {
-			this.projectConfiguration = null;
-			String message = "Cannot load data repository DAO ["
-					+ getDataRepositoryName() + "]- cannot open project ["
-					+ configurationToOpen.getName() + "]!";
-			OpenProjectException e = new OpenProjectException(message);
-			LOG.warn(message);
-			LOG.debug(message, e);
-			throw e;
-		}
-
 		applicationConfiguration
 				.setLastOpenProjectUrl(projectFileUrl);
 
@@ -349,43 +342,6 @@ public class ContextHolder {
 		FresnelApplication.getApp().getBaseFrame().hidePreviewPanel();
 		// Close all tabs
 		FresnelApplication.getApp().getBaseFrame().closeAllOpenedTabs();
-	}
-
-	public ProjectConfiguration getProjectConfiguration(
-			String projectFileUrl)
-			throws CannotOpenProjectException, LoadConfigurationException {
-
-		if (projectFileUrl == null) {
-			LOG.warn("Trying to open not existing project: {}. The project was not opened.",
-					projectFileUrl);
-			throw new CannotOpenProjectException("Cannot open project file: '"
-					+ projectFileUrl + "'.");
-		}
-
-                ProjectConfiguration configurationToOpen = new ProjectConfiguration();
-                configurationToOpen.setProjectFileUrl(projectFileUrl);
-                fresnelDao = new FresnelRepositoryDao("inMemmoryProjectRepo");
-                try {
-                    fresnelDao.clearAllData();
-                } catch (RepositoryException ex) {
-                    LOG.warn("Cant remove data.");
-                }
-                try {
-                    fresnelDao.addData(new File(projectFileUrl), RDFFormat.N3, "");
-                } catch (DataImportException ex) {
-                    LOG.warn("Trying to open project: {}. The project was not opened.",
-					projectFileUrl);
-                    throw new CannotOpenProjectException("Cannot open project file: '"
-					+ projectFileUrl + "'.");
-                }
-                ProjectInfo projectInfo = ProjectInfoParser.getProjectInfo(fresnelDao.getRepository());
-                if(projectInfo != null){
-                    configurationToOpen.setUri(projectInfo.getUri());
-                    configurationToOpen.setName(projectInfo.getTitle());
-                    configurationToOpen.setDescription(projectInfo.getDescription());    
-                }
-                
-		return configurationToOpen;
 	}
 
 	/**
@@ -410,75 +366,25 @@ public class ContextHolder {
                     filename = projectConfiguration.getProjectFileUrl();
                 }
                 File file = new File(filename);
-            //FresnelJenaWriter fjw = new FresnelJenaWriter();
-            //                try {
-            //                    fjw.write(projectConfiguration.getFresnelDocument(), new FileOutputStream(file), Constants.N3, null);
-            //                } catch (FileNotFoundException ex) {
-            //                    LOG.warn("File not exist!", ex);
-            //                }
-                FresnelRepositoryDao repositoryDao = getFresnelRepositoryDao();
-                RDFFormat rdfFormat = RDFFormat.N3;
-                RDFHandler rdfHandler = null;
-		FileOutputStream fileOutputStream = null;
-		try {
-			LOG.info(
-					"Starting the export of statements from repository '{}' to file '{}'",
-					repositoryDao.getName(), file.getAbsolutePath());
-			fileOutputStream = new FileOutputStream(file);
-
-			if (rdfFormat.equals(RDFFormat.N3)) {
-				rdfHandler = new N3Writer(fileOutputStream);
-			} else if (rdfFormat.equals(RDFFormat.NTRIPLES)) {
-				rdfHandler = new NTriplesWriter(fileOutputStream);
-			} else if (rdfFormat.equals(RDFFormat.RDFXML)) {
-				rdfHandler = new RDFXMLWriter(fileOutputStream);
-			} else if (rdfFormat.equals(RDFFormat.TURTLE)) {
-				rdfHandler = new TurtleWriter(fileOutputStream);
-			} else {
-				throw new ArrayIndexOutOfBoundsException("Unsupported format: "
-						+ rdfFormat);
-			}
-			repositoryDao.printStatements(rdfHandler, false);
-			LOG.info("Finished: Export from repository '{}' to file '{}'",
-					repositoryDao.getName(), file.getAbsolutePath());
-			new MessageDialog(
-					GuiUtils.getTopComponent(),
-					java.util.ResourceBundle
-							.getBundle(
-									"cz/muni/fi/fresneleditor/common/resource-bundle-common")
-							.getString("Export_finished"),
-					java.util.ResourceBundle
-							.getBundle(
-									"cz/muni/fi/fresneleditor/common/resource-bundle-common")
-							.getString(
-									"The_data_was_successfully_exported_to_'")
-							+ file.getPath()
-							+ "'<br>"
-							+ java.util.ResourceBundle
-									.getBundle(
-											"cz/muni/fi/fresneleditor/common/resource-bundle-common")
-									.getString(
-											"Number_of_exported_statements:_")
-							+ repositoryDao.size()).setVisible(true);
-		} catch (FileNotFoundException e) {
-			LOG.error("Cannot save new project (name: {})!",
-                                        projectConfiguration.getName());
-                        new MessageDialog(GuiUtils.getTopComponent(), "Project save error",
-                                        "Cannot save new project " + projectConfiguration.getName())
-                                        .setVisible(true);
-				
-			e.printStackTrace();
-                        return;
-		} finally {
-			if (fileOutputStream != null) {
-				try {
-					fileOutputStream.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
+                
+                Model model = ModelFactory.createDefaultModel();
+                RDFWriter writer = model.getWriter("N3");
+               
+                FresnelJenaWriter fjw = new FresnelJenaWriter();             
+                fjw.write(ContextHolder.getInstance().getFresnelDocumentDao().getFresnelDocument(), model);
+                
+                DatasetUtils.writeDatasetInfo(model, new DatasetInfo(DatasetUtils.getLastPart(projectConfiguration.getUri()), 
+                        projectConfiguration.getName(),
+                        projectConfiguration.getDescription()), "http://localproject/");
+                
+                model.setNsPrefixes(getFresnelDocumentDao().getFresnelDocument().getPrefixes());
+                
+                try {
+                    writer.write(model, new FileOutputStream(file), "N3");
+                } catch (FileNotFoundException ex) {
+                    java.util.logging.Logger.getLogger(ContextHolder.class.getName()).log(Level.SEVERE, null, ex);
+                }
+		
             } else {
                 LOG.warn("Trying to save project when no project is open! No action performed.");
             }
@@ -551,21 +457,6 @@ public class ContextHolder {
 		return domainDao;
 	}
 
-	/**
-	 * Returns the fresnel repository of the currently opened project.
-	 * 
-	 * @return the frensnelRepositoryDao of the currently opened project
-	 */
-	public FresnelRepositoryDao getFresnelRepositoryDao() {
-		if (!isProjectOpen()) {
-			return null;
-		}
-		if (fresnelDao == null) {
-			fresnelDao = new FresnelRepositoryDao("inMemmoryProjectRepo");
-                                //(FresnelRepositoryDao) createRepositoryDao(currentFresnelRepo);
-		}
-		return fresnelDao;
-	}
 
 	/**
 	 * Returns namespaces declared in both fresnel and data daos. Each namespace
@@ -580,13 +471,8 @@ public class ContextHolder {
 				.getDataRepositoryDao();
 		if (dataRepositoryDao != null) {
 			namespaces.addAll(dataRepositoryDao.getNamespaces());
-		}
-
-		FresnelRepositoryDao fresnelRepositoryDao = ContextHolder.getInstance()
-				.getFresnelRepositoryDao();
-		if (fresnelRepositoryDao != null) {
-			namespaces.addAll(fresnelRepositoryDao.getNamespaces());
-		}
+		}		
+		
 		return new ArrayList<Namespace>(namespaces);
 	}
 
@@ -650,34 +536,6 @@ public class ContextHolder {
 	public void setProjectConfiguration(ProjectConfiguration pc) {
 		projectConfiguration = pc;
 		
-	}
-
-	/**
-	 * @return the projectConfigurationFileURL
-	 */
-	// public String getProjectConfigurationFileURL() {
-	// return projectConfigurationFileURL;
-	// }
-	/**
-	 * @param projectConfigurationFileURL
-	 *            the projectConfigurationFileURL to set
-	 */
-	// public void setProjectConfigurationFileURL(String
-	// projectConfigurationFileURL) {
-	// this.projectConfigurationFileURL = projectConfigurationFileURL;
-	// }
-	/**
-	 * HELPER SETTERS
-	 */
-
-	/**
-	 * Setter for testing purposes.
-	 * 
-	 * @param fresnelDao
-	 *            fresnel DAO to be set
-	 */
-	public void setFresnelDao(FresnelRepositoryDao fresnelDao) {
-		this.fresnelDao = fresnelDao;
 	}
 	
     public Transformations getTransformation() {

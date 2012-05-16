@@ -19,6 +19,12 @@ import cz.muni.fi.fresneleditor.common.utils.GuiUtils;
 import cz.muni.fi.fresneleditor.gui.mod.lens.PropertyVisibilityWrapper;
 import cz.muni.fi.fresneleditor.gui.mod.lens.model.LensSelector;
 import fr.inria.jfresnel.Constants;
+import fr.inria.jfresnel.visibility.AllPropertiesVisibility;
+import fr.inria.jfresnel.visibility.BasicVisibility;
+import fr.inria.jfresnel.visibility.MPVisibility;
+import fr.inria.jfresnel.visibility.PropertyDescriptionProperties;
+import java.util.ArrayList;
+import org.openrdf.model.URI;
 
 /**
  * 
@@ -178,7 +184,7 @@ public class EditShowPropertyJDialog extends javax.swing.JDialog {
 										Short.MAX_VALUE)));
 
 		pack();
-	}// </editor-fold>//GEN-END:initComponents
+	}// </editor-fold>                        
 
 	private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_saveButtonActionPerformed
 		saveButtonClicked(evt);
@@ -208,13 +214,28 @@ public class EditShowPropertyJDialog extends javax.swing.JDialog {
 	 *         visibility
 	 */
 	public PropertyVisibilityWrapper savePropertyVisibility() {
-		if (propertyVisibility == null) {
-			propertyVisibility = new PropertyVisibilityWrapper();
-		}
-
-		propertyVisibility.setFresnelPropertyValueURI(selectLensPropertyJPanel1
-				.savePropertyURI());
+                String uri = selectLensPropertyJPanel1.savePropertyURI();
+            
+		if (propertyVisibility == null && uri.equals(Constants._allProperties)) {
+                    propertyVisibility = new PropertyVisibilityWrapper(new AllPropertiesVisibility());
+		}else if(propertyVisibility == null){
+                    propertyVisibility = new PropertyVisibilityWrapper(new BasicVisibility(uri));
+                }
+                	
 		propertyConfigurationPanel1.savePropertyVisibility(propertyVisibility);
+                if(propertyVisibility.isComplexPropertyDescription()){
+                    PropertyDescriptionProperties propertyDescriptionProperties = new PropertyDescriptionProperties();
+                    propertyDescriptionProperties.depth = propertyVisibility.getMaxDepth();
+                    propertyDescriptionProperties.property = propertyVisibility.getFresnelPropertyValueURI();
+                    propertyDescriptionProperties.use = propertyVisibility.getFresnelUseUri();
+                    List<String> uris = new ArrayList<String>();
+                    for(URI sublensUri : propertyVisibility.getSublensesURIs()){
+                        uris.add(sublensUri.toString());
+                    }
+                    propertyDescriptionProperties.sublens = uris;
+                    
+                    propertyVisibility = new PropertyVisibilityWrapper(new MPVisibility(propertyDescriptionProperties));
+                }
 
 		return propertyVisibility;
 	}

@@ -80,6 +80,10 @@ public class PropertyVisibilityWrapper implements Cloneable {
 		}
 	}
 
+        public PropertyVisibility getPropertyVisibility(){
+            return fresnelVisibility;
+        }
+        
 	/**
 	 * Creates an empty (not-initialised) property description. Its values can
 	 * be set later.
@@ -288,11 +292,10 @@ public class PropertyVisibilityWrapper implements Cloneable {
                     // not the URI enough?
 
                     // try the format first
-                    Object fresnelUseObject = ContextHolder.getInstance()
-                                    .getFresnelRepositoryDao().getFormat(visibility.getPropertyDescriptionProperties().use);
+                    Object fresnelUseObject = ContextHolder.getInstance().getFresnelDocumentDao().getFormat(visibility.getPropertyDescriptionProperties().use);
+
                     if (fresnelUseObject == null) {
-                            fresnelUseObject = ContextHolder.getInstance()
-                                            .getFresnelRepositoryDao().getGroup(visibility.getPropertyDescriptionProperties().use);
+                            fresnelUseObject = ContextHolder.getInstance().getFresnelDocumentDao().getGroup(visibility.getPropertyDescriptionProperties().use);
                     }
 
                     setFresnelUse(fresnelUseObject);

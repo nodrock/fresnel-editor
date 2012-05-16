@@ -10,10 +10,10 @@ import cz.muni.fi.fresneleditor.common.ContextHolder;
 import cz.muni.fi.fresneleditor.common.guisupport.projecttree.AFresnelRepoDataChangedListeningRootTabNode;
 import cz.muni.fi.fresneleditor.common.guisupport.projecttree.ATabNode;
 import cz.muni.fi.fresneleditor.common.guisupport.projecttree.ProjectTree;
-import cz.muni.fi.fresneleditor.gui.mod.lens.LensItemNode;
+import fr.inria.jfresnel.Lens;
 
 public class LensesRootNode extends
-		AFresnelRepoDataChangedListeningRootTabNode<URI> {
+		AFresnelRepoDataChangedListeningRootTabNode<Lens> {
 
 	private static final ResourceBundle bundle = java.util.ResourceBundle
 			.getBundle("cz/muni/fi/fresneleditor/gui/mod/lens/resources/LensJPanel");
@@ -23,21 +23,21 @@ public class LensesRootNode extends
 	}
 
 	@Override
-	protected ATabNode<URI> getNewChild(URI lensUri) {
-		return new LensItemNode(lensUri);
+	protected ATabNode<Lens> getNewChild(Lens lens) {
+		return new LensItemNode(lens);
 	}
 
 	@Override
-	protected List<URI> getChildItems() {
+	protected List<Lens> getChildItems() {
 		if (ContextHolder.getInstance().isProjectOpen()) {
-			List<URI> lensUris = ContextHolder.getInstance()
-					.getFresnelRepositoryDao().getLensURIs();
+                    List<Lens> lensesList = ContextHolder.getInstance().getFresnelDocumentDao().getLenses();
+			
 			LOG.debug("Project {} [{} lenses loaded]", ContextHolder
-					.getInstance().getOpenProjectName(), lensUris.size());
-			return lensUris;
+					.getInstance().getOpenProjectName(), lensesList.size());
+			return lensesList;
 		} else {
 			// if no project is reset the lenses list
-			return new ArrayList<URI>();
+			return new ArrayList<Lens>();
 		}
 	}
 

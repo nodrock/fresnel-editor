@@ -4,6 +4,7 @@
 
 package cz.muni.fi.fresneleditor.gui.mod.lens;
 
+import cz.muni.fi.fresneleditor.gui.mod.lens.treemodel.LensItemNode;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -56,11 +57,11 @@ import fr.inria.jfresnel.lenses.LensPurposeType;
  * @author Igor Zemsky (zemsky@mail.muni.cz)
  */
 public class LensJPanel extends javax.swing.JPanel implements
-		ITabComponent<URI>, IEditable {
+		ITabComponent<Lens>, IEditable {
 
 	private JScrollPane representingScrollPane;
 	private final LensItemNode lensItemNode;
-	private URI lensUri;
+	private Lens lens;
 	private final LensModel initialLensModel;
 	private boolean createNew;
 	private LensSelector lensSelector;
@@ -75,19 +76,17 @@ public class LensJPanel extends javax.swing.JPanel implements
 	 *            the node in the project tree that is represented by this pane
 	 *            component
 	 */
-	public LensJPanel(URI lensUri, LensItemNode lensItemNode) {
+	public LensJPanel(Lens lens, LensItemNode lensItemNode) {
 
 		initComponents();
                 initLensPurposeCombo();
 		this.lensItemNode = lensItemNode;
-		this.lensUri = lensUri;
-		createNew = lensUri == null;
+		this.lens = lens;
+		createNew = lens == null;
 
 		if (createNew) {
 			this.initialLensModel = null;
 		} else {
-			Lens lens = ContextHolder.getInstance().getFresnelRepositoryDao()
-					.getLens(lensUri);
 			this.initialLensModel = new LensModel(lens);
 		}
 
@@ -1064,7 +1063,7 @@ public class LensJPanel extends javax.swing.JPanel implements
 		// lens comment
 		String comment = commentTextArea.getText();
 		if (StringUtils.hasText(comment)) {
-			model.setComment(new LiteralImpl(comment));
+			model.setComment(comment);
 		}
 
 		// hide properties
@@ -1145,13 +1144,7 @@ public class LensJPanel extends javax.swing.JPanel implements
 
 		// comment
 		String commentString = "";
-		if (actualLensModel != null) {
-			Literal comment = actualLensModel.getComment();
-			if (comment != null) {
-				commentString = comment.stringValue();
-			}
-		}
-		commentTextArea.setText(commentString);
+		commentTextArea.setText(actualLensModel.getComment());
 
 		// selector, domain
 		LensSelector selector = actualLensModel != null ? actualLensModel
@@ -1318,8 +1311,8 @@ public class LensJPanel extends javax.swing.JPanel implements
 	}
 
 	@Override
-	public URI getItem() {
-		return lensUri;
+	public Lens getItem() {
+		return lens;
 	}
 
 	@Override
@@ -1350,8 +1343,7 @@ public class LensJPanel extends javax.swing.JPanel implements
 				new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						ContextHolder.getInstance().getFresnelRepositoryDao()
-								.deleteFresnelResource(initialLensModel);
+						ContextHolder.getInstance().getFresnelDocumentDao().deleteLens(lens.getURI());
 						// fixme igor: remove the node and the tab if deleting
 						// was succesfull
 						AppEventsManager.getInstance()
@@ -1378,20 +1370,24 @@ public class LensJPanel extends javax.swing.JPanel implements
 				lensItemNode.setUserObject(new URIImpl(newModel.getModelUri()));
 			}
 
-			// fixme igor: if the lenses uris will be different than the update
-			// method will throw an exception
-			// is this ok?
-			ContextHolder.getInstance().getFresnelRepositoryDao()
-					.updateFresnelResource(initialLensModel, newModel);
+			LensModelManager modelManager = new LensModelManager();
+                        
+			if (createNew) {
+				ContextHolder.getInstance().getFresnelDocumentDao().getLenses().add(modelManager.convertModel2JFresnel(newModel));
+			} else {
+				ContextHolder.getInstance().getFresnelDocumentDao().updateLens(lens.getURI(), modelManager.convertModel2JFresnel(newModel));
+			}
 			AppEventsManager.getInstance().fireRepositoryDataChanged(this,
 					ContextHolder.getInstance().getFresnelRepositoryName());
 		}
 	}
 
 	private boolean validateForm() {
+            // TODO: 
 		String lensName = lensNameTextField.getText();
-		String validateMessage = FresnelUtils.validateResourceUri(lensName,
-				ContextHolder.getInstance().getFresnelRepositoryDao());
+		String validateMessage = null;
+//                        FresnelUtils.validateResourceUri(lensName,
+//				ContextHolder.getInstance().getFresnelRepositoryDao());
 		if (validateMessage != null) {
 			new MessageDialog(GuiUtils.getOwnerFrame(this), "Invalid lens URI",
 					"The lens URI '" + lensName + "' is not valid:<br>"

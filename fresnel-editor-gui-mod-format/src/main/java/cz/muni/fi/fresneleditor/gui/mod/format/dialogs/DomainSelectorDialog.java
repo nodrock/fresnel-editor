@@ -373,7 +373,7 @@ public class DomainSelectorDialog extends javax.swing.JDialog {
 								.addContainerGap()));
 
 		pack();
-	}// </editor-fold>//GEN-END:initComponents
+	}// </editor-fold>                        
 
 	private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cancelBtnActionPerformed
 		domainSelector.setUpdated(false);
@@ -420,9 +420,10 @@ public class DomainSelectorDialog extends javax.swing.JDialog {
 		String selectorString = selectorStringText.getText().trim();
 
 		if (simpleSelectorRadio.isSelected()) {
-			String validateMessage = FresnelUtils.validateResourceUri(
-					selectorString, ContextHolder.getInstance()
-							.getFresnelRepositoryDao());
+			String validateMessage = null; 
+//                        FresnelUtils.validateResourceUri(
+//					selectorString, ContextHolder.getInstance()
+//							.getFresnelRepositoryDao());
 			if (validateMessage != null) {
 				new MessageDialog(GuiUtils.getOwnerFrame(this),
 						"Invalid selector string", "Selector string '"

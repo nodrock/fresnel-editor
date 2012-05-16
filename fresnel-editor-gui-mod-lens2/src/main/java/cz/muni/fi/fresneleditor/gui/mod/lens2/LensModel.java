@@ -53,7 +53,7 @@ public class LensModel implements IModel {
 
 	private final String lensUri;
 
-	private Literal comment;
+	private String comment;
 
 	private LensSelector selector;
 	private LensPurposeType purpose = LensPurposeType.NOT_SPECIFIED;
@@ -62,7 +62,7 @@ public class LensModel implements IModel {
 	private List<PropertyVisibilityWrapper> hideProperties = new ArrayList<PropertyVisibilityWrapper>();
 
 	private List<Group> groups;
-	private Literal label;
+	private String label;
 
 	/**
 	 * Create new lens model backed up with data from lens.
@@ -111,13 +111,13 @@ public class LensModel implements IModel {
 		if (StringUtils.hasText(lens.getComment())) {
 			// fixme igor: jFresnel does not parse the language information for
 			// comment
-			this.setComment(new LiteralImpl(lens.getComment()));
+			this.setComment(lens.getComment());
 		}
 		// fixme igor: jFresnel does not parse the language information for
 		// label
 		// so we are setting a label this way
 		if (StringUtils.hasText(lens.getLabel())) {
-			this.setLabel(new LiteralImpl(lens.getLabel()));
+			this.setLabel(lens.getLabel());
 		}
 
 	}
@@ -215,15 +215,11 @@ public class LensModel implements IModel {
 		return groups;
 	}
 
-	public void setComment(Literal comment) {
+	public void setComment(String comment) {
 		this.comment = comment;
 	}
 
-	public void setComment(String comment, String language) {
-		setComment(new LiteralImpl(comment, language));
-	}
-
-	public Literal getComment() {
+	public String getComment() {
 		return comment;
 	}
 
@@ -348,21 +344,11 @@ public class LensModel implements IModel {
 		return allPropertiesIndex;
 	}
 
-	public void setLabel(Literal label) {
+	public void setLabel(String label) {
 		this.label = label;
 	}
 
-	/**
-	 * Sets a label with a given language.
-	 * 
-	 * @param label
-	 * @param language
-	 */
-	public void setLabel(String label, String language) {
-		this.label = new LiteralImpl(label, language);
-	}
-
-	public Literal getLabel() {
+	public String getLabel() {
 		return label;
 	}
 

@@ -47,7 +47,6 @@ import cz.muni.fi.fresneleditor.gui.mod.format.dialogs.DomainSelectorDialog;
 import cz.muni.fi.fresneleditor.gui.mod.format.dialogs.FormatPreviewDialog;
 import cz.muni.fi.fresneleditor.gui.mod.format.treemodel.FormatItemNode;
 import cz.muni.fi.fresneleditor.gui.mod.format.utils.FormatModelManager;
-import cz.muni.fi.fresneleditor.model.FresnelRepositoryDao;
 import fr.inria.jfresnel.Format;
 import fr.inria.jfresnel.formats.FormatValueLabelPolicy;
 import fr.inria.jfresnel.formats.FormatValueType;
@@ -61,7 +60,7 @@ import fr.inria.jfresnel.sesame.SesameFormat;
  */
 @Component
 public class FormatsJPanel extends javax.swing.JPanel implements
-		ITabComponent<URI>, IEditable {
+		ITabComponent<Format>, IEditable {
 	// fixme igor: TBD: what about the generic for this interface: is it
 	// necessary/usefull?
 
@@ -84,7 +83,7 @@ public class FormatsJPanel extends javax.swing.JPanel implements
 	private static int NO_ROW_SELECTED = -1;
 
 	private FormatModel initialFormatModel = null;
-	private URI formatUri = null;
+	private Format format = null;
 	private String formatDescription = "";
 
 	private FormatItemNode formatItemNode = null;
@@ -121,24 +120,20 @@ public class FormatsJPanel extends javax.swing.JPanel implements
 	/**
 	 * Default constructor for FormatsJPanel.
 	 */
-	public FormatsJPanel(URI formatUri, FormatItemNode formatItemNode) {
-
-		this();
+	public FormatsJPanel(Format format, FormatItemNode formatItemNode) {
+            this();
+                this.format = format;
+            
+		
 
 		this.formatItemNode = formatItemNode;
-		this.createNewFormat = (formatUri == null);
+		this.createNewFormat = (format == null);
 
 		FormatModelManager modelManager = new FormatModelManager();
 
 		if (createNewFormat) {
 			initialFormatModel = modelManager.buildNewModel();
-			formatUri = null;
 		} else {
-			FresnelRepositoryDao fresnelDao = ContextHolder.getInstance()
-					.getFresnelRepositoryDao();
-			Format format = fresnelDao.getFormat(formatUri.toString());
-			this.formatUri = formatUri;
-
 			initialFormatModel = modelManager.buildModel(format);
 		}
 
@@ -166,7 +161,7 @@ public class FormatsJPanel extends javax.swing.JPanel implements
 			public void run() {
 				// Load format name (URI)
 				formatNameText.setText(formatModel.getUri());
-				formatDescription = formatModel.getComment().getLabel();
+				formatDescription = formatModel.getComment();
 				// Load table models
 				// TODO: Helper for cloning
 				// Domain selectors
@@ -226,8 +221,7 @@ public class FormatsJPanel extends javax.swing.JPanel implements
 				.getModel();
 		// Save format name (URI)
 		format.setUri(formatNameText.getText());
-		format.setComment(new LiteralImpl(formatDescription, initialFormatModel
-				.getComment().getLanguage()));
+		format.setComment(formatDescription);
 		// Save domain selectors, styles and additonal contents
 		format.setDomainSelectors(formatDomainTableModel.getAll());
 		format.setStyles(stylesTableModel.getAll());
@@ -1201,8 +1195,8 @@ public class FormatsJPanel extends javax.swing.JPanel implements
 	}
 
 	@Override
-	public URI getItem() {
-		return formatUri;
+	public Format getItem() {
+		return format;
 	}
 
 	@Override
@@ -1221,13 +1215,13 @@ public class FormatsJPanel extends javax.swing.JPanel implements
 		if (validateForm()) {
 			// Insert new statements
 			FormatModel formatModel = saveFormatModel();
-			FresnelRepositoryDao fresnelDao = ContextHolder.getInstance()
-					.getFresnelRepositoryDao();
+			
+                        FormatModelManager modelManager = new FormatModelManager();
+                        
 			if (createNewFormat) {
-				fresnelDao.updateFresnelResource(null, formatModel);
+				ContextHolder.getInstance().getFresnelDocumentDao().getFormats().add(modelManager.convertModel2JFresnel(formatModel));
 			} else {
-				fresnelDao.updateFresnelResource(initialFormatModel,
-						formatModel);
+				ContextHolder.getInstance().getFresnelDocumentDao().updateFormat(format.getURI(), modelManager.convertModel2JFresnel(formatModel));
 			}
 
 			// If changes were successfully commited then switch to new initial
@@ -1248,9 +1242,7 @@ public class FormatsJPanel extends javax.swing.JPanel implements
 				new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						FresnelRepositoryDao fresnelDao = ContextHolder
-								.getInstance().getFresnelRepositoryDao();
-						fresnelDao.deleteFresnelResource(initialFormatModel);
+						ContextHolder.getInstance().getFresnelDocumentDao().deleteFormat(format.getURI());
 						AppEventsManager.getInstance()
 								.fireRepositoryDataChanged(
 										this,
@@ -1263,8 +1255,9 @@ public class FormatsJPanel extends javax.swing.JPanel implements
 	private boolean validateForm() {
 		String formatName = formatNameText.getText();
 
-		String validateMessage = FresnelUtils.validateResourceUri(formatName,
-				ContextHolder.getInstance().getFresnelRepositoryDao());
+		String validateMessage = null;
+//                        FresnelUtils.validateResourceUri(formatName,
+//				ContextHolder.getInstance().getFresnelRepositoryDao());
 		if (validateMessage != null) {
 			new MessageDialog(GuiUtils.getOwnerFrame(this),
 					bundle.getString("Invalid_Fresnel_Format_URI"),

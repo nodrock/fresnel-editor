@@ -39,8 +39,11 @@ import cz.muni.fi.fresneleditor.common.utils.GuiUtils;
 import cz.muni.fi.fresneleditor.gui.mod.group.data.GroupModel;
 import cz.muni.fi.fresneleditor.gui.mod.group.treemodel.GroupItemNode;
 import cz.muni.fi.fresneleditor.gui.mod.group.utils.GroupModelManager;
-import cz.muni.fi.fresneleditor.model.FresnelRepositoryDao;
+import fr.inria.jfresnel.Format;
 import fr.inria.jfresnel.Group;
+import fr.inria.jfresnel.Lens;
+import java.util.ArrayList;
+import org.openrdf.model.impl.URIImpl;
 
 /**
  * 
@@ -48,7 +51,7 @@ import fr.inria.jfresnel.Group;
  * @version 18.4.2009
  */
 public class GroupsJPanel extends javax.swing.JPanel implements
-		ITabComponent<URI>, IEditable {
+		ITabComponent<Group>, IEditable {
 
 	/**
 	 * 
@@ -63,7 +66,7 @@ public class GroupsJPanel extends javax.swing.JPanel implements
 	private final int NOTHING_SELECTED = -1;
 
 	private GroupModel initialGroupModel = null;
-	private URI groupUri = null;
+	private Group group = null;
 	private String groupDescription = "";
 
 	private GroupJScrollPane representingScrollPane = null;
@@ -99,24 +102,19 @@ public class GroupsJPanel extends javax.swing.JPanel implements
 	 * 
 	 * @param group
 	 */
-	public GroupsJPanel(URI groupUri, GroupItemNode groupItemNode) {
+	public GroupsJPanel(Group group, GroupItemNode groupItemNode) {
 
 		initComponents();
 
+                this.group = group;
 		this.groupItemNode = groupItemNode;
-		this.createNewGroup = (groupUri == null);
+		this.createNewGroup = (group == null);
 
 		GroupModelManager modelManager = new GroupModelManager();
 
 		if (createNewGroup) {
 			initialGroupModel = modelManager.buildNewModel();
-			groupUri = null;
 		} else {
-			FresnelRepositoryDao fresnelDao = ContextHolder.getInstance()
-					.getFresnelRepositoryDao();
-			Group group = fresnelDao.getGroup(groupUri.toString());
-			this.groupUri = groupUri;
-
 			initialGroupModel = modelManager.buildModel(group);
 		}
 
@@ -130,7 +128,7 @@ public class GroupsJPanel extends javax.swing.JPanel implements
 			public void run() {
 
 				groupNameText.setText(groupModel.getUri());
-				groupDescription = groupModel.getComment().getLabel();
+				groupDescription = groupModel.getComment();
 				StylesTableModel stylesTableModel = (StylesTableModel) stylesJPanel
 						.getStylesTable().getModel();
 				stylesTableModel.addAll(groupModel.getStyles());
@@ -144,14 +142,22 @@ public class GroupsJPanel extends javax.swing.JPanel implements
 				((ExtendedJList<URI>) groupFormatsList).addElements(groupModel
 						.getAssociatedFormatUris());
 
-				List<URI> availLenses = ContextHolder.getInstance()
-						.getFresnelRepositoryDao().getLensURIs();
+                                List<Lens> lenses = ContextHolder.getInstance().getFresnelDocumentDao().getLenses();
+				List<URI> availLenses = new ArrayList<URI>();
+                                for(Lens l : lenses){
+                                    availLenses.add(new URIImpl(l.getURI()));
+                                }
+                                
 				availLenses.removeAll(groupModel.getAssociatedLensUris());
 				((ExtendedJList<URI>) availLensesList).removeAllElements();
 				((ExtendedJList<URI>) availLensesList).addElements(availLenses);
 
-				List<URI> availFormats = ContextHolder.getInstance()
-						.getFresnelRepositoryDao().getFormatsURIs();
+                                List<Format> formats = ContextHolder.getInstance().getFresnelDocumentDao().getFormats();
+				List<URI> availFormats = new ArrayList<URI>();
+                                for(Format f : formats){
+                                    availFormats.add(new URIImpl(f.getURI()));
+                                }
+                                
 				availFormats.removeAll(groupModel.getAssociatedFormatUris());
 				((ExtendedJList<URI>) availFormatsList).removeAllElements();
 				((ExtendedJList<URI>) availFormatsList)
@@ -170,8 +176,7 @@ public class GroupsJPanel extends javax.swing.JPanel implements
 
 		// TODO: This is not very clean.
 		resultGroupModel.setLabel(initialGroupModel.getLabel());
-		resultGroupModel.setComment(new LiteralImpl(groupDescription,
-				initialGroupModel.getComment().getLanguage()));
+		resultGroupModel.setComment(groupDescription);
 
 		if (!FresnelUtils.isStringEmpty(stylesheetUriText.getText())) {
 			resultGroupModel.setCssStylesheetUrl(stylesheetUriText.getText());
@@ -763,7 +768,7 @@ public class GroupsJPanel extends javax.swing.JPanel implements
 												.addComponent(deleteBtn)
 												.addComponent(closeBtn))
 								.addContainerGap(15, Short.MAX_VALUE)));
-	}// </editor-fold>//GEN-END:initComponents
+	}// </editor-fold>                        
 
 	private void addLensBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_addLensBtnActionPerformed
 		moveItemBetweenLists(availLensesList, groupLensesList);
@@ -889,8 +894,8 @@ public class GroupsJPanel extends javax.swing.JPanel implements
 	}
 
 	@Override
-	public URI getItem() {
-		return groupUri;
+	public Group getItem() {
+		return group;
 	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
@@ -935,12 +940,13 @@ public class GroupsJPanel extends javax.swing.JPanel implements
 		if (validateForm()) {
 			// Insert new statements
 			GroupModel groupModel = exportGroupModel();
-			FresnelRepositoryDao fresnelDao = ContextHolder.getInstance()
-					.getFresnelRepositoryDao();
-			if (createNewGroup) {
-				fresnelDao.updateFresnelResource(null, groupModel);
+                        
+                        GroupModelManager modelManager = new GroupModelManager();
+                        
+                        if (createNewGroup) {
+				ContextHolder.getInstance().getFresnelDocumentDao().addGroup(modelManager.convertModel2JFresnel(groupModel));
 			} else {
-				fresnelDao.updateFresnelResource(initialGroupModel, groupModel);
+				ContextHolder.getInstance().getFresnelDocumentDao().updateGroup(group.getURI(), modelManager.convertModel2JFresnel(groupModel));
 			}
 
 			// If changes were successfully commited then switch to new initial
@@ -961,9 +967,7 @@ public class GroupsJPanel extends javax.swing.JPanel implements
 				new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						FresnelRepositoryDao fresnelDao = ContextHolder
-								.getInstance().getFresnelRepositoryDao();
-						fresnelDao.deleteFresnelResource(initialGroupModel);
+						ContextHolder.getInstance().getFresnelDocumentDao().deleteGroup(group.getURI());
 						AppEventsManager.getInstance()
 								.fireRepositoryDataChanged(
 										this,
@@ -975,9 +979,11 @@ public class GroupsJPanel extends javax.swing.JPanel implements
 	}
 
 	private boolean validateForm() {
+            // TODO: fix this
 		String groupName = groupNameText.getText();
-		String validateMessage = FresnelUtils.validateResourceUri(groupName,
-				ContextHolder.getInstance().getFresnelRepositoryDao());
+		String validateMessage = null;
+                        //FresnelUtils.validateResourceUri(groupName,
+			//	ContextHolder.getInstance().getFresnelRepositoryDao());
 		if (validateMessage != null) {
 			new MessageDialog(GuiUtils.getOwnerFrame(this),
 					bundle.getString("Invalid_Fresnel_Group_URI"),

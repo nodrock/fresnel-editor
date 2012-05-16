@@ -97,8 +97,8 @@ public class ProjectConfigurationJPanel extends javax.swing.JPanel implements
 		}
 		initComponents();
 
-                projectUriText.setEnabled(createNew);
-		projectNameText.setEnabled(createNew);
+//                projectUriText.setEnabled(createNew);
+//		projectNameText.setEnabled(createNew);
 		projectFileText.setEnabled(createNew);
 		if (!createNew) {
 			browseProjectFileBtn.setEnabled(createNew);

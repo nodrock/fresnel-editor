@@ -210,7 +210,7 @@ public class SelectLensPropertyJPanel extends javax.swing.JPanel {
 														javax.swing.GroupLayout.PREFERRED_SIZE,
 														javax.swing.GroupLayout.DEFAULT_SIZE,
 														javax.swing.GroupLayout.PREFERRED_SIZE))));
-	}// </editor-fold>//GEN-END:initComponents
+	}// </editor-fold>                        
 
 	private void existingPropertyRadioActionPerformed(
 			java.awt.event.ActionEvent evt) {// GEN-FIRST:event_existingPropertyRadioActionPerformed
@@ -299,10 +299,11 @@ public class SelectLensPropertyJPanel extends javax.swing.JPanel {
 		if (customPropertyRadio.isSelected()) {
 			// custom property
 			propertyUri = customPropertyText.getText();
-
-			String resultMessage = FresnelUtils.validateResourceUri(
-					propertyUri, ContextHolder.getInstance()
-							.getFresnelRepositoryDao());
+//TODO: nodrock fix this
+			String resultMessage = null;
+//                                FresnelUtils.validateResourceUri(
+//					propertyUri, ContextHolder.getInstance()
+//							.getFresnelRepositoryDao());
 			if (resultMessage != null) {
 				return "Custom property URI '" + propertyUri
 						+ "' does not have any URI specified.<br>"

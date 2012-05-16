@@ -32,9 +32,12 @@ import cz.muni.fi.fresneleditor.common.visualization.IRDFVisualizer;
 import cz.muni.fi.fresneleditor.common.visualization.RDFVisualizer;
 import cz.muni.fi.fresneleditor.common.visualization.VisualizationParameter;
 import cz.muni.fi.fresneleditor.gui.mod.vis.treemodel.VisualizationItemNode;
-import cz.muni.fi.fresneleditor.gui.mod.vis.treemodel.VisualizationRootNode;
 import cz.muni.fi.fresneleditor.model.DataRepositoryDao;
-import cz.muni.fi.fresneleditor.model.FresnelRepositoryDao;
+import fr.inria.jfresnel.Group;
+import fr.inria.jfresnel.Lens;
+import java.util.ArrayList;
+import java.util.Collection;
+import org.openrdf.model.impl.URIImpl;
 
 /**
  * 
@@ -96,8 +99,11 @@ public class VisualizationJPanel extends javax.swing.JPanel implements
 	}
 
 	private void customInitComponents() {
-		List<URI> availGroups = ContextHolder.getInstance()
-				.getFresnelRepositoryDao().getGroupsURIs();
+            List<Group> groups = ContextHolder.getInstance().getFresnelDocumentDao().getGroups();
+		List<URI> availGroups = new ArrayList<URI>();
+                for(Group g : groups){
+                    availGroups.add(new URIImpl(g.getURI()));
+                }
 		((ExtendedJList<URI>) groupsList).addElements(availGroups);
 	}
 
@@ -452,10 +458,9 @@ public class VisualizationJPanel extends javax.swing.JPanel implements
 			return;
 		}
 		// Validate that group contains at least one lens
-		FresnelRepositoryDao fresnelDao = ContextHolder.getInstance()
-				.getFresnelRepositoryDao();
-		List<URI> lensURIs = fresnelDao.getLensesUrisForGroup(groupUri);
-		if (lensURIs == null || lensURIs.isEmpty()) {
+		
+		Collection<Lens> lenses = ContextHolder.getInstance().getFresnelDocumentDao().getGroup(groupUri.toString()).getLenses();
+		if (lenses == null || lenses.isEmpty()) {
 			new MessageDialog(this, bundle.getString("Group_without_lens"),
 					bundle.getString("No_lens_text")).setVisible(true);
 			return;

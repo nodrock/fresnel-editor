@@ -1,10 +1,11 @@
-package cz.muni.fi.fresneleditor.gui.mod.lens2;
+package cz.muni.fi.fresneleditor.gui.mod.lens.treemodel;
 
 import org.openrdf.model.URI;
 
 import cz.muni.fi.fresneleditor.common.ITabComponent;
 import cz.muni.fi.fresneleditor.common.guisupport.projecttree.ATabNode;
 import cz.muni.fi.fresneleditor.common.utils.FresnelUtils;
+import cz.muni.fi.fresneleditor.gui.mod.lens.LensJPanel;
 import fr.inria.jfresnel.Lens;
 
 /**
@@ -13,29 +14,27 @@ import fr.inria.jfresnel.Lens;
  * @author Igor Zemsky (zemsky@mail.muni.cz)
  * 
  */
-public class LensItemNode extends ATabNode<URI> {
+public class LensItemNode extends ATabNode<Lens> {
 
-	public LensItemNode(URI lensUri) {
-		super(lensUri);
+	public LensItemNode(Lens lens) {
+		super(lens);
 	}
 
 	@Override
 	public String toString() {
-		URI userObject2 = getUserObject();
-		return FresnelUtils.getLocalName(userObject2 != null ? userObject2
-				.stringValue() : "fresneled:newLens");
+		return FresnelUtils.getLocalName(getUserObject() != null ? getUserObject().getURI() : "fresneled:newLens");
 	}
 
 	@Override
-	protected ITabComponent<URI> createComponent() {
-		return new LensJPanel2(getUserObject(), this);
+	protected ITabComponent<Lens> createComponent() {
+		return new LensJPanel(getUserObject(), this);
 	}
 
 	@Override
 	public void clickAction(int clickCount) {
 		if (clickCount == 2 && !isOpened()) {
 			// fixme igor: enable this functionality for all tab nodes
-			((LensJPanel2) getComponent()).doReload();
+			((LensJPanel) getComponent()).doReload();
 		}
 		super.clickAction(clickCount);
 	}

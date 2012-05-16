@@ -134,7 +134,7 @@ public class LensesUtils {
 		if (model.getComment() != null) {
 			URI predicate = new URIImpl(Constants.RDFS_NAMESPACE_URI
 					+ Constants._comment);
-			Value object = model.getComment();
+			Value object = new URIImpl(model.getComment());
 			statements.add(new StatementImpl(lensSubject, predicate, object));
 		}
 
@@ -145,7 +145,7 @@ public class LensesUtils {
 			// it generates it automatically from the URI
 			URI predicate = new URIImpl(Constants.RDFS_NAMESPACE_URI
 					+ Constants._label);
-			Value object = model.getLabel();
+			Value object = new URIImpl(model.getLabel());
 			statements.add(new StatementImpl(lensSubject, predicate, object));
 		}
 

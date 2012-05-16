@@ -31,20 +31,20 @@ public class RepositoryTest {
 	public static void main(String[] args) throws DataImportException,
 			ParserConfigurationException {
 
-		DataRepositoryDao domainRepository = new DataRepositoryDao("testDao1");
-		File foafFile = new File("foaf_wapxana.xml");
-		domainRepository.addData(foafFile, RDFFormat.RDFXML, null);
+//		DataRepositoryDao domainRepository = new DataRepositoryDao("testDao1");
+//		File foafFile = new File("foaf_wapxana.xml");
+//		domainRepository.addData(foafFile, RDFFormat.RDFXML, null);
+//
+//		domainRepository.printStatements(System.out, false);
 
-		domainRepository.printStatements(System.out, false);
+//		FresnelRepositoryDao fresnelRepository = new FresnelRepositoryDao(
+//				"testDao2");
+//		File fresnelFile = new File("foaf_fresnel.n3");
+//		fresnelRepository.addData(fresnelFile, RDFFormat.N3, null);
+//
+//		fresnelRepository.printStatements(System.out, false);
 
-		FresnelRepositoryDao fresnelRepository = new FresnelRepositoryDao(
-				"testDao2");
-		File fresnelFile = new File("foaf_fresnel.n3");
-		fresnelRepository.addData(fresnelFile, RDFFormat.N3, null);
-
-		fresnelRepository.printStatements(System.out, false);
-
-		FresnelDocument fd = fresnelRepository.getFresnelDocument();
+//		FresnelDocument fd = fresnelRepository.getFresnelDocument();
 		// Group[] groups = fd.getGroups();
 
 		// System.out.println("Following groups found:");
@@ -53,36 +53,36 @@ public class RepositoryTest {
 		// //System.out.println("===========GG==========");
 		// }
 
-		for (Format format : fd.getFormats()) {
-			System.out.println(format);
-			System.out.println("===========FF==========");
-		}
-
-		// RENDERER test
-		SesameRenderer renderer = new SesameRenderer();
-
-		FresnelDocument fdTest = new FresnelDocument();
-		List<Lens> lenses = new ArrayList<Lens>();
-		lenses.add(fresnelRepository.getLenses().get(0));
-		fdTest.setLenses(lenses);
-
-		Document document = renderer.render(fdTest,
-				domainRepository.getRepository());
-
-		try {
-			// Prepare the DOM document for writing
-			DOMSource source = new DOMSource(document);
-
-			// Prepare the output file
-			File file = new File("text-output.xml");
-			Result result = new StreamResult(file);
-
-			// Write the DOM document to the file
-			Transformer xformer = TransformerFactory.newInstance()
-					.newTransformer();
-			xformer.transform(source, result);
-		} catch (TransformerConfigurationException e) {
-		} catch (TransformerException e) {
-		}
+//		for (Format format : fd.getFormats()) {
+//			System.out.println(format);
+//			System.out.println("===========FF==========");
+//		}
+//
+//		// RENDERER test
+//		SesameRenderer renderer = new SesameRenderer();
+//
+//		FresnelDocument fdTest = new FresnelDocument();
+//		List<Lens> lenses = new ArrayList<Lens>();
+//		lenses.add(fresnelRepository.getLenses().get(0));
+//		fdTest.setLenses(lenses);
+//
+//		Document document = renderer.render(fdTest,
+//				domainRepository.getRepository());
+//
+//		try {
+//			// Prepare the DOM document for writing
+//			DOMSource source = new DOMSource(document);
+//
+//			// Prepare the output file
+//			File file = new File("text-output.xml");
+//			Result result = new StreamResult(file);
+//
+//			// Write the DOM document to the file
+//			Transformer xformer = TransformerFactory.newInstance()
+//					.newTransformer();
+//			xformer.transform(source, result);
+//		} catch (TransformerConfigurationException e) {
+//		} catch (TransformerException e) {
+//		}
 	}
 }

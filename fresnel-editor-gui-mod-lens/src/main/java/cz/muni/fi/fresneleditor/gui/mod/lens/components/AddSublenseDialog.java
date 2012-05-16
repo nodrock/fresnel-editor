@@ -16,6 +16,8 @@ import com.google.common.collect.Collections2;
 
 import cz.muni.fi.fresneleditor.common.ContextHolder;
 import cz.muni.fi.fresneleditor.common.utils.GuiUtils;
+import fr.inria.jfresnel.Lens;
+import org.openrdf.model.impl.URIImpl;
 
 /**
  * 
@@ -42,8 +44,12 @@ public class AddSublenseDialog extends javax.swing.JDialog {
 	 * Load available lenses from repository
 	 */
 	private void refreshSublensesList() {
-		List<URI> lenses = ContextHolder.getInstance()
-				.getFresnelRepositoryDao().getLensURIs();
+		List<Lens> lenses2 = ContextHolder.getInstance().getFresnelDocumentDao().getLenses();
+                List<URI> lenses = new ArrayList<URI>();
+                
+                for(Lens l : lenses2){
+                    lenses.add(new URIImpl(l.getURI()));
+                }
 
 		final Set<URI> alreadyUsedLenses = new HashSet<URI>(
 				confPanel.getSublenses());
@@ -187,7 +193,7 @@ public class AddSublenseDialog extends javax.swing.JDialog {
 								.addContainerGap()));
 
 		pack();
-	}// </editor-fold>//GEN-END:initComponents
+	}// </editor-fold>                        
 
 	private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_cancelBtnActionPerformed
 		// hide the dialog only

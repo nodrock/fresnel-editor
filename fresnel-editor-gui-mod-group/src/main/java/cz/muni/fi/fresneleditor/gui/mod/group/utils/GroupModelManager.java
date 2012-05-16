@@ -19,7 +19,10 @@ import cz.muni.fi.fresneleditor.common.utils.AModelManager;
 import cz.muni.fi.fresneleditor.gui.mod.group.data.GroupModel;
 import cz.muni.fi.fresneleditor.model.IModel;
 import fr.inria.jfresnel.Constants;
+import fr.inria.jfresnel.Format;
 import fr.inria.jfresnel.Group;
+import fr.inria.jfresnel.Lens;
+import java.util.ArrayList;
 
 /**
  * Class which contains functionality for building of GroupModel on the basis of
@@ -29,9 +32,6 @@ import fr.inria.jfresnel.Group;
  * @version 21.4.2009
  */
 public class GroupModelManager extends AModelManager<Group> {
-
-	public static final String EXTERNAL_CSS_REFERENCE_PROPERTY = Constants.FRESNEL_NAMESPACE_URI
-			+ "stylesheetLink";
 
 	/**
 	 * Default constructor.
@@ -49,29 +49,32 @@ public class GroupModelManager extends AModelManager<Group> {
 
 		groupModel.setUri(group.getURI());
 		groupModel.setFresnelGroup(group);
-		groupModel.setLabel(getResourceLabel(groupUri));
-		groupModel.setComment(getResourceComment(groupUri));
+		groupModel.setLabel(group.getLabel());
+		groupModel.setComment(group.getComment());
 
 		// CSS stylesheet reference
-		List<Value> resultList = getResourceValueProperties(groupUri,
-				EXTERNAL_CSS_REFERENCE_PROPERTY);
+                
+		List<String> resultList = new ArrayList<String>(group.getStylesheetLinks());
 
-		Resource cssResource = null;
-		if (!resultList.isEmpty()) {
-			cssResource = (Resource) resultList.get(0);
-		}
-		if (cssResource != null && !"".equals(cssResource.stringValue())) {
-			groupModel.setCssStylesheetUrl(cssResource.stringValue());
-		}
+                if(!resultList.isEmpty()){
+                    groupModel.setCssStylesheetUrl(resultList.get(0));
+                }
+
 
 		// Loading associated Lens URIs
-		List<URI> lensesUris = ContextHolder.getInstance()
-				.getFresnelRepositoryDao().getLensesUrisForGroup(groupUri);
+                List<Lens> lenses = new ArrayList<Lens>(group.getLenses());
+		List<URI> lensesUris = new ArrayList<URI>();
+                for(Lens l : lenses){
+                    lensesUris.add(new URIImpl(l.getURI()));
+                }
 		groupModel.setAssociatedLensUris(lensesUris);
 
 		// Loading associated Format URIs
-		List<URI> formatsUris = ContextHolder.getInstance()
-				.getFresnelRepositoryDao().getFormatsUrisForGroup(groupUri);
+                List<Format> formats = new ArrayList<Format>(group.getFormats());
+		List<URI> formatsUris = new ArrayList<URI>();
+		for(Format f : formats){
+                    formatsUris.add(new URIImpl(f.getURI()));
+                }
 		groupModel.setAssociatedFormatUris(formatsUris);
 
 		// STYLES LOADING
@@ -99,14 +102,16 @@ public class GroupModelManager extends AModelManager<Group> {
 			propertyStyle.setValueType(CssValueType.CLASS);
 			groupModel.getStyles().add(propertyStyle);
 		}
-
-		// Resource style loading (needs special handling - not covered by
-		// JFresnel)
-		StyleGuiWrapper resourceStyle = getResourceStyle(new URIImpl(
-				group.getURI()));
-		if (resourceStyle != null) {
+                
+                if (group.getResourceStyle() != null) {
+			StyleGuiWrapper resourceStyle = new StyleGuiWrapper(
+					StyleType.RESOURCE);
+			resourceStyle.setValue(group.getResourceStyle());
+			// FIXME
+			resourceStyle.setValueType(CssValueType.CLASS);
 			groupModel.getStyles().add(resourceStyle);
 		}
+
 
 		// TODO: Implement loading of additional content for Groups
 		// CONTENT TYPES LOADING
@@ -146,8 +151,64 @@ public class GroupModelManager extends AModelManager<Group> {
 	 */
 	@Override
 	public Group convertModel2JFresnel(IModel model) {
-		throw new UnsupportedOperationException(
-				"Conversion not support for group model yet!");
+		GroupModel groupModel = (GroupModel) model;
+		Group group = new Group(groupModel.getModelUri(), "");
+                
+                group.setLabel(groupModel.getLabel());
+                group.setComment(groupModel.getComment());
+                
+                List<URI> associatedLensUris = groupModel.getAssociatedLensUris();
+                for(URI lensUri : associatedLensUris){
+                    Lens lens = ContextHolder.getInstance().getFresnelDocumentDao().getLens(lensUri.toString());
+                    if(lens != null){
+                        group.addLens(lens);
+                    }
+                }
+                
+                
+                List<URI> associatedFormatUris = groupModel.getAssociatedFormatUris();
+                for(URI formatUri : associatedFormatUris){
+                    Format format = ContextHolder.getInstance().getFresnelDocumentDao().getFormat(formatUri.toString());
+                    if(format != null){
+                        group.addFormat(format);
+                    }
+                }
+                
+                // Styles
+		for (StyleGuiWrapper style : groupModel.getStyles()) {
+			switch (style.getType()) {
+			case LABEL:
+				if (style.getType().equals(StyleType.LABEL)) {
+					group.setLabelStyle(style.getValue());
+				}
+				break;
+			case VALUE:
+				if (style.getType().equals(StyleType.VALUE)) {
+					group.setValueStyle(style.getValue());
+				}
+				break;
+			case PROPERTY:
+				if (style.getType().equals(StyleType.PROPERTY)) {
+					group.setPropertyStyle(style.getValue());
+				}
+				break;
+			case RESOURCE:
+				if (style.getType().equals(StyleType.RESOURCE)) {
+					// Resource style not supported by JFresnel 0.3.2
+				}
+				break;
+			default:
+				throw new IllegalArgumentException("Style type: "
+						+ style.getType());
+			}
+		}     
+                
+                String cssStylesheetUrl = groupModel.getCssStylesheetUrl();
+                if(cssStylesheetUrl != null){
+                    group.addStylesheetLink(cssStylesheetUrl);
+                }
+                
+                return group;
 	}
 
 }

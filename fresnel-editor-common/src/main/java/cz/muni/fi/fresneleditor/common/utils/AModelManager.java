@@ -3,25 +3,13 @@
  */
 package cz.muni.fi.fresneleditor.common.utils;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import org.openrdf.model.Literal;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.model.impl.LiteralImpl;
-import org.openrdf.query.QueryLanguage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import cz.muni.fi.fresneleditor.common.ContextHolder;
 import cz.muni.fi.fresneleditor.common.data.AdditionalContentGuiWrapper;
 import cz.muni.fi.fresneleditor.common.data.AdditionalContentType;
-import cz.muni.fi.fresneleditor.common.data.StyleGuiWrapper;
-import cz.muni.fi.fresneleditor.common.data.StyleType;
-import cz.muni.fi.fresneleditor.model.FresnelRepositoryDao;
 import cz.muni.fi.fresneleditor.model.IModel;
-import cz.muni.fi.fresneleditor.model.SparqlUtils;
 import fr.inria.jfresnel.Constants;
 import fr.inria.jfresnel.ContentFormat;
 
@@ -72,11 +60,11 @@ public abstract class AModelManager<T> {
 	 *            URI of the resource which the label belongs to
 	 * @return label value as a string
 	 */
-	protected Literal getResourceLabel(URI uri) {
-
-		return getResourceStringProperties(uri, IModel.PROPERTY_RDFS_LABEL)
-				.get(0);
-	}
+//	protected Literal getResourceLabel(URI uri) {
+//
+//		return getResourceStringProperties(uri, IModel.PROPERTY_RDFS_LABEL)
+//				.get(0);
+//	}
 
 	/**
 	 * Gets resource rdfs:comment property.
@@ -85,11 +73,11 @@ public abstract class AModelManager<T> {
 	 *            URI of the resource which the label belongs to
 	 * @return label value as a string
 	 */
-	protected Literal getResourceComment(URI uri) {
-
-		return getResourceStringProperties(uri, IModel.PROPERTY_RDFS_COMMENT)
-				.get(0);
-	}
+//	protected Literal getResourceComment(URI uri) {
+//
+//		return getResourceStringProperties(uri, IModel.PROPERTY_RDFS_COMMENT)
+//				.get(0);
+//	}
 
 	/**
 	 * 
@@ -125,33 +113,33 @@ public abstract class AModelManager<T> {
 	 *            property
 	 * @return StyleGuiWrapper representing parsed resource style
 	 */
-	protected StyleGuiWrapper getResourceStyle(URI resourceUri) {
-
-		List<Literal> resourceStyleList = getResourceStringProperties(
-				resourceUri, PROPERTY_RESOURCE_STYLE);
-		List<String> resourceStyleStringList = new ArrayList<String>();
-
-		for (Literal literal : resourceStyleList) {
-			if (!"".equals(literal.getLabel())) {
-				resourceStyleStringList.add(literal.getLabel());
-			}
-		}
-
-		String resourceStyleString = resourceStyleStringList.isEmpty() ? null
-				: resourceStyleStringList.get(0);
-
-		if (resourceStyleString == null || "".equals(resourceStyleString)) {
-
-			return null;
-		}
-
-		StyleGuiWrapper styleGuiWrapper = new StyleGuiWrapper(
-				StyleType.RESOURCE);
-
-		styleGuiWrapper.setValue(resourceStyleString);
-
-		return styleGuiWrapper;
-	}
+//	protected StyleGuiWrapper getResourceStyle(URI resourceUri) {
+//
+//		List<Literal> resourceStyleList = getResourceStringProperties(
+//				resourceUri, PROPERTY_RESOURCE_STYLE);
+//		List<String> resourceStyleStringList = new ArrayList<String>();
+//
+//		for (Literal literal : resourceStyleList) {
+//			if (!"".equals(literal.getLabel())) {
+//				resourceStyleStringList.add(literal.getLabel());
+//			}
+//		}
+//
+//		String resourceStyleString = resourceStyleStringList.isEmpty() ? null
+//				: resourceStyleStringList.get(0);
+//
+//		if (resourceStyleString == null || "".equals(resourceStyleString)) {
+//
+//			return null;
+//		}
+//
+//		StyleGuiWrapper styleGuiWrapper = new StyleGuiWrapper(
+//				StyleType.RESOURCE);
+//
+//		styleGuiWrapper.setValue(resourceStyleString);
+//
+//		return styleGuiWrapper;
+//	}
 
 	/**
 	 * Helper for getting any String property of given Fresnel resource, for
@@ -164,57 +152,57 @@ public abstract class AModelManager<T> {
 	 * @return String property value or empty String if format property is not
 	 *         defined
 	 */
-	protected List<Literal> getResourceStringProperties(URI uri,
-			String propertyName) {
+//	protected List<Literal> getResourceStringProperties(URI uri,
+//			String propertyName) {
+//
+//		FresnelRepositoryDao fresnelDao = ContextHolder.getInstance()
+//				.getFresnelRepositoryDao();
+//
+//		String prefixes = SparqlUtils.getSparqlQueryPrefixes(fresnelDao
+//				.getRepository());
+//
+//		String queryString = prefixes + " SELECT ?x WHERE { <" + uri + "> <"
+//				+ propertyName + "> ?x . }";
+//
+//		List<Value> values = fresnelDao.execTupleQuery(queryString,
+//				QueryLanguage.SPARQL, "x");
+//
+//		List<Literal> resultList = new ArrayList<Literal>();
+//
+//		if (values != null && values.size() != 0) {
+//
+//			for (Value value : values) {
+//				// TODO: nodrock kontrola ci naozaj dostavame Literal ak by sme
+//				// dostali BNode alebo URI tak ich zahodime
+//				if (value instanceof Literal) {
+//					resultList.add((Literal) value);
+//				}
+//			}
+//
+//		} else {
+//			resultList.add(new LiteralImpl("", "en"));
+//		}
+//
+//		return resultList;
+//	}
 
-		FresnelRepositoryDao fresnelDao = ContextHolder.getInstance()
-				.getFresnelRepositoryDao();
-
-		String prefixes = SparqlUtils.getSparqlQueryPrefixes(fresnelDao
-				.getRepository());
-
-		String queryString = prefixes + " SELECT ?x WHERE { <" + uri + "> <"
-				+ propertyName + "> ?x . }";
-
-		List<Value> values = fresnelDao.execTupleQuery(queryString,
-				QueryLanguage.SPARQL, "x");
-
-		List<Literal> resultList = new ArrayList<Literal>();
-
-		if (values != null && values.size() != 0) {
-
-			for (Value value : values) {
-				// TODO: nodrock kontrola ci naozaj dostavame Literal ak by sme
-				// dostali BNode alebo URI tak ich zahodime
-				if (value instanceof Literal) {
-					resultList.add((Literal) value);
-				}
-			}
-
-		} else {
-			resultList.add(new LiteralImpl("", "en"));
-		}
-
-		return resultList;
-	}
-
-	protected List<Value> getResourceValueProperties(URI uri,
-			String propertyName) {
-
-		FresnelRepositoryDao fresnelDao = ContextHolder.getInstance()
-				.getFresnelRepositoryDao();
-
-		String prefixes = SparqlUtils.getSparqlQueryPrefixes(fresnelDao
-				.getRepository());
-
-		String queryString = prefixes + " SELECT ?x WHERE { <" + uri + "> <"
-				+ propertyName + "> ?x . }";
-
-		List<Value> values = fresnelDao.execTupleQuery(queryString,
-				QueryLanguage.SPARQL, "x");
-
-		return values;
-	}
+//	protected List<Value> getResourceValueProperties(URI uri,
+//			String propertyName) {
+//
+//		FresnelRepositoryDao fresnelDao = ContextHolder.getInstance()
+//				.getFresnelRepositoryDao();
+//
+//		String prefixes = SparqlUtils.getSparqlQueryPrefixes(fresnelDao
+//				.getRepository());
+//
+//		String queryString = prefixes + " SELECT ?x WHERE { <" + uri + "> <"
+//				+ propertyName + "> ?x . }";
+//
+//		List<Value> values = fresnelDao.execTupleQuery(queryString,
+//				QueryLanguage.SPARQL, "x");
+//
+//		return values;
+//	}
 
 	/**
 	 * Parses literal string to get literal value and literal datatype

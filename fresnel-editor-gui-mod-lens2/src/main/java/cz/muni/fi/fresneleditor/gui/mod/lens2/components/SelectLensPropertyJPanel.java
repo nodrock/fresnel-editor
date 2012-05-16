@@ -302,10 +302,11 @@ public class SelectLensPropertyJPanel extends javax.swing.JPanel {
 		if (customPropertyRadio.isSelected()) {
 			// custom property
 			propertyUri = customPropertyText.getText();
-
-			String resultMessage = FresnelUtils.validateResourceUri(
-					propertyUri, ContextHolder.getInstance()
-							.getFresnelRepositoryDao());
+//TODO: nodrock fix this
+			String resultMessage = null;
+//                                FresnelUtils.validateResourceUri(
+//					propertyUri, ContextHolder.getInstance()
+//							.getFresnelRepositoryDao());
 			if (resultMessage != null) {
 				return "Custom property URI '" + propertyUri
 						+ "' does not have any URI specified.<br>"

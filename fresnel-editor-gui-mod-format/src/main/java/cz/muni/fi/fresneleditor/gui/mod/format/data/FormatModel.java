@@ -49,10 +49,10 @@ public class FormatModel implements IModel {
 	private String uri;
 
 	// rdfs:label
-	private Literal label = new LiteralImpl("", "en");
+	private String label = "";
 
 	// rdfs:comment
-	private Literal comment = new LiteralImpl("", "en");
+	private String comment = "";
 
 	// JFresnel Format class is not used directly in GUI
 	private Format fresnelFormat;
@@ -92,214 +92,214 @@ public class FormatModel implements IModel {
 
 		List<StatementImpl> resultStatements = new ArrayList<StatementImpl>();
 
-		Resource formatSubject = new URIImpl(uri);
-		URI predicate = null;
-		Value object = null;
-		StatementImpl statement = null;
-
-		// format a Resource
-		predicate = new URIImpl(PROPERTY_RDF_TYPE);
-		object = new URIImpl(TYPE_RESOURCE);
-		statement = new StatementImpl(formatSubject, predicate, object);
-		resultStatements.add(statement);
-
-		// rdf:type
-		predicate = new URIImpl(PROPERTY_RDF_TYPE);
-		object = new URIImpl(Constants._Format);
-		statement = new StatementImpl(formatSubject, predicate, object);
-		resultStatements.add(statement);
-
-		// rdfs:label
-		if (label != null) {
-			predicate = new URIImpl(PROPERTY_RDFS_LABEL);
-			object = label;
-			statement = new StatementImpl(formatSubject, predicate, object);
-			resultStatements.add(statement);
-		}
-
-		// rdfs:comment
-		if (comment != null) {
-			predicate = new URIImpl(PROPERTY_RDFS_COMMENT);
-			object = comment;
-			statement = new StatementImpl(formatSubject, predicate, object);
-			resultStatements.add(statement);
-		}
-
-		// FORMAT DOMAINS
-		for (DomainSelectorGuiWrapper domainSelector : domainSelectors) {
-
-			String domainTypePropertyUri = null;
-			switch (domainSelector.getDomainType()) {
-			case PROPERTY:
-				domainTypePropertyUri = Constants.FRESNEL_NAMESPACE_URI
-						+ Constants._propertyFormatDomain; // TODO: Create own
-															// constant
-				break;
-			case CLASS:
-				domainTypePropertyUri = Constants.FRESNEL_NAMESPACE_URI
-						+ Constants._classFormatDomain; // TODO: Create own
-														// constant
-				break;
-			case INSTANCE:
-				domainTypePropertyUri = Constants.FRESNEL_NAMESPACE_URI
-						+ Constants._instanceFormatDomain; // TODO: Create own
-															// constant
-				break;
-			default:
-				LOG.error("Invalid format domain type - %s!",
-						domainSelector.getDomainType());
-				throw new IndexOutOfBoundsException(
-						"Invalid format domain type!");
-			}
-			predicate = new URIImpl(domainTypePropertyUri);
-
-			switch (domainSelector.getSelectorType()) {
-			case SIMPLE:
-				object = new URIImpl(domainSelector.getSelectorString());
-				break;
-			case FSL:
-				object = new LiteralImpl(domainSelector.getSelectorString(),
-						new URIImpl(Constants._fslSelector));
-				break;
-			case SPARQL:
-				object = new LiteralImpl(domainSelector.getSelectorString(),
-						new URIImpl(Constants._sparqlSelector));
-				break;
-			default:
-				LOG.error("Invalid format domain selector type - %s!",
-						domainSelector.getSelectorType());
-				throw new IndexOutOfBoundsException(
-						"Invalid format domain type!");
-			}
-
-			statement = new StatementImpl(formatSubject, predicate, object);
-			resultStatements.add(statement);
-		}
-
-		// FORMAT LABEL
-		if (labelType == FormatValueLabelPolicy.NOT_SPECIFIED) {
-			// Nothing
-			// TODO: Maybe fresnel:default
-		} else if (labelType == FormatValueLabelPolicy.NONE) {
-			predicate = new URIImpl(Constants.FRESNEL_NAMESPACE_URI
-					+ Constants._label); // TODO: Create own constant
-			object = new URIImpl(Constants._none);
-			resultStatements.add(new StatementImpl(formatSubject, predicate,
-					object));
-		} else if (labelType == FormatValueLabelPolicy.SHOW) {
-			predicate = new URIImpl(Constants.FRESNEL_NAMESPACE_URI
-					+ Constants._label);
-			object = new LiteralImpl(literalLabelValue, new URIImpl(
-					DATATYPE_XSD_STRING));
-			resultStatements.add(new StatementImpl(formatSubject, predicate,
-					object));
-		} else {
-			LOG.error("Invalid format label type - %s!", labelType);
-			throw new IndexOutOfBoundsException("Invalid format label type!");
-		}
-
-		// FORMAT VALUE
-		if (valueType == FormatValueType.NOT_SPECIFIED) {
-			// Nothing
-			// TODO: Maybe fresnel:default
-		} else {
-			predicate = new URIImpl(Constants.FRESNEL_NAMESPACE_URI
-					+ Constants._value); // TODO: Create own constant
-			object = new URIImpl(valueType.getUri());
-                        if (object == null) {
-                            LOG.error("Invalid format value type - %s!", valueType);
-                            throw new IndexOutOfBoundsException("Invalid format value type!");
-			}
-			resultStatements.add(new StatementImpl(formatSubject, predicate,
-					object));
-		}
-
-		// FORMAT STYLES
-		for (StyleGuiWrapper style : styles) {
-
-			String styleTypeUri = null;
-			switch (style.getType()) {
-			case LABEL:
-				styleTypeUri = Constants.FRESNEL_NAMESPACE_URI
-						+ Constants._labelStyle;
-				break;
-			case VALUE:
-				styleTypeUri = Constants.FRESNEL_NAMESPACE_URI
-						+ Constants._valueStyle;
-				break;
-			case PROPERTY:
-				styleTypeUri = Constants.FRESNEL_NAMESPACE_URI
-						+ Constants._propertyStyle;
-				break;
-			case RESOURCE:
-				styleTypeUri = Constants.FRESNEL_NAMESPACE_URI
-						+ Constants._resourceStyle;
-				break;
-			default:
-				LOG.error("Invalid format style type - %s!", style.getType());
-				throw new IndexOutOfBoundsException(
-						"Invalid format style type!");
-			}
-			predicate = new URIImpl(styleTypeUri);
-
-			// FIXME: Support for CSS snippets
-			object = new LiteralImpl(style.getValue(), new URIImpl(
-					DATATYPE_STYLE_CLASS));
-
-			resultStatements.add(new StatementImpl(formatSubject, predicate,
-					object));
-		}
-
-		// FORMAT ADDITIONAL CONTENT
-		for (AdditionalContentGuiWrapper additionalContent : additionalContents) {
-
-			if (additionalContent.getCountOfSetAdditionalContents() > 0) {
-
-				String additionalContentTypeUri = null;
-				switch (additionalContent.getType()) {
-				case LABEL:
-					additionalContentTypeUri = Constants.FRESNEL_NAMESPACE_URI
-							+ Constants._labelFormat;
-					break;
-				case VALUE:
-					additionalContentTypeUri = Constants.FRESNEL_NAMESPACE_URI
-							+ Constants._valueFormat;
-					break;
-				case PROPERTY:
-					additionalContentTypeUri = Constants.FRESNEL_NAMESPACE_URI
-							+ Constants._propertyFormat;
-					break;
-				case RESOURCE:
-					additionalContentTypeUri = Constants.FRESNEL_NAMESPACE_URI
-							+ Constants._resourceFormat;
-					break;
-				default:
-					LOG.error("Invalid additional content type - %s!",
-							additionalContent.getType());
-					throw new IndexOutOfBoundsException(
-							"Invalid additional content type!");
-				}
-				predicate = new URIImpl(additionalContentTypeUri);
-
-				object = mapAdditionalContentObject(resultStatements,
-						additionalContent);
-
-				resultStatements.add(new StatementImpl(formatSubject,
-						predicate, object));
-			} else {
-				LOG.info("Empty additional content - nothing will be mapped to statements.");
-			}
-		}
-
-		for (URI groupURI : associatedGroupURIs) {
-			predicate = new URIImpl(Constants.FRESNEL_NAMESPACE_URI
-					+ Constants._group);
-			object = groupURI;
-			resultStatements.add(new StatementImpl(formatSubject, predicate,
-					object));
-		}
-
-		System.out.println(resultStatements);
+//		Resource formatSubject = new URIImpl(uri);
+//		URI predicate = null;
+//		Value object = null;
+//		StatementImpl statement = null;
+//
+//		// format a Resource
+//		predicate = new URIImpl(PROPERTY_RDF_TYPE);
+//		object = new URIImpl(TYPE_RESOURCE);
+//		statement = new StatementImpl(formatSubject, predicate, object);
+//		resultStatements.add(statement);
+//
+//		// rdf:type
+//		predicate = new URIImpl(PROPERTY_RDF_TYPE);
+//		object = new URIImpl(Constants._Format);
+//		statement = new StatementImpl(formatSubject, predicate, object);
+//		resultStatements.add(statement);
+//
+//		// rdfs:label
+//		if (label != null) {
+//			predicate = new URIImpl(PROPERTY_RDFS_LABEL);
+//			object = label;
+//			statement = new StatementImpl(formatSubject, predicate, object);
+//			resultStatements.add(statement);
+//		}
+//
+//		// rdfs:comment
+//		if (comment != null) {
+//			predicate = new URIImpl(PROPERTY_RDFS_COMMENT);
+//			object = comment;
+//			statement = new StatementImpl(formatSubject, predicate, object);
+//			resultStatements.add(statement);
+//		}
+//
+//		// FORMAT DOMAINS
+//		for (DomainSelectorGuiWrapper domainSelector : domainSelectors) {
+//
+//			String domainTypePropertyUri = null;
+//			switch (domainSelector.getDomainType()) {
+//			case PROPERTY:
+//				domainTypePropertyUri = Constants.FRESNEL_NAMESPACE_URI
+//						+ Constants._propertyFormatDomain; // TODO: Create own
+//															// constant
+//				break;
+//			case CLASS:
+//				domainTypePropertyUri = Constants.FRESNEL_NAMESPACE_URI
+//						+ Constants._classFormatDomain; // TODO: Create own
+//														// constant
+//				break;
+//			case INSTANCE:
+//				domainTypePropertyUri = Constants.FRESNEL_NAMESPACE_URI
+//						+ Constants._instanceFormatDomain; // TODO: Create own
+//															// constant
+//				break;
+//			default:
+//				LOG.error("Invalid format domain type - %s!",
+//						domainSelector.getDomainType());
+//				throw new IndexOutOfBoundsException(
+//						"Invalid format domain type!");
+//			}
+//			predicate = new URIImpl(domainTypePropertyUri);
+//
+//			switch (domainSelector.getSelectorType()) {
+//			case SIMPLE:
+//				object = new URIImpl(domainSelector.getSelectorString());
+//				break;
+//			case FSL:
+//				object = new LiteralImpl(domainSelector.getSelectorString(),
+//						new URIImpl(Constants._fslSelector));
+//				break;
+//			case SPARQL:
+//				object = new LiteralImpl(domainSelector.getSelectorString(),
+//						new URIImpl(Constants._sparqlSelector));
+//				break;
+//			default:
+//				LOG.error("Invalid format domain selector type - %s!",
+//						domainSelector.getSelectorType());
+//				throw new IndexOutOfBoundsException(
+//						"Invalid format domain type!");
+//			}
+//
+//			statement = new StatementImpl(formatSubject, predicate, object);
+//			resultStatements.add(statement);
+//		}
+//
+//		// FORMAT LABEL
+//		if (labelType == FormatValueLabelPolicy.NOT_SPECIFIED) {
+//			// Nothing
+//			// TODO: Maybe fresnel:default
+//		} else if (labelType == FormatValueLabelPolicy.NONE) {
+//			predicate = new URIImpl(Constants.FRESNEL_NAMESPACE_URI
+//					+ Constants._label); // TODO: Create own constant
+//			object = new URIImpl(Constants._none);
+//			resultStatements.add(new StatementImpl(formatSubject, predicate,
+//					object));
+//		} else if (labelType == FormatValueLabelPolicy.SHOW) {
+//			predicate = new URIImpl(Constants.FRESNEL_NAMESPACE_URI
+//					+ Constants._label);
+//			object = new LiteralImpl(literalLabelValue, new URIImpl(
+//					DATATYPE_XSD_STRING));
+//			resultStatements.add(new StatementImpl(formatSubject, predicate,
+//					object));
+//		} else {
+//			LOG.error("Invalid format label type - %s!", labelType);
+//			throw new IndexOutOfBoundsException("Invalid format label type!");
+//		}
+//
+//		// FORMAT VALUE
+//		if (valueType == FormatValueType.NOT_SPECIFIED) {
+//			// Nothing
+//			// TODO: Maybe fresnel:default
+//		} else {
+//			predicate = new URIImpl(Constants.FRESNEL_NAMESPACE_URI
+//					+ Constants._value); // TODO: Create own constant
+//			object = new URIImpl(valueType.getUri());
+//                        if (object == null) {
+//                            LOG.error("Invalid format value type - %s!", valueType);
+//                            throw new IndexOutOfBoundsException("Invalid format value type!");
+//			}
+//			resultStatements.add(new StatementImpl(formatSubject, predicate,
+//					object));
+//		}
+//
+//		// FORMAT STYLES
+//		for (StyleGuiWrapper style : styles) {
+//
+//			String styleTypeUri = null;
+//			switch (style.getType()) {
+//			case LABEL:
+//				styleTypeUri = Constants.FRESNEL_NAMESPACE_URI
+//						+ Constants._labelStyle;
+//				break;
+//			case VALUE:
+//				styleTypeUri = Constants.FRESNEL_NAMESPACE_URI
+//						+ Constants._valueStyle;
+//				break;
+//			case PROPERTY:
+//				styleTypeUri = Constants.FRESNEL_NAMESPACE_URI
+//						+ Constants._propertyStyle;
+//				break;
+//			case RESOURCE:
+//				styleTypeUri = Constants.FRESNEL_NAMESPACE_URI
+//						+ Constants._resourceStyle;
+//				break;
+//			default:
+//				LOG.error("Invalid format style type - %s!", style.getType());
+//				throw new IndexOutOfBoundsException(
+//						"Invalid format style type!");
+//			}
+//			predicate = new URIImpl(styleTypeUri);
+//
+//			// FIXME: Support for CSS snippets
+//			object = new LiteralImpl(style.getValue(), new URIImpl(
+//					DATATYPE_STYLE_CLASS));
+//
+//			resultStatements.add(new StatementImpl(formatSubject, predicate,
+//					object));
+//		}
+//
+//		// FORMAT ADDITIONAL CONTENT
+//		for (AdditionalContentGuiWrapper additionalContent : additionalContents) {
+//
+//			if (additionalContent.getCountOfSetAdditionalContents() > 0) {
+//
+//				String additionalContentTypeUri = null;
+//				switch (additionalContent.getType()) {
+//				case LABEL:
+//					additionalContentTypeUri = Constants.FRESNEL_NAMESPACE_URI
+//							+ Constants._labelFormat;
+//					break;
+//				case VALUE:
+//					additionalContentTypeUri = Constants.FRESNEL_NAMESPACE_URI
+//							+ Constants._valueFormat;
+//					break;
+//				case PROPERTY:
+//					additionalContentTypeUri = Constants.FRESNEL_NAMESPACE_URI
+//							+ Constants._propertyFormat;
+//					break;
+//				case RESOURCE:
+//					additionalContentTypeUri = Constants.FRESNEL_NAMESPACE_URI
+//							+ Constants._resourceFormat;
+//					break;
+//				default:
+//					LOG.error("Invalid additional content type - %s!",
+//							additionalContent.getType());
+//					throw new IndexOutOfBoundsException(
+//							"Invalid additional content type!");
+//				}
+//				predicate = new URIImpl(additionalContentTypeUri);
+//
+//				object = mapAdditionalContentObject(resultStatements,
+//						additionalContent);
+//
+//				resultStatements.add(new StatementImpl(formatSubject,
+//						predicate, object));
+//			} else {
+//				LOG.info("Empty additional content - nothing will be mapped to statements.");
+//			}
+//		}
+//
+//		for (URI groupURI : associatedGroupURIs) {
+//			predicate = new URIImpl(Constants.FRESNEL_NAMESPACE_URI
+//					+ Constants._group);
+//			object = groupURI;
+//			resultStatements.add(new StatementImpl(formatSubject, predicate,
+//					object));
+//		}
+//
+//		System.out.println(resultStatements);
 
 		return resultStatements;
 	}
@@ -492,7 +492,7 @@ public class FormatModel implements IModel {
 	/**
 	 * @return the label
 	 */
-	public Literal getLabel() {
+	public String getLabel() {
 		return label;
 	}
 
@@ -500,14 +500,14 @@ public class FormatModel implements IModel {
 	 * @param label
 	 *            the label to set
 	 */
-	public void setLabel(Literal label) {
+	public void setLabel(String label) {
 		this.label = label;
 	}
 
 	/**
 	 * @return the comment
 	 */
-	public Literal getComment() {
+	public String getComment() {
 		return comment;
 	}
 
@@ -515,7 +515,7 @@ public class FormatModel implements IModel {
 	 * @param comment
 	 *            the comment to set
 	 */
-	public void setComment(Literal comment) {
+	public void setComment(String comment) {
 		this.comment = comment;
 	}
 

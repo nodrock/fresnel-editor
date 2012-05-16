@@ -40,10 +40,10 @@ public class GroupModel implements IModel {
 	private Group fresnelGroup;
 
 	// rdfs:label
-	private Literal label = new LiteralImpl("", "en");
+	private String label;
 
 	// rdfs:comment
-	private Literal comment = new LiteralImpl("", "en");;
+	private String comment;
 
 	private String cssStylesheetUrl;
 
@@ -89,17 +89,17 @@ public class GroupModel implements IModel {
 		resultStatements.add(statement);
 
 		// rdfs:label
-		if (!FresnelUtils.isStringEmpty(label.getLabel())) {
+		if (!FresnelUtils.isStringEmpty(label)) {
 			predicate = new URIImpl(PROPERTY_RDFS_LABEL);
-			object = label;
+			object = new LiteralImpl(label);
 			statement = new StatementImpl(groupSubject, predicate, object);
 			resultStatements.add(statement);
 		}
 
 		// rdfs:comment
-		if (!FresnelUtils.isStringEmpty(comment.getLabel())) {
+		if (!FresnelUtils.isStringEmpty(comment)) {
 			predicate = new URIImpl(PROPERTY_RDFS_COMMENT);
-			object = comment;
+			object = new LiteralImpl(comment);
 			statement = new StatementImpl(groupSubject, predicate, object);
 			resultStatements.add(statement);
 		}
@@ -144,11 +144,11 @@ public class GroupModel implements IModel {
 		// External CSS stylesheet
 		if (!FresnelUtils.isStringEmpty(cssStylesheetUrl)) {
 
-			predicate = new URIImpl(
-					GroupModelManager.EXTERNAL_CSS_REFERENCE_PROPERTY);
-			object = new URIImpl(cssStylesheetUrl);
-			statement = new StatementImpl(groupSubject, predicate, object);
-			resultStatements.add(statement);
+//			predicate = new URIImpl(
+//					GroupModelManager.EXTERNAL_CSS_REFERENCE_PROPERTY);
+//			object = new URIImpl(cssStylesheetUrl);
+//			statement = new StatementImpl(groupSubject, predicate, object);
+//			resultStatements.add(statement);
 		}
 
 		// Associations with Fresnel Lenses
@@ -213,7 +213,7 @@ public class GroupModel implements IModel {
 	/**
 	 * @return the label
 	 */
-	public Literal getLabel() {
+	public String getLabel() {
 		return label;
 	}
 
@@ -221,14 +221,14 @@ public class GroupModel implements IModel {
 	 * @param label
 	 *            the label to set
 	 */
-	public void setLabel(Literal label) {
+	public void setLabel(String label) {
 		this.label = label;
 	}
 
 	/**
 	 * @return the comment
 	 */
-	public Literal getComment() {
+	public String getComment() {
 		return comment;
 	}
 
@@ -251,7 +251,7 @@ public class GroupModel implements IModel {
 	 * @param comment
 	 *            the comment to set
 	 */
-	public void setComment(Literal comment) {
+	public void setComment(String comment) {
 		this.comment = comment;
 	}
 

@@ -67,14 +67,14 @@ public class SelectGroupFormatJDialog extends javax.swing.JDialog {
 	}
 
 	private void initGroups() {
-		List<Group> groups = ContextHolder.getInstance()
-				.getFresnelRepositoryDao().getGroups();
+		List<Group> groups = ContextHolder.getInstance().getFresnelDocumentDao().getGroups();
+				
 		groupsList.setElements(groups);
 	}
 
 	private void initFormats() {
-		List<Format> formats = ContextHolder.getInstance()
-				.getFresnelRepositoryDao().getFormats();
+		List<Format> formats = ContextHolder.getInstance().getFresnelDocumentDao().getFormats();
+				
 		formatsList.setElements(formats);
 	}
 
@@ -281,7 +281,7 @@ public class SelectGroupFormatJDialog extends javax.swing.JDialog {
 								.addContainerGap()));
 
 		pack();
-	}// </editor-fold>//GEN-END:initComponents
+	}// </editor-fold>                        
 
 	private void closeBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_closeBtnActionPerformed
 		dispose();

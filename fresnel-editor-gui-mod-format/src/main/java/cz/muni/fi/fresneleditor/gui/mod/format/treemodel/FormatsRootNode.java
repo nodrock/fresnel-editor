@@ -15,6 +15,7 @@ import cz.muni.fi.fresneleditor.common.ContextHolder;
 import cz.muni.fi.fresneleditor.common.guisupport.projecttree.AFresnelRepoDataChangedListeningRootTabNode;
 import cz.muni.fi.fresneleditor.common.guisupport.projecttree.ATabNode;
 import cz.muni.fi.fresneleditor.common.guisupport.projecttree.ProjectTree;
+import fr.inria.jfresnel.Format;
 
 /**
  * 
@@ -22,7 +23,7 @@ import cz.muni.fi.fresneleditor.common.guisupport.projecttree.ProjectTree;
  * @version 7.4.2009
  */
 public class FormatsRootNode extends
-		AFresnelRepoDataChangedListeningRootTabNode<URI> {
+		AFresnelRepoDataChangedListeningRootTabNode<Format> {
 
 	/**
 	 * 
@@ -36,21 +37,21 @@ public class FormatsRootNode extends
 	}
 
 	@Override
-	protected ATabNode<URI> getNewChild(URI formatUri) {
-		return new FormatItemNode(formatUri);
+	protected ATabNode<Format> getNewChild(Format format) {
+		return new FormatItemNode(format);
 	}
 
 	@Override
-	protected List<URI> getChildItems() {
+	protected List<Format> getChildItems() {
 		if (ContextHolder.getInstance().isProjectOpen()) {
-			List<URI> formatsUriList = ContextHolder.getInstance()
-					.getFresnelRepositoryDao().getFormatsURIs();
+			List<Format> formatsList = ContextHolder.getInstance().getFresnelDocumentDao().getFormats();
+                        
 			LOG.debug("Project {} [{} formats loaded]", ContextHolder
-					.getInstance().getOpenProjectName(), formatsUriList.size());
-			return formatsUriList;
+					.getInstance().getOpenProjectName(), formatsList.size());
+			return formatsList;
 		} else {
 			// if no project is open reset the formats list
-			return new ArrayList<URI>();
+			return new ArrayList<Format>();
 		}
 	}
 

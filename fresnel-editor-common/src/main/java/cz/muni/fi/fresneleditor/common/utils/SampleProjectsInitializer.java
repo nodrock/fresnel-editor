@@ -16,7 +16,7 @@ import cz.muni.fi.fresneleditor.common.FresnelEditorConstants;
 import cz.muni.fi.fresneleditor.common.OpenProjectException;
 import cz.muni.fi.fresneleditor.model.DataImportException;
 import cz.muni.fi.fresneleditor.model.DataRepositoryDao;
-import cz.muni.fi.fresneleditor.model.FresnelRepositoryDao;
+//import cz.muni.fi.fresneleditor.model.FresnelRepositoryDao;
 
 /**
  * Class holds information about all available sample projects and provide
@@ -72,16 +72,16 @@ public class SampleProjectsInitializer {
 			context.openProject(projectConfigurationURL, false);
 
 			DataRepositoryDao dataDAO = context.getDataRepositoryDao();
-			FresnelRepositoryDao fresnelDAO = context.getFresnelRepositoryDao();
+//			FresnelRepositoryDao fresnelDAO = context.getFresnelRepositoryDao();
 
 			// Clear all data from data and fresnel repositories
 			dataDAO.clearAllData();
-			fresnelDAO.clearAllData();
+//			fresnelDAO.clearAllData();
 			// Add sample data into data and fresnel repositories
 			dataDAO.addData(new File(dataFilePath), RDFFormat.N3,
 					DEFAULT_BASE_URI);
-			fresnelDAO.addData(new File(fresnelFilePath), RDFFormat.N3,
-					DEFAULT_BASE_URI);
+//			fresnelDAO.addData(new File(fresnelFilePath), RDFFormat.N3,
+//					DEFAULT_BASE_URI);
 
 			AppEventsManager.getInstance().fireOpenProjectChanged(projectName);
 

@@ -8,15 +8,16 @@ import org.openrdf.model.URI;
 import cz.muni.fi.fresneleditor.common.ITabComponent;
 import cz.muni.fi.fresneleditor.common.guisupport.projecttree.ATabNode;
 import cz.muni.fi.fresneleditor.gui.mod.group.GroupsJPanel;
+import fr.inria.jfresnel.Group;
 
 /**
  * @author Miroslav Warchil (warmir@mail.muni.cz)
  * @version 18.4.2009
  */
-public class GroupItemNode extends ATabNode<URI> {
+public class GroupItemNode extends ATabNode<Group> {
 
-	public GroupItemNode(URI groupUri) {
-		super(groupUri);
+	public GroupItemNode(Group group) {
+		super(group);
 	}
 
 	@Override
@@ -25,7 +26,7 @@ public class GroupItemNode extends ATabNode<URI> {
 	}
 
 	@Override
-	protected ITabComponent<URI> createComponent() {
+	protected ITabComponent<Group> createComponent() {
 		return new GroupsJPanel(getUserObject(), this);
 	}
 

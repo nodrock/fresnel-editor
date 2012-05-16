@@ -2,25 +2,24 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package cz.muni.fi.fresneleditor.model;
+package cz.muni.fi.fresneleditor.common;
 
 /**
  *
  * @author nodrock
  */
-public class ProjectInfo {
-    private String uri;
+public class DatasetInfo {
     private String name;
+    private String title;
     private String description;
 
-    public ProjectInfo(String uri, String name, String description) {
-        this.uri = uri;
+    public DatasetInfo(String name, String title, String description) {
         this.name = name;
+        this.title = title;
         this.description = description;
     }
 
-    public ProjectInfo() {
-        
+    public DatasetInfo() {
     }
 
     public String getDescription() {
@@ -39,12 +38,12 @@ public class ProjectInfo {
         this.name = name;
     }
 
-    public String getUri() {
-        return uri;
+    public String getTitle() {
+        return title;
     }
 
-    public void setUri(String uri) {
-        this.uri = uri;
+    public void setTitle(String title) {
+        this.title = title;
     }
     
 }

@@ -10,36 +10,40 @@
  */
 package cz.muni.fi.fresneleditor.gui.mod.portal;
 
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.RDFWriter;
+import cz.muni.fi.fresneleditor.common.BrowserUtils;
 import cz.muni.fi.fresneleditor.common.ContextHolder;
+import cz.muni.fi.fresneleditor.common.DatasetInfo;
+import cz.muni.fi.fresneleditor.common.DatasetUtils;
+import cz.muni.fi.fresneleditor.common.FresnelApplication;
 import cz.muni.fi.fresneleditor.common.ITabComponent;
 import cz.muni.fi.fresneleditor.common.config.ProjectConfiguration;
-import cz.muni.fi.fresneleditor.common.guisupport.ExtendedDefaultComboBM;
 import cz.muni.fi.fresneleditor.common.guisupport.ExtendedDefaultLM;
 import cz.muni.fi.fresneleditor.common.utils.GuiUtils;
 import cz.muni.fi.fresneleditor.gui.mod.portal.model.Service;
 import cz.muni.fi.fresneleditor.gui.mod.portal.model.Transformation;
 import cz.muni.fi.fresneleditor.gui.mod.portal.services.PortalService;
 import cz.muni.fi.fresneleditor.gui.mod.portal.services.PortalServiceImpl;
-import cz.muni.fi.fresneleditor.model.FresnelRepositoryDao;
+import fr.inria.jfresnel.Group;
+import fr.inria.jfresnel.jena.FresnelJenaWriter;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 import java.util.logging.Level;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JScrollPane;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import org.openrdf.model.URI;
+import org.openrdf.model.impl.URIImpl;
 import org.openrdf.rio.RDFHandler;
 import org.openrdf.rio.n3.N3Writer;
 import org.slf4j.Logger;
@@ -61,9 +65,13 @@ public class FresnelPortalJPanel extends javax.swing.JPanel implements ITabCompo
     }
     
     private void customInitComponents() {
-        List<URI> availGroups = ContextHolder.getInstance()
-                        .getFresnelRepositoryDao().getGroupsURIs();
-       
+        List<URI> availGroups = new ArrayList<URI>();
+    
+        List<Group> groups = ContextHolder.getInstance().getFresnelDocumentDao().getGroups();
+        for(Group g : groups){  
+            availGroups.add(new URIImpl(g.getURI()));
+        }
+        
         groupSelectionList.setModel(new ExtendedDefaultLM(availGroups));
     }
 
@@ -92,6 +100,7 @@ public class FresnelPortalJPanel extends javax.swing.JPanel implements ITabCompo
         outputFileTextField = new javax.swing.JTextField();
         outputFileBtn = new javax.swing.JButton();
         visualizeBtn = new javax.swing.JButton();
+        closeBtn = new javax.swing.JButton();
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("cz/muni/fi/fresneleditor/gui/mod/portal/FresnelPortalBundle"); // NOI18N
         fresnelPortalSelectionJPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("fresnelPortalSelectionJPanelTitle"))); // NOI18N
@@ -173,6 +182,14 @@ public class FresnelPortalJPanel extends javax.swing.JPanel implements ITabCompo
             }
         });
 
+        closeBtn.setText(bundle.getString("close")); // NOI18N
+        closeBtn.setName("closeBtn"); // NOI18N
+        closeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeBtnActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout fresnelPortalVisualizationJPanelLayout = new org.jdesktop.layout.GroupLayout(fresnelPortalVisualizationJPanel);
         fresnelPortalVisualizationJPanel.setLayout(fresnelPortalVisualizationJPanelLayout);
         fresnelPortalVisualizationJPanelLayout.setHorizontalGroup(
@@ -186,16 +203,21 @@ public class FresnelPortalJPanel extends javax.swing.JPanel implements ITabCompo
                         .add(fresnelPortalVisualizationJPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                             .add(selectTransformationLabel)
                             .add(selectServiceLabel)
-                            .add(selectOutputFileLabel))
+                            .add(selectOutputFileLabel)
+                            .add(closeBtn))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(fresnelPortalVisualizationJPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(selectTransformationComboBox, 0, 511, Short.MAX_VALUE)
-                            .add(selectServiceComboBox, 0, 511, Short.MAX_VALUE)
-                            .add(fresnelPortalVisualizationJPanelLayout.createSequentialGroup()
-                                .add(outputFileTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 402, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(selectTransformationComboBox, 0, 515, Short.MAX_VALUE)
+                            .add(selectServiceComboBox, 0, 515, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, fresnelPortalVisualizationJPanelLayout.createSequentialGroup()
+                                .add(4, 4, 4)
+                                .add(outputFileTextField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(outputFileBtn))
-                            .add(visualizeBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 511, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                            .add(org.jdesktop.layout.GroupLayout.TRAILING, fresnelPortalVisualizationJPanelLayout.createSequentialGroup()
+                                .add(3, 3, 3)
+                                .add(visualizeBtn, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
+                                .add(1, 1, 1)))))
                 .addContainerGap())
         );
         fresnelPortalVisualizationJPanelLayout.setVerticalGroup(
@@ -218,7 +240,9 @@ public class FresnelPortalJPanel extends javax.swing.JPanel implements ITabCompo
                     .add(outputFileTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(outputFileBtn))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(visualizeBtn))
+                .add(fresnelPortalVisualizationJPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(visualizeBtn)
+                    .add(closeBtn)))
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
@@ -249,7 +273,12 @@ public class FresnelPortalJPanel extends javax.swing.JPanel implements ITabCompo
         visualizeDocument();
     }//GEN-LAST:event_visualizeBtnActionPerformed
 
+    private void closeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeBtnActionPerformed
+        FresnelApplication.getApp().getBaseFrame().closeTabByComponent(this);
+    }//GEN-LAST:event_closeBtnActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton closeBtn;
     private javax.swing.JPanel fresnelPortalSelectionJPanel;
     private javax.swing.JPanel fresnelPortalVisualizationJPanel;
     private javax.swing.JLabel groupSelectionLabel;
@@ -312,14 +341,23 @@ public class FresnelPortalJPanel extends javax.swing.JPanel implements ITabCompo
             
             // do Fresnel project export
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            FresnelRepositoryDao repositoryDao = ContextHolder.getInstance().getFresnelRepositoryDao();
-            RDFHandler rdfHandler = new N3Writer(baos);
-            repositoryDao.printStatements(rdfHandler, false);
-            try {
-                baos.close();
-            } catch (IOException ex) {
-                java.util.logging.Logger.getLogger(FresnelPortalJPanel.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
+            Model model = ModelFactory.createDefaultModel();
+            RDFWriter writer = model.getWriter("N3");
+
+            FresnelJenaWriter fjw = new FresnelJenaWriter();             
+            fjw.write(ContextHolder.getInstance().getFresnelDocumentDao().getFresnelDocument(), model);
+
+            ProjectConfiguration projectConfiguration = ContextHolder.getInstance().getProjectConfiguration();
+            DatasetUtils.writeDatasetInfo(model, new DatasetInfo(DatasetUtils.getLastPart(projectConfiguration.getUri()), 
+                    projectConfiguration.getName(),
+                    projectConfiguration.getDescription()), "http://localproject/");
+            
+            Map<String, String> prefixes = ContextHolder.getInstance().getFresnelDocumentDao().getFresnelDocument().getPrefixes();
+            model.setNsPrefixes(prefixes);
+            
+            writer.write(model, baos, "N3");
+            
             
             // upload project
             InputStream is = new ByteArrayInputStream(baos.toByteArray());        
@@ -334,6 +372,8 @@ public class FresnelPortalJPanel extends javax.swing.JPanel implements ITabCompo
                     java.util.logging.Logger.getLogger(FresnelPortalJPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            
+            BrowserUtils.navigate("file:///" + output);
         }
     }
 
