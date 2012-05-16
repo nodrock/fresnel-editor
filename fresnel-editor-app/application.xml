@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <applicationConfiguration>
-    <lastOpenProjectUrl>/Users/nodrock/NetBeansProjects/RemoteSessameTest2/fresnel.n3</lastOpenProjectUrl>
+    <lastOpenProjectUrl>/Users/nodrock/School/master_thesis/fresnel-editor/fresnel-editor-common/src/main/resources/samples/foaf/fresnel.n3</lastOpenProjectUrl>
     <namespaceConfigurations>
         <namespaceURI>http://www.w3.org/fresnel/info</namespaceURI>
         <prefix>fresnel</prefix>

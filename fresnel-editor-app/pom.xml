@@ -72,18 +72,6 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>fresnel-editor-gui-mod-lens</artifactId>
-            <version>${project.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>fresnel-editor-gui-mod-lens2</artifactId>
-            <version>${project.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
             <artifactId>fresnel-editor-gui-mod-format</artifactId>
             <version>${project.version}</version>
             <scope>runtime</scope>
@@ -96,7 +84,19 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>fresnel-editor-gui-mod-vis</artifactId>
+            <artifactId>fresnel-editor-gui-mod-lens</artifactId>
+            <version>${project.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>fresnel-editor-gui-mod-portal</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>fresnel-editor-gui-mod-lens2</artifactId>
             <version>${project.version}</version>
             <scope>runtime</scope>
         </dependency>
@@ -108,8 +108,8 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>fresnel-editor-gui-mod-portal</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <artifactId>fresnel-editor-gui-mod-vis</artifactId>
+            <version>${project.version}</version>
             <scope>runtime</scope>
         </dependency>
     </dependencies>
