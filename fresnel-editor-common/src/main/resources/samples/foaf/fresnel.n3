@@ -1,9 +1,18 @@
-@prefix foaf       : <http://xmlns.com/foaf/0.1/> .
-@prefix owl        : <http://www.w3.org/2002/07/owl#> .
-@prefix rdf        : <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs       : <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix fresnel    :  <http://www.w3.org/2004/09/fresnel#> . 
-@prefix foafsample : <http://www.fi.muni.cz/fresnel-editor#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix fresnel:  <http://www.w3.org/2004/09/fresnel#> . 
+@prefix foafsample: <http://www.fi.muni.cz/fresnel-editor#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix dcmitype:  <http://purl.org/dc/dcmitype/> .
+@prefix localproject:  <http://localproject/> .
+
+localproject:magicx
+      a       dcmitype:Dataset ;
+      dcterms:title "FOAF sample project" .
+      dcterms:description "" ;
+      
 
 # -----------------
 # 1. Fresnel Lenses
@@ -12,13 +21,14 @@
 foafsample:basicPersonLens    a    fresnel:Lens ;
     rdfs:comment            "Fresnel Lens selecting basic person properties (name, mbox, depiction)."@en ;
     fresnel:classLensDomain foaf:Person ;
-    fresnel:purpose         fresnel:default ;
+    fresnel:purpose         fresnel:defaultLens ;
     fresnel:showProperties  (    foaf:name
                                  foaf:mbox
                                  foaf:depiction ) ;
     fresnel:group           foafsample:basicPersonVizGroup .
                   
 foafsample:fullPersonLens    a    fresnel:Lens ;
+    fresnel:purpose fresnel:defaultLens ;
     rdfs:comment            "Fresnel Lens selecting all person properties (hides rdf:type)."@en ;
     fresnel:classLensDomain foaf:Person ;
     fresnel:showProperties  (    foaf:name
@@ -27,13 +37,21 @@ foafsample:fullPersonLens    a    fresnel:Lens ;
                                  foaf:homepage
                                  foaf:depiction
                                  # "foaf:knows/*/foaf:name"^^fresnel:fslSelector
-                                 #[   rdf:type          fresnel:PropertyDescription ;
-                                 #    fresnel:property  foaf:knows ;
-                                 #    fresnel:sublens   :foafPersonBasicLens ]
+                                 [   rdf:type          fresnel:PropertyDescription ;
+                                     fresnel:property  foaf:knows ;
+                                     fresnel:sublens   foafsample:sublensPerson ]
                                  fresnel:allProperties ) ;
     fresnel:hideProperties  rdf:type ;
     fresnel:group           foafsample:fullPersonVizGroup .
-                  
+       
+foafsample:sublensPerson    a    fresnel:Lens ;
+    rdfs:comment            "Fresnel Lens selecting basic person properties (name, mbox, depiction)."@en ;
+    fresnel:classLensDomain foaf:Person ;
+    fresnel:showProperties  (    foaf:name
+                                 foaf:mbox
+                                 foaf:depiction ) ;
+    fresnel:group           foafsample:fullPersonVizGroup .
+           
 foafsample:fullDocumentLens    a    fresnel:Lens ;
     rdfs:comment            "Fresnel Lens selecting all document properties (hides rdf:type)."@en ;
     fresnel:classLensDomain foaf:Document ;
