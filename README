@@ -1,0 +1,11 @@
+Fresnel editor
+
+Fresnel Editor allows the user to visualize RDF data using W3C Fresnel vocabulary. 
+It provides Swing GUI simplifying creation and editing of Fresnel Lenses, Formats and Groups 
+and allows the user to use them to visualize RDF data as XHTML web page.
+
+Authors:
+Miroslav Warchil (warmir@mail.muni.cz)
+Zemsky Igor (zemsky@mail.muni.cz)
+J‡n Horv‡th (jan.horvath.svk@gmail.com)
+Martin Zruban (zruban@mail.muni.cz)
