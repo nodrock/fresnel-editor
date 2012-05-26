@@ -11,11 +11,7 @@
 localproject:foafsample
       a       dcmitype:Dataset ;
       dcterms:title "FOAF sample project" ;
-      dcterms:description "FOAF sample project for presentation of Fresnel Editor features. This project contains following:
-- 2 lenses
-- 2 formats
-- 2 groups
-- default CSS" .
+      dcterms:description "FOAF sample project for presentation of Fresnel Editor features. This project contains following: - 2 lenses - 2 formats - 2 groups - default CSS" .
       
 
 # -----------------

@@ -51,6 +51,6 @@ public class Service {
     
     @Override
     public String toString() {
-        return "Service {" + " id = " + id + ", name = " + name + ", url = " + url + '}';
+        return name; //"Service {" + " id = " + id + ", name = " + name + ", url = " + url + '}';
     }
 }

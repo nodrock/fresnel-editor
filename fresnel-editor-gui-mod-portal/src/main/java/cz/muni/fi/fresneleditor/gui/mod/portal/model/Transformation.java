@@ -61,6 +61,6 @@ public class Transformation {
 
     @Override
     public String toString() {
-        return "Transformation { id = " + id + ", name = " + name + ", filename = " + filename  + ", contentType = " + contentType + " }";
+        return name; //"Transformation { id = " + id + ", name = " + name + ", filename = " + filename  + ", contentType = " + contentType + " }";
     }
 }
