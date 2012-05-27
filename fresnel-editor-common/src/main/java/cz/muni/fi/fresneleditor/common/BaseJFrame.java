@@ -126,7 +126,9 @@ public class BaseJFrame extends javax.swing.JFrame implements
                 dataRepositoryMenu.add(item);
             }
             
-            ContextHolder.getInstance().setSelectedDataRepositoryName(group.getSelection().getActionCommand());
+            if(group.getSelection() != null){
+                ContextHolder.getInstance().setSelectedDataRepositoryName(group.getSelection().getActionCommand());
+            }
         }
 
 	/**
