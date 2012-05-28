@@ -10,7 +10,8 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- *  
+ * Object representation of a resource 
+ * 
  * @author Milos Kalab <173388@mail.muni.cz>
  * @version 5. 5. 2012
  */
@@ -27,7 +28,7 @@ public class Resource {
     public Resource(String resourceUri, String resourceLabel) {
         int rowsNeeded;
         int rectWidth = SVGPreprocessor.xslSet.getRectWidth();
-        int rectMargin = SVGPreprocessor.xslSet.getTextResXInd()-SVGPreprocessor.xslSet.getRectResXInd();
+        int rectMargin = SVGPreprocessor.xslSet.getTextResXInd() - SVGPreprocessor.xslSet.getRectResXInd();
         if (rectWidth > rectMargin) {
             rectWidth -= rectMargin; //margins in the rectangle
         }
@@ -46,8 +47,14 @@ public class Resource {
                 this.resourceUri = Utils.getInstance().shortenText(resourceUri, rectWidth);
             }
         } else {
-            this.resourceUri = resourceUri;
-            this.resourceLabel = resourceLabel;
+            if (!"".equals(resourceLabel)) {
+                this.originalResourceLabel = resourceLabel;
+                this.resourceLabel = resourceLabel;
+            } else {
+                this.originalResourceLabel = resourceUri;
+                this.resourceUri = resourceUri;
+            }
+
         }
         properties = new ArrayList<Property>();
         TempXMLParser parser = TempXMLParser.getInstance();
@@ -115,42 +122,21 @@ public class Resource {
     @Override
     public String toString() {
         String s = "<resource";
-        if (this.getLongTextRowNumber() > 1) {
-            if (this.getResourceLabel().trim().isEmpty()) {
-                s += " long-text-rows=\"" + this.getLongTextRowNumber() + "\"";
-                if (!this.getResourceUri().trim().isEmpty()) {
-                    s += " uri=\"" + this.getResourceUri() + "\"";
-                }
-                if (!this.getOriginalResourceLabel().trim().isEmpty()) {
-                    s += " full-uri=\"" + this.getOriginalResourceLabel() + "\"";
-                }
-                s += ">\n";
-                s += "<title/>\n";
-            } else {
-                s += " long-text-rows=\"" + this.getLongTextRowNumber() + "\"";
-                if (!this.getResourceUri().trim().isEmpty()) {
-                    s += " uri=\"" + this.getResourceUri() + "\"";
-                }
-                s += ">\n";
-                if (!this.getResourceLabel().trim().isEmpty()) {
-                    s += "<title";
-                    if (!this.getOriginalResourceLabel().trim().isEmpty()) {
-                        s += " full-label=\"" + this.getOriginalResourceLabel() + "\"";
-                    }
-                    s += ">" + this.getResourceLabel() + "</title>\n";
-                }
-            }
-        } else {
-            if (!this.getResourceUri().trim().isEmpty()) {
-                s += " uri=\"" + this.getResourceUri() + "\"";
-            }
-            s += ">\n";
-            if (!this.getResourceLabel().trim().isEmpty()) {
-                s += "<title>" + this.getResourceLabel() + "</title>\n";
-            } else {
-                s += "<title/>\n";
-            }
+        s += " long-text-rows=\"" + this.getLongTextRowNumber() + "\"";
+
+        if (!this.getResourceUri().trim().isEmpty()) {
+            s += " uri=\"" + this.getResourceUri() + "\"";
         }
+        if (!this.getOriginalResourceLabel().trim().isEmpty()) {
+            s += " full-label=\"" + this.getOriginalResourceLabel() + "\"";
+        }
+        if (this.getResourceLabel().trim().isEmpty()) {
+            s += ">\n";
+            s += "<title/>\n";
+        } else {
+            s += ">" + this.getResourceLabel() + "</title>\n";
+        }
+
         List<Property> tempProperties = this.getProperties();
         if (!tempProperties.isEmpty()) {
             for (Iterator it = properties.iterator(); it.hasNext();) {

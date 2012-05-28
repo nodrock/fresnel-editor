@@ -11,7 +11,8 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 /**
- *  
+ * Handler of the parsing process belonging to the XML parser 
+ * 
  * @author Milos Kalab <173388@mail.muni.cz>
  * @version 5. 5. 2012
  */

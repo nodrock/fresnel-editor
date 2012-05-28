@@ -34,6 +34,8 @@ import fr.inria.jfresnel.sesame.SesameRenderer;
  * 
  * @author Miroslav Warchil (warmir@mail.muni.cz)
  * @version 13.5.2009
+ * 
+ * changes made in May 2012 by Milos Kalab
  */
 public abstract class AbstractVisualizer implements IRDFVisualizer {
 
@@ -185,17 +187,6 @@ public abstract class AbstractVisualizer implements IRDFVisualizer {
             transformer.setParameter("pageTitle", visParam.getPageTitle());
             transformer.setParameter("cssStylesheetURL", visParam.getCssStylesheetURL());
             // Perform XSL transformation and write result into file
-
-            System.out.println("_______________________________CIZI KOD_________________________________");
-            System.out.println("________________________________________________________________________");
-            System.out.println("________________________________________________________________________");
-            System.out.println("________________________________________________________________________");
-            System.out.println(Utils.getInstance().parseDocumentToString(document));
-            System.out.println("________________________________________________________________________");
-            System.out.println("________________________________________________________________________");
-            System.out.println("________________________________________________________________________");
-            System.out.println("________________________________________________________________________");
-
 
             transformer.transform(source, new StreamResult(new FileOutputStream(finalFile)));
 

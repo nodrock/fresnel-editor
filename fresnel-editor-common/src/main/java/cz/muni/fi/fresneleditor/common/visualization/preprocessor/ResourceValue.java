@@ -9,7 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *  
+ * Object representation of a resource that is a value of a property
+ * 
  * @author Milos Kalab <173388@mail.muni.cz>
  * @version 5. 5. 2012
  */

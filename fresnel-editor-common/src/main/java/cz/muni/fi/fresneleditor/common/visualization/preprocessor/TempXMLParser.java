@@ -21,7 +21,9 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 /**
- *
+ * Parser of the intermediate XML file. It holds the resources that are to be 
+ * visualized and manages IDs of parsed objects
+ * 
  * @author Milos Kalab <173388@mail.muni.cz>
  */
 public class TempXMLParser {

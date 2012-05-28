@@ -10,7 +10,8 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- *  
+ * Object representation of a property 
+ * 
  * @author Milos Kalab <173388@mail.muni.cz>
  * @version 5. 5. 2012
  */
@@ -27,16 +28,7 @@ class Property {
 
     public Property(String propertyUri, String propertyClass, String propertyLabelClass, String propertyLabel) {
         this.propertyUri = propertyUri;
-
-        int rowsNeeded = Utils.getInstance().countRows(propertyLabel, SVGPreprocessor.xslSet.getPropLine2Lenght());
-        if (rowsNeeded > 1) {
-            this.longTextRowNumber = rowsNeeded;
-            this.propertyLabel = Utils.getInstance().shortenText(propertyLabel, SVGPreprocessor.xslSet.getPropLine2Lenght());
-            this.originalPropertyLabel = propertyLabel;
-        } else {
-            this.propertyLabel = propertyLabel;
-             this.originalPropertyLabel = "";
-        }
+        this.setPropertyLabel(propertyLabel); 
         this.propertyClass = propertyClass;
         this.propertyLabelClass = propertyLabelClass;
         values = new ArrayList<AbstractValue>();
@@ -62,14 +54,19 @@ class Property {
     }
 
     public void setPropertyLabel(String propertyLabel) {
-        int rowsNeeded = Utils.getInstance().countRows(propertyLabel, SVGPreprocessor.xslSet.getPropLine2Lenght());
+        int propLineWidth = SVGPreprocessor.xslSet.getPropLine2Lenght();
+        int propLineMargin = 5;
+        if (propLineWidth > propLineMargin) {
+            propLineWidth -= propLineMargin; //margins in the rectangle
+        }
+        int rowsNeeded = Utils.getInstance().countRows(propertyLabel, propLineWidth);
         if (rowsNeeded > 1) {
             this.longTextRowNumber = rowsNeeded;
-            this.propertyLabel = Utils.getInstance().shortenText(propertyLabel, SVGPreprocessor.xslSet.getPropLine2Lenght());
+            this.propertyLabel = Utils.getInstance().shortenText(propertyLabel, propLineWidth);
             this.originalPropertyLabel = propertyLabel;
         } else {
             this.propertyLabel = propertyLabel;
-             this.originalPropertyLabel = "";
+            this.originalPropertyLabel = propertyLabel;
         }
     }
 
@@ -135,9 +132,7 @@ class Property {
         s += ">\n";
         if (!this.getPropertyLabel().trim().isEmpty()) {
             s += "<title";
-            if (!this.getOriginalPropertyLabel().trim().isEmpty()) {
-                s += " full-label=\"" + this.getOriginalPropertyLabel() + "\"";
-            }
+            s += " full-label=\"" + this.getOriginalPropertyLabel() + "\"";
             s += ">" + this.getPropertyLabel() + "</title>\n";
         } else {
             s += "<title/>\n";

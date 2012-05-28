@@ -22,7 +22,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
+ * Class represents a manager of XSL transformation
+ * 
  * @author Milos Kalab <173388@mail.muni.cz>
  * @version 5. 5. 2012
  */
@@ -63,6 +64,10 @@ public class XSLStylesheetSettings {
         this.propLine2Lenght = visParam.getPropLine2Lenght();
     }
     
+    /**
+	 * Saves the parametres obtained from GUI to the XSL transformation
+	 * 
+	 */
     public void changeXSLSettings() {
 
         SAXBuilder builder = new SAXBuilder();

@@ -6,13 +6,13 @@
 package cz.muni.fi.fresneleditor.common.visualization.preprocessor;
 
 import cz.muni.fi.fresneleditor.common.visualization.VisualizationParameter;
-import java.io.File;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 
 /**
- *  
+ * Manager class of the preprocessing of the data
+ * 
  * @author Milos Kalab <173388@mail.muni.cz>
  * @version 5. 5. 2012
  */
@@ -31,6 +31,12 @@ public class SVGPreprocessor {
         xslSet = new XSLStylesheetSettings(visParam);
     }
 
+    /**
+	 * A method that manages the whole text preprocessing
+	 * 
+	 * @param doc the document to be preprocessed
+     *  
+	 */
     public Document processXMLForSVG(Document doc) {
         xslSet.changeXSLSettings();
         TempXMLParser parser = TempXMLParser.getInstance();

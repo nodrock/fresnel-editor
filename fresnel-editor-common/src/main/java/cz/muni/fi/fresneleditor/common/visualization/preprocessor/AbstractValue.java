@@ -7,7 +7,8 @@ package cz.muni.fi.fresneleditor.common.visualization.preprocessor;
 
 
 /**
- *  
+ * An abstract object representing any value - either simple or resource one 
+ * 
  * @author Milos Kalab <173388@mail.muni.cz>
  * @version 5. 5. 2012
  */

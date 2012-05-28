@@ -40,7 +40,8 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 /**
- *  
+ *  A class containing utility methods
+ * 
  * @author Milos Kalab <173388@mail.muni.cz>
  * @version 5. 5. 2012
  */
@@ -201,7 +202,6 @@ public class Utils {
         if (textLength > length) {
             numberOfRows = (int) Math.ceil(textLength / (double) length);
         }
-        System.out.println("TEXT: " + text + "___" + length + "___" + textLength + "___" + numberOfRows + "___" + "___");
         return numberOfRows;
     }
 
@@ -213,12 +213,11 @@ public class Utils {
             double ratio = textLength / (double) length;
             shortenedText = text.substring(0, (int) Math.ceil(text.length() / ratio));
             if (shortenedText.length() > 5) {
-                shortenedText = shortenedText.substring(0, shortenedText.length() - 5) + "...";
+                shortenedText = shortenedText.substring(0, shortenedText.length() - 3) + "...";
             } else {
                 shortenedText += "...";
             }
         }
-        System.out.println(shortenedText);
         return shortenedText;
     }
 }

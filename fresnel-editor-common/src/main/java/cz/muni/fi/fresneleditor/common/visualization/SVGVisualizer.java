@@ -7,6 +7,8 @@ import cz.muni.fi.fresneleditor.common.visualization.preprocessor.SVGPreprocesso
 import cz.muni.fi.fresneleditor.common.visualization.preprocessor.Utils;
 import cz.muni.fi.fresneleditor.common.visualization.svgshow.SvgShowJPanel;
 import java.io.File;
+import java.util.ResourceBundle;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -24,6 +26,8 @@ public class SVGVisualizer extends AbstractVisualizer {
     final Integer IMAGE_HEIGHT = 128;
     final Integer IMAGE_WIDTH= 128;
     final Integer RESOURCE_MARGIN_BOTTOM = 25;
+    protected static final ResourceBundle bundle = java.util.ResourceBundle.getBundle("cz/muni/fi/fresneleditor/gui/mod/vis/resources/VisualizationJPanel");
+    
 
     public SVGVisualizer() {
         super(FresnelEditorConstants.DEFAULT_FILENAME_FINAL_SVG, FresnelEditorConstants.DEFAULT_XSL_SVG_TEMPLATE_URL);
@@ -64,11 +68,6 @@ public class SVGVisualizer extends AbstractVisualizer {
             String pageUri = SVGFile.getAbsolutePath();
 
             LOG.info("Visualization of file on URI: " + pageUri);
-
-            
-            
-            //XXXXXXXXXXXXXXXXXXXXXXXXXXX HERE TO INSERT PREPROCESSOR!
-            
             
             // Show visualization preview panel
             SvgShowJPanel panel = new SvgShowJPanel(SVGFile);
@@ -83,6 +82,10 @@ public class SVGVisualizer extends AbstractVisualizer {
             LOG.error("Rendering error: {}", ex.getMessage());
             // FIXME: Add proper stack trace logging.
             ex.printStackTrace();
+            JOptionPane.showMessageDialog(FresnelApplication.getApp().getMainFrame(),
+                        bundle.getString("Rendering_Error_text"),
+                        bundle.getString("Rendering_Error_label"),
+                        JOptionPane.ERROR_MESSAGE);
             return;
         }
 

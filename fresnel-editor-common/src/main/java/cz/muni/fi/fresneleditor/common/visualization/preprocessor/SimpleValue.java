@@ -1,11 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package cz.muni.fi.fresneleditor.common.visualization.preprocessor;
 
 /**
- *
+ * Class representing a value of a property
+ * 
  * @author Milos Kalab <173388@mail.muni.cz>
  */
 public class SimpleValue extends AbstractValue {
@@ -26,7 +23,7 @@ public class SimpleValue extends AbstractValue {
 
     public void setValueContent(String valueContent) {
         int rectWidth = SVGPreprocessor.xslSet.getRectWidth();
-        int rectMargin = SVGPreprocessor.xslSet.getTextResXInd()-SVGPreprocessor.xslSet.getRectResXInd();
+        int rectMargin = SVGPreprocessor.xslSet.getTextResXInd() - SVGPreprocessor.xslSet.getRectResXInd();
         if (rectWidth > rectMargin) {
             rectWidth -= rectMargin; //margins in the rectangle
         }
@@ -37,6 +34,7 @@ public class SimpleValue extends AbstractValue {
             this.originalValueContent = valueContent;
         } else {
             this.valueContent = valueContent;
+            this.originalValueContent = valueContent;
         }
     }
 
@@ -68,18 +66,11 @@ public class SimpleValue extends AbstractValue {
         } else {
             s += " long-text-rows=\"" + this.getLongTextRowNumber() + "\"";
         }
+
         s += ">\n";
         if (!this.getValueContent().isEmpty()) {
-            if (this.getValueOutputType().isEmpty() && this.getLongTextRowNumber() > 1) {
-                s += "<title full-value=\"" + this.getOriginalValueContent() + "\"";
-                s += ">" + this.getValueContent() + "</title>\n";
-            } else {
-                if (this.getOriginalValueContent() != null) {
-                    s += "<title>" + this.getOriginalValueContent() + "</title>\n";
-                } else {
-                    s += "<title>" + this.getValueContent() + "</title>\n";
-                }
-            }
+            s += "<title full-value=\"" + this.getOriginalValueContent() + "\"";
+            s += ">" + this.getValueContent() + "</title>\n";
         } else {
             s += "<title/>\n";
         }
