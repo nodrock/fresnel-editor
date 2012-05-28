@@ -23,7 +23,7 @@
         <xsl:value-of select="$prop_line_ind_1+$prop_line_ind_2+2*$rect_res_x_ind" />
     </xsl:param>
     <xsl:param name="pic_height">200</xsl:param>    <!--IMPORTANT SETTING-->
-    <xsl:param name="pic_width">200</xsl:param>    <!--IMPORTANT SETTING-->
+    <xsl:param name="pic_width">400</xsl:param>    <!--IMPORTANT SETTING-->
     <xsl:param name="pic_y_ind">
         <xsl:value-of select="$pic_height+-$rect_height" />
     </xsl:param>
@@ -43,11 +43,11 @@
         <xsl:value-of select="$font_size*2.7" />
     </xsl:param>
     <xsl:param name="rect_prop_y_ind">
-        <xsl:value-of select="$rect_height+15" />
+        <xsl:value-of select="$rect_height+5" />
     </xsl:param>
     <xsl:param name="prop_line_ind_1">100</xsl:param>   
     <xsl:param name="prop_line_ind_2">300</xsl:param>   <!--IMPORTANT SETTING-->
-    <xsl:param name="rect_width">200</xsl:param>    <!--IMPORTANT SETTING-->
+    <xsl:param name="rect_width">400</xsl:param>    <!--IMPORTANT SETTING-->
     <xsl:param name="rect_y_ind">20</xsl:param>
     <xsl:param name="rect_res_x_ind">20</xsl:param>
     <xsl:param name="rect_text_y_ind">
@@ -174,34 +174,16 @@
         <svg:g class="f-resource">
             <!-- Drawing resource node -->
             <svg:rect x="{$rect_res_x_ind}" y="{$rect_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_y_ind*$pic_count+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" width="{$rect_width}" height="{$rect_height}" rx="10" ry="10" />
+            <svg:text x="{$rect_res_text_x_ind}" y="{$rect_text_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_y_ind*$pic_count+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" full-value="{@full-label}">
             <xsl:choose>
-                <xsl:when test="@long-text-rows ='1'">
-                    <svg:text x="{$rect_res_text_x_ind}" y="{$rect_text_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_y_ind*$pic_count+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" full-value="{@full-uri}" font-size="{$font_size}">
-                  
-                        <xsl:choose>
-                            <xsl:when test="title/text() != ''">
-                                <xsl:value-of select="title" />
+                    <xsl:when test="title/text() != ''">
+                        <xsl:value-of select="title" />
                             </xsl:when>
                             <xsl:otherwise>
                                 <xsl:value-of select="@uri" />
                             </xsl:otherwise>
                         </xsl:choose>
                     </svg:text>
-                </xsl:when>
-                <xsl:otherwise>
-                    <svg:text x="{$rect_res_text_x_ind}" y="{$rect_text_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_y_ind*$pic_count+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" font-size="{$font_size}">
-                        <xsl:choose>
-                            <xsl:when test="title/text() != ''">
-                                <xsl:value-of select="title" />
-                            </xsl:when>
-                            <xsl:otherwise>
-                                <xsl:value-of select="@uri" />
-                            </xsl:otherwise>
-                        </xsl:choose>
-                    </svg:text>
-                </xsl:otherwise>
-            </xsl:choose>
-                    
             <!--  -->
             <xsl:apply-templates select="property">
                 <xsl:with-param name="resource_count" select="$resource_count" />
@@ -333,32 +315,16 @@
         <svg:g class="f-label">
 <!-- Drawing first part of property line and label -->
             <svg:line x1="{$prop_line_x1}" y1="{$prop_line_ind+20*$resource_count+$rect_prop_y_ind*$res_values_count+$res_pic_count*$pic_y_ind+$res_long_text_3*$long_text_3_y_ind+$res_long_text_6*$long_text_6_y_ind+$res_long_text_9*$long_text_9_y_ind+$res_long_text_x*$long_text_x_y_ind}" x2="{$prop_line_x2}" y2="{$prop_line_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" />
+            <svg:text x="{$prop_line_text_x_ind}" y="{$prop_line_text_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" full-value="{title/@full-label}">
             <xsl:choose>
-                <xsl:when test="@long-text-rows != '1'">
-                    <svg:text x="{$prop_line_text_x_ind}" y="{$prop_line_text_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" full-value="{title/@full-label}" font-size="{$font_size}">
-                        <xsl:choose>
-                            <xsl:when test="title/text() != ''">
-                                <xsl:value-of select="title" />
+                    <xsl:when test="title/text() != ''">
+                        <xsl:value-of select="title" />
                             </xsl:when>
                             <xsl:otherwise>
                                 <xsl:value-of select="../@uri" />
                             </xsl:otherwise>
                         </xsl:choose>
                     </svg:text>
-                </xsl:when>
-                <xsl:otherwise>
-                    <svg:text x="{$prop_line_text_x_ind}" y="{$prop_line_text_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" font-size="{$font_size}">
-                        <xsl:choose>
-                            <xsl:when test="title/text() != ''">
-                                <xsl:value-of select="title" />
-                            </xsl:when>
-                            <xsl:otherwise>
-                                <xsl:value-of select="../@uri" />
-                            </xsl:otherwise>
-                        </xsl:choose>
-                    </svg:text>
-                </xsl:otherwise>
-            </xsl:choose>
         </svg:g>
     </xsl:template>
 <!-- End LABEL node match template -->
@@ -468,36 +434,36 @@
                         <xsl:when test="resource">
                             <!-- Drawing rectangle with uri of picture -->
                             <svg:rect x="{$prop_line_x3}" y="{$rect_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" width="{$rect_width}" height="{$rect_height}" />
-                            <svg:image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{resource/@uri}" />
+                            <svg:image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{resource/@uri}" full-value="{resource/@full-label}" />
                         </xsl:when>
                         <xsl:otherwise>
                             <!-- Drawing rectangle with picture -->
                             <svg:rect x="{$prop_line_x3}" y="{$rect_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" width="{$pic_width}" height="{$pic_height}" />
-                            <svg:image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{title}" width="{-2+$pic_width}" height="{-2+$pic_height}" x="{$pic_x_ind}" y="{$rect_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind+1}" />
+                            <svg:image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{title/@full-value}" width="{-2+$pic_width}" height="{-2+$pic_height}" x="{$pic_x_ind}" y="{$rect_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind+1}" />
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:when>
                 <!-- URI VALUE TYPE -->
                 <xsl:when test="@output-type='http://www.w3.org/2004/09/fresnel#uri'">
                     <svg:rect x="{$prop_line_x3}" y="{$rect_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" width="{$rect_width}" height="{$rect_height}" />
-                    <svg:text x="{$rect_prop_text_x_ind}" y="{$rect_text_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" width="{$rect_width}" font-size="{$font_size}">
+                    <svg:text x="{$rect_prop_text_x_ind}" y="{$rect_text_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" width="{$rect_width}" font-size="{$font_size}" full-value="{resource/@full-label}">
                         <xsl:choose>
                             <xsl:when test="resource">
                                 <xsl:value-of select="resource/@uri" />
                             </xsl:when>
                             <xsl:otherwise>
                                 <xsl:value-of select="title" />
-                            </xsl:otherwise>
-                        </xsl:choose>
+                                    </xsl:otherwise>
+                                </xsl:choose>
                     </svg:text>
                 </xsl:when>
                 <!-- EXTERNAL LINK VALUE TYPE -->
                 <xsl:when test="@output-type='http://www.w3.org/2004/09/fresnel#externalLink'">
                     <xsl:choose>
                         <xsl:when test="resource">
-                            <svg:a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{resource/@full-uri}">
+                            <svg:a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{resource/@full-label}">
                                 <svg:rect x="{$prop_line_x3}" y="{$rect_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" width="{$rect_width}" height="{$rect_height}" />
-                                <svg:text x="{$rect_prop_text_x_ind}" y="{$rect_text_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" width="{$rect_width}" font-size="{$font_size}">
+                                <svg:text x="{$rect_prop_text_x_ind}" y="{$rect_text_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" width="{$rect_width}" font-size="{$font_size}" full-value="{resource/@full-label}">
                                     <xsl:value-of select="f-resource/@uri" />
                                 </svg:text>
                             </svg:a>
@@ -505,7 +471,7 @@
                         <xsl:otherwise>
                             <svg:a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{title/@full-value}">
                                 <svg:rect x="{$prop_line_x3}" y="{$rect_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" width="{$rect_width}" height="{$rect_height}" />
-                                <svg:text x="{$rect_prop_text_x_ind}" y="{$rect_text_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" width="{$rect_width}" font-size="{$font_size}">
+                                <svg:text x="{$rect_prop_text_x_ind}" y="{$rect_text_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" width="{$rect_width}" full-value="{title/@full-value}">
                                     <xsl:value-of select="title" />
                                 </svg:text>
                             </svg:a>
@@ -513,14 +479,13 @@
                     </xsl:choose>
                 </xsl:when>
                 <xsl:otherwise>
-                   
                     <!-- LONG-TEXT VALUE TYPE -->
                     <xsl:choose>
                         <xsl:when test="title">
                             <xsl:choose>
                                 <xsl:when test="@long-text-rows = 1">
                                     <svg:rect x="{$prop_line_x3}" y="{$rect_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" width="{$rect_width}" height="{$rect_height}" />
-                                    <svg:text x="{$rect_prop_text_x_ind}" y="{$rect_text_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" font-size="{$font_size}">
+                                    <svg:text x="{$rect_prop_text_x_ind}" y="{$rect_text_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" font-size="{$font_size}" full-value="{title/@full-value}">
                                         <xsl:value-of select="title" />
                                     </svg:text>
                                 </xsl:when>
@@ -529,16 +494,18 @@
                                     <svg:rect x="{$prop_line_x3}" y="{$rect_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" width="{$rect_width}" height="65px" />
                                     <svg:foreignObject x="{$prop_line_x3}" y="{$rect_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" width="{$rect_width}" height="{$pic_height}">
                                         <xhtml:body xmlns:xhtml="http://www.w3.org/1999/xhtml">
-                                            <xhtml:div style="font-size:{$font_size}px; padding:0px 6px 0px 6px">
                                                 <xsl:choose>
-                                                    <xsl:when test="resource">
-                                                        <xsl:value-of select="resource/@uri" />
+                                                <xsl:when test="resource">
+                                                    <xhtml:div style="font-size:11pt; padding:0px 6px 0px 6px" full-value="{resource/@full-label}">
+                                                        <xsl:value-of select="resource/@full-label" />
+                                                    </xhtml:div>                                                        
                                                     </xsl:when>
                                                     <xsl:otherwise>
+                                                    <xhtml:div style="font-size:11pt; padding:0px 6px 0px 6px" full-value="{title/@full-value}">
                                                         <xsl:value-of select="title/@full-value" />
+                                                    </xhtml:div>                                                       
                                                     </xsl:otherwise>
                                                 </xsl:choose>
-                                            </xhtml:div>
                                         </xhtml:body>
                                     </svg:foreignObject>
                                 </xsl:when>
@@ -547,16 +514,18 @@
                                     <svg:rect x="{$prop_line_x3}" y="{$rect_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" width="{$rect_width}" height="100px" />
                                     <svg:foreignObject x="{$prop_line_x3}" y="{$rect_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" width="{$rect_width}" height="{$pic_height}">
                                         <xhtml:body xmlns:xhtml="http://www.w3.org/1999/xhtml">
-                                            <xhtml:div style="font-size:{$font_size}px; padding:0px 6px 0px 6px">
                                                 <xsl:choose>
-                                                    <xsl:when test="resource">
-                                                        <xsl:value-of select="resource/@uri" />
+                                                <xsl:when test="f:resource">
+                                                    <xhtml:div style="font-size:11pt; padding:0px 6px 0px 6px" full-value="{resource/@full-label}">
+                                                        <xsl:value-of select="resource/@full-label" />
+                                                    </xhtml:div>                                                        
                                                     </xsl:when>
                                                     <xsl:otherwise>
+                                                    <xhtml:div style="font-size:11pt; padding:0px 6px 0px 6px" full-value="{title/@full-value}">
                                                         <xsl:value-of select="title/@full-value" />
+                                                    </xhtml:div>                                                       
                                                     </xsl:otherwise>
                                                 </xsl:choose>
-                                            </xhtml:div>
                                         </xhtml:body>
                                     </svg:foreignObject>
                                 </xsl:when>
@@ -565,16 +534,18 @@
                                     <svg:rect x="{$prop_line_x3}" y="{$rect_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" width="{$rect_width}" height="155px" />
                                     <svg:foreignObject x="{$prop_line_x3}" y="{$rect_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" width="{$rect_width}" height="{$pic_height}">
                                         <xhtml:body xmlns:xhtml="http://www.w3.org/1999/xhtml">
-                                            <xhtml:div style="font-size:{$font_size}px; padding:0px 6px 0px 6px">
                                                 <xsl:choose>
-                                                    <xsl:when test="resource">
-                                                        <xsl:value-of select="resource/@uri" />
+                                                <xsl:when test="f:resource">
+                                                    <xhtml:div style="font-size:11pt; padding:0px 6px 0px 6px" full-value="{resource/@full-label}">
+                                                        <xsl:value-of select="resource/@full-label" />
+                                                    </xhtml:div>                                                        
                                                     </xsl:when>
                                                     <xsl:otherwise>
+                                                    <xhtml:div style="font-size:11pt; padding:0px 6px 0px 6px" full-value="{title/@full-value}">
                                                         <xsl:value-of select="title/@full-value" />
+                                                    </xhtml:div>                                                       
                                                     </xsl:otherwise>
                                                 </xsl:choose>
-                                            </xhtml:div>
                                         </xhtml:body>
                                     </svg:foreignObject>
                                 </xsl:when>
@@ -583,16 +554,18 @@
                                     <svg:rect x="{$prop_line_x3}" y="{$rect_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" width="{$rect_width}" height="300px" />
                                     <svg:foreignObject x="{$prop_line_x3}" y="{$rect_y_ind+20*$resource_count+$rect_prop_y_ind*$values_count+$pic_count*$pic_y_ind+$long_text_3*$long_text_3_y_ind+$long_text_6*$long_text_6_y_ind+$long_text_9*$long_text_9_y_ind+$long_text_x*$long_text_x_y_ind}" width="{$rect_width}" height="{$pic_height}">
                                         <xhtml:body xmlns:xhtml="http://www.w3.org/1999/xhtml">
-                                            <xhtml:div style="font-size:{$font_size}px; padding:0px 6px 0px 6px">
                                                 <xsl:choose>
-                                                    <xsl:when test="resource">
-                                                        <xsl:value-of select="resource/@uri" />
+                                                <xsl:when test="f:resource">
+                                                    <xhtml:div style="font-size:11pt; padding:0px 6px 0px 6px" full-value="{resource/@full-label}">
+                                                        <xsl:value-of select="resource/@full-label" />
+                                                    </xhtml:div>                                                        
                                                     </xsl:when>
                                                     <xsl:otherwise>
+                                                    <xhtml:div style="font-size:11pt; padding:0px 6px 0px 6px" full-value="{title/@full-value}">
                                                         <xsl:value-of select="title/@full-value" />
+                                                    </xhtml:div>                                                       
                                                     </xsl:otherwise>
                                                 </xsl:choose>
-                                            </xhtml:div>
                                         </xhtml:body>
                                     </svg:foreignObject>
                                 </xsl:otherwise>
