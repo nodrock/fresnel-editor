@@ -46,6 +46,7 @@ import javax.swing.border.TitledBorder;
 /**
  * 
  * @author Miroslav Warchil
+ * changes made in May 2012 by Miloš Kaláb
  */
 public class VisualizationJPanel extends javax.swing.JPanel implements
         ITabComponent<String> {
