@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FresnelPortalJPanel.java
  *
  * Created on May 9, 2012, 1:55:01 PM
@@ -32,7 +27,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +38,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JScrollPane;
 import org.openrdf.model.URI;
 import org.openrdf.model.impl.URIImpl;
-import org.openrdf.rio.RDFHandler;
-import org.openrdf.rio.n3.N3Writer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

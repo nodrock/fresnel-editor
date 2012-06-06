@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package cz.muni.fi.fresneleditor.gui.mod.portal.services;
 
 import cz.muni.fi.fresneleditor.gui.mod.portal.model.Service;
@@ -26,7 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- *
+ * Portal service implementation.
  * @author nodrock
  */
 public class PortalServiceImpl implements PortalService {
@@ -47,6 +43,7 @@ public class PortalServiceImpl implements PortalService {
             
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
             String responseBody = httpClient.execute(httpGet, responseHandler);
+            // JSON parsing
             JSONObject obj = new JSONObject(responseBody);
             JSONArray arr = obj.getJSONArray("services");
             for(int i = 0; i<arr.length(); i++){
@@ -76,6 +73,7 @@ public class PortalServiceImpl implements PortalService {
             
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
             String responseBody = httpClient.execute(httpGet, responseHandler);
+            // JSON parsing
             JSONObject obj = new JSONObject(responseBody);
             JSONArray arr = obj.getJSONArray("transformations");
             for(int i = 0; i<arr.length(); i++){
@@ -108,6 +106,7 @@ public class PortalServiceImpl implements PortalService {
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
             String responseBody = httpClient.execute(httpPost, responseHandler);
             
+            // JSON parsing
             JSONObject obj = new JSONObject(responseBody);
             return obj.getInt("id");          
         } catch (JSONException ex){          

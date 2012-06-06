@@ -1,18 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package cz.muni.fi.fresneleditor.gui.mod.portal.services;
 
 import cz.muni.fi.fresneleditor.gui.mod.portal.model.Service;
 import cz.muni.fi.fresneleditor.gui.mod.portal.model.Transformation;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Collection;
 import java.util.List;
 
 /**
- *
+ * Interface for communication with Fresnel portal.
  * @author nodrock
  */
 public interface PortalService {

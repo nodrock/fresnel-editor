@@ -1,13 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package cz.muni.fi.fresneleditor.gui.mod.portal.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ * Stores transformation.
  * @author nodrock
  */
 @XmlRootElement(name="transformation")
