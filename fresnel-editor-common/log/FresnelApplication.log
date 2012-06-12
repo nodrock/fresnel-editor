@@ -1342,3 +1342,195 @@
 2012-05-28 06:28:41,005 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=1namespaceOnly://thing
 2012-05-28 06:28:41,005 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=+namespaceOnly://thing
 2012-05-28 06:28:41,006 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Invalid URIs OK
+2012-05-28 06:37:02,422 INFO   [cz.muni.fi.fresneleditor.model.BaseRepositoryDao] - Creating new memory store repository
+2012-05-28 06:37:02,424 INFO   [cz.muni.fi.fresneleditor.model.BaseRepositoryDao] - Repository was successfully initialized
+2012-05-28 06:37:02,488 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: prefix1 :: http://prefix1
+2012-05-28 06:37:02,488 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p2 :: http://prefix2
+2012-05-28 06:37:02,488 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p+ :: http://prefix3
+2012-05-28 06:37:02,489 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p- :: http://prefix4
+2012-05-28 06:37:02,489 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p. :: http://prefix5
+2012-05-28 06:37:02,489 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p.prefix :: http://prefix6
+2012-05-28 06:37:02,489 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p+.-pref++ :: http://prefix7
+2012-05-28 06:37:02,489 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=absoluteNamespace://namespace#localName
+2012-05-28 06:37:02,504 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://xmlns.com/foaf/0.1/name
+2012-05-28 06:37:02,505 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=prefix1:resource
+2012-05-28 06:37:02,505 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix1#resource
+2012-05-28 06:37:02,505 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p2:resource
+2012-05-28 06:37:02,506 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix2#resource
+2012-05-28 06:37:02,506 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p+:resource
+2012-05-28 06:37:02,506 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix3#resource
+2012-05-28 06:37:02,507 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p-:resource
+2012-05-28 06:37:02,507 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix4#resource
+2012-05-28 06:37:02,507 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p.:resource
+2012-05-28 06:37:02,507 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix5#resource
+2012-05-28 06:37:02,508 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p.prefix:resource
+2012-05-28 06:37:02,508 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix6#resource
+2012-05-28 06:37:02,508 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p+.-pref++:resource
+2012-05-28 06:37:02,509 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix7#resource
+2012-05-28 06:37:02,509 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid URIs OK, starting to test invalid uris
+2012-05-28 06:37:02,509 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=namespaceNotKnown:resource
+2012-05-28 06:37:02,509 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=namespaceOnly#
+2012-05-28 06:37:02,510 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=namespaceOnly#thing
+2012-05-28 06:37:02,510 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=1namespaceOnly://thing
+2012-05-28 06:37:02,510 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=+namespaceOnly://thing
+2012-05-28 06:37:02,511 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Invalid URIs OK
+2012-06-12 15:03:37,227 INFO   [cz.muni.fi.fresneleditor.model.BaseRepositoryDao] - Creating new memory store repository
+2012-06-12 15:03:37,247 INFO   [cz.muni.fi.fresneleditor.model.BaseRepositoryDao] - Repository was successfully initialized
+2012-06-12 15:03:37,334 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: prefix1 :: http://prefix1
+2012-06-12 15:03:37,334 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p2 :: http://prefix2
+2012-06-12 15:03:37,334 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p+ :: http://prefix3
+2012-06-12 15:03:37,334 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p- :: http://prefix4
+2012-06-12 15:03:37,334 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p. :: http://prefix5
+2012-06-12 15:03:37,334 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p.prefix :: http://prefix6
+2012-06-12 15:03:37,334 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p+.-pref++ :: http://prefix7
+2012-06-12 15:03:37,335 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=absoluteNamespace://namespace#localName
+2012-06-12 15:03:37,355 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://xmlns.com/foaf/0.1/name
+2012-06-12 15:03:37,355 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=prefix1:resource
+2012-06-12 15:03:37,356 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix1#resource
+2012-06-12 15:03:37,356 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p2:resource
+2012-06-12 15:03:37,356 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix2#resource
+2012-06-12 15:03:37,356 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p+:resource
+2012-06-12 15:03:37,357 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix3#resource
+2012-06-12 15:03:37,357 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p-:resource
+2012-06-12 15:03:37,357 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix4#resource
+2012-06-12 15:03:37,358 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p.:resource
+2012-06-12 15:03:37,358 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix5#resource
+2012-06-12 15:03:37,358 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p.prefix:resource
+2012-06-12 15:03:37,358 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix6#resource
+2012-06-12 15:03:37,359 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p+.-pref++:resource
+2012-06-12 15:03:37,359 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix7#resource
+2012-06-12 15:03:37,359 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid URIs OK, starting to test invalid uris
+2012-06-12 15:03:37,359 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=namespaceNotKnown:resource
+2012-06-12 15:03:37,360 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=namespaceOnly#
+2012-06-12 15:03:37,360 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=namespaceOnly#thing
+2012-06-12 15:03:37,360 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=1namespaceOnly://thing
+2012-06-12 15:03:37,360 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=+namespaceOnly://thing
+2012-06-12 15:03:37,361 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Invalid URIs OK
+2012-06-12 15:19:33,155 INFO   [cz.muni.fi.fresneleditor.model.BaseRepositoryDao] - Creating new memory store repository
+2012-06-12 15:19:33,170 INFO   [cz.muni.fi.fresneleditor.model.BaseRepositoryDao] - Repository was successfully initialized
+2012-06-12 15:19:33,248 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: prefix1 :: http://prefix1
+2012-06-12 15:19:33,248 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p2 :: http://prefix2
+2012-06-12 15:19:33,248 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p+ :: http://prefix3
+2012-06-12 15:19:33,248 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p- :: http://prefix4
+2012-06-12 15:19:33,248 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p. :: http://prefix5
+2012-06-12 15:19:33,248 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p.prefix :: http://prefix6
+2012-06-12 15:19:33,248 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p+.-pref++ :: http://prefix7
+2012-06-12 15:19:33,248 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=absoluteNamespace://namespace#localName
+2012-06-12 15:19:33,264 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://xmlns.com/foaf/0.1/name
+2012-06-12 15:19:33,264 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=prefix1:resource
+2012-06-12 15:19:33,264 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix1#resource
+2012-06-12 15:19:33,264 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p2:resource
+2012-06-12 15:19:33,264 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix2#resource
+2012-06-12 15:19:33,264 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p+:resource
+2012-06-12 15:19:33,264 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix3#resource
+2012-06-12 15:19:33,264 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p-:resource
+2012-06-12 15:19:33,264 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix4#resource
+2012-06-12 15:19:33,264 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p.:resource
+2012-06-12 15:19:33,264 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix5#resource
+2012-06-12 15:19:33,264 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p.prefix:resource
+2012-06-12 15:19:33,264 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix6#resource
+2012-06-12 15:19:33,264 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p+.-pref++:resource
+2012-06-12 15:19:33,264 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix7#resource
+2012-06-12 15:19:33,264 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid URIs OK, starting to test invalid uris
+2012-06-12 15:19:33,264 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=namespaceNotKnown:resource
+2012-06-12 15:19:33,264 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=namespaceOnly#
+2012-06-12 15:19:33,264 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=namespaceOnly#thing
+2012-06-12 15:19:33,279 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=1namespaceOnly://thing
+2012-06-12 15:19:33,279 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=+namespaceOnly://thing
+2012-06-12 15:19:33,279 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Invalid URIs OK
+2012-06-12 15:51:44,115 INFO   [cz.muni.fi.fresneleditor.model.BaseRepositoryDao] - Creating new memory store repository
+2012-06-12 15:51:44,137 INFO   [cz.muni.fi.fresneleditor.model.BaseRepositoryDao] - Repository was successfully initialized
+2012-06-12 15:51:44,297 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: prefix1 :: http://prefix1
+2012-06-12 15:51:44,298 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p2 :: http://prefix2
+2012-06-12 15:51:44,298 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p+ :: http://prefix3
+2012-06-12 15:51:44,298 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p- :: http://prefix4
+2012-06-12 15:51:44,298 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p. :: http://prefix5
+2012-06-12 15:51:44,298 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p.prefix :: http://prefix6
+2012-06-12 15:51:44,298 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p+.-pref++ :: http://prefix7
+2012-06-12 15:51:44,298 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=absoluteNamespace://namespace#localName
+2012-06-12 15:51:44,315 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://xmlns.com/foaf/0.1/name
+2012-06-12 15:51:44,315 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=prefix1:resource
+2012-06-12 15:51:44,316 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix1#resource
+2012-06-12 15:51:44,316 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p2:resource
+2012-06-12 15:51:44,317 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix2#resource
+2012-06-12 15:51:44,317 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p+:resource
+2012-06-12 15:51:44,318 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix3#resource
+2012-06-12 15:51:44,318 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p-:resource
+2012-06-12 15:51:44,318 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix4#resource
+2012-06-12 15:51:44,319 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p.:resource
+2012-06-12 15:51:44,319 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix5#resource
+2012-06-12 15:51:44,319 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p.prefix:resource
+2012-06-12 15:51:44,320 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix6#resource
+2012-06-12 15:51:44,320 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p+.-pref++:resource
+2012-06-12 15:51:44,320 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix7#resource
+2012-06-12 15:51:44,320 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid URIs OK, starting to test invalid uris
+2012-06-12 15:51:44,321 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=namespaceNotKnown:resource
+2012-06-12 15:51:44,321 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=namespaceOnly#
+2012-06-12 15:51:44,321 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=namespaceOnly#thing
+2012-06-12 15:51:44,322 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=1namespaceOnly://thing
+2012-06-12 15:51:44,322 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=+namespaceOnly://thing
+2012-06-12 15:51:44,322 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Invalid URIs OK
+2012-06-12 23:55:39,581 INFO   [cz.muni.fi.fresneleditor.model.BaseRepositoryDao] - Creating new memory store repository
+2012-06-12 23:55:39,584 INFO   [cz.muni.fi.fresneleditor.model.BaseRepositoryDao] - Repository was successfully initialized
+2012-06-12 23:55:39,684 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: prefix1 :: http://prefix1
+2012-06-12 23:55:39,684 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p2 :: http://prefix2
+2012-06-12 23:55:39,684 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p+ :: http://prefix3
+2012-06-12 23:55:39,684 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p- :: http://prefix4
+2012-06-12 23:55:39,685 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p. :: http://prefix5
+2012-06-12 23:55:39,685 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p.prefix :: http://prefix6
+2012-06-12 23:55:39,685 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p+.-pref++ :: http://prefix7
+2012-06-12 23:55:39,685 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=absoluteNamespace://namespace#localName
+2012-06-12 23:55:39,724 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://xmlns.com/foaf/0.1/name
+2012-06-12 23:55:39,725 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=prefix1:resource
+2012-06-12 23:55:39,726 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix1#resource
+2012-06-12 23:55:39,726 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p2:resource
+2012-06-12 23:55:39,727 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix2#resource
+2012-06-12 23:55:39,727 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p+:resource
+2012-06-12 23:55:39,728 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix3#resource
+2012-06-12 23:55:39,728 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p-:resource
+2012-06-12 23:55:39,729 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix4#resource
+2012-06-12 23:55:39,730 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p.:resource
+2012-06-12 23:55:39,730 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix5#resource
+2012-06-12 23:55:39,731 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p.prefix:resource
+2012-06-12 23:55:39,732 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix6#resource
+2012-06-12 23:55:39,732 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p+.-pref++:resource
+2012-06-12 23:55:39,733 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix7#resource
+2012-06-12 23:55:39,733 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid URIs OK, starting to test invalid uris
+2012-06-12 23:55:39,733 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=namespaceNotKnown:resource
+2012-06-12 23:55:39,734 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=namespaceOnly#
+2012-06-12 23:55:39,735 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=namespaceOnly#thing
+2012-06-12 23:55:39,735 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=1namespaceOnly://thing
+2012-06-12 23:55:39,736 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=+namespaceOnly://thing
+2012-06-12 23:55:39,737 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Invalid URIs OK
+2012-06-12 23:58:29,491 INFO   [cz.muni.fi.fresneleditor.model.BaseRepositoryDao] - Creating new memory store repository
+2012-06-12 23:58:29,494 INFO   [cz.muni.fi.fresneleditor.model.BaseRepositoryDao] - Repository was successfully initialized
+2012-06-12 23:58:29,584 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: prefix1 :: http://prefix1
+2012-06-12 23:58:29,584 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p2 :: http://prefix2
+2012-06-12 23:58:29,584 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p+ :: http://prefix3
+2012-06-12 23:58:29,584 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p- :: http://prefix4
+2012-06-12 23:58:29,585 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p. :: http://prefix5
+2012-06-12 23:58:29,585 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p.prefix :: http://prefix6
+2012-06-12 23:58:29,585 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Known namespace: p+.-pref++ :: http://prefix7
+2012-06-12 23:58:29,585 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=absoluteNamespace://namespace#localName
+2012-06-12 23:58:29,602 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://xmlns.com/foaf/0.1/name
+2012-06-12 23:58:29,602 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=prefix1:resource
+2012-06-12 23:58:29,603 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix1#resource
+2012-06-12 23:58:29,603 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p2:resource
+2012-06-12 23:58:29,603 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix2#resource
+2012-06-12 23:58:29,603 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p+:resource
+2012-06-12 23:58:29,604 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix3#resource
+2012-06-12 23:58:29,604 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p-:resource
+2012-06-12 23:58:29,604 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix4#resource
+2012-06-12 23:58:29,605 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p.:resource
+2012-06-12 23:58:29,605 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix5#resource
+2012-06-12 23:58:29,605 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p.prefix:resource
+2012-06-12 23:58:29,605 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix6#resource
+2012-06-12 23:58:29,606 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=p+.-pref++:resource
+2012-06-12 23:58:29,606 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid uri=http://prefix7#resource
+2012-06-12 23:58:29,606 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Valid URIs OK, starting to test invalid uris
+2012-06-12 23:58:29,606 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=namespaceNotKnown:resource
+2012-06-12 23:58:29,606 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=namespaceOnly#
+2012-06-12 23:58:29,607 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=namespaceOnly#thing
+2012-06-12 23:58:29,607 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=1namespaceOnly://thing
+2012-06-12 23:58:29,607 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - INValid uri=+namespaceOnly://thing
+2012-06-12 23:58:29,607 DEBUG  [cz.muni.fi.fresneleditor.common.utils.FresnelUtilsTest] - Invalid URIs OK

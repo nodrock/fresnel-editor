@@ -33,7 +33,7 @@ import org.w3c.dom.events.EventTarget;
 /**
  *
  * @author pete
- * changes made in May 2012 by Miloš Kaláb
+ * changes made in May 2012 by Milos Kalab
  */
 public class SvgShowJPanel extends javax.swing.JPanel {
 
