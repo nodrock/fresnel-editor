@@ -286,6 +286,10 @@ public class ContextHolder {
 	public void openProject(String projectFileUrl, boolean isStart)
 			throws OpenProjectException {
 
+            if(projectFileUrl == null){
+                throw new OpenProjectException("No project!");
+            }
+            
 		if (isProjectOpen() && applicationConfiguration.getLastOpenProjectUrl().equals(
 						projectFileUrl)) {
 			// do nothing - the project we want to open is currently opened
