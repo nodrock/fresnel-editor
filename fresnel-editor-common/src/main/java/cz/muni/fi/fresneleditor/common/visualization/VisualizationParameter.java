@@ -18,8 +18,15 @@ public class VisualizationParameter {
 	public static final String DEFAULT_PAGE_TITLE = "RDF data visualization";
 
 	private String pageTitle = "RDF data visualization";
-	private String cssStylesheetURL = FresnelEditorConstants.DEFAULT_CSS_STYLESHEET_URL;
+	//private String cssStylesheetURL = FresnelEditorConstants.DEFAULT_CSS_STYLESHEET_URL;
+	private String cssStylesheetURL = FresnelEditorConstants.DEFAULT_SVG_CSS_STYLESHEET_URL;
 
+        private int rectWidth = 0;
+        private int picHeight = 0;
+        private int fontSize = 0;
+        private int propLine1Lenght = 0;
+        private int propLine2Lenght = 0;
+        
 	/**
 	 * Default constructor.
 	 */
@@ -68,4 +75,44 @@ public class VisualizationParameter {
 		this.cssStylesheetURL = URIUtils
 				.addStylesheetURLPrefix(cssStylesheetURL);
 	}
+
+    public int getFontSize() {
+        return fontSize;
+    }
+
+    public void setFontSize(int fontSize) {
+        this.fontSize = fontSize;
+    }
+
+    public int getPicHeight() {
+        return picHeight;
+    }
+
+    public void setPicHeight(int picHeight) {
+        this.picHeight = picHeight;
+    }
+
+    public int getPropLine1Lenght() {
+        return propLine1Lenght;
+    }
+
+    public void setPropLine1Lenght(int propLine1Lenght) {
+        this.propLine1Lenght = propLine1Lenght;
+    }
+
+    public int getPropLine2Lenght() {
+        return propLine2Lenght;
+    }
+
+    public void setPropLine2Lenght(int propLine2Lenght) {
+        this.propLine2Lenght = propLine2Lenght;
+    }
+
+    public int getRectWidth() {
+        return rectWidth;
+    }
+
+    public void setRectWidth(int rectWidth) {
+        this.rectWidth = rectWidth;
+    }        
 }

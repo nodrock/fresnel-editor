@@ -17,37 +17,47 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="outputFileJPanel" alignment="0" max="32767" attributes="1"/>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="cssJPanel" alignment="0" max="32767" attributes="1"/>
-                      <Component id="groupSelectionPanel" alignment="0" min="-2" max="-2" attributes="1"/>
-                  </Group>
-                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="visualizeBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="530" max="32767" attributes="0"/>
+                      <EmptySpace pref="487" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="outputFileJPanel" alignment="0" max="32767" attributes="2"/>
+                          <Component id="cssJPanel" alignment="0" max="32767" attributes="2"/>
+                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="1">
+                              <Component id="groupSelectionPanel" max="32767" attributes="1"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="svgVizSetJPanel" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="groupSelectionPanel" min="-2" pref="190" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="groupSelectionPanel" max="32767" attributes="2"/>
+                  <Component id="svgVizSetJPanel" alignment="0" max="32767" attributes="1"/>
+              </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="cssJPanel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="outputFileJPanel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
               <Component id="visualizeBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -66,23 +76,24 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="groupSelectionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="groupsListScrollPane" alignment="0" min="-2" pref="310" max="-2" attributes="0"/>
+                      <Component id="groupSelectionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="273" max="32767" attributes="0"/>
+                  <EmptySpace pref="64" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="groupSelectionLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Component id="groupsListScrollPane" min="-2" pref="130" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="groupsListScrollPane" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -148,12 +159,12 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="stylesheetUriText" min="-2" pref="464" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="browseLocalCssBtn" pref="168" max="32767" attributes="0"/>
+                          <Component id="browseLocalCssBtn" min="-2" pref="91" max="-2" attributes="0"/>
                       </Group>
                       <Component id="sylesheetUriLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="stylesheetDescLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -234,12 +245,12 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="outputFileText" min="-2" pref="462" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="browseFileBtn" min="-2" pref="102" max="-2" attributes="0"/>
+                          <Component id="browseFileBtn" min="-2" pref="95" max="-2" attributes="0"/>
                       </Group>
                       <Component id="outputFileLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="outputFileDescLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="85" max="32767" attributes="0"/>
+                  <EmptySpace pref="23" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -269,7 +280,7 @@
         <Component class="javax.swing.JLabel" name="outputFileLbl">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-              <ResourceString bundle="cz/muni/fi/fresneleditor/gui/mod/vis/resources/VisualizationJPanel.properties" key="CSS_stylesheet_location_(URL):" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+              <ResourceString bundle="cz/muni/fi/fresneleditor/gui/mod/vis/resources/VisualizationJPanel.properties" key="Path_to_output_file" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
             <Property name="name" type="java.lang.String" value="outputFileLbl" noResource="true"/>
           </Properties>
@@ -294,7 +305,7 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-              <ResourceString bundle="cz/muni/fi/fresneleditor/gui/mod/vis/resources/VisualizationJPanel.properties" key="If_no_CSS_stylesheet_is_specified_then_default_one_is_used." replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+              <ResourceString bundle="cz/muni/fi/fresneleditor/gui/mod/vis/resources/VisualizationJPanel.properties" key="Output_file_description" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
             <Property name="name" type="java.lang.String" value="outputFileDescLbl" noResource="true"/>
           </Properties>
@@ -312,5 +323,148 @@
         <Property name="name" type="java.lang.String" value="jLabel1" noResource="true"/>
       </Properties>
     </Component>
+    <Container class="javax.swing.JPanel" name="svgVizSetJPanel">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Set SVG Visualization Parametres">
+              <ResourceString PropertyName="titleX" bundle="cz/muni/fi/fresneleditor/gui/mod/vis/resources/VisualizationJPanel.properties" key="SVGSettingBorderTitle" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </TitledBorder>
+          </Border>
+        </Property>
+        <Property name="name" type="java.lang.String" value="svgVizSetJPanel" noResource="true"/>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="rectWidthJLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="fontSizeJLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="propLine1LenghtJLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="picHeightJLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="propLine2LenghtJLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="propLine2LenghtJText" alignment="0" max="32767" attributes="1"/>
+                      <Component id="rectWidthJText" alignment="0" pref="34" max="32767" attributes="1"/>
+                      <Component id="picHeightJText" alignment="0" max="32767" attributes="1"/>
+                      <Component id="fontSizeJText" alignment="0" max="32767" attributes="1"/>
+                      <Component id="propLine1LenghtJText" alignment="0" max="32767" attributes="1"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="rectWidthJText" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rectWidthJLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="picHeightJText" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="picHeightJLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="fontSizeJText" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="fontSizeJLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="propLine1LenghtJText" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="propLine1LenghtJLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="propLine2LenghtJText" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="propLine2LenghtJLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="37" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JTextField" name="rectWidthJText">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="400"/>
+            <Property name="name" type="java.lang.String" value="rectWidthJText" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="picHeightJText">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="200"/>
+            <Property name="name" type="java.lang.String" value="picHeightJText" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="propLine2LenghtJText">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="300"/>
+            <Property name="name" type="java.lang.String" value="propLine2LenghtJText" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="fontSizeJLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="cz/muni/fi/fresneleditor/gui/mod/vis/resources/VisualizationJPanel.properties" key="fontSize" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="fontSizeJLabel" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="propLine1LenghtJLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="cz/muni/fi/fresneleditor/gui/mod/vis/resources/VisualizationJPanel.properties" key="propLine1Lenght" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="propLine1LenghtJLabel" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="propLine1LenghtJText">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="100"/>
+            <Property name="name" type="java.lang.String" value="propLine1LenghtJText" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="picHeightJLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="cz/muni/fi/fresneleditor/gui/mod/vis/resources/VisualizationJPanel.properties" key="picHeight" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="name" type="java.lang.String" value="picHeightJLabel" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="fontSizeJText">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="11"/>
+            <Property name="name" type="java.lang.String" value="fontSizeJText" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="propLine2LenghtJLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="cz/muni/fi/fresneleditor/gui/mod/vis/resources/VisualizationJPanel.properties" key="propLine2Lenght" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="propLine2LenghtJLabel" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="rectWidthJLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="cz/muni/fi/fresneleditor/gui/mod/vis/resources/VisualizationJPanel.properties" key="rectWidth" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="rectWidthJLabel" noResource="true"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

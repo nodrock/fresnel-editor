@@ -1,74 +1,63 @@
-/*
- * Default Fresnel Editor CSS stylesheet for visualization of RDF data using Fresnel
- * Display Vocabulary.
- *
- * Authors: Miroslav Warchil (warmir@mail.muni.cz)
- *          Igor Zemsky (zemsky@mail.muni.cz)
- *
- * Version: April 2009
- */
+.f-results{
 
-/* Top-level container */
-.div-top {	
-    text-align:        center;
-    margin:            0em auto;
-    font-family:       Verdana, Tahoma, Arial, sans-serif;
-    font-size:         90%;
-    color:             black;
-    padding:           5px;
-    background-image:  URL('container-background-orange.gif');
-    background-repeat: repeat;
-    border:            2px dashed #C9C9C9;
 }
 
-/* Heading of the whole page */
-h1 {
-    font-family:    serif;
-    font-size:      140%;
-    letter-spacing: 2px;
-    margin-top:     10px;
+.f-resource{
+
 }
 
-.defaultResourceStyle, .f-resource {
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 15px;
-    padding: 5px ;
-	text-align:       left;
-	background-color: #C5CFF0; /*9FB2ED*/
-	border:           2px solid #9FB2ED;
+.f-resource rect{
+    stroke-width:2px;
+    stroke:red;
+    fill:#ccc;
 }
 
-/* Title (URI) of the resource */
-.f-title-resource {
-    text-align: right;
-    font-style: italic;
+.f-resource text{
+    font-family:LucidaGrande;
+    font-size:11;
 }
 
-/* Default label style */
-.defaultTextLabel, .f-label {
-    font-weight: bold;
+.f-property{
+
 }
 
-/* Common value style */ 
-.defaultTextValue, .defaultHyperlinkValue, .defaultImageValue, .f-value {
-    margin-left: 20px;
-    font-size:   120%;
-    font-style:  italic;
+.f-property .f-label line{
+    stroke:#000;
+    stroke-width:2;
+    stroke-dasharray:9, 5
 }
 
-    /* Concrete value styles */
-    .defaultTextValue {
-        
-        
-    }
-    .defaultHyperlinkValue {
-        
-    }
-    .defaultImageValue {
-    
-    }
+.f-property .f-label text{
+    font-family:LucidaGrande;
+    font-size:11;
+}
 
-.defaultFloatValue {
-  
+.f-values{
+
+}
+
+.f-values .f-label line{
+    stroke:#000;
+    stroke-width:2;
+    stroke-dasharray:9, 5
+}
+
+.f-value {
+
+}
+
+.f-value rect{
+    stroke-width:2px;
+    stroke:blue;
+    fill:#eee;
+}
+
+.f-value text{
+    font-family:LucidaGrande;
+    font-size:11;
+}
+
+foreignObject body div{
+    font-size:11px;
+    padding:6px 6px 6px 6px
 }

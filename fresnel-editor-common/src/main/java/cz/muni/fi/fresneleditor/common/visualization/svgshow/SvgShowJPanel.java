@@ -12,19 +12,33 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ResourceBundle;
+import javax.swing.JOptionPane;
 import org.apache.batik.dom.svg.SAXSVGDocumentFactory;
+import org.apache.batik.dom.svg.SVGDOMImplementation;
+import org.apache.batik.dom.svg.SVGOMTextElement;
 import org.apache.batik.swing.JSVGCanvas;
+import org.apache.batik.swing.svg.GVTTreeBuilderAdapter;
+import org.apache.batik.swing.svg.GVTTreeBuilderEvent;
 import org.apache.batik.util.XMLResourceDescriptor;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.events.Event;
+import org.w3c.dom.events.EventListener;
+import org.w3c.dom.events.EventTarget;
 
 /**
  *
  * @author pete
+ * changes made in May 2012 by Milos Kalab
  */
 public class SvgShowJPanel extends javax.swing.JPanel {
 
+    protected static final ResourceBundle bundle = java.util.ResourceBundle.getBundle("cz/muni/fi/fresneleditor/gui/mod/vis/resources/VisualizationJPanel");
+    private static final Logger LOG = LoggerFactory.getLogger(SvgShowJPanel.class);
     private JSVGCanvas canvas;
     private File file;
 
@@ -55,23 +69,45 @@ public class SvgShowJPanel extends javax.swing.JPanel {
             }
         });
 
+        /**
+	 * Sets a listener for mouseclick and handles the event
+	 */
+        canvas.addGVTTreeBuilderListener(new GVTTreeBuilderAdapter() {
+
+            public void gvtBuildStarted(GVTTreeBuilderEvent e) {
+            }
+
+            public void gvtBuildCompleted(GVTTreeBuilderEvent e) {
+                NodeList nodes = canvas.getSVGDocument().getElementsByTagNameNS(SVGDOMImplementation.SVG_NAMESPACE_URI, "text");
+                for (int i = 0; i < nodes.getLength(); i++) {
+                    EventTarget et = (EventTarget) nodes.item(i);
+                    et.addEventListener("click", new EventListener() {
+
+                        public void handleEvent(Event evt) {
+                            if (evt.getTarget() instanceof SVGOMTextElement) {
+                                SVGOMTextElement text = (SVGOMTextElement) evt.getTarget();
+                                JOptionPane.showMessageDialog(null, text.getAttribute("full-value"),bundle.getString("full_clicked_text"), JOptionPane.PLAIN_MESSAGE);
+                            }
+                        }
+                    }, false);
+                }
+            }
+        });
+
         try {
             InputStream svgInputStream = new FileInputStream(file);
-            //InputStream svgInputStream = getClass().getResourceAsStream("/cz/muni/fi/fresneleditor/common/visualization/svgshow/Dharma_Wheel.svg");
             LoggerFactory.getLogger(this.getClass()).info("Displaying file " + file.getAbsolutePath());
-            
+
             String parserClassName = XMLResourceDescriptor.getXMLParserClassName();
             SAXSVGDocumentFactory f = new SAXSVGDocumentFactory(parserClassName);
-            
+
             Document doc = f.createDocument(parserClassName, svgInputStream);
 
-            // sets the panel size to size of the displaying svg image
-
             Element svgElement = (Element) doc.getElementsByTagName("svg:svg").item(0);
-                 
+
             Integer w = Math.round(Float.parseFloat(svgElement.getAttribute("width")));
             Integer h = Math.round(Float.parseFloat(svgElement.getAttribute("height")));
-//            canvas.setSize(w, h);
+
             canvas.setSize(getWidth(), getHeight());
             this.setPreferredSize(new Dimension(w, h));
 

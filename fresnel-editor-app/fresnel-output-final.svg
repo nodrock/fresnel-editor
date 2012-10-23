@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg:svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg:svg xmlns:svg="http://www.w3.org/2000/svg" height="1329.6" width="1280">
+<svg:style type="text/css">@import url(file:\\\C:\dev\f-e-ver1\fresnel-editor\fresnel-editor-app\src\main\resources\css\visualization-svg-default-style.css);</svg:style>
+<svg:g class="f-results">
+<svg:g class="f-resource">
+<svg:rect ry="10" rx="10" height="29.700000000000003" width="400" y="20" x="20"/>
+<svg:text full-value="http://www.fi.muni.cz/fresnel-editor#MiroslavWarchil" y="38" x="35">http://www.fi.muni.cz/fresnel-editor#MiroslavWarchil</svg:text>
+<svg:g class="f-property">
+<svg:g class="f-label">
+<svg:line y2="35" x2="520" y1="35" x1="420"/>
+<svg:text full-value="Name: " y="30" x="523">Name: </svg:text>
+</svg:g>
+<svg:g class="f-values">
+<svg:g class="f-label">
+<svg:line y2="35" x2="820" y1="35" x1="520"/>
+</svg:g>
+<svg:g class="f-value">
+<svg:rect height="29.700000000000003" width="400" y="20" x="820"/>
+<svg:text full-value="Miroslav Warchil" font-size="11" y="38" x="835">Miroslav Warchil</svg:text>
+</svg:g>
+</svg:g>
+</svg:g>
+<svg:g class="f-property">
+<svg:g class="f-label">
+<svg:line y2="69.7" x2="520" y1="35" x1="420"/>
+<svg:text full-value="Nick: " y="64.7" x="523">Nick: </svg:text>
+</svg:g>
+<svg:g class="f-values">
+<svg:g class="f-label">
+<svg:line y2="69.7" x2="820" y1="69.7" x1="520"/>
+</svg:g>
+<svg:g class="f-value">
+<svg:rect height="29.700000000000003" width="400" y="54.7" x="820"/>
+<svg:text full-value="archie" font-size="11" y="72.7" x="835">archie</svg:text>
+</svg:g>
+</svg:g>
+</svg:g>
+<svg:g class="f-property">
+<svg:g class="f-label">
+<svg:line y2="104.4" x2="520" y1="35" x1="420"/>
+<svg:text full-value="E-mail: " y="99.4" x="523">E-mail: </svg:text>
+</svg:g>
+<svg:g class="f-values">
+<svg:g class="f-label">
+<svg:line y2="104.4" x2="820" y1="104.4" x1="520"/>
+</svg:g>
+<svg:g class="f-value">
+<svg:a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="m.warchil@gmail.com">
+<svg:rect height="29.700000000000003" width="400" y="89.4" x="820"/>
+<svg:text full-value="m.warchil@gmail.com" width="400" y="107.4" x="835">m.warchil@gmail.com</svg:text>
+</svg:a>
+</svg:g>
+</svg:g>
+</svg:g>
+<svg:g class="f-property">
+<svg:g class="f-label">
+<svg:line y2="139.10000000000002" x2="520" y1="35" x1="420"/>
+<svg:text full-value="Homepage: " y="134.10000000000002" x="523">Homepage: </svg:text>
+</svg:g>
+<svg:g class="f-values">
+<svg:g class="f-label">
+<svg:line y2="139.10000000000002" x2="820" y1="139.10000000000002" x1="520"/>
+</svg:g>
+<svg:g class="f-value">
+<svg:a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://cz.linkedin.com/in/miroslavwarchil">
+<svg:rect height="29.700000000000003" width="400" y="124.10000000000001" x="820"/>
+<svg:text full-value="http://cz.linkedin.com/in/miroslavwarchil" width="400" y="142.10000000000002" x="835">http://cz.linkedin.com/in/miroslavwarchil</svg:text>
+</svg:a>
+</svg:g>
+</svg:g>
+</svg:g>
+<svg:g class="f-property">
+<svg:g class="f-label">
+<svg:line y2="173.8" x2="520" y1="35" x1="420"/>
+<svg:text full-value="Photo: " y="168.8" x="523">Photo: </svg:text>
+</svg:g>
+<svg:g class="f-values">
+<svg:g class="f-label">
+<svg:line y2="173.8" x2="820" y1="173.8" x1="520"/>
+</svg:g>
+<svg:g class="f-value">
+<svg:rect height="200" width="400" y="158.8" x="820"/>
+<svg:image xmlns:xlink="http://www.w3.org/1999/xlink" y="159.8" x="822" height="198" width="398" xlink:href="http://www.fi.muni.cz/~xwarchil/warchil-photo.jpg"/>
+</svg:g>
+</svg:g>
+</svg:g>
+<svg:g class="f-property">
+<svg:g class="f-label">
+<svg:line y2="378.8" x2="520" y1="35" x1="420"/>
+<svg:text full-value="This person worked on following publications or documents: " y="373.8" x="523">This person worked on following publications or documents: </svg:text>
+</svg:g>
+<svg:g class="f-values">
+<svg:g class="f-label">
+<svg:line y2="378.8" x2="820" y1="378.8" x1="520"/>
+</svg:g>
+<svg:g class="f-value">
+<svg:rect height="29.700000000000003" width="400" y="363.8" x="820"/>
+<svg:text full-value="http://www.fi.muni.cz/fresnel-editor#SceneGraphExport" font-size="11" y="381.8" x="835">http://www.fi.muni.cz/fresnel-editor#SceneGraphExport</svg:text>
+</svg:g>
+</svg:g>
+</svg:g>
+<svg:g class="f-property">
+<svg:g class="f-label">
+<svg:line y2="413.5" x2="520" y1="35" x1="420"/>
+<svg:text full-value="This person knows following people: " y="408.5" x="523">This person knows following people: </svg:text>
+</svg:g>
+<svg:g class="f-values">
+<svg:g class="f-label">
+<svg:line y2="413.5" x2="820" y1="413.5" x1="520"/>
+</svg:g>
+<svg:g class="f-value">
+<svg:rect height="29.700000000000003" width="400" y="398.5" x="820"/>
+<svg:text full-value="http://www.fi.muni.cz/fresnel-editor#JosefZapletal" font-size="11" y="416.5" x="835">http://www.fi.muni.cz/fresnel-editor#JosefZapletal</svg:text>
+</svg:g>
+</svg:g>
+</svg:g>
+</svg:g>
+<svg:g class="f-resource">
+<svg:rect ry="10" rx="10" height="29.700000000000003" width="400" y="453.20000000000005" x="20"/>
+<svg:text full-value="http://www.fi.muni.cz/fresnel-editor#JosefZapletal" y="471.20000000000005" x="35">http://www.fi.muni.cz/fresnel-editor#JosefZapletal</svg:text>
+<svg:g class="f-property">
+<svg:g class="f-label">
+<svg:line y2="468.20000000000005" x2="520" y1="468.20000000000005" x1="420"/>
+<svg:text full-value="Name: " y="463.20000000000005" x="523">Name: </svg:text>
+</svg:g>
+<svg:g class="f-values">
+<svg:g class="f-label">
+<svg:line y2="468.20000000000005" x2="820" y1="468.20000000000005" x1="520"/>
+</svg:g>
+<svg:g class="f-value">
+<svg:rect height="29.700000000000003" width="400" y="453.20000000000005" x="820"/>
+<svg:text full-value="Josef Zapletal" font-size="11" y="471.20000000000005" x="835">Josef Zapletal</svg:text>
+</svg:g>
+</svg:g>
+</svg:g>
+<svg:g class="f-property">
+<svg:g class="f-label">
+<svg:line y2="502.90000000000003" x2="520" y1="468.20000000000005" x1="420"/>
+<svg:text full-value="Nick: " y="497.90000000000003" x="523">Nick: </svg:text>
+</svg:g>
+<svg:g class="f-values">
+<svg:g class="f-label">
+<svg:line y2="502.90000000000003" x2="820" y1="502.90000000000003" x1="520"/>
+</svg:g>
+<svg:g class="f-value">
+<svg:rect height="29.700000000000003" width="400" y="487.90000000000003" x="820"/>
+<svg:text full-value="zzapl" font-size="11" y="505.90000000000003" x="835">zzapl</svg:text>
+</svg:g>
+</svg:g>
+</svg:g>
+<svg:g class="f-property">
+<svg:g class="f-label">
+<svg:line y2="537.6" x2="520" y1="468.20000000000005" x1="420"/>
+<svg:text full-value="E-mail: " y="532.6" x="523">E-mail: </svg:text>
+</svg:g>
+<svg:g class="f-values">
+<svg:g class="f-label">
+<svg:line y2="537.6" x2="820" y1="537.6" x1="520"/>
+</svg:g>
+<svg:g class="f-value">
+<svg:a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="zz4pl64@hotmail.com">
+<svg:rect height="29.700000000000003" width="400" y="522.6" x="820"/>
+<svg:text full-value="zz4pl64@hotmail.com" width="400" y="540.6" x="835">zz4pl64@hotmail.com</svg:text>
+</svg:a>
+</svg:g>
+</svg:g>
+</svg:g>
+<svg:g class="f-property">
+<svg:g class="f-label">
+<svg:line y2="572.3" x2="520" y1="468.20000000000005" x1="420"/>
+<svg:text full-value="Homepage: " y="567.3" x="523">Homepage: </svg:text>
+</svg:g>
+<svg:g class="f-values">
+<svg:g class="f-label">
+<svg:line y2="572.3" x2="820" y1="572.3" x1="520"/>
+</svg:g>
+<svg:g class="f-value">
+<svg:a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="www.zapletal.com">
+<svg:rect height="29.700000000000003" width="400" y="557.3" x="820"/>
+<svg:text full-value="www.zapletal.com" width="400" y="575.3" x="835">www.zapletal.com</svg:text>
+</svg:a>
+</svg:g>
+</svg:g>
+</svg:g>
+<svg:g class="f-property">
+<svg:g class="f-label">
+<svg:line y2="607" x2="520" y1="468.20000000000005" x1="420"/>
+<svg:text full-value="Photo: " y="602" x="523">Photo: </svg:text>
+</svg:g>
+<svg:g class="f-values">
+<svg:g class="f-label">
+<svg:line y2="607" x2="820" y1="607" x1="520"/>
+</svg:g>
+<svg:g class="f-value">
+<svg:rect height="200" width="400" y="592" x="820"/>
+<svg:image xmlns:xlink="http://www.w3.org/1999/xlink" y="593" x="822" height="198" width="398" xlink:href="http://www.iconspedia.com/uploads/1396576891.png"/>
+</svg:g>
+</svg:g>
+</svg:g>
+<svg:g class="f-property">
+<svg:g class="f-label">
+<svg:line y2="812" x2="520" y1="468.20000000000005" x1="420"/>
+<svg:text full-value="This person worked on following publications or documents: " y="807" x="523">This person worked on following publications or documents: </svg:text>
+</svg:g>
+<svg:g class="f-values">
+<svg:g class="f-label">
+<svg:line y2="812" x2="820" y1="812" x1="520"/>
+</svg:g>
+<svg:g class="f-value">
+<svg:rect height="29.700000000000003" width="400" y="797" x="820"/>
+<svg:text full-value="http://www.fi.muni.cz/fresnel-editor#HorniNemciWeb" font-size="11" y="815" x="835">http://www.fi.muni.cz/fresnel-editor#HorniNemciWeb</svg:text>
+</svg:g>
+</svg:g>
+</svg:g>
+<svg:g class="f-property">
+<svg:g class="f-label">
+<svg:line y2="846.7" x2="520" y1="468.20000000000005" x1="420"/>
+<svg:text full-value="This person knows following people: " y="841.7" x="523">This person knows following people: </svg:text>
+</svg:g>
+<svg:g class="f-values">
+<svg:g class="f-label">
+<svg:line y2="846.7" x2="820" y1="846.7" x1="520"/>
+</svg:g>
+<svg:g class="f-value">
+<svg:rect height="29.700000000000003" width="400" y="831.7" x="820"/>
+<svg:text full-value="http://www.fi.muni.cz/fresnel-editor#IanKerrigan" font-size="11" y="849.7" x="835">http://www.fi.muni.cz/fresnel-editor#IanKerrigan</svg:text>
+</svg:g>
+</svg:g>
+</svg:g>
+</svg:g>
+<svg:g class="f-resource">
+<svg:rect ry="10" rx="10" height="29.700000000000003" width="400" y="886.4000000000001" x="20"/>
+<svg:text full-value="http://www.fi.muni.cz/fresnel-editor#IanKerrigan" y="904.4000000000001" x="35">http://www.fi.muni.cz/fresnel-editor#IanKerrigan</svg:text>
+<svg:g class="f-property">
+<svg:g class="f-label">
+<svg:line y2="901.4000000000001" x2="520" y1="901.4000000000001" x1="420"/>
+<svg:text full-value="Name: " y="896.4000000000001" x="523">Name: </svg:text>
+</svg:g>
+<svg:g class="f-values">
+<svg:g class="f-label">
+<svg:line y2="901.4000000000001" x2="820" y1="901.4000000000001" x1="520"/>
+</svg:g>
+<svg:g class="f-value">
+<svg:rect height="29.700000000000003" width="400" y="886.4000000000001" x="820"/>
+<svg:text full-value="Ian Kerrigan" font-size="11" y="904.4000000000001" x="835">Ian Kerrigan</svg:text>
+</svg:g>
+</svg:g>
+</svg:g>
+<svg:g class="f-property">
+<svg:g class="f-label">
+<svg:line y2="936.1" x2="520" y1="901.4000000000001" x1="420"/>
+<svg:text full-value="Nick: " y="931.1" x="523">Nick: </svg:text>
+</svg:g>
+<svg:g class="f-values">
+<svg:g class="f-label">
+<svg:line y2="936.1" x2="820" y1="936.1" x1="520"/>
+</svg:g>
+<svg:g class="f-value">
+<svg:rect height="29.700000000000003" width="400" y="921.1" x="820"/>
+<svg:text full-value="kerry" font-size="11" y="939.1" x="835">kerry</svg:text>
+</svg:g>
+</svg:g>
+</svg:g>
+<svg:g class="f-property">
+<svg:g class="f-label">
+<svg:line y2="970.8000000000001" x2="520" y1="901.4000000000001" x1="420"/>
+<svg:text full-value="E-mail: " y="965.8000000000001" x="523">E-mail: </svg:text>
+</svg:g>
+<svg:g class="f-values">
+<svg:g class="f-label">
+<svg:line y2="970.8000000000001" x2="820" y1="970.8000000000001" x1="520"/>
+</svg:g>
+<svg:g class="f-value">
+<svg:a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="kerry@fictive-mail.com">
+<svg:rect height="29.700000000000003" width="400" y="955.8000000000001" x="820"/>
+<svg:text full-value="kerry@fictive-mail.com" width="400" y="973.8000000000001" x="835">kerry@fictive-mail.com</svg:text>
+</svg:a>
+</svg:g>
+</svg:g>
+</svg:g>
+<svg:g class="f-property">
+<svg:g class="f-label">
+<svg:line y2="1005.5000000000001" x2="520" y1="901.4000000000001" x1="420"/>
+<svg:text full-value="Photo: " y="1000.5000000000001" x="523">Photo: </svg:text>
+</svg:g>
+<svg:g class="f-values">
+<svg:g class="f-label">
+<svg:line y2="1005.5000000000001" x2="820" y1="1005.5000000000001" x1="520"/>
+</svg:g>
+<svg:g class="f-value">
+<svg:rect height="200" width="400" y="990.5000000000001" x="820"/>
+<svg:image xmlns:xlink="http://www.w3.org/1999/xlink" y="991.5000000000001" x="822" height="198" width="398" xlink:href="http://www.iconspedia.com/uploads/645579990.png"/>
+</svg:g>
+</svg:g>
+</svg:g>
+<svg:g class="f-property">
+<svg:g class="f-label">
+<svg:line y2="1210.5" x2="520" y1="901.4000000000001" x1="420"/>
+<svg:text full-value="Personal geek code: " y="1205.5" x="523">Personal geek code: </svg:text>
+</svg:g>
+<svg:g class="f-values">
+<svg:g class="f-label">
+<svg:line y2="1210.5" x2="820" y1="1210.5" x1="520"/>
+</svg:g>
+<svg:g class="f-value">
+<svg:rect height="29.700000000000003" width="400" y="1195.5" x="820"/>
+<svg:text full-value="GED/J d-- s:++&gt;:  a-- C++(++++) ULU++ P+ L++" font-size="11" y="1213.5" x="835">GED/J d-- s:++&gt;:  a-- C++(++++) ULU++ P+ L++</svg:text>
+</svg:g>
+</svg:g>
+</svg:g>
+</svg:g>
+</svg:g>
+</svg:svg>

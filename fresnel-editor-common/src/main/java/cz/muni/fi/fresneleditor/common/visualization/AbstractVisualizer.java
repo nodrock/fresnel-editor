@@ -34,6 +34,8 @@ import java.util.List;
  * 
  * @author Miroslav Warchil (warmir@mail.muni.cz)
  * @version 13.5.2009
+ * 
+ * changes made in May 2012 by Milos Kalab
  */
 public abstract class AbstractVisualizer implements IRDFVisualizer {
 
@@ -164,7 +166,11 @@ public abstract class AbstractVisualizer implements IRDFVisualizer {
         try {
             Document document = renderer.render(fd, repository);
 
-            modifyInternalXML(document);
+            if (visParam.getFontSize() >0 || visParam.getPicHeight() >0 || visParam.getRectWidth() >0 || visParam.getPropLine1Lenght() >0 || visParam.getPropLine2Lenght() >0) {
+                document = modifyInternalXML(document, visParam);
+            } else {
+                document = modifyInternalXML(document);
+            }
 
             // Prepare the DOM document for writing
             DOMSource source = new DOMSource(document);
@@ -176,8 +182,8 @@ public abstract class AbstractVisualizer implements IRDFVisualizer {
             // Set parameters to XSL template
             transformer.setParameter("pageTitle", visParam.getPageTitle());
             transformer.setParameter("cssStylesheetURL", visParam.getCssStylesheetURL());
-
             // Perform XSL transformation and write result into file
+
             transformer.transform(source, new StreamResult(new FileOutputStream(finalFile)));
 
             LOG.info("Final document has been written to file: " + defaultOutputFilename);
@@ -195,7 +201,11 @@ public abstract class AbstractVisualizer implements IRDFVisualizer {
      * @param doc source document
      * @return modified DOM document
      */
-    protected Document modifyInternalXML(Document doc){
+    protected Document modifyInternalXML(Document doc) {
+        return doc; // no changes
+    }
+
+    protected Document modifyInternalXML(Document doc, VisualizationParameter visParam) {
         return doc; // no changes
     }
 

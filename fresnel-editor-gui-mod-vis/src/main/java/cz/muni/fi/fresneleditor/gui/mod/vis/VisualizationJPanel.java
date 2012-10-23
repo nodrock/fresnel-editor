@@ -1,9 +1,11 @@
 /*
  * Fresnel Editor
  */
-
 package cz.muni.fi.fresneleditor.gui.mod.vis;
 
+import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Insets;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -42,28 +44,22 @@ import org.openrdf.model.impl.URIImpl;
 /**
  * 
  * @author Miroslav Warchil
+ * changes made in May 2012 by Milos Kalab
  */
 public class VisualizationJPanel extends javax.swing.JPanel implements
-		ITabComponent<String> {
+        ITabComponent<String> {
 
-	private static final Logger LOG = LoggerFactory
-			.getLogger(VisualizationJPanel.class);
-	protected static final ResourceBundle bundle = java.util.ResourceBundle
-			.getBundle("cz/muni/fi/fresneleditor/gui/mod/vis/resources/VisualizationJPanel");
+    private static final Logger LOG = LoggerFactory.getLogger(VisualizationJPanel.class);
+    protected static final ResourceBundle bundle = java.util.ResourceBundle.getBundle("cz/muni/fi/fresneleditor/gui/mod/vis/resources/VisualizationJPanel");
+    // private static int NO_ROW_SELECTED = -1;
+    private VisualizationJScrollPane representingScrollPane = null;
+    protected VisualizationItemNode visualizationItemNode = null;
+    // private VisualizationRootNode visualizationRootNode = null;
+    protected IRDFVisualizer visualizer;
+    protected String label;
+    protected String defaultCssStylesheet;
 
-	// private static int NO_ROW_SELECTED = -1;
-
-	private VisualizationJScrollPane representingScrollPane = null;
-
-	protected VisualizationItemNode visualizationItemNode = null;
-
-	// private VisualizationRootNode visualizationRootNode = null;
-
-	protected IRDFVisualizer visualizer;
-	protected String label;
-	protected String defaultCssStylesheet;
-
-	/**
+    /**
      *
      */
 	private class VisualizationJScrollPane extends JScrollPane implements
